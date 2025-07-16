@@ -83,7 +83,7 @@ def connect():
     app.run()
 
 print("Starting IB API Test Application...")
-#logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 app = TestApp()
 random_client_id = int(time.time()) % 1000  # Generate a random client ID
 app.connect("127.0.0.1", 7496, clientId=random_client_id)
@@ -92,7 +92,6 @@ time.sleep(1)
 print("serverVersion:%s connectionTime:%s" % (app.serverVersion(), app.twsConnectionTime()))
 
 threading.Thread(target=app.run, daemon=True).start()
-
 
 app.orderId=0
 app.reqContractDetails(app.nextId(), mycontract)
