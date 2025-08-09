@@ -163,3 +163,4 @@ cython_debug/
 *.log
 contract-details/*
 historic-data/*
+.config

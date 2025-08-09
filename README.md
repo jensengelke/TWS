@@ -30,3 +30,9 @@ python .\get-reasonable-option-chain-for-expiry.py --help
   - contract: SPX (--contract SPY)
   - min-dte: 90
   - max-dte: 120
+
+# Get earning dates
+https://finnhub.io/docs/api/earnings-calendar Register API key and store in `.config/finnhub.json`
+```json
+{ "apikey": "blabla"}
+```
