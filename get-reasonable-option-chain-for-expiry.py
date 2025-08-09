@@ -1,15 +1,16 @@
 # For SPX and SPY data in historic-<symbol>.csv get the ATM straddle option with 90-120 days to expiration
 # Download historic data for that chain and save it to a CSV file
 
-from ibapi.client import *
-from ibapi.wrapper import *
 import argparse
 import json
 import logging
 import os
-import pandas as pd
 import threading
 import time
+import pandas as pd
+from ibapi.client import *
+from ibapi.wrapper import *
+
 
 args = {} # command line arguments
 ibrequests_contractDetails = {} # keep track of requests for contract details
@@ -32,7 +33,7 @@ class IBConnection(EWrapper, EClient):
         self.orderId += 1
         return self.orderId
 
-    def error(self, reqId: int, errorCode: int, errorString: str):
+    def error(self, reqId: int, errorCode: int, errorString: str, advancedOrderRejectJson=""):
         if reqId == -1:
             error_message = f"Connection setup: {errorString}"
         else:

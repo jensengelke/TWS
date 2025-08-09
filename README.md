@@ -8,6 +8,13 @@
     pip install setuptools
     python setup.py install
     ```
+    **in a virtual environment**
+    run as an administrator (c:\twsapi\source\pythonclient\ibapi.egg-info is read-only for non admin users)
+    ```bash
+     cd \users\myuser\git\TWS 
+     .\.venv\Scripts\Activate.ps1
+     pip install -e c:\twsapi\source\pythonclient
+    ```
 1. Install prereqs in python env
 ```bash
 pip install pandas

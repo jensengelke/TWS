@@ -90,7 +90,7 @@ class IBApp(EWrapper, EClient):
             print("Option Delta:", delta)
 
     # Error handling callback.
-    def error(self, reqId: TickerId, errorCode: int, errorString: str):
+    def error(self, reqId: TickerId, errorCode: int, errorString: str, advancedOrderRejectJson=""):
         error_message = f"Error. Id: {reqId}, Code: {errorCode}, Msg: {errorString}"
         print(error_message)
         # Save error related to SPY contract details (reqId 1)
@@ -142,7 +142,7 @@ def main():
             sys.exit(1)
 
         # Request option chain parameters for SPY.
-        app.reqSecDefOptParams(2, "SPY", "", "STK", app.spy_conId)
+        app.reqSecDefOptParams(reqId=2, underlyingSymbol="SPY", underlyingSecType="STK", underlyingConId=app.spy_conId, futFopExchange="")
         time.sleep(5)
 
         # Calculate next Friday’s expiry date.
