@@ -1,8 +1,10 @@
-import requests
+import argparse
 import datetime
 import json
-import sys
+import os
 import pandas as pd
+import requests
+import sys
 
 def get_apikey_from_config():
     file = ".config/finnhub.json"
@@ -19,14 +21,17 @@ def get_apikey_from_config():
         print(f"API key not found in {file}. Please add your Finnhub API key.")
         sys.exit(1)
     
+    print(f"{datetime.datetime.now().strftime("%H:%M:%S")} - Obtained API key from configuration file: {file}")
     return apikey
 
 def get_earnings_dates():
+    print(f"{datetime.datetime.now().strftime("%H:%M:%S")} - Invoking Finnhub API to get earnings dates for next week...")
     url = f"https://finnhub.io/api/v1/calendar/earnings"
     params = {
         "from": compute_next_weeks_monday(),  # Use the function to get next Monday's date
         "to": compute_next_weeks_friday()  # Use the function to get next Friday's date
     }
+    print(f"  > From {params['from']}, To {params['to']}")
 
     headers = { "X-Finnhub-Token": get_apikey_from_config() }
 
@@ -36,20 +41,23 @@ def get_earnings_dates():
         data = response.json()
         result = [  {"symbol": entry["symbol"], "date": str(entry["date"]), "hour": entry["hour"]} 
             for entry in data.get("earningsCalendar", [])]
+        print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - Response received with {len(result)} earnings dates.")
         return result
         
     else:
         return f"Error fetching data: {response.status_code}"
     
 
-def get_weekly_options_from_cboe():
-    csv_path = "weekly_options.csv"
+def get_weekly_options_from_cboe(csv_path="weekly_options.csv"):
+    print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - Fetching weekly options from CBOE...")
+
     url = "https://www.cboe.com/available_weeklys/get_csv_download/"    
     response = requests.get(url)
     if response.status_code == 200:
-        with open(f"weekly_options.csv", "w") as f:
+        with open(csv_path, "w") as f:
             f.write(response.text)
     
+def read_weekly_options_from_csv(csv_path="weekly_options.csv"):
     weeklies = {}
     start_processing = False
     with open(csv_path, "r", encoding="utf-8") as f:
@@ -67,7 +75,8 @@ def get_weekly_options_from_cboe():
             symbol = parts[0].strip().strip('"')
             stock_name = parts[1].strip().strip('"')
             weeklies[symbol] = stock_name
-            
+    
+    print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - Fetched {len(weeklies)} weekly options from CBOE.")
     return weeklies
 
 def compute_next_weeks_friday():
@@ -88,10 +97,13 @@ def compute_next_weeks_monday():
     next_monday = today + datetime.timedelta(days=days_until_monday)
     return next_monday.strftime("%Y-%m-%d")
 
-def main():
-    weeklies = get_weekly_options_from_cboe()
-    earnings_dates = get_earnings_dates()
-    
+# Helper to write CSV in required format
+def write_custom_csv(dataframe, filename):
+    with open(filename, "w") as f:
+        for _, row in dataframe.iterrows():
+            f.write(f"DES,{row['symbol']},STK,SMART/AMEX,,,,\n")
+
+def crate_dataframe_from_earnings_with_weekly_options(earnings_dates, weeklies):
     rows = []
     for entry in earnings_dates:
         symbol = entry["symbol"]
@@ -106,17 +118,51 @@ def main():
                 tradedate = (datetime.datetime.strptime(date, "%Y-%m-%d") - datetime.timedelta(days=1)).strftime("%Y-%m-%d")
             else:
                 tradedate = date
+            # Calculate weekday name
+            weekday = datetime.datetime.strptime(tradedate, "%Y-%m-%d").strftime("%A")
             rows.append({
                 "symbol": symbol,
                 "name": name,
                 "earningsdate": date,
                 "earningshour": hour,
-                "tradedate": tradedate
+                "tradedate": tradedate,
+                "weekday": weekday
             })
     
-    df = pd.DataFrame(rows)
+    return pd.DataFrame(rows)
+
+def main(args):
+    if not args.skip_weekly_options:
+        get_weekly_options_from_cboe()
+    else:
+        print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - Skipping fetching weekly options from CBOE. Assuming 'weekly_options.csv' exists in the current directory.")
+
+    weeklies = read_weekly_options_from_csv()
+    earnings_dates = get_earnings_dates()
+    
+    df = crate_dataframe_from_earnings_with_weekly_options(earnings_dates, weeklies)
     df = df.sort_values(by="tradedate", ascending=True)
     print(df.to_string(index=False, justify="left"))
 
+    # Prepare output directory
+    output_dir = args.output
+    print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - Creating earnings dates CSV files in {output_dir}...")
+
+    # Write all rows to earnings.csv
+    write_custom_csv(df, os.path.join(output_dir, "earnings.csv"))
+
+    # Write one file per weekday
+    for weekday in df["weekday"].unique():
+        weekday_df = df[df["weekday"] == weekday]
+        fname = f"earnings_{weekday.lower()}.csv"
+        write_custom_csv(weekday_df, os.path.join(output_dir, fname))
+    
+
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Get earnings dates and weekly options.")
+    parser.add_argument("--config", type=str, default=".config/finnhub.json", help="Path to the Finnhub API key configuration file. Default is '.config/finnhub.json'.")
+    parser.add_argument("--output", type=str, default="c:/jts", help="Output directory for the earnings dates CSV files. Default is 'c:/jts'.")
+    parser.add_argument("--skip-weekly-options", action="store_true", help="Skip fetching weekly options from CBOE. The script assumes that a file weekly_options.csv exists in the current directory.", default=False)
+    args = parser.parse_args()
+
+    main(args)
