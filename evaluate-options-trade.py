@@ -10,6 +10,7 @@ import threading
 import time
 import datetime
 import sys
+import pandas as pd
 
 class EarningsApp(EWrapper, EClient):
     requestId = 0
@@ -59,45 +60,33 @@ class EarningsApp(EWrapper, EClient):
 
         if not reqId in ibrequests_marketData:
             return
+        elif not reqId in ibrequests_marketData:
+            return            
         else:
             contract: Contract = ibrequests_marketData[reqId]
-            if contract.symbol in stock_price:
+            key = contract.localSymbol if contract.localSymbol else contract.symbol
+            if key in price_data:
                 logging.debug(f"Updating Stock price {TickTypeEnum.toStr(tickType)} for local symbol {contract.localSymbol}, symbol {contract.symbol}: {price}")
-                stock_price[contract.symbol].update({
-                    "last": price if tickType == TickTypeEnum.LAST else stock_price[contract.symbol].get("last", None),
-                    "ask": price if tickType == TickTypeEnum.ASK else stock_price[contract.symbol].get("ask", None),
-                    "bid": price if tickType == TickTypeEnum.BID else stock_price[contract.symbol].get("bid", None),
-                    "mark": price if tickType == TickTypeEnum.MARK_PRICE else stock_price[contract.symbol].get("mark", None)
+                price_data[key].update({
+                    "last": price if tickType == TickTypeEnum.LAST else price_data[key].get("last", None),
+                    "ask": price if tickType == TickTypeEnum.ASK else price_data[key].get("ask", None),
+                    "bid": price if tickType == TickTypeEnum.BID else price_data[key].get("bid", None),
+                    "mark": price if tickType == TickTypeEnum.MARK_PRICE else price_data[key].get("mark", None)
                 })
+                if price_data[key]["last"] != None and \
+                   price_data[key]["ask"] != None and \
+                   price_data[key]["bid"] != None and \
+                   price_data[key]["mark"] != None:
+                    ibrequests_marketData.pop(reqId)
             else:
-                logging.debug(f"Creating Stock price {TickTypeEnum.toStr(tickType)} for local symbol {contract.localSymbol}, symbol {contract.symbol}: {price}")
-                stock_price[contract.symbol] = {
+                print(f"Creating Stock price {TickTypeEnum.toStr(tickType)} for key {key} local symbol {contract.localSymbol}, symbol {contract.symbol}: {price}")
+                price_data[key] = {
                     "last": price if tickType == TickTypeEnum.LAST else None,
                     "ask": price if tickType == TickTypeEnum.ASK else None,
                     "bid": price if tickType == TickTypeEnum.BID else None,
                     "mark": price if tickType == TickTypeEnum.MARK_PRICE else None
                 }
-            
-
-    # Called when option computations (like delta) are calculated.
-    def tickOptionComputation(
-        self,
-        reqId: TickerId,
-        tickType: TickType,
-        tickAttrib: int,
-        impliedVol: float,
-        delta: float,
-        optPrice: float,
-        pvDividend: float,
-        gamma: float,
-        vega: float,
-        theta: float,
-        undPrice: float,
-    ):
-        if reqId == 4:
-            self.option_delta = delta
-            print("Option Delta:", delta)
-
+    
     # Error handling callback.
     def error(self, reqId: TickerId, errorCode: int, errorString: str, advancedOrderRejectJson=""):
         error_message = f"Error. Id: {reqId}, Code: {errorCode}, Msg: {errorString}"
@@ -110,7 +99,7 @@ ibrequests_contractDetails = {} # keep track of requests for contract details
 ibrequests_marketData = {} # keep track of requests for market data
 stock_contract: Contract
 stock_contract_details: ContractDetails
-stock_price = {} # dict of symbol, {"last": last_price, "ask": ask_price, "bid": bid_price}
+price_data = {} # dict of symbol, {"last": last_price, "ask": ask_price, "bid": bid_price}
 options_chain = {}
 
 def init():
@@ -160,20 +149,18 @@ def get_stock_contract(app: EarningsApp, symbol: str):
     reqId = app.nextId()
     app.reqContractDetails(reqId, stock_contract)
     ibrequests_contractDetails[reqId] = "stock_contract"
-    wait(lambda: reqId not in ibrequests_contractDetails, wait_time=2, wait_step=0.1)
-    
+    wait(lambda: reqId not in ibrequests_contractDetails, wait_time=2, wait_step=0.1)    
     print(f"\nStock Contract Details for {symbol}: {stock_contract_details.contract.conId}")
+    return stock_contract
 
-def get_stock_market_data(app: EarningsApp, symbol: str):
+def request_market_data(app: EarningsApp, contract: Contract):
     reqId = app.nextId()
-    logging.debug(f"Requesting market data for {stock_contract} with reqId {reqId}")
+    logging.debug(f"Requesting market data for {contract} with reqId {reqId}")
     app.reqMarketDataType(1)
-    app.reqMktData(reqId, stock_contract, "232", False, False, [])
-    ibrequests_marketData[reqId] = stock_contract
-    
-    wait(lambda: reqId not in ibrequests_marketData, wait_time=5, wait_step=0.1)
-    print(f"\nMarket Data for {symbol}: {stock_price[symbol]}")
-    
+    app.reqMktData(reqId, contract, "232", False, False, [])
+    ibrequests_marketData[reqId] = contract
+    return reqId
+       
 
 def wait(condition: Callable, wait_time=5, wait_step=0.5):
     """Wait for a specified time, printing progress."""
@@ -202,15 +189,83 @@ def get_option_chain(app: EarningsApp):
     
     print(f"\nOption Chain for {stock_contract.symbol}: {len(options_chain)}")
     
-def main():
-    app,args = init()
-    get_stock_contract(app, args.symbol)
-    get_stock_market_data(app, args.symbol)
-    get_option_chain(app)
-    
-
+def terminate(app: EarningsApp, message: str):
+    print(message)
     app.disconnect()
     exit(0)
+
+def is_good_stock(symbol: str):
+    if price_data[symbol]["last"] < 40 or \
+       price_data[symbol]["ask"] < 40 or \
+       price_data[symbol]["bid"] < 40 or \
+       price_data[symbol]["mark"] < 40 :
+          print(f"too cheap!")
+          return False
+    return True
+
+def determine_expected_move(contract: Contract, app: EarningsApp):
+    current_price = price_data[contract.symbol]["mark"]
+    # Convert options_chain to a DataFrame
+    data = {}
+
+    for key, contract_details in options_chain.items():
+        # Convert ContractDetails object to a dictionary of its attributes
+        # You may want to filter or flatten nested objects as needed
+        data[key] = contract_details.contract.__dict__
+    
+    options_df : pd.DataFrame = pd.DataFrame.from_dict(data, orient='index')
+    # add a column to options_df for the distance from the current price
+    options_df["distance_from_price"] = options_df["strike"] - current_price
+    options_df["distance_from_price"] = options_df["distance_from_price"].abs()
+    
+    closest_options = options_df.nsmallest(6, 'distance_from_price').sort_values(by='strike')
+    
+    unique_strikes = closest_options['strike'].unique()
+    atm_strike = unique_strikes[1]
+    # find the atm call by filtering clostest options by strike=atm_strike and right=c
+    atm_call_key = closest_options[(closest_options['strike'] == atm_strike) & (closest_options['right'] == 'C')].index[0]
+    atm_call = options_chain[atm_call_key].contract
+    
+    atm_put_key = closest_options[(closest_options['strike'] == atm_strike) & (closest_options['right'] == 'P')].index[0]
+    atm_put = options_chain[atm_put_key].contract
+
+    print("\n3 options closest to current price:")
+    print(closest_options[['strike', 'distance_from_price', 'right']])
+    print(f"\nATM Call: {atm_call}\nATM Put: {atm_put}\nstrikes: {unique_strikes}")
+
+    strangle_put_key = closest_options[(closest_options['strike'] == unique_strikes[0]) & (closest_options['right'] == 'P')].index[0]
+    strangle_put = options_chain[strangle_put_key].contract
+    strangle_call_key = closest_options[(closest_options['strike'] == unique_strikes[2]) & (closest_options['right'] == 'C')].index[0]
+    strangle_call = options_chain[strangle_call_key].contract
+
+    req_ids= []
+    req_ids.append(request_market_data(app, atm_call))
+    req_ids.append(request_market_data(app, atm_put))
+    req_ids.append(request_market_data(app, strangle_call))
+    req_ids.append(request_market_data(app, strangle_put))
+    wait(lambda: all(req_id not in ibrequests_marketData for req_id in req_ids), wait_time=5, wait_step=0.1)
+
+    print("Market data received for all options.")
+    print(f"ATM call {atm_call_key}: {price_data[atm_call_key]['mark']}")
+    print(f"ATM put {atm_put_key}: {price_data[atm_put_key]['mark']}")
+    print(f"Strangle call {strangle_call_key}: {price_data[strangle_call_key]['mark']}")
+    print(f"Strangle put {strangle_put_key}: {price_data[strangle_put_key]['mark']}")
+
+def main():
+    app,args = init()
+    contract : Contract = get_stock_contract(app, args.symbol)
+
+    reqId = request_market_data(app=app, contract=contract)
+    wait(lambda: reqId not in ibrequests_marketData, wait_time=5, wait_step=0.1)
+    print(f"\nMarket Data for {contract.symbol}: {price_data[contract.symbol]}")
+
+    if not is_good_stock(contract.symbol):
+        terminate(app=app, message=f"Stock does not meet criteria.")
+
+    get_option_chain(app)
+    determine_expected_move(contract=contract, app=app)
+    terminate(app=app, message=f"Done.")
+
 
 
 if __name__ == "__main__":
