@@ -5,6 +5,16 @@ import os
 import pandas as pd
 import requests
 import sys
+from enum import IntEnum
+
+class Weekday(IntEnum):
+    MONDAY = 0
+    TUESDAY = 1
+    WEDNESDAY = 2
+    THURSDAY = 3
+    FRIDAY = 4
+    SATURDAY = 5
+    SUNDAY = 6
 
 def get_apikey_from_config():
     file = ".config/finnhub.json"
@@ -24,13 +34,21 @@ def get_apikey_from_config():
     print(f"{datetime.datetime.now().strftime("%H:%M:%S")} - Obtained API key from configuration file: {file}")
     return apikey
 
-def get_earnings_dates():
+def get_earnings_dates(this_week=False):
     print(f"{datetime.datetime.now().strftime("%H:%M:%S")} - Invoking Finnhub API to get earnings dates for next week...")
     url = f"https://finnhub.io/api/v1/calendar/earnings"
-    params = {
-        "from": compute_next_weeks_monday(),  # Use the function to get next Monday's date
-        "to": compute_next_weeks_friday()  # Use the function to get next Friday's date
-    }
+    if this_week:
+        this_monday=compute_next_weeks_weekday(Weekday.MONDAY) - datetime.timedelta(days=7)
+        this_friday=compute_next_weeks_weekday(Weekday.FRIDAY) - datetime.timedelta(days=7)
+        params = {
+            "from": this_monday.strftime("%Y-%m-%d"),
+            "to": this_friday.strftime("%Y-%m-%d")
+        }
+    else:
+        params = {
+            "from": compute_next_weeks_weekday(Weekday.MONDAY).strftime("%Y-%m-%d"),  # Use the function to get next Monday's date
+            "to": compute_next_weeks_weekday(Weekday.FRIDAY).strftime("%Y-%m-%d")  # Use the function to get next Friday's date
+        }
     print(f"  > From {params['from']}, To {params['to']}")
 
     headers = { "X-Finnhub-Token": get_apikey_from_config() }
@@ -79,23 +97,16 @@ def read_weekly_options_from_csv(csv_path="weekly_options.csv"):
     print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - Fetched {len(weeklies)} weekly options from CBOE.")
     return weeklies
 
-def compute_next_weeks_friday():
+def compute_next_weeks_weekday(weekday):
     today = datetime.date.today()
-    # Friday is weekday 4 (Monday=0)
-    days_until_friday = (4 - today.weekday() + 7) % 7
-    if days_until_friday == 0:
-        days_until_friday = 7
-    next_friday = today + datetime.timedelta(days=days_until_friday)
-    return next_friday.strftime("%Y-%m-%d")
-
-def compute_next_weeks_monday():
-    today = datetime.date.today()
-    # Monday is weekday 0 (Monday=0)
-    days_until_monday = (0 - today.weekday() + 7) % 7
-    if days_until_monday == 0:
-        days_until_monday = 7
-    next_monday = today + datetime.timedelta(days=days_until_monday)
-    return next_monday.strftime("%Y-%m-%d")
+    # weekday is 0 for Monday, 1 for Tuesday, ..., 6 for Sunday
+    days_until_weekday = (weekday - today.weekday() ) % 7
+    if days_until_weekday == 0:
+        days_until_weekday = 7
+    if today.weekday() <= weekday:
+        days_until_weekday += 7
+    next_weekday = today + datetime.timedelta(days=days_until_weekday)
+    return next_weekday
 
 # Helper to write CSV in required format
 def write_custom_csv(dataframe, filename):
@@ -103,7 +114,7 @@ def write_custom_csv(dataframe, filename):
         for _, row in dataframe.iterrows():
             f.write(f"DES,{row['symbol']},STK,SMART/AMEX,,,,\n")
 
-def crate_dataframe_from_earnings_with_weekly_options(earnings_dates, weeklies):
+def create_dataframe_from_earnings_with_weekly_options(earnings_dates, weeklies):
     rows = []
     for entry in earnings_dates:
         symbol = entry["symbol"]
@@ -138,9 +149,9 @@ def main(args):
         print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - Skipping fetching weekly options from CBOE. Assuming 'weekly_options.csv' exists in the current directory.")
 
     weeklies = read_weekly_options_from_csv()
-    earnings_dates = get_earnings_dates()
+    earnings_dates = get_earnings_dates(args.this_week)
     
-    df = crate_dataframe_from_earnings_with_weekly_options(earnings_dates, weeklies)
+    df = create_dataframe_from_earnings_with_weekly_options(earnings_dates, weeklies)
     df = df.sort_values(by="tradedate", ascending=True)
     print(df.to_string(index=False, justify="left"))
 
@@ -163,6 +174,7 @@ if __name__ == "__main__":
     parser.add_argument("--config", type=str, default=".config/finnhub.json", help="Path to the Finnhub API key configuration file. Default is '.config/finnhub.json'.")
     parser.add_argument("--output", type=str, default="c:/jts", help="Output directory for the earnings dates CSV files. Default is 'c:/jts'.")
     parser.add_argument("--skip-weekly-options", action="store_true", help="Skip fetching weekly options from CBOE. The script assumes that a file weekly_options.csv exists in the current directory.", default=False)
+    parser.add_argument("--this-week", action="store_true", help="Get this week's earnings.", default=False)
     args = parser.parse_args()
 
     main(args)

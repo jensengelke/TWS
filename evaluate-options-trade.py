@@ -35,7 +35,6 @@ class EarningsApp(EWrapper, EClient):
                 options_chain[contractDetails.contract.localSymbol] = contractDetails
                 logging.debug(f"Option chain for reqId {reqId}: {contractDetails}") 
                 
-
     def contractDetailsEnd(self, reqId: int):
         logging.debug(f"Contract details end for reqId: {reqId}")
         ibrequests_contractDetails.pop(reqId, None)
@@ -57,16 +56,28 @@ class EarningsApp(EWrapper, EClient):
 
     # Called when market data price ticks are received.
     def tickPrice(self, reqId: TickerId, tickType: int, price: float, attrib):
-        # For SPY, we requested market data with reqId 3.
-        if reqId == 3:
-            if tickType == TickTypeEnum.LAST:
-                self.spy_price = price
-                print("SPY Last Price:", price)
-        # For the option we subscribe with reqId 4.
-        elif reqId == 4:
-            if tickType == TickTypeEnum.ASK:
-                self.option_ask_price = price
-                print("Option Ask Price:", price)
+
+        if not reqId in ibrequests_marketData:
+            return
+        else:
+            contract: Contract = ibrequests_marketData[reqId]
+            if contract.symbol in stock_price:
+                logging.debug(f"Updating Stock price {TickTypeEnum.toStr(tickType)} for local symbol {contract.localSymbol}, symbol {contract.symbol}: {price}")
+                stock_price[contract.symbol].update({
+                    "last": price if tickType == TickTypeEnum.LAST else stock_price[contract.symbol].get("last", None),
+                    "ask": price if tickType == TickTypeEnum.ASK else stock_price[contract.symbol].get("ask", None),
+                    "bid": price if tickType == TickTypeEnum.BID else stock_price[contract.symbol].get("bid", None),
+                    "mark": price if tickType == TickTypeEnum.MARK_PRICE else stock_price[contract.symbol].get("mark", None)
+                })
+            else:
+                logging.debug(f"Creating Stock price {TickTypeEnum.toStr(tickType)} for local symbol {contract.localSymbol}, symbol {contract.symbol}: {price}")
+                stock_price[contract.symbol] = {
+                    "last": price if tickType == TickTypeEnum.LAST else None,
+                    "ask": price if tickType == TickTypeEnum.ASK else None,
+                    "bid": price if tickType == TickTypeEnum.BID else None,
+                    "mark": price if tickType == TickTypeEnum.MARK_PRICE else None
+                }
+            
 
     # Called when option computations (like delta) are calculated.
     def tickOptionComputation(
@@ -96,8 +107,10 @@ class EarningsApp(EWrapper, EClient):
             print(error_message)
 
 ibrequests_contractDetails = {} # keep track of requests for contract details
+ibrequests_marketData = {} # keep track of requests for market data
 stock_contract: Contract
 stock_contract_details: ContractDetails
+stock_price = {} # dict of symbol, {"last": last_price, "ask": ask_price, "bid": bid_price}
 options_chain = {}
 
 def init():
@@ -151,6 +164,17 @@ def get_stock_contract(app: EarningsApp, symbol: str):
     
     print(f"\nStock Contract Details for {symbol}: {stock_contract_details.contract.conId}")
 
+def get_stock_market_data(app: EarningsApp, symbol: str):
+    reqId = app.nextId()
+    logging.debug(f"Requesting market data for {stock_contract} with reqId {reqId}")
+    app.reqMarketDataType(1)
+    app.reqMktData(reqId, stock_contract, "232", False, False, [])
+    ibrequests_marketData[reqId] = stock_contract
+    
+    wait(lambda: reqId not in ibrequests_marketData, wait_time=5, wait_step=0.1)
+    print(f"\nMarket Data for {symbol}: {stock_price[symbol]}")
+    
+
 def wait(condition: Callable, wait_time=5, wait_step=0.5):
     """Wait for a specified time, printing progress."""
     total_steps = int(wait_time / wait_step)
@@ -181,6 +205,7 @@ def get_option_chain(app: EarningsApp):
 def main():
     app,args = init()
     get_stock_contract(app, args.symbol)
+    get_stock_market_data(app, args.symbol)
     get_option_chain(app)
     
 
