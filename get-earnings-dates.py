@@ -101,8 +101,7 @@ def compute_next_weeks_weekday(weekday):
     today = datetime.date.today()
     # weekday is 0 for Monday, 1 for Tuesday, ..., 6 for Sunday
     days_until_weekday = (weekday - today.weekday() ) % 7
-    if days_until_weekday == 0:
-        days_until_weekday = 7
+    print(f"today: {today}, days_until_weekday: {days_until_weekday}")
     if today.weekday() <= weekday:
         days_until_weekday += 7
     next_weekday = today + datetime.timedelta(days=days_until_weekday)
@@ -139,7 +138,7 @@ def create_dataframe_from_earnings_with_weekly_options(earnings_dates, weeklies)
                 "tradedate": tradedate,
                 "weekday": weekday
             })
-    
+    print(f"number of rows: {len(rows)}")
     return pd.DataFrame(rows)
 
 def main(args):
@@ -152,6 +151,9 @@ def main(args):
     earnings_dates = get_earnings_dates(args.this_week)
     
     df = create_dataframe_from_earnings_with_weekly_options(earnings_dates, weeklies)
+    if (df.empty):
+        print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - No valid earnings data found.")
+        return
     df = df.sort_values(by="tradedate", ascending=True)
     print(df.to_string(index=False, justify="left"))
 

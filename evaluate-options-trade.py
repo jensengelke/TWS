@@ -26,15 +26,14 @@ class EarningsApp(EWrapper, EClient):
     def contractDetails(self, reqId: int, contractDetails):
         logging.debug(f"Contract details for reqId {reqId}: {contractDetails}")
         if reqId in ibrequests_contractDetails:
-            type=ibrequests_contractDetails[reqId]
+            type = ibrequests_contractDetails[reqId]["type"]
             logging.debug(f"Contract details for {ibrequests_contractDetails[reqId]}: ({type}) {contractDetails}")
             if type == "stock_contract":
-                global stock_contract, stock_contract_details
-                stock_contract_details = contractDetails
-                stock_contract = contractDetails.contract
+                contract_details_data[contractDetails.contract.symbol] = contractDetails
+                contract_data[contractDetails.contract.symbol] = contractDetails.contract
             if type == "option_chain":
-                global options_chain
-                options_chain[contractDetails.contract.localSymbol] = contractDetails
+                underlying = ibrequests_contractDetails[reqId]["underlying"]
+                options_chain[underlying][contractDetails.contract.localSymbol] = contractDetails
                 logging.debug(f"Option chain for reqId {reqId}: {contractDetails}") 
                 
     def contractDetailsEnd(self, reqId: int):
@@ -92,6 +91,8 @@ class EarningsApp(EWrapper, EClient):
         error_message = f"Error. Id: {reqId}, Code: {errorCode}, Msg: {errorString}"
         if reqId == -1:
             logging.debug(f"Error: {error_message}")
+        elif errorCode == 366:
+            logging.debug(f"Error: {error_message} - No market data available outside trading hours.")
         else:
             print(error_message)
 
@@ -123,8 +124,8 @@ class EarningsApp(EWrapper, EClient):
 ibrequests_contractDetails = {} # keep track of requests for contract details
 ibrequests_marketData = {} # keep track of requests for market data
 ibrequests_historicalData = {} # keep track of requests for historical data
-stock_contract: Contract
-stock_contract_details: ContractDetails
+contract_data = {}
+contract_details_data = {}
 price_data = {} # dict of symbol, {"last": last_price, "ask": ask_price, "bid": bid_price}
 historic_data = {} # dict of symbol, array of rows
 options_chain = {}
@@ -132,8 +133,9 @@ options_chain = {}
 def init():
     logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s', filename='evaluate-options-trade.log', filemode='w')
     parser = argparse.ArgumentParser(description="Get option chain for a symbol and evaluate trade options.")
-    parser.add_argument("--symbol", type=str, help="The stock symbol to evaluate options for.", default="CSCO")
+    parser.add_argument("--symbol", type=str, help="The stock symbol to evaluate options for.")
     parser.add_argument("--no-trading-hours", action="store_true", help="Only request MARK price outside trading hours.")
+    parser.add_argument("--watchlist-file", type=str, help="Path to the watchlist file.", default="c:/jts/earnings.csv")
     args = parser.parse_args()
 
     app = EarningsApp()
@@ -145,10 +147,6 @@ def init():
     time.sleep(1)
     logging.info("serverVersion:%s connectionTime:%s" % (app.serverVersion(), app.twsConnectionTime()))
     threading.Thread(target=app.run, daemon=True).start()
-    
-    
-    
-
     return app, args
 
 def print_progress_bar(iteration, total, length=40, type="progress"):
@@ -181,9 +179,10 @@ def get_stock_contract(app: EarningsApp, symbol: str):
     stock_contract.currency = "USD"
     reqId = app.nextId()
     app.reqContractDetails(reqId, stock_contract)
-    ibrequests_contractDetails[reqId] = "stock_contract"
-    wait(lambda: reqId not in ibrequests_contractDetails, wait_time=2, wait_step=0.1)    
-    print(f"\nStock Contract Details for {symbol}: {stock_contract_details.contract.conId}")
+    ibrequests_contractDetails[reqId] = {"type": "stock_contract"}
+    wait(lambda: reqId not in ibrequests_contractDetails, wait_time=2, wait_step=0.1)
+    stock_contract_details = contract_details_data.get(symbol, None)  
+    print(f"Received stock contract details for candidate {symbol}: {stock_contract_details.contract.conId}")
     return stock_contract
 
 def request_market_data(app: EarningsApp, contract: Contract):
@@ -198,29 +197,30 @@ def wait(condition: Callable, wait_time=5, wait_step=0.5):
     """Wait for a specified time, printing progress."""
     total_steps = int(wait_time / wait_step)
     for step in range(total_steps):
-        if wait_time > 10:
-            print_progress_bar(iteration=total_steps - step, total=total_steps, type="waiting")
+        # if wait_time > 10:
+        #     print_progress_bar(iteration=total_steps - step, total=total_steps, type="waiting")
         time.sleep(wait_step)
         if condition(): break
-    print()  # Move to next line after completion
+    # print()  # Move to next line after completion (only required when printing a progress bar)
 
-def get_option_chain(app: EarningsApp):
+def get_option_chain(app: EarningsApp, symbol: str):
     """Request option chain for the stock contract."""
     contract = Contract()
-    contract.symbol = stock_contract.symbol
+    contract.symbol = symbol
     contract.secType = "OPT"
     contract.exchange = "SMART"
     contract.currency = "USD"
-    contract.lastTradeDateOrContractMonth = compute_next_friday()
+    contract.lastTradeDateOrContractMonth = compute_next_friday() # TODO: consider this-week
     # contract.strike = strike # no strike to get all strikes
     # contract.right = "C" # no right to get all options
     reqId = app.nextId()
     logging.debug(f"Requesting contract details for {contract} with reqId {reqId}")
+    options_chain[symbol] = {}
     app.reqContractDetails(reqId, contract)
-    ibrequests_contractDetails[reqId] = "option_chain"
+    ibrequests_contractDetails[reqId] = { "type": "option_chain", "underlying": symbol }
     wait(lambda: reqId not in ibrequests_contractDetails, wait_time=5, wait_step=0.1)
     
-    print(f"\nOption Chain for {stock_contract.symbol}: {len(options_chain)} options found.")
+    print(f"Option Chain for {symbol}: {len(options_chain[symbol])} options found.")
     
 def terminate(app: EarningsApp, message: str):
     print(message)
@@ -241,7 +241,7 @@ def determine_expected_move(contract: Contract, app: EarningsApp):
     # Convert options_chain to a DataFrame
     data = {}
 
-    for key, contract_details in options_chain.items():
+    for key, contract_details in options_chain[contract.symbol].items():
         # Convert ContractDetails object to a dictionary of its attributes
         # You may want to filter or flatten nested objects as needed
         data[key] = contract_details.contract.__dict__
@@ -257,18 +257,18 @@ def determine_expected_move(contract: Contract, app: EarningsApp):
     atm_strike = unique_strikes[1]
     # find the atm call by filtering clostest options by strike=atm_strike and right=c
     atm_call_key = closest_options[(closest_options['strike'] == atm_strike) & (closest_options['right'] == 'C')].index[0]
-    atm_call = options_chain[atm_call_key].contract
+    atm_call = options_chain[contract.symbol][atm_call_key].contract
     
     atm_put_key = closest_options[(closest_options['strike'] == atm_strike) & (closest_options['right'] == 'P')].index[0]
-    atm_put = options_chain[atm_put_key].contract
+    atm_put = options_chain[contract.symbol][atm_put_key].contract
 
-    print("\n3 option strikes closest to current price:")
-    print(closest_options[['strike', 'distance_from_price', 'right']])
+    #print("\n3 option strikes closest to current price:")
+    #print(closest_options[['strike', 'distance_from_price', 'right']])
 
     strangle_put_key = closest_options[(closest_options['strike'] == unique_strikes[0]) & (closest_options['right'] == 'P')].index[0]
-    strangle_put = options_chain[strangle_put_key].contract
+    strangle_put = options_chain[contract.symbol][strangle_put_key].contract
     strangle_call_key = closest_options[(closest_options['strike'] == unique_strikes[2]) & (closest_options['right'] == 'C')].index[0]
-    strangle_call = options_chain[strangle_call_key].contract
+    strangle_call = options_chain[contract.symbol][strangle_call_key].contract
 
     req_ids= []
     req_ids.append(request_market_data(app, atm_call))
@@ -284,18 +284,18 @@ def determine_expected_move(contract: Contract, app: EarningsApp):
                         + price_data[strangle_call_key]['mark'] + price_data[strangle_put_key]['mark']) / 2
     return expected_move
 
-def evalulate_stock_history(app: EarningsApp):
+def evalulate_stock_history(app: EarningsApp, contract: Contract):
     """Request historical data for the stock contract."""
     reqId = app.nextId()
-    logging.debug(f"Requesting historical data for {stock_contract}")
+    logging.debug(f"Requesting historical data for {contract}")
     yesterday = (pd.Timestamp.now() - pd.Timedelta(days=1)).strftime('%Y%m%d')
-    app.reqHistoricalData(reqId, contract=stock_contract, endDateTime=f"{yesterday}-23:59:59", 
+    app.reqHistoricalData(reqId, contract=contract, endDateTime=f"{yesterday}-23:59:59", 
                       durationStr="3 Y", barSizeSetting="1 day", whatToShow="TRADES",useRTH=1, 
                       formatDate=1, keepUpToDate=False,chartOptions=[])
 
-    ibrequests_historicalData[reqId] = stock_contract
+    ibrequests_historicalData[reqId] = contract
     wait(lambda: reqId not in ibrequests_historicalData, wait_time=120, wait_step=0.1)
-    stock_historic_data = historic_data[stock_contract.symbol] 
+    stock_historic_data = historic_data[contract.symbol] 
     # add a column candle_length to stock_historic_data which is the difference between high and low
     stock_historic_data['candle_length'] = stock_historic_data['high'] - stock_historic_data['low']
     # add a column percent_move to stock_historic_data which is the percentage move from low to high
@@ -307,34 +307,51 @@ def evalulate_stock_history(app: EarningsApp):
     average_percent_move = stock_historic_data.nlargest(14, 'percent_move')['percent_move'].mean()
     return average_percent_move
     
+def get_contracts_from_watchlist(app: EarningsApp, filename: str):
+    contracts = []
+    with open(filename, "r") as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                symbol = line.split(",")[1].strip()
+                contracts.append(get_stock_contract(app, symbol))
+    return contracts
 
 def main():
     app,args = init()
-    contract : Contract = get_stock_contract(app, args.symbol)
+    contracts : Contract = []
+    if args.symbol == None or args.symbol == "":
+        print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - No symbol provided using --symbol. Proceeding with watchlist file {args.watchlist_file}")
+        contracts = get_contracts_from_watchlist(app, args.watchlist_file)
+    else: 
+        contracts.append(get_stock_contract(app, args.symbol))
 
-    reqId = request_market_data(app=app, contract=contract)
-    wait(lambda: reqId not in ibrequests_marketData, wait_time=5, wait_step=0.1)
-    print(f"\nMarket Data for {contract.symbol}: {price_data[contract.symbol]}")
+    for contract in contracts:
+        print(f"----------------------------------------------------------------------")
+        print(f"Evaluating options for {contract.symbol}...")
+        reqId = request_market_data(app=app, contract=contract)
+        wait(lambda: reqId not in ibrequests_marketData, wait_time=5, wait_step=0.1)
+        print(f"Market Data for {contract.symbol}: {price_data[contract.symbol]}")
 
-    if not is_good_stock(contract.symbol):
-        terminate(app=app, message=f"Stock does not meet criteria.")
+        if not is_good_stock(contract.symbol):
+            print(f"Stock does not meet criteria.")
+            continue
 
-    get_option_chain(app)
-    expected_move = determine_expected_move(contract=contract, app=app)
-    average_percent_move = evalulate_stock_history(app)
-
-    double_expected_move_up = price_data[contract.symbol]["mark"] + (2*expected_move)
-    double_expected_move_down = price_data[contract.symbol]["mark"] - (2*expected_move)
-    
-    usual_up_spike = price_data[contract.symbol]["mark"] + (average_percent_move / 100) * price_data[contract.symbol]["mark"]
-    usual_down_spike = price_data[contract.symbol]["mark"] - (average_percent_move / 100) * price_data[contract.symbol]["mark"]
-    
-    upper_boundary = max(double_expected_move_up, usual_up_spike)
-    lower_boundary = min(double_expected_move_down, usual_down_spike)
-    
-    print(f"\nExpected move for {contract.symbol} is: {expected_move:.2f}. That is, we are looking at {double_expected_move_down:.2f} ... {price_data[contract.symbol]["mark"]:.2f} ... {double_expected_move_up:.2f} as the range for the next week.")
-    print(f"Average percent move of the 14 largest daily spikes over the past 3 years: {average_percent_move:.2f}%. Applied to current price, we are looking at {usual_down_spike:.2f} ... {price_data[contract.symbol]["mark"]:.2f} ... {usual_up_spike:.2f}\n")
-    print(f"Being careful, interesting strangle boundaries are: {lower_boundary:.2f} to {upper_boundary:.2f}\n")
+        get_option_chain(app=app, symbol=contract.symbol)
+        expected_move = determine_expected_move(contract=contract, app=app)
+        average_percent_move = evalulate_stock_history(app=app, contract=contract)
+        double_expected_move_up = price_data[contract.symbol]["mark"] + (2*expected_move)
+        double_expected_move_down = price_data[contract.symbol]["mark"] - (2*expected_move)
+        
+        usual_up_spike = price_data[contract.symbol]["mark"] + (average_percent_move / 100) * price_data[contract.symbol]["mark"]
+        usual_down_spike = price_data[contract.symbol]["mark"] - (average_percent_move / 100) * price_data[contract.symbol]["mark"]
+        
+        upper_boundary = max(double_expected_move_up, usual_up_spike)
+        lower_boundary = min(double_expected_move_down, usual_down_spike)
+        
+        print(f"\nExpected move for {contract.symbol} is: {expected_move:.2f}. That is, we are looking at {double_expected_move_down:.2f} ... {price_data[contract.symbol]["mark"]:.2f} ... {double_expected_move_up:.2f} as the range for the next week.")
+        print(f"Average percent move of the 14 largest daily spikes over the past 3 years: {average_percent_move:.2f}%. Applied to current price, we are looking at {usual_down_spike:.2f} ... {price_data[contract.symbol]["mark"]:.2f} ... {usual_up_spike:.2f}")
+        print(f"Being careful, interesting strangle boundaries for {contract.symbol} are: {lower_boundary:.2f} to {upper_boundary:.2f}\n")
     
     terminate(app=app, message=f"Done.")
 
