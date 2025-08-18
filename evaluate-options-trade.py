@@ -4,6 +4,7 @@ from ibapi.wrapper import EWrapper
 from ibapi.contract import Contract, ContractDetails
 from ibapi.common import SetOfString, SetOfFloat, TickerId
 from ibapi.ticktype import TickType, TickTypeEnum
+from decimal import Decimal
 import argparse
 import logging
 import threading
@@ -11,6 +12,39 @@ import time
 import datetime
 import sys
 import pandas as pd
+
+class PriceData:
+    def __init__(self, security_type :str = "OPT"):
+        self.security_type = security_type
+        self.data = {
+            "LAST": None,
+            "ASK": None,
+            "BID": None,
+            "MARK_PRICE": None,
+        }
+        if security_type == "OPT":
+            self.data.update({
+                "DELTA": None,
+                "GAMMA": None,
+                "VEGA": None,
+                "OPTION_CALL_OPEN_INTEREST": None,
+                "OPTION_PUT_OPEN_INTEREST": None,
+                "IV": None
+            })
+
+    def to_str(self):
+        return ", ".join(f"{k}={v}" for k, v in self.data.items() if v is not None)
+
+    def update(self, value, field_name: str):
+        self.data[field_name] = value
+
+    def is_complete(self):
+        if self.security_type != "OPT":
+            return all(v is not None for v in self.data.values())
+        return all(v is not None for v in self.data.values())
+    
+    def get(self, field_name: str):
+        return self.data.get(field_name, None)
 
 class EarningsApp(EWrapper, EClient):
     requestId = 0
@@ -57,35 +91,76 @@ class EarningsApp(EWrapper, EClient):
 
     # Called when market data price ticks are received.
     def tickPrice(self, reqId: TickerId, tickType: int, price: float, attrib):
-
         if not reqId in ibrequests_marketData:
             return
         else:
             contract: Contract = ibrequests_marketData[reqId]
             key = contract.localSymbol if contract.localSymbol else contract.symbol
-            if key in price_data:
-                logging.debug(f"Updating Stock price {TickTypeEnum.toStr(tickType)} for local symbol {contract.localSymbol}, symbol {contract.symbol}: {price}")
-                price_data[key].update({
-                    "last": price if tickType == TickTypeEnum.LAST else price_data[key].get("last", None),
-                    "ask": price if tickType == TickTypeEnum.ASK else price_data[key].get("ask", None),
-                    "bid": price if tickType == TickTypeEnum.BID else price_data[key].get("bid", None),
-                    "mark": price if tickType == TickTypeEnum.MARK_PRICE else price_data[key].get("mark", None)
-                })
-                if price_data[key]["last"] != None and \
-                   price_data[key]["ask"] != None and \
-                   price_data[key]["bid"] != None and \
-                   price_data[key]["mark"] != None:
-                    ibrequests_marketData.pop(reqId)
-                if self.no_trading_hours and price_data[key]["mark"] != None: 
-                    ibrequests_marketData.pop(reqId)                    
+            #print(f"{key} - tickPrice: {TickTypeEnum.toStr(tickType)}={price}")
+            if not key in price_data:
+                tick_price_data = PriceData(contract.secType)
+                price_data[key] = tick_price_data
             else:
-                price_data[key] = {
-                    "last": price if tickType == TickTypeEnum.LAST else None,
-                    "ask": price if tickType == TickTypeEnum.ASK else None,
-                    "bid": price if tickType == TickTypeEnum.BID else None,
-                    "mark": price if tickType == TickTypeEnum.MARK_PRICE else None
-                }
+                tick_price_data : PriceData = price_data[key]
+                
+            tick_price_data.update(price, TickTypeEnum.toStr(tickType))
+            if tick_price_data.is_complete():
+                ibrequests_marketData.pop(reqId)
+                self.cancelMktData(reqId)
     
+    def tickSize(self, reqId: TickerId, tickType: TickType, size: Decimal):
+        if not reqId in ibrequests_marketData:
+            return
+        else:
+            contract: Contract = ibrequests_marketData[reqId]
+            key = contract.localSymbol if contract.localSymbol else contract.symbol
+            #print(f"{key} -tickSize: {TickTypeEnum.toStr(tickType)}={size}")
+            if not key in price_data:
+                tick_price_data = PriceData(contract.secType)
+                price_data[key] = tick_price_data
+            else:
+                tick_price_data : PriceData = price_data[key]
+                
+            tick_price_data.update(size, TickTypeEnum.toStr(tickType))
+            if tick_price_data.is_complete():
+                ibrequests_marketData.pop(reqId)
+                self.cancelMktData(reqId)
+
+    def tickOptionComputation(
+        self,
+        reqId: TickerId,
+        tickType: TickType,
+        tickAttrib: int,
+        impliedVol: float,
+        delta: float,
+        optPrice: float,
+        pvDividend: float,
+        gamma: float,
+        vega: float,
+        theta: float,
+        undPrice: float,
+    ):
+        if not reqId in ibrequests_marketData:
+            return
+        else:
+            contract: Contract = ibrequests_marketData[reqId]
+            key = contract.localSymbol if contract.localSymbol else contract.symbol
+            #print(f"{key} - tickOptionComputation: {TickTypeEnum.toStr(tickType)}, Implied Volatility: {impliedVol}, Delta: {delta}, Price: {optPrice}, pvDividend={pvDividend}")
+            if not key in price_data:
+                tick_price_data = PriceData(contract.secType)
+                price_data[key] = tick_price_data
+            else:
+                tick_price_data : PriceData = price_data[key]
+                
+            tick_price_data.update(delta, "DELTA")
+            tick_price_data.update(impliedVol, "IV")
+            tick_price_data.update(gamma, "GAMMA")
+            tick_price_data.update(vega, "VEGA")
+            tick_price_data.update(theta, "THETA")
+            if tick_price_data.is_complete():
+                ibrequests_marketData.pop(reqId)
+                self.cancelMktData(reqId)
+
     # Error handling callback.
     def error(self, reqId: TickerId, errorCode: int, errorString: str, advancedOrderRejectJson=""):
         error_message = f"Error. Id: {reqId}, Code: {errorCode}, Msg: {errorString}"
@@ -126,7 +201,7 @@ ibrequests_marketData = {} # keep track of requests for market data
 ibrequests_historicalData = {} # keep track of requests for historical data
 contract_data = {}
 contract_details_data = {}
-price_data = {} # dict of symbol, {"last": last_price, "ask": ask_price, "bid": bid_price}
+price_data = {}
 historic_data = {} # dict of symbol, array of rows
 options_chain = {}
 
@@ -188,8 +263,11 @@ def get_stock_contract(app: EarningsApp, symbol: str):
 def request_market_data(app: EarningsApp, contract: Contract):
     reqId = app.nextId()
     logging.debug(f"Requesting market data for {contract} with reqId {reqId}")
-    app.reqMarketDataType(1)
-    app.reqMktData(reqId, contract, "232", False, False, [])
+    app.reqMarketDataType(3)
+    tick_types = "232"
+    if contract.secType == "OPT":
+        tick_types="100,101,232"
+    app.reqMktData(reqId, contract, tick_types, False, False, [])
     ibrequests_marketData[reqId] = contract
     return reqId
 
@@ -225,19 +303,18 @@ def get_option_chain(app: EarningsApp, symbol: str):
 def terminate(app: EarningsApp, message: str):
     print(message)
     app.disconnect()
-    exit(0)
 
 def is_good_stock(symbol: str):
-    if price_data[symbol]["last"] != None and price_data[symbol]["last"] > -1 and price_data[symbol]["last"]  < 40 or \
-       price_data[symbol]["ask"] != None and price_data[symbol]["ask"] > -1 and price_data[symbol]["ask"]  < 40 or \
-       price_data[symbol]["bid"] != None and price_data[symbol]["bid"] > -1 and price_data[symbol]["bid"]  < 40 or \
-       price_data[symbol]["mark"] < 40 :
+    if price_data[symbol].get("LAST") != None and price_data[symbol].get("LAST") > -1 and price_data[symbol].get("LAST")  < 40 or \
+       price_data[symbol].get("ASK") != None and price_data[symbol].get("ASK") > -1 and price_data[symbol].get("ASK")  < 40 or \
+       price_data[symbol].get("BID") != None and price_data[symbol].get("BID") > -1 and price_data[symbol].get("BID")  < 40 or \
+       price_data[symbol].get("MARK_PRICE") < 40 :
           print(f"too cheap!")
           return False
     return True
 
 def determine_expected_move(contract: Contract, app: EarningsApp):
-    current_price = price_data[contract.symbol]["mark"]
+    current_price = price_data[contract.symbol].get("MARK_PRICE")
     # Convert options_chain to a DataFrame
     data = {}
 
@@ -277,11 +354,17 @@ def determine_expected_move(contract: Contract, app: EarningsApp):
     req_ids.append(request_market_data(app, strangle_put))
     wait(lambda: all(req_id not in ibrequests_marketData for req_id in req_ids), wait_time=5, wait_step=0.1)
 
-    print(f"ATM put {atm_put_key}: {price_data[atm_put_key]['mark']:.2f}, ATM call {atm_call_key}: {price_data[atm_call_key]['mark']:.2f} ")
-    print(f"Strangle put {strangle_put_key}: {price_data[strangle_put_key]['mark']:.2f}, Strangle call {strangle_call_key}: {price_data[strangle_call_key]['mark']:.2f}")
-    
-    expected_move = (price_data[atm_call_key]['mark'] + price_data[atm_put_key]['mark'] \
-                        + price_data[strangle_call_key]['mark'] + price_data[strangle_put_key]['mark']) / 2
+    # print(f"ATM put {atm_put_key}: {price_data[atm_put_key].get('MARK_PRICE'):.2f}, delta={price_data[atm_put_key].get('DELTA')}, IV={price_data[atm_put_key].get('IV')}, call open interest={price_data[atm_put_key].get('OPTION_CALL_OPEN_INTEREST')}, put open interest={price_data[atm_put_key].get('OPTION_PUT_OPEN_INTEREST')}, theta={price_data[atm_put_key].get('THETA')} ")
+    # print(f"ATM call {atm_call_key}: {price_data[atm_call_key].get('MARK_PRICE'):.2f}, delta={price_data[atm_call_key].get('DELTA')}, IV={price_data[atm_call_key].get('IV')}, call open interest={price_data[atm_call_key].get('OPTION_CALL_OPEN_INTEREST')}, put open interest={price_data[atm_call_key].get('OPTION_PUT_OPEN_INTEREST')}, theta={price_data[atm_call_key].get('THETA')} ")
+    # print(f"Strangle put {strangle_put_key}: {price_data[strangle_put_key].get('MARK_PRICE'):.2f}, delta={price_data[strangle_put_key].get('DELTA')}, IV={price_data[strangle_put_key].get('IV')}, call open interest={price_data[strangle_put_key].get('OPTION_CALL_OPEN_INTEREST')}, put open interest={price_data[strangle_put_key].get('OPTION_PUT_OPEN_INTEREST')}, theta={price_data[strangle_put_key].get('THETA')} ")
+    # print(f"Strangle call {strangle_call_key}: {price_data[strangle_call_key].get('MARK_PRICE'):.2f}, delta={price_data[strangle_call_key].get('DELTA')}, IV={price_data[strangle_call_key].get('IV')}, call open interest={price_data[strangle_call_key].get('OPTION_CALL_OPEN_INTEREST')}, put open interest={price_data[strangle_call_key].get('OPTION_PUT_OPEN_INTEREST')}, theta={price_data[strangle_call_key].get('THETA')} ")
+    print(f"ATM call: {atm_call_key}: {price_data[atm_call_key].to_str()}")
+    print(f"ATM put: {atm_put_key}: {price_data[atm_put_key].to_str()}")
+    print(f"Strangle put: {strangle_put_key}: {price_data[strangle_put_key].to_str()}")
+    print(f"Strangle call: {strangle_call_key}: {price_data[strangle_call_key].to_str()}")
+
+    expected_move = (price_data[atm_call_key].get('MARK_PRICE') + price_data[atm_put_key].get('MARK_PRICE') \
+                     + price_data[strangle_call_key].get('MARK_PRICE') + price_data[strangle_put_key].get('MARK_PRICE')) / 2
     return expected_move
 
 def evalulate_stock_history(app: EarningsApp, contract: Contract):
@@ -331,7 +414,7 @@ def main():
         print(f"Evaluating options for {contract.symbol}...")
         reqId = request_market_data(app=app, contract=contract)
         wait(lambda: reqId not in ibrequests_marketData, wait_time=5, wait_step=0.1)
-        print(f"Market Data for {contract.symbol}: {price_data[contract.symbol]}")
+        print(f"Market Data for {contract.symbol}: {price_data[contract.symbol].to_str()}")
 
         if not is_good_stock(contract.symbol):
             print(f"Stock does not meet criteria.")
@@ -340,17 +423,17 @@ def main():
         get_option_chain(app=app, symbol=contract.symbol)
         expected_move = determine_expected_move(contract=contract, app=app)
         average_percent_move = evalulate_stock_history(app=app, contract=contract)
-        double_expected_move_up = price_data[contract.symbol]["mark"] + (2*expected_move)
-        double_expected_move_down = price_data[contract.symbol]["mark"] - (2*expected_move)
-        
-        usual_up_spike = price_data[contract.symbol]["mark"] + (average_percent_move / 100) * price_data[contract.symbol]["mark"]
-        usual_down_spike = price_data[contract.symbol]["mark"] - (average_percent_move / 100) * price_data[contract.symbol]["mark"]
-        
+        double_expected_move_up = price_data[contract.symbol].get("MARK_PRICE") + (2*expected_move)
+        double_expected_move_down = price_data[contract.symbol].get("MARK_PRICE") - (2*expected_move)
+
+        usual_up_spike = price_data[contract.symbol].get("MARK_PRICE") + (average_percent_move / 100) * price_data[contract.symbol].get("MARK_PRICE")
+        usual_down_spike = price_data[contract.symbol].get("MARK_PRICE") - (average_percent_move / 100) * price_data[contract.symbol].get("MARK_PRICE")
+
         upper_boundary = max(double_expected_move_up, usual_up_spike)
         lower_boundary = min(double_expected_move_down, usual_down_spike)
-        
-        print(f"\nExpected move for {contract.symbol} is: {expected_move:.2f}. That is, we are looking at {double_expected_move_down:.2f} ... {price_data[contract.symbol]["mark"]:.2f} ... {double_expected_move_up:.2f} as the range for the next week.")
-        print(f"Average percent move of the 14 largest daily spikes over the past 3 years: {average_percent_move:.2f}%. Applied to current price, we are looking at {usual_down_spike:.2f} ... {price_data[contract.symbol]["mark"]:.2f} ... {usual_up_spike:.2f}")
+
+        print(f"\nExpected move for {contract.symbol} is: {expected_move:.2f}. That is, we are looking at {double_expected_move_down:.2f} ... {price_data[contract.symbol].get('MARK_PRICE'):.2f} ... {double_expected_move_up:.2f} as the range for the next week.")
+        print(f"Average percent move of the 14 largest daily spikes over the past 3 years: {average_percent_move:.2f}%. Applied to current price, we are looking at {usual_down_spike:.2f} ... {price_data[contract.symbol].get('MARK_PRICE'):.2f} ... {usual_up_spike:.2f}")
         print(f"Being careful, interesting strangle boundaries for {contract.symbol} are: {lower_boundary:.2f} to {upper_boundary:.2f}\n")
     
     terminate(app=app, message=f"Done.")
