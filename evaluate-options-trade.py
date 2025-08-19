@@ -14,37 +14,45 @@ import sys
 import pandas as pd
 
 class PriceData:
+    stock_fields = ["LAST", "ASK", "BID", "MARK_PRICE"] # valid for all sec types
+    option_fields = ["DELTA", "GAMMA", "VEGA", "OPTION_CALL_OPEN_INTEREST", "OPTION_PUT_OPEN_INTEREST", "IV"]
+    no_trading_hours_fields = ["MARK_PRICE"]
+
     def __init__(self, security_type :str = "OPT"):
         self.security_type = security_type
-        self.data = {
-            "LAST": None,
-            "ASK": None,
-            "BID": None,
-            "MARK_PRICE": None,
-        }
-        if security_type == "OPT":
-            self.data.update({
-                "DELTA": None,
-                "GAMMA": None,
-                "VEGA": None,
-                "OPTION_CALL_OPEN_INTEREST": None,
-                "OPTION_PUT_OPEN_INTEREST": None,
-                "IV": None
-            })
-
+        self.data = {}
+        
     def to_str(self):
         return ", ".join(f"{k}={v}" for k, v in self.data.items() if v is not None)
 
     def update(self, value, field_name: str):
         self.data[field_name] = value
 
-    def is_complete(self):
-        if self.security_type != "OPT":
-            return all(v is not None for v in self.data.values())
-        return all(v is not None for v in self.data.values())
+    def is_complete(self, no_trading_hours: bool):
+        complete : bool = True
+        if no_trading_hours==False and self.security_type == "OPT":
+            for f in self.option_fields:
+                if f not in self.data or self.data[f] is None:
+                    complete = False
+                    break
+        if no_trading_hours==False and complete:
+            for f in self.stock_fields:
+                if f not in self.data or self.data[f] is None:
+                    complete = False
+                    break
+        if no_trading_hours:
+            for f in self.no_trading_hours_fields:
+                if f not in self.data or self.data[f] is None:
+                    complete = False
+                    break
+        return complete
     
     def get(self, field_name: str):
         return self.data.get(field_name, None)
+
+class IncompleteDataError(Exception):
+    """Raised when the expected move cannot be determined due to missing option data."""
+    pass
 
 class EarningsApp(EWrapper, EClient):
     requestId = 0
@@ -99,12 +107,12 @@ class EarningsApp(EWrapper, EClient):
             #print(f"{key} - tickPrice: {TickTypeEnum.toStr(tickType)}={price}")
             if not key in price_data:
                 tick_price_data = PriceData(contract.secType)
-                price_data[key] = tick_price_data
             else:
                 tick_price_data : PriceData = price_data[key]
                 
             tick_price_data.update(price, TickTypeEnum.toStr(tickType))
-            if tick_price_data.is_complete():
+            price_data[key] = tick_price_data
+            if tick_price_data.is_complete(self.no_trading_hours):
                 ibrequests_marketData.pop(reqId)
                 self.cancelMktData(reqId)
     
@@ -117,12 +125,12 @@ class EarningsApp(EWrapper, EClient):
             #print(f"{key} -tickSize: {TickTypeEnum.toStr(tickType)}={size}")
             if not key in price_data:
                 tick_price_data = PriceData(contract.secType)
-                price_data[key] = tick_price_data
             else:
                 tick_price_data : PriceData = price_data[key]
                 
             tick_price_data.update(size, TickTypeEnum.toStr(tickType))
-            if tick_price_data.is_complete():
+            price_data[key] = tick_price_data
+            if tick_price_data.is_complete(self.no_trading_hours):
                 ibrequests_marketData.pop(reqId)
                 self.cancelMktData(reqId)
 
@@ -148,7 +156,6 @@ class EarningsApp(EWrapper, EClient):
             #print(f"{key} - tickOptionComputation: {TickTypeEnum.toStr(tickType)}, Implied Volatility: {impliedVol}, Delta: {delta}, Price: {optPrice}, pvDividend={pvDividend}")
             if not key in price_data:
                 tick_price_data = PriceData(contract.secType)
-                price_data[key] = tick_price_data
             else:
                 tick_price_data : PriceData = price_data[key]
                 
@@ -157,7 +164,8 @@ class EarningsApp(EWrapper, EClient):
             tick_price_data.update(gamma, "GAMMA")
             tick_price_data.update(vega, "VEGA")
             tick_price_data.update(theta, "THETA")
-            if tick_price_data.is_complete():
+            price_data[key] = tick_price_data
+            if tick_price_data.is_complete(self.no_trading_hours):
                 ibrequests_marketData.pop(reqId)
                 self.cancelMktData(reqId)
 
@@ -313,6 +321,12 @@ def is_good_stock(symbol: str):
           return False
     return True
 
+def print_option_price(description: str, price_data: PriceData, no_trading_hours: bool):
+    if no_trading_hours:
+        print(f"{description}: price: {price_data.get('MARK_PRICE')}")
+    else:
+        print(f"{description}: strike={price_data.get('strike')}, IV={price_data.get('IV')}, call OI={price_data.get('OPTION_CALL_OPEN_INTEREST')}, put OI={price_data.get('OPTION_PUT_OPEN_INTEREST')}, theta={price_data.get('THETA')}, delta={price_data.get('DELTA')}, gamma={price_data.get('GAMMA')}, vega={price_data.get('VEGA')}, price={price_data.get('MARK_PRICE')}")
+
 def determine_expected_move(contract: Contract, app: EarningsApp):
     current_price = price_data[contract.symbol].get("MARK_PRICE")
     # Convert options_chain to a DataFrame
@@ -352,19 +366,36 @@ def determine_expected_move(contract: Contract, app: EarningsApp):
     req_ids.append(request_market_data(app, atm_put))
     req_ids.append(request_market_data(app, strangle_call))
     req_ids.append(request_market_data(app, strangle_put))
-    wait(lambda: all(req_id not in ibrequests_marketData for req_id in req_ids), wait_time=5, wait_step=0.1)
+    wait(lambda: all(req_id not in ibrequests_marketData for req_id in req_ids), wait_time=30, wait_step=0.1)
 
-    # print(f"ATM put {atm_put_key}: {price_data[atm_put_key].get('MARK_PRICE'):.2f}, delta={price_data[atm_put_key].get('DELTA')}, IV={price_data[atm_put_key].get('IV')}, call open interest={price_data[atm_put_key].get('OPTION_CALL_OPEN_INTEREST')}, put open interest={price_data[atm_put_key].get('OPTION_PUT_OPEN_INTEREST')}, theta={price_data[atm_put_key].get('THETA')} ")
-    # print(f"ATM call {atm_call_key}: {price_data[atm_call_key].get('MARK_PRICE'):.2f}, delta={price_data[atm_call_key].get('DELTA')}, IV={price_data[atm_call_key].get('IV')}, call open interest={price_data[atm_call_key].get('OPTION_CALL_OPEN_INTEREST')}, put open interest={price_data[atm_call_key].get('OPTION_PUT_OPEN_INTEREST')}, theta={price_data[atm_call_key].get('THETA')} ")
-    # print(f"Strangle put {strangle_put_key}: {price_data[strangle_put_key].get('MARK_PRICE'):.2f}, delta={price_data[strangle_put_key].get('DELTA')}, IV={price_data[strangle_put_key].get('IV')}, call open interest={price_data[strangle_put_key].get('OPTION_CALL_OPEN_INTEREST')}, put open interest={price_data[strangle_put_key].get('OPTION_PUT_OPEN_INTEREST')}, theta={price_data[strangle_put_key].get('THETA')} ")
-    # print(f"Strangle call {strangle_call_key}: {price_data[strangle_call_key].get('MARK_PRICE'):.2f}, delta={price_data[strangle_call_key].get('DELTA')}, IV={price_data[strangle_call_key].get('IV')}, call open interest={price_data[strangle_call_key].get('OPTION_CALL_OPEN_INTEREST')}, put open interest={price_data[strangle_call_key].get('OPTION_PUT_OPEN_INTEREST')}, theta={price_data[strangle_call_key].get('THETA')} ")
-    print(f"ATM call: {atm_call_key}: {price_data[atm_call_key].to_str()}")
-    print(f"ATM put: {atm_put_key}: {price_data[atm_put_key].to_str()}")
-    print(f"Strangle put: {strangle_put_key}: {price_data[strangle_put_key].to_str()}")
-    print(f"Strangle call: {strangle_call_key}: {price_data[strangle_call_key].to_str()}")
-
-    expected_move = (price_data[atm_call_key].get('MARK_PRICE') + price_data[atm_put_key].get('MARK_PRICE') \
+    option_data_complete : bool = True
+    if price_data[atm_call_key] is None or price_data[atm_call_key].is_complete(app.no_trading_hours) == False:
+        print(f"Could not retrieve market data for ATM call {atm_call_key}.")
+        option_data_complete = False
+    else:
+        print_option_price(description=f"ATM call {atm_call_key}", price_data=price_data[atm_call_key], no_trading_hours=app.no_trading_hours)
+    if price_data[atm_put_key] is None or price_data[atm_put_key].is_complete(app.no_trading_hours) == False:
+        print(f"Could not retrieve market data for ATM put {atm_put_key}.")
+        option_data_complete = False
+    else:
+        print_option_price(description=f"ATM put {atm_put_key}", price_data=price_data[atm_put_key], no_trading_hours=app.no_trading_hours)
+    if price_data[strangle_call_key] is None or price_data[strangle_call_key].is_complete(app.no_trading_hours) == False:
+        print(f"Could not retrieve market data for Strangle call {strangle_call_key}.")
+        option_data_complete = False
+    else:
+        print_option_price(description=f"Strangle call {strangle_call_key}", price_data=price_data[strangle_call_key], no_trading_hours=app.no_trading_hours)
+    if price_data[strangle_put_key] is None or price_data[strangle_put_key].is_complete(app.no_trading_hours) == False:
+        print(f"Could not retrieve market data for Strangle put {strangle_put_key}.")
+        option_data_complete = False
+    else:
+        print_option_price(description=f"Strangle put {strangle_put_key}", price_data=price_data[strangle_put_key], no_trading_hours=app.no_trading_hours)
+    
+    if option_data_complete:
+        expected_move = (price_data[atm_call_key].get('MARK_PRICE') + price_data[atm_put_key].get('MARK_PRICE') \
                      + price_data[strangle_call_key].get('MARK_PRICE') + price_data[strangle_put_key].get('MARK_PRICE')) / 2
+    else:
+        raise IncompleteDataError(f"Could not retrieve market data for all options. Expected move cannot be determined.") 
+        
     return expected_move
 
 def evalulate_stock_history(app: EarningsApp, contract: Contract):
@@ -402,7 +433,7 @@ def get_contracts_from_watchlist(app: EarningsApp, filename: str):
 
 def main():
     app,args = init()
-    contracts : Contract = []
+    contracts : list[Contract] = []
     if args.symbol == None or args.symbol == "":
         print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - No symbol provided using --symbol. Proceeding with watchlist file {args.watchlist_file}")
         contracts = get_contracts_from_watchlist(app, args.watchlist_file)
@@ -421,7 +452,11 @@ def main():
             continue
 
         get_option_chain(app=app, symbol=contract.symbol)
-        expected_move = determine_expected_move(contract=contract, app=app)
+        try:
+            expected_move = determine_expected_move(contract=contract, app=app)
+        except IncompleteDataError as e:
+            print(f"Skipping {contract.symbol}: {e}")
+            continue
         average_percent_move = evalulate_stock_history(app=app, contract=contract)
         double_expected_move_up = price_data[contract.symbol].get("MARK_PRICE") + (2*expected_move)
         double_expected_move_down = price_data[contract.symbol].get("MARK_PRICE") - (2*expected_move)
