@@ -2,7 +2,7 @@
 ## Prereqs /  Assumptions
 1. Windows
 1. TWS installed in C:\JTS
-1. Finnhub.io API key from https://finnhub.io/dashboard  `finnhub.json`
+1. For `get-earnings-dates.exe` only: Finnhub.io API key from https://finnhub.io/dashboard  `finnhub.json`
 ```json
 { "apikey": "blabla"}
 ```
