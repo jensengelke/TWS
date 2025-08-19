@@ -34,21 +34,25 @@ def get_apikey_from_config():
     print(f"{datetime.datetime.now().strftime("%H:%M:%S")} - Obtained API key from configuration file: {file}")
     return apikey
 
-def get_earnings_dates(this_week=False):
+def get_earnings_dates(this_week=False, start_date: str = "", end_date: str = ""):
     print(f"{datetime.datetime.now().strftime("%H:%M:%S")} - Invoking Finnhub API to get earnings dates for next week...")
     url = f"https://finnhub.io/api/v1/calendar/earnings"
-    if this_week:
-        this_monday=compute_next_weeks_weekday(Weekday.MONDAY) - datetime.timedelta(days=7)
-        this_friday=compute_next_weeks_weekday(Weekday.FRIDAY) - datetime.timedelta(days=7)
-        params = {
-            "from": this_monday.strftime("%Y-%m-%d"),
-            "to": this_friday.strftime("%Y-%m-%d")
-        }
-    else:
-        params = {
-            "from": compute_next_weeks_weekday(Weekday.MONDAY).strftime("%Y-%m-%d"),  # Use the function to get next Monday's date
-            "to": compute_next_weeks_weekday(Weekday.FRIDAY).strftime("%Y-%m-%d")  # Use the function to get next Friday's date
-        }
+    
+    if start_date == "" or start_date is None:
+        # weekday is 0 for Monday, 1 for Tuesday, ..., 6 for Sunday
+        today = datetime.date.today()
+        monday = today - datetime.timedelta(days=today.weekday()) 
+        if not this_week:
+            monday = monday + datetime.timedelta(days=7)
+        start_date = monday.strftime("%Y-%m-%d")
+    if end_date == "" or end_date is None:        
+        end_date = (datetime.datetime.strptime(start_date, "%Y-%m-%d").date() + datetime.timedelta(days=4)).strftime("%Y-%m-%d")
+        
+    params = {
+        "from": start_date,
+        "to": end_date
+    }
+    
     print(f"  > From {params['from']}, To {params['to']}")
 
     headers = { "X-Finnhub-Token": get_apikey_from_config() }
@@ -116,10 +120,12 @@ def write_custom_csv(dataframe, filename):
 def create_dataframe_from_earnings_with_weekly_options(earnings_dates, weeklies):
     rows = []
     for entry in earnings_dates:
+        print(f"Processing earnings date entry: {entry}")
         symbol = entry["symbol"]
         date = entry["date"]
         hour = entry["hour"]
         if symbol in weeklies:
+            print(f"  > Found weekly option for symbol: {symbol}")
             name = weeklies[symbol]
             # Calculate tradedate
             if hour.lower() == "amc":
@@ -148,7 +154,7 @@ def main(args):
         print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - Skipping fetching weekly options from CBOE. Assuming 'weekly_options.csv' exists in the current directory.")
 
     weeklies = read_weekly_options_from_csv()
-    earnings_dates = get_earnings_dates(args.this_week)
+    earnings_dates = get_earnings_dates(this_week = args.this_week, start_date=args.start, end_date=args.end)
     
     df = create_dataframe_from_earnings_with_weekly_options(earnings_dates, weeklies)
     if (df.empty):
@@ -177,6 +183,8 @@ if __name__ == "__main__":
     parser.add_argument("--output", type=str, default="c:/jts", help="Output directory for the earnings dates CSV files. Default is 'c:/jts'.")
     parser.add_argument("--skip-weekly-options", action="store_true", help="Skip fetching weekly options from CBOE. The script assumes that a file weekly_options.csv exists in the current directory.", default=False)
     parser.add_argument("--this-week", action="store_true", help="Get this week's earnings.", default=False)
+    parser.add_argument("--start", type=str, help="Start date for earnings dates in YYYY-MM-DD format. If not provided, the script will use the next Monday's date.", default=None)
+    parser.add_argument("--end", type=str, help="End date for earnings dates in YYYY-MM-DD format. If not provided, the script will use the next Friday's date.", default=None)
     args = parser.parse_args()
 
     main(args)
