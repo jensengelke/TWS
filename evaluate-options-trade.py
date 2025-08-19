@@ -263,8 +263,11 @@ def get_stock_contract(app: EarningsApp, symbol: str):
     reqId = app.nextId()
     app.reqContractDetails(reqId, stock_contract)
     ibrequests_contractDetails[reqId] = {"type": "stock_contract"}
+    print(f"Requesting stock details for {symbol}")
     wait(lambda: reqId not in ibrequests_contractDetails, wait_time=2, wait_step=0.1)
     stock_contract_details = contract_details_data.get(symbol, None)  
+    if stock_contract_details == None:
+        raise IncompleteDataError("No stock contract details available for {symbol}")
     print(f"Received stock contract details for candidate {symbol}: {stock_contract_details.contract.conId}")
     return stock_contract
 
@@ -422,14 +425,20 @@ def evalulate_stock_history(app: EarningsApp, contract: Contract):
     return average_percent_move
     
 def get_contracts_from_watchlist(app: EarningsApp, filename: str):
-    contracts = []
+    symbols = []
+    if filename == "" or filename is None:
+        return symbols
     with open(filename, "r") as f:
         for line in f:
             line = line.strip()
             if line:
                 symbol = line.split(",")[1].strip()
-                contracts.append(get_stock_contract(app, symbol))
-    return contracts
+                try:
+                    symbols.append(get_stock_contract(app, symbol))
+                except IncompleteDataError as e:
+                    print(f"Skipping {symbol}: {e}")
+                    continue
+    return symbols
 
 def main():
     app,args = init()
@@ -438,41 +447,48 @@ def main():
         print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - No symbol provided using --symbol. Proceeding with watchlist file {args.watchlist_file}")
         contracts = get_contracts_from_watchlist(app, args.watchlist_file)
     else: 
-        contracts.append(get_stock_contract(app, args.symbol))
-
-    for contract in contracts:
-        print(f"----------------------------------------------------------------------")
-        print(f"Evaluating options for {contract.symbol}...")
-        reqId = request_market_data(app=app, contract=contract)
-        wait(lambda: reqId not in ibrequests_marketData, wait_time=5, wait_step=0.1)
-        print(f"Market Data for {contract.symbol}: {price_data[contract.symbol].to_str()}")
-
-        if not is_good_stock(contract.symbol):
-            print(f"Stock does not meet criteria.")
-            continue
-
-        get_option_chain(app=app, symbol=contract.symbol)
+        stock_contract : Contract = None
         try:
-            expected_move = determine_expected_move(contract=contract, app=app)
+            stock_contract = get_stock_contract(app, args.symbol)
         except IncompleteDataError as e:
-            print(f"Skipping {contract.symbol}: {e}")
-            continue
-        average_percent_move = evalulate_stock_history(app=app, contract=contract)
-        double_expected_move_up = price_data[contract.symbol].get("MARK_PRICE") + (2*expected_move)
-        double_expected_move_down = price_data[contract.symbol].get("MARK_PRICE") - (2*expected_move)
+            print(f"Failed to get contract information for {args.symbol}. Aborting")
 
-        usual_up_spike = price_data[contract.symbol].get("MARK_PRICE") + (average_percent_move / 100) * price_data[contract.symbol].get("MARK_PRICE")
-        usual_down_spike = price_data[contract.symbol].get("MARK_PRICE") - (average_percent_move / 100) * price_data[contract.symbol].get("MARK_PRICE")
+        if stock_contract != None:
+            contracts.append(stock_contract)
 
-        upper_boundary = max(double_expected_move_up, usual_up_spike)
-        lower_boundary = min(double_expected_move_down, usual_down_spike)
+    if len(contracts)>0:
+        for contract in contracts:
+            print(f"----------------------------------------------------------------------")
+            print(f"Evaluating options for {contract.symbol}...")
+            reqId = request_market_data(app=app, contract=contract)
+            wait(lambda: reqId not in ibrequests_marketData, wait_time=5, wait_step=0.1)
+            print(f"Market Data for {contract.symbol}: {price_data[contract.symbol].to_str()}")
 
-        print(f"\nExpected move for {contract.symbol} is: {expected_move:.2f}. That is, we are looking at {double_expected_move_down:.2f} ... {price_data[contract.symbol].get('MARK_PRICE'):.2f} ... {double_expected_move_up:.2f} as the range for the next week.")
-        print(f"Average percent move of the 14 largest daily spikes over the past 3 years: {average_percent_move:.2f}%. Applied to current price, we are looking at {usual_down_spike:.2f} ... {price_data[contract.symbol].get('MARK_PRICE'):.2f} ... {usual_up_spike:.2f}")
-        print(f"Being careful, interesting strangle boundaries for {contract.symbol} are: {lower_boundary:.2f} to {upper_boundary:.2f}\n")
-    
+            if not is_good_stock(contract.symbol):
+                print(f"Stock does not meet criteria.")
+                continue
+
+            get_option_chain(app=app, symbol=contract.symbol)
+            try:
+                expected_move = determine_expected_move(contract=contract, app=app)
+            except IncompleteDataError as e:
+                print(f"Skipping {contract.symbol}: {e}")
+                continue
+            average_percent_move = evalulate_stock_history(app=app, contract=contract)
+            double_expected_move_up = price_data[contract.symbol].get("MARK_PRICE") + (2*expected_move)
+            double_expected_move_down = price_data[contract.symbol].get("MARK_PRICE") - (2*expected_move)
+
+            usual_up_spike = price_data[contract.symbol].get("MARK_PRICE") + (average_percent_move / 100) * price_data[contract.symbol].get("MARK_PRICE")
+            usual_down_spike = price_data[contract.symbol].get("MARK_PRICE") - (average_percent_move / 100) * price_data[contract.symbol].get("MARK_PRICE")
+
+            upper_boundary = max(double_expected_move_up, usual_up_spike)
+            lower_boundary = min(double_expected_move_down, usual_down_spike)
+
+            print(f"\nExpected move for {contract.symbol} is: {expected_move:.2f}. That is, we are looking at {double_expected_move_down:.2f} ... {price_data[contract.symbol].get('MARK_PRICE'):.2f} ... {double_expected_move_up:.2f} as the range for the next week.")
+            print(f"Average percent move of the 14 largest daily spikes over the past 3 years: {average_percent_move:.2f}%. Applied to current price, we are looking at {usual_down_spike:.2f} ... {price_data[contract.symbol].get('MARK_PRICE'):.2f} ... {usual_up_spike:.2f}")
+            print(f"Being careful, interesting strangle boundaries for {contract.symbol} are: {lower_boundary:.2f} to {upper_boundary:.2f}\n")
+        
     terminate(app=app, message=f"Done.")
 
 if __name__ == "__main__":
     main()
-

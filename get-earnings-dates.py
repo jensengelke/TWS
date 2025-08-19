@@ -16,25 +16,25 @@ class Weekday(IntEnum):
     SATURDAY = 5
     SUNDAY = 6
 
-def get_apikey_from_config():
-    file = ".config/finnhub.json"
-    with open(file, "r") as f:
+def get_apikey_from_config(config_file: str):
+    
+    with open(config_file, "r") as f:
         config = json.load(f)
     
     if not config:
-        print(f"Create a configuration file at {file} with your Finnhub API key:")
+        print(f"Create a configuration file at {config_file} with your Finnhub API key:")
         print('"apikey": "YOUR_API_KEY"}')
         sys.exit(1)
 
     apikey= config.get("apikey", "")
     if not apikey:
-        print(f"API key not found in {file}. Please add your Finnhub API key.")
+        print(f"API key not found in {config_file}. Please add your Finnhub API key.")
         sys.exit(1)
     
-    print(f"{datetime.datetime.now().strftime("%H:%M:%S")} - Obtained API key from configuration file: {file}")
+    print(f"{datetime.datetime.now().strftime("%H:%M:%S")} - Obtained API key from configuration file: {config_file}")
     return apikey
 
-def get_earnings_dates(this_week=False, start_date: str = "", end_date: str = ""):
+def get_earnings_dates( config_file: str, this_week=False, start_date: str = "", end_date: str = ""):
     print(f"{datetime.datetime.now().strftime("%H:%M:%S")} - Invoking Finnhub API to get earnings dates for next week...")
     url = f"https://finnhub.io/api/v1/calendar/earnings"
     
@@ -55,7 +55,7 @@ def get_earnings_dates(this_week=False, start_date: str = "", end_date: str = ""
     
     print(f"  > From {params['from']}, To {params['to']}")
 
-    headers = { "X-Finnhub-Token": get_apikey_from_config() }
+    headers = { "X-Finnhub-Token": get_apikey_from_config(config_file=config_file) }
     response = requests.get(url=url, params=params, headers=headers)
     
     if response.status_code == 200:
@@ -141,7 +141,7 @@ def main(args):
         print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - Skipping fetching weekly options from CBOE. Assuming 'weekly_options.csv' exists in the current directory.")
 
     weeklies = read_weekly_options_from_csv()
-    earnings_dates = get_earnings_dates(this_week = args.this_week, start_date=args.start, end_date=args.end)
+    earnings_dates = get_earnings_dates(this_week = args.this_week, start_date=args.start, end_date=args.end, config_file=args.config)
     
     df = create_dataframe_from_earnings_with_weekly_options(earnings_dates, weeklies)
     if (df.empty):
