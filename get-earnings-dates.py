@@ -56,7 +56,6 @@ def get_earnings_dates(this_week=False, start_date: str = "", end_date: str = ""
     print(f"  > From {params['from']}, To {params['to']}")
 
     headers = { "X-Finnhub-Token": get_apikey_from_config() }
-
     response = requests.get(url=url, params=params, headers=headers)
     
     if response.status_code == 200:
@@ -101,16 +100,6 @@ def read_weekly_options_from_csv(csv_path="weekly_options.csv"):
     print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - Fetched {len(weeklies)} weekly options from CBOE.")
     return weeklies
 
-def compute_next_weeks_weekday(weekday):
-    today = datetime.date.today()
-    # weekday is 0 for Monday, 1 for Tuesday, ..., 6 for Sunday
-    days_until_weekday = (weekday - today.weekday() ) % 7
-    print(f"today: {today}, days_until_weekday: {days_until_weekday}")
-    if today.weekday() <= weekday:
-        days_until_weekday += 7
-    next_weekday = today + datetime.timedelta(days=days_until_weekday)
-    return next_weekday
-
 # Helper to write CSV in required format
 def write_custom_csv(dataframe, filename):
     with open(filename, "w") as f:
@@ -120,12 +109,10 @@ def write_custom_csv(dataframe, filename):
 def create_dataframe_from_earnings_with_weekly_options(earnings_dates, weeklies):
     rows = []
     for entry in earnings_dates:
-        print(f"Processing earnings date entry: {entry}")
         symbol = entry["symbol"]
         date = entry["date"]
         hour = entry["hour"]
         if symbol in weeklies:
-            print(f"  > Found weekly option for symbol: {symbol}")
             name = weeklies[symbol]
             # Calculate tradedate
             if hour.lower() == "amc":
