@@ -2,6 +2,11 @@
 ## Prereqs /  Assumptions
 1. Windows
 1. TWS installed in C:\JTS
+1. TWS Configuration for API clients
+    - https://www.interactivebrokers.com/campus/trading-lessons/configuring-ibs-trader-workstation/
+    - https://www.ibkrguides.com/traderworkstation/api.htm
+    - https://ibkrcampus.com/campus/ibkr-api-page/twsapi-doc/#tws-offline 
+    - https://www.interactivebrokers.com/campus/trading-lessons/installing-configuring-tws-for-the-api/
 1. For `get-earnings-dates.exe` only: Finnhub.io API key from https://finnhub.io/dashboard  `finnhub.json`
 ```json
 { "apikey": "blabla"}
