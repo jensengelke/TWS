@@ -60,6 +60,7 @@ def get_earnings_dates( config_file: str, this_week=False, start_date: str = "",
     
     if response.status_code == 200:
         data = response.json()
+        print(f"response:\n{response.text}")
         result = [  {"symbol": entry["symbol"], "date": str(entry["date"]), "hour": entry["hour"]} 
             for entry in data.get("earningsCalendar", [])]
         print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - Response received with {len(result)} earnings dates.")

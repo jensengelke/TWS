@@ -219,13 +219,20 @@ def init():
     parser.add_argument("--symbol", type=str, help="The stock symbol to evaluate options for.")
     parser.add_argument("--no-trading-hours", action="store_true", help="Only request MARK price outside trading hours.")
     parser.add_argument("--watchlist-file", type=str, help="Path to the watchlist file.", default="c:/jts/earnings.csv")
+    parser.add_argument("--paper", action="store_true", help="Connect to default port for paper trading")
+    
     args = parser.parse_args()
 
     app = EarningsApp()
     app.no_trading_hours = args.no_trading_hours
     logging.info("Starting IB API Test Application...")
     random_client_id = int(time.time()) % 1000  # Generate a random client ID
-    app.connect("127.0.0.1", 7496, clientId=random_client_id)
+    port : int = 7496
+    if args.paper:
+        port = 7497
+    
+    print(f"Connecting to port={port}")
+    app.connect("127.0.0.1", port, clientId=random_client_id)
     logging.info("Connecting to TWS...")
     time.sleep(1)
     logging.info("serverVersion:%s connectionTime:%s" % (app.serverVersion(), app.twsConnectionTime()))
