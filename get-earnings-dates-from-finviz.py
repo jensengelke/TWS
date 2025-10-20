@@ -3,15 +3,15 @@ import sys
 import requests
 import re
 import os
-from datetime import datetime
-import datetime as _dt
+import datetime
 from shutil import copy2
 
 #!/usr/bin/env python3
 
 BASE = "https://finviz.com/screener.ashx?v=161&f=cap_largeover,earningsdate_nextweek,sh_price_o50&o=earningsdate"
+#BASE = "https://finviz.com/screener.ashx?v=161&f=cap_largeover,earningsdate_thisweek,sh_price_o50&o=earningsdate"
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; script/1.0)"}
-DEFAULT_COUNT = 10         # change as needed
+DEFAULT_COUNT = 20         # change as needed
 DELAY_SECONDS = 0.1        # polite delay between requests
 
 
@@ -34,8 +34,39 @@ def fetch_and_save(i: int):
         fh.write(resp.text)
     print(f"[{i}] saved -> {filename}")
 
+def read_weekly_options_from_csv(csv_path=os.path.join("docs", "data", "cboe_weekly_options.csv")):
+    print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - Fetching weekly options from CBOE.")
+    # get CBOE weekly options first
+    url = "https://www.cboe.com/available_weeklys/get_csv_download/"
+    response = requests.get(url)
+    if response.status_code == 200:
+        with open(csv_path, "w") as f:
+            f.write(response.text)
+    
+    weeklies = {}
+    start_processing = False
+    with open(csv_path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not start_processing:
+                if line == "Available Weeklys - Equity":
+                    start_processing = True
+                continue
+            if line == "":
+                continue
+            parts = line.split(",",1)
+            if len(parts) < 2:
+                continue
+            symbol = parts[0].strip().strip('"')
+            stock_name = parts[1].strip().strip('"')
+            weeklies[symbol] = stock_name
+    
+    print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - Fetched {len(weeklies)} weekly options from CBOE.")
+    return weeklies
 
 def main(count: int):
+    weeklies = read_weekly_options_from_csv()
+
     i = 1
     marker = '<tr class="styled-row is-bordered is-rounded is-hoverable is-striped has-color-text" valign="top">'
     while i <= count:
@@ -71,40 +102,45 @@ def main(count: int):
                     ticker_m = ticker_pattern.search(line)
                     earnings_m = earnings_pattern.search(line)
                     ticker = ticker_m.group(1) if ticker_m else "N/A"
+                    if not ticker in weeklies:
+                        print(f"[{i}] skipping {ticker} as not in weekly options list.")
+                        continue
                     earningsdate = earnings_m.group(1) if earnings_m else "N/A"
                     # convert "Oct 22/a" -> actual date in current year (earningsdate_real)
                     if earningsdate == "N/A":
                         earningsdate_real = "N/A"
                     else:
                         date_part = earningsdate.split("/", 1)[0].strip()
-                        date_part = f"{date_part} {datetime.now().year}"
+                        date_part = f"{date_part} {datetime.datetime.now().year}"
                         try:
-                            dt = datetime.strptime(date_part, "%b %d %Y")
+                            dt = datetime.datetime.strptime(date_part, "%b %d %Y")
                         except ValueError:
                             try:
-                                dt = datetime.strptime(date_part, "%B %d %Y")
+                                dt = datetime.datetime.strptime(date_part, "%B %d %Y")
                             except ValueError:
                                 dt = None
                         if dt is not None:
                             if earningsdate.endswith("/b"):
                                 try:
-                                    dt -= _dt.timedelta(days=1)
+                                    dt -= datetime.timedelta(days=1)
                                 except Exception:
                                     pass
-                            earningsdate_real = dt.replace(year=datetime.now().year).date()
+                            earningsdate_real = dt.replace(year=datetime.datetime.now().year).date()
                         else:
                             earningsdate_real = "N/A"
 
                         # append weekday name in English in brackets
                         earningsdate_real = f"{earningsdate_real} ({earningsdate_real.strftime('%A')})"
                     try:
-                        today = datetime.now().date()
+                        today = datetime.datetime.now().date()
                         days_ahead = (0 - today.weekday()) % 7
-                        start_monday = today + _dt.timedelta(days=days_ahead)
+                        if days_ahead == 0:
+                            days_ahead += 7
+                        start_monday = today + datetime.timedelta(days=days_ahead)
                         date_str = start_monday.strftime("%Y-%m-%d")
-                        p = os.path.join("pages", "data", f"earnings-for-week-starting-{date_str}.html")
+                        p = os.path.join("docs", "data", f"earnings-for-week-starting-{date_str}.html")
                         if not os.path.exists(p):
-                            template = os.path.join("pages", "data","earnings-template.html")
+                            template = os.path.join("docs", "data","earnings-template.html")
                             copy2(template, p)
                         marker_html = "<!-- Earnings data rows will be inserted here -->"
                         marker_date = "<h1>Earnings Dates - week starting (REPLACE)</h1>"
