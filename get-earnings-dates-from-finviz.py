@@ -64,6 +64,32 @@ def read_weekly_options_from_csv(csv_path=os.path.join("docs", "data", "cboe_wee
     print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - Fetched {len(weeklies)} weekly options from CBOE.")
     return weeklies
 
+def add_date_to_index(date_str: str):
+    index_path = os.path.join("docs", "index.html")
+    marker_html = "<!-- Additional data links can be added here -->"
+    try:
+        with open(index_path, "r", encoding="utf-8") as fh:
+            lines = fh.readlines()
+
+        for idx, line in enumerate(lines):
+            if marker_html in line:
+                insert_idx = idx
+                break
+        else:
+            insert_idx = None
+
+        if insert_idx is not None:
+            new_row = f"        <li><a href=\"earnings-for-week-starting-{date_str}.html\">Earnings for week starting {date_str}</a></li>\n"
+            lines.insert(insert_idx + 1, new_row)
+            with open(index_path, "w", encoding="utf-8") as fh:
+                fh.writelines(lines)
+            print(f"Added entry for week starting {date_str} to earnings index.")
+        else:
+            print("Index marker not found; could not add entry.")
+
+    except Exception as e:
+        print(f"Error updating earnings index: {e}", file=sys.stderr)
+
 def main(count: int):
     weeklies = read_weekly_options_from_csv()
 
@@ -143,20 +169,28 @@ def main(count: int):
                             template = os.path.join("docs", "data","earnings-template.html")
                             copy2(template, p)
                         marker_html = "<!-- Earnings data rows will be inserted here -->"
-                        marker_date = "<h1>Earnings Dates - week starting (REPLACE)</h1>"
+                        marker_date = "Earnings Dates - week starting REPLACE"
                         with open(p, "r", encoding="utf-8") as fh:
                             lines = fh.readlines()
 
                         for idx, line in enumerate(lines):
                             if marker_date in line:
-                                lines[idx] = line.replace("REPLACE", date_str)
-                                break
+                                date_idx = idx
+                                print(f"found replace in line {date_idx}")
+                                continue
                             if marker_html in line:
                                 insert_idx = idx
                                 break
                         else:
                             insert_idx = None
+                            date_idx = None
 
+                        if date_idx is not None:
+                            print(f"replacing date in line {date_idx}")
+                            lines[date_idx] = lines[date_idx].replace("REPLACE", date_str)
+                        else:
+                            print(f"[{i}] date marker not found")
+                        
                         if insert_idx is not None:
                             new_row = f"<tr><td><a href=\"https://finviz.com/quote.ashx?t={ticker}\" target=\"_blank\">{ticker}</a></td><td>{earningsdate}</td><td>{earningsdate_real}</td></tr>\n"
                             lines.insert(insert_idx, new_row)
@@ -173,7 +207,7 @@ def main(count: int):
         i += 1
         time.sleep(DELAY_SECONDS)
 
-
+    add_date_to_index(date_str)
 
 
 if __name__ == "__main__":
