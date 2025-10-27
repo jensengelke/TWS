@@ -79,7 +79,7 @@ def add_date_to_index(date_str: str):
             insert_idx = None
 
         if insert_idx is not None:
-            new_row = f"        <li><a href=\"earnings-for-week-starting-{date_str}.html\">Earnings for week starting {date_str}</a></li>\n"
+            new_row = f"        <li><a href=\"data/earnings-for-week-starting-{date_str}.html\">Earnings for week starting {date_str}</a></li>\n"
             lines.insert(insert_idx + 1, new_row)
             with open(index_path, "w", encoding="utf-8") as fh:
                 fh.writelines(lines)
