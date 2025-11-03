@@ -164,3 +164,4 @@ cython_debug/
 contract-details/*
 historic-data/*
 .config
+finviz.html
