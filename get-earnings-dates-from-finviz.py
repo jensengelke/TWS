@@ -208,7 +208,12 @@ def main(count: int):
         time.sleep(DELAY_SECONDS)
 
     add_date_to_index(date_str)
-
+    try:
+        if os.path.exists("finviz.html"):
+            os.remove("finviz.html")
+            print("Removed finviz.html")
+    except Exception as e:
+        print(f"Error removing finviz.html: {e}", file=sys.stderr)
 
 if __name__ == "__main__":
     try:
