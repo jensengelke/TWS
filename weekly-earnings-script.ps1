@@ -1,7 +1,8 @@
 # weekly-earnings-script.ps1
 # Initialize Python virtual environment located at .venv relative to this script.
 
-git pull
+git stash save
+git pull 
 Set-StrictMode -Version Latest
 
 # Resolve script directory (works when script is dot-sourced or executed)
@@ -35,3 +36,4 @@ git add docs/index.html
 git add docs/data
 git commit -m "new earnings"
 git push
+git stash pop

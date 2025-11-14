@@ -5,6 +5,8 @@ import argparse
 import logging
 from ibapi.client import *
 from ibapi.wrapper import *
+from ibapi.ticktype import TickType, TickTypeEnum
+
 
 ibrequests_contractDetails = {}
 ibrequests_marketData = {}
@@ -19,13 +21,14 @@ class IBApp(EWrapper, EClient):
         self.orderId += 1
         return self.orderId
 
-    def error(self, reqId: int, errorCode: int, errorString: str):
+    def error(self, reqId: TickerId, errorCode: int, errorString: str, advancedOrderRejectJson=""):
+        error_message = f"Error. Id: {reqId}, Code: {errorCode}, Msg: {errorString}"
         if reqId == -1:
-            error_message = f"Connection setup: {errorString}"
+            logging.debug(f"Error: {error_message}")
+        elif errorCode == 366:
+            logging.debug(f"Error: {error_message} - No market data available outside trading hours.")
         else:
-            error_message = f"Error. Id: {reqId}, Code: {errorCode}, Msg: {errorString}"
-        
-        print(error_message)
+            print(error_message)
 
     def contractDetails(self, reqId: int, contractDetails):
         attrs = vars(contractDetails)
@@ -75,7 +78,7 @@ def connect():
 print("Starting IB API Test Application...")
 app = IBApp()
 random_client_id = int(time.time()) % 1000  # Generate a random client ID
-app.connect("127.0.0.1", 7496, clientId=random_client_id)
+app.connect("127.0.0.1", 4001, clientId=random_client_id)
 print("Connecting to TWS...")
 time.sleep(1)
 print("serverVersion:%s connectionTime:%s" % (app.serverVersion(), app.twsConnectionTime()))
@@ -97,7 +100,7 @@ contract.secType = "OPT"
 contract.exchange = "SMART"
 contract.currency = "USD"
 contract.lastTradeDateOrContractMonth = next_friday
-contract.strike = 6400
+contract.strike = 6800
 reqId = app.nextId()
 logging.debug(f"Requesting contract details for {contract} with reqId {reqId}")
 identifier = f"{contract.symbol}-{reqId}"

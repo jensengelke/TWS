@@ -227,6 +227,7 @@ def init():
     app.no_trading_hours = args.no_trading_hours
     logging.info("Starting IB API Test Application...")
     random_client_id = int(time.time()) % 1000  # Generate a random client ID
+    #port : int = 4001
     port : int = 7496
     if args.paper:
         port = 7497
