@@ -150,7 +150,9 @@ mycontract.currency = "USD"
 print("Starting IB API Test Application...")
 app = IBApp(verbose=args.verbose)
 random_client_id = int(time.time()) % 1000  # Generate a random client ID
-gateway_ip : str = "38.242.134.92"
+# gateway_ip : str = "38.242.134.92"
+gateway_ip : str = "127.0.0.1"
+
 # 4001 ... gateway live
 # 4002 ... gateway paper
 gateway_port : int = 4002

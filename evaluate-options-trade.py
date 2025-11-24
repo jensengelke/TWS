@@ -170,7 +170,7 @@ class EarningsApp(EWrapper, EClient):
                 self.cancelMktData(reqId)
 
     # Error handling callback.
-    def error(self, reqId: TickerId, errorCode: int, errorString: str, advancedOrderRejectJson=""):
+    def error(self, reqId: TickerId, errorTime: int, errorCode: int, errorString: str, advancedOrderRejectJson=""):
         error_message = f"Error. Id: {reqId}, Code: {errorCode}, Msg: {errorString}"
         if reqId == -1:
             logging.debug(f"Error: {error_message}")
