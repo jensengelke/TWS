@@ -4,7 +4,7 @@ import requests
 import re
 import os
 import datetime
-from shutil import copy2
+import json
 
 #!/usr/bin/env python3
 
@@ -64,37 +64,51 @@ def read_weekly_options_from_csv(csv_path=os.path.join("docs", "data", "cboe_wee
     print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - Fetched {len(weeklies)} weekly options from CBOE.")
     return weeklies
 
-def add_date_to_index(date_str: str):
-    index_path = os.path.join("docs", "index.html")
-    marker_html = "<!-- Additional data links can be added here -->"
+def update_index_json(date_str: str, filename: str):
+    index_path = os.path.join("docs", "data", "all-earnings-index.json")
+    index_data = []
+    
+    # Read existing
+    if os.path.exists(index_path):
+        try:
+            with open(index_path, "r", encoding="utf-8") as fh:
+                index_data = json.load(fh)
+        except Exception as e:
+            print(f"Error reading index json: {e}", file=sys.stderr)
+    
+    # Remove existing entry for this date if present
+    index_data = [item for item in index_data if item.get("date") != date_str]
+    
+    # Add new entry
+    entry = {"date": date_str, "filename": filename}
+    index_data.append(entry)
+    
+    # Sort by date descending
+    index_data.sort(key=lambda x: x["date"], reverse=True)
+    
     try:
-        with open(index_path, "r", encoding="utf-8") as fh:
-            lines = fh.readlines()
-
-        for idx, line in enumerate(lines):
-            if marker_html in line:
-                insert_idx = idx
-                break
-        else:
-            insert_idx = None
-
-        if insert_idx is not None:
-            new_row = f"        <li><a href=\"data/earnings-for-week-starting-{date_str}.html\">Earnings for week starting {date_str}</a></li>\n"
-            lines.insert(insert_idx + 1, new_row)
-            with open(index_path, "w", encoding="utf-8") as fh:
-                fh.writelines(lines)
-            print(f"Added entry for week starting {date_str} to earnings index.")
-        else:
-            print("Index marker not found; could not add entry.")
-
+        with open(index_path, "w", encoding="utf-8") as fh:
+            json.dump(index_data, fh, indent=2)
+        print(f"Updated index with {date_str} -> {filename}")
     except Exception as e:
-        print(f"Error updating earnings index: {e}", file=sys.stderr)
+        print(f"Error writing index json: {e}", file=sys.stderr)
 
 def main(count: int):
     weeklies = read_weekly_options_from_csv()
 
     i = 1
     marker = '<tr class="styled-row is-bordered is-rounded is-hoverable is-striped has-color-text" valign="top">'
+    
+    collected_earnings = []
+    
+    # Calculate target week start date (Monday)
+    today = datetime.datetime.now().date()
+    days_ahead = (0 - today.weekday()) % 7
+    if days_ahead == 0:
+         days_ahead += 7
+    start_monday = today + datetime.timedelta(days=days_ahead)
+    date_str = start_monday.strftime("%Y-%m-%d")
+
     while i <= count:
         try:
             fetch_and_save(i)
@@ -120,21 +134,26 @@ def main(count: int):
             except StopIteration:
                 print(f"[{i}] marker not found in lines", file=sys.stderr)
             else:
-                # delete all lines up to and including the marker line
                 lines = lines[first_idx + 1 :]
                 ticker_pattern = re.compile(r'.*class="tab-link">(.+?)</a>.*')
                 earnings_pattern = re.compile(r'b=1" ">(... [0-9][0-9]/[a,b])')
+                
+                valid_items_on_page = 0
                 for line in lines[:20]:
                     ticker_m = ticker_pattern.search(line)
                     earnings_m = earnings_pattern.search(line)
-                    ticker = ticker_m.group(1) if ticker_m else "N/A"
-                    if not ticker in weeklies:
-                        print(f"[{i}] skipping {ticker} as not in weekly options list.")
+                    
+                    if not ticker_m:
                         continue
+                        
+                    ticker = ticker_m.group(1)
+                    if ticker not in weeklies:
+                        continue
+                    
                     earningsdate = earnings_m.group(1) if earnings_m else "N/A"
-                    # convert "Oct 22/a" -> actual date in current year (earningsdate_real)
+                    
                     if earningsdate == "N/A":
-                        earningsdate_real = "N/A"
+                        earningsdate_real_str = "N/A"
                     else:
                         date_part = earningsdate.split("/", 1)[0].strip()
                         date_part = f"{date_part} {datetime.datetime.now().year}"
@@ -145,60 +164,25 @@ def main(count: int):
                                 dt = datetime.datetime.strptime(date_part, "%B %d %Y")
                             except ValueError:
                                 dt = None
+                        
+                        earningsdate_real_str = "N/A"
                         if dt is not None:
                             if earningsdate.endswith("/b"):
                                 try:
                                     dt -= datetime.timedelta(days=1)
                                 except Exception:
                                     pass
-                            earningsdate_real = dt.replace(year=datetime.datetime.now().year).date()
-                        else:
-                            earningsdate_real = "N/A"
-
-                        # append weekday name in English in brackets
-                        earningsdate_real = f"{earningsdate_real} ({earningsdate_real.strftime('%A')})"
-                    try:
-                        today = datetime.datetime.now().date()
-                        days_ahead = (0 - today.weekday()) % 7
-                        if days_ahead == 0:
-                            days_ahead += 7
-                        start_monday = today + datetime.timedelta(days=days_ahead)
-                        date_str = start_monday.strftime("%Y-%m-%d")
-                        p = os.path.join("docs", "data", f"earnings-for-week-starting-{date_str}.html")
-                        if not os.path.exists(p):
-                            template = os.path.join("docs", "data","earnings-template.html")
-                            copy2(template, p)
-                        marker_html = "<!-- Earnings data rows will be inserted here -->"
-                        marker_date = "Earnings Dates - week starting REPLACE"
-                        with open(p, "r", encoding="utf-8") as fh:
-                            lines = fh.readlines()
-
-                        for idx, line in enumerate(lines):
-                            if marker_date in line:
-                                date_idx = idx
-                                print(f"found replace in line {date_idx}")
-                                continue
-                            if marker_html in line:
-                                insert_idx = idx
-                                break
-                        else:
-                            insert_idx = None
-                            date_idx = None
-
-                        if date_idx is not None:
-                            print(f"replacing date in line {date_idx}")
-                            lines[date_idx] = lines[date_idx].replace("REPLACE", date_str)
-                        else:
-                            print(f"[{i}] date marker not found")
-                        
-                        if insert_idx is not None:
-                            new_row = f"<tr><td><a href=\"https://finviz.com/quote.ashx?t={ticker}\" target=\"_blank\">{ticker}</a></td><td>{earningsdate}</td><td>{earningsdate_real}</td></tr>\n"
-                            lines.insert(insert_idx, new_row)
-                            with open(p, "w", encoding="utf-8") as fh:
-                                fh.writelines(lines)
-                        
-                    except Exception as e:
-                        print(f"[{i}] write error: {e}", file=sys.stderr)
+                            earningsdate_real_obj = dt.replace(year=datetime.datetime.now().year).date()
+                            earningsdate_real_str = f"{earningsdate_real_obj} ({earningsdate_real_obj.strftime('%A')})"
+                    
+                    collected_earnings.append({
+                        "ticker": ticker,
+                        "scheduled_date": earningsdate,
+                        "open_trade_date": earningsdate_real_str
+                    })
+                    valid_items_on_page += 1
+                
+                print(f"[{i}] Processed page, found {valid_items_on_page} valid items.")
 
         if marker not in content:
             print(f"[{i}] marker not found, stopping.")
@@ -207,7 +191,25 @@ def main(count: int):
         i += 1
         time.sleep(DELAY_SECONDS)
 
-    add_date_to_index(date_str)
+    # Save collected data
+    filename = f"earnings-for-week-starting-{date_str}.json"
+    file_path = os.path.join("docs", "data", filename)
+    
+    output_data = {
+        "week_start": date_str,
+        "data": collected_earnings
+    }
+    
+    try:
+        with open(file_path, "w", encoding="utf-8") as fh:
+            json.dump(output_data, fh, indent=2)
+        print(f"Saved {len(collected_earnings)} items to {filename}")
+        
+        update_index_json(date_str, filename)
+        
+    except Exception as e:
+        print(f"Error saving data: {e}", file=sys.stderr)
+
     try:
         if os.path.exists("finviz.html"):
             os.remove("finviz.html")
