@@ -1,0 +1,85 @@
+{
+  "week_start": "2026-01-20",
+  "data": [
+    {
+      "ticker": "DHI",
+      "scheduled_date": "Jan 20/b",
+      "open_trade_date": "2026-01-19 (Monday)"
+    },
+    {
+      "ticker": "MMM",
+      "scheduled_date": "Jan 20/b",
+      "open_trade_date": "2026-01-19 (Monday)"
+    },
+    {
+      "ticker": "USB",
+      "scheduled_date": "Jan 20/b",
+      "open_trade_date": "2026-01-19 (Monday)"
+    },
+    {
+      "ticker": "IBKR",
+      "scheduled_date": "Jan 20/a",
+      "open_trade_date": "2026-01-20 (Tuesday)"
+    },
+    {
+      "ticker": "NFLX",
+      "scheduled_date": "Jan 20/a",
+      "open_trade_date": "2026-01-20 (Tuesday)"
+    },
+    {
+      "ticker": "UAL",
+      "scheduled_date": "Jan 20/a",
+      "open_trade_date": "2026-01-20 (Tuesday)"
+    },
+    {
+      "ticker": "JNJ",
+      "scheduled_date": "Jan 21/b",
+      "open_trade_date": "2026-01-20 (Tuesday)"
+    },
+    {
+      "ticker": "SCHW",
+      "scheduled_date": "Jan 21/b",
+      "open_trade_date": "2026-01-20 (Tuesday)"
+    },
+    {
+      "ticker": "PNFP",
+      "scheduled_date": "Jan 21/a",
+      "open_trade_date": "2026-01-21 (Wednesday)"
+    },
+    {
+      "ticker": "ABT",
+      "scheduled_date": "Jan 22/b",
+      "open_trade_date": "2026-01-21 (Wednesday)"
+    },
+    {
+      "ticker": "FCX",
+      "scheduled_date": "Jan 22/b",
+      "open_trade_date": "2026-01-21 (Wednesday)"
+    },
+    {
+      "ticker": "GE",
+      "scheduled_date": "Jan 22/b",
+      "open_trade_date": "2026-01-21 (Wednesday)"
+    },
+    {
+      "ticker": "PG",
+      "scheduled_date": "Jan 22/b",
+      "open_trade_date": "2026-01-21 (Wednesday)"
+    },
+    {
+      "ticker": "AA",
+      "scheduled_date": "Jan 22/a",
+      "open_trade_date": "2026-01-22 (Thursday)"
+    },
+    {
+      "ticker": "COF",
+      "scheduled_date": "Jan 22/a",
+      "open_trade_date": "2026-01-22 (Thursday)"
+    },
+    {
+      "ticker": "ISRG",
+      "scheduled_date": "Jan 22/a",
+      "open_trade_date": "2026-01-22 (Thursday)"
+    }
+  ]
+}

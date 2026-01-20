@@ -1,0 +1,260 @@
+{
+  "week_start": "2026-01-26",
+  "data": [
+    {
+      "ticker": "BA",
+      "scheduled_date": "Jan 27/b",
+      "open_trade_date": "2026-01-26 (Monday)"
+    },
+    {
+      "ticker": "GM",
+      "scheduled_date": "Jan 27/b",
+      "open_trade_date": "2026-01-26 (Monday)"
+    },
+    {
+      "ticker": "KMB",
+      "scheduled_date": "Jan 27/b",
+      "open_trade_date": "2026-01-26 (Monday)"
+    },
+    {
+      "ticker": "NEE",
+      "scheduled_date": "Jan 27/b",
+      "open_trade_date": "2026-01-26 (Monday)"
+    },
+    {
+      "ticker": "RTX",
+      "scheduled_date": "Jan 27/b",
+      "open_trade_date": "2026-01-26 (Monday)"
+    },
+    {
+      "ticker": "UNH",
+      "scheduled_date": "Jan 27/b",
+      "open_trade_date": "2026-01-26 (Monday)"
+    },
+    {
+      "ticker": "UNP",
+      "scheduled_date": "Jan 27/b",
+      "open_trade_date": "2026-01-26 (Monday)"
+    },
+    {
+      "ticker": "UPS",
+      "scheduled_date": "Jan 27/b",
+      "open_trade_date": "2026-01-26 (Monday)"
+    },
+    {
+      "ticker": "PPG",
+      "scheduled_date": "Jan 27/a",
+      "open_trade_date": "2026-01-27 (Tuesday)"
+    },
+    {
+      "ticker": "STX",
+      "scheduled_date": "Jan 27/a",
+      "open_trade_date": "2026-01-27 (Tuesday)"
+    },
+    {
+      "ticker": "TXN",
+      "scheduled_date": "Jan 27/a",
+      "open_trade_date": "2026-01-27 (Tuesday)"
+    },
+    {
+      "ticker": "ADP",
+      "scheduled_date": "Jan 28/b",
+      "open_trade_date": "2026-01-27 (Tuesday)"
+    },
+    {
+      "ticker": "ASML",
+      "scheduled_date": "Jan 28/b",
+      "open_trade_date": "2026-01-27 (Tuesday)"
+    },
+    {
+      "ticker": "DHR",
+      "scheduled_date": "Jan 28/b",
+      "open_trade_date": "2026-01-27 (Tuesday)"
+    },
+    {
+      "ticker": "GD",
+      "scheduled_date": "Jan 28/b",
+      "open_trade_date": "2026-01-27 (Tuesday)"
+    },
+    {
+      "ticker": "GEV",
+      "scheduled_date": "Jan 28/b",
+      "open_trade_date": "2026-01-27 (Tuesday)"
+    },
+    {
+      "ticker": "GLW",
+      "scheduled_date": "Jan 28/b",
+      "open_trade_date": "2026-01-27 (Tuesday)"
+    },
+    {
+      "ticker": "PGR",
+      "scheduled_date": "Jan 28/b",
+      "open_trade_date": "2026-01-27 (Tuesday)"
+    },
+    {
+      "ticker": "SBUX",
+      "scheduled_date": "Jan 28/b",
+      "open_trade_date": "2026-01-27 (Tuesday)"
+    },
+    {
+      "ticker": "CLS",
+      "scheduled_date": "Jan 28/a",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "IBM",
+      "scheduled_date": "Jan 28/a",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "LRCX",
+      "scheduled_date": "Jan 28/a",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "META",
+      "scheduled_date": "Jan 28/a",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "MSFT",
+      "scheduled_date": "Jan 28/a",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "NOW",
+      "scheduled_date": "Jan 28/a",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "TSLA",
+      "scheduled_date": "Jan 28/a",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "URI",
+      "scheduled_date": "Jan 28/a",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "BX",
+      "scheduled_date": "Jan 29/b",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "CAT",
+      "scheduled_date": "Jan 29/b",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "HON",
+      "scheduled_date": "Jan 29/b",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "LHX",
+      "scheduled_date": "Jan 29/b",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "LMT",
+      "scheduled_date": "Jan 29/b",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "MA",
+      "scheduled_date": "Jan 29/b",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "MO",
+      "scheduled_date": "Jan 29/b",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "NSC",
+      "scheduled_date": "Jan 29/b",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "PHM",
+      "scheduled_date": "Jan 29/b",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "RCL",
+      "scheduled_date": "Jan 29/b",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "TMO",
+      "scheduled_date": "Jan 29/b",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "TSCO",
+      "scheduled_date": "Jan 29/b",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "VLO",
+      "scheduled_date": "Jan 29/b",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
+      "ticker": "AAPL",
+      "scheduled_date": "Jan 29/a",
+      "open_trade_date": "2026-01-29 (Thursday)"
+    },
+    {
+      "ticker": "SAP",
+      "scheduled_date": "Jan 29/a",
+      "open_trade_date": "2026-01-29 (Thursday)"
+    },
+    {
+      "ticker": "SNDK",
+      "scheduled_date": "Jan 29/a",
+      "open_trade_date": "2026-01-29 (Thursday)"
+    },
+    {
+      "ticker": "V",
+      "scheduled_date": "Jan 29/a",
+      "open_trade_date": "2026-01-29 (Thursday)"
+    },
+    {
+      "ticker": "WDC",
+      "scheduled_date": "Jan 29/a",
+      "open_trade_date": "2026-01-29 (Thursday)"
+    },
+    {
+      "ticker": "AXP",
+      "scheduled_date": "Jan 30/b",
+      "open_trade_date": "2026-01-29 (Thursday)"
+    },
+    {
+      "ticker": "CHTR",
+      "scheduled_date": "Jan 30/b",
+      "open_trade_date": "2026-01-29 (Thursday)"
+    },
+    {
+      "ticker": "CL",
+      "scheduled_date": "Jan 30/b",
+      "open_trade_date": "2026-01-29 (Thursday)"
+    },
+    {
+      "ticker": "CVX",
+      "scheduled_date": "Jan 30/b",
+      "open_trade_date": "2026-01-29 (Thursday)"
+    },
+    {
+      "ticker": "REGN",
+      "scheduled_date": "Jan 30/b",
+      "open_trade_date": "2026-01-29 (Thursday)"
+    },
+    {
+      "ticker": "XOM",
+      "scheduled_date": "Jan 30/b",
+      "open_trade_date": "2026-01-29 (Thursday)"
+    }
+  ]
+}

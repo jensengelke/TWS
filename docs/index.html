@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <title>Data Index</title>
+    <title>Earnings Dates Viewer</title>
     <meta charset="UTF-8">
     <style>
         body {
@@ -9,13 +10,37 @@
             margin: 20px;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .controls {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #eee;
+            border-radius: 4px;
         }
 
-        li {
-            margin: 10px 0;
+        select {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
         }
 
         a {
@@ -26,26 +51,199 @@
         a:hover {
             text-decoration: underline;
         }
+
+        #loading {
+            color: #666;
+            font-style: italic;
+        }
+
+        #error {
+            color: red;
+            display: none;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 
 <body>
-    <h1>Data Index</h1>
-    <ul>
-        <!-- Additional data links can be added here -->
-        <li><a href="data/earnings-for-week-starting-2026-01-19.html">Earnings for week starting 2026-01-19</a></li>
-        <li><a href="data/earnings-for-week-starting-2026-01-12.html">Earnings for week starting 2026-01-12</a></li>
-        <li><a href="data/earnings-for-week-starting-2026-01-05.html">Earnings for week starting 2026-01-05</a></li>
-        <li><a href="data/earnings-for-week-starting-2025-12-15.html">Earnings for week starting 2025-12-15</a></li>
-        <li><a href="data/earnings-for-week-starting-2025-12-08.html">Earnings for week starting 2025-12-08</a></li>
-        <li><a href="data/earnings-for-week-starting-2025-12-01.html">Earnings for week starting 2025-12-01</a></li>
-        <li><a href="data/earnings-for-week-starting-2025-11-24.html">Earnings for week starting 2025-11-24</a></li>
-        <li><a href="data/earnings-for-week-starting-2025-11-17.html">Earnings for week starting 2025-11-17</a></li>
-        <li><a href="data/earnings-for-week-starting-2025-11-10.html">Earnings for week starting 2025-11-10</a></li>
-        <li><a href="data/earnings-for-week-starting-2025-11-03.html">Earnings for week starting 2025-11-03</a></li>
-        <li><a href="data/earnings-for-week-starting-2025-10-27.html">Earnings for week starting 2025-10-27</a></li>
-        <li><a href="data/earnings-for-week-starting-2025-10-20.html">Earnings for week starting 2025-10-20</a></li>
-    </ul>
+    <h1>Earnings Dates Viewer</h1>
+
+    <div class="controls">
+        <label for="week-select">Select Week:</label>
+        <select id="week-select">
+            <option value="" disabled selected>Loading available dates...</option>
+        </select>
+        <button onclick="loadSelectedData()"
+            style="margin-left: 10px; padding: 5px 10px; cursor: pointer;">Refresh</button>
+        <button onclick="downloadCSV()" style="margin-left: 10px; padding: 5px 10px; cursor: pointer;">Download
+            CSV</button>
+    </div>
+
+    <div id="error"></div>
+    <div id="loading"></div>
+
+    <h2 id="table-title">Earnings Data</h2>
+    <table id="earnings-table">
+        <thead>
+            <tr>
+                <th>Ticker</th>
+                <th>Scheduled Earnings Date</th>
+                <th>Date to open Vola Crush options trade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+        const DATA_DIR = 'data/';
+        const INDEX_FILE = 'all-earnings-index.json';
+        let currentEarningsData = null;
+
+        async function init() {
+            try {
+                const response = await fetch(DATA_DIR + INDEX_FILE + '?t=' + new Date().getTime()); // bust cache
+                if (!response.ok) throw new Error("Failed to load index file");
+
+                const indexData = await response.json();
+
+                // Sort descending by date so newest is at the top
+                if (Array.isArray(indexData)) {
+                    indexData.sort((a, b) => {
+                        if (a.date < b.date) return 1;
+                        if (a.date > b.date) return -1;
+                        return 0;
+                    });
+                }
+
+                populateDropdown(indexData);
+
+                // Automatically load the first (most recent) item
+                if (indexData.length > 0) {
+                    const select = document.getElementById('week-select');
+                    // Select the first item (newest)
+                    select.selectedIndex = 0;
+                    loadSelectedData();
+                }
+            } catch (e) {
+                showError("Error initializing: " + e.message);
+            }
+        }
+
+        function populateDropdown(indexData) {
+            const select = document.getElementById('week-select');
+            select.innerHTML = '';
+
+            indexData.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.filename;
+                option.textContent = `Week starting ${item.date}`;
+                select.appendChild(option);
+            });
+
+            select.onchange = loadSelectedData;
+        }
+
+        async function loadSelectedData() {
+            const select = document.getElementById('week-select');
+            const filename = select.value;
+            if (!filename) return;
+
+            const tableBody = document.querySelector('#earnings-table tbody');
+            const title = document.getElementById('table-title');
+            const loading = document.getElementById('loading');
+
+            tableBody.innerHTML = '';
+            showError(''); // clear errors
+            loading.textContent = 'Loading data...';
+            currentEarningsData = null;
+
+            try {
+                const response = await fetch(DATA_DIR + filename + '?t=' + new Date().getTime());
+                if (!response.ok) throw new Error(`Failed to load data file: ${filename}`);
+
+                const jsonData = await response.json();
+                currentEarningsData = jsonData;
+
+                // Update title
+                title.textContent = `Earnings Dates - Week starting ${jsonData.week_start}`;
+
+                // Populate table
+                if (jsonData.data && jsonData.data.length > 0) {
+                    jsonData.data.forEach(row => {
+                        const tr = document.createElement('tr');
+
+                        // Ticker Cell
+                        const tdTicker = document.createElement('td');
+                        const link = document.createElement('a');
+                        link.href = `https://finviz.com/quote.ashx?t=${row.ticker}`;
+                        link.target = "_blank";
+                        link.textContent = row.ticker;
+                        tdTicker.appendChild(link);
+                        tr.appendChild(tdTicker);
+
+                        // Scheduled Date Cell
+                        const tdScheduled = document.createElement('td');
+                        tdScheduled.textContent = row.scheduled_date;
+                        tr.appendChild(tdScheduled);
+
+                        // Open Trade Date Cell
+                        const tdOpen = document.createElement('td');
+                        tdOpen.textContent = row.open_trade_date;
+                        tr.appendChild(tdOpen);
+
+                        tableBody.appendChild(tr);
+                    });
+                } else {
+                    const tr = document.createElement('tr');
+                    const td = document.createElement('td');
+                    td.colSpan = 3;
+                    td.textContent = "No earnings data found for this week.";
+                    td.style.textAlign = "center";
+                    tr.appendChild(td);
+                    tableBody.appendChild(tr);
+                }
+
+            } catch (e) {
+                showError("Error loading data: " + e.message);
+            } finally {
+                loading.textContent = '';
+            }
+        }
+
+        function downloadCSV() {
+            if (!currentEarningsData || !currentEarningsData.data) {
+                alert("No data loaded to download.");
+                return;
+            }
+
+            try {
+                const rows = currentEarningsData.data.map(item => `SYM, ${item.ticker}, SMART/AMEX`);
+                const csvContent = rows.join("\n");
+                const blob = new Blob([csvContent], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `earnings-for-week-starting-${currentEarningsData.week_start}.csv`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            } catch (e) {
+                showError("Error generating CSV: " + e.message);
+            }
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('error');
+            el.textContent = msg;
+            el.style.display = msg ? 'block' : 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
 </body>
 
 </html>
