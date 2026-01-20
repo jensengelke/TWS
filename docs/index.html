@@ -75,6 +75,8 @@
         </select>
         <button onclick="loadSelectedData()"
             style="margin-left: 10px; padding: 5px 10px; cursor: pointer;">Refresh</button>
+        <button onclick="downloadCSV()" style="margin-left: 10px; padding: 5px 10px; cursor: pointer;">Download
+            CSV</button>
     </div>
 
     <div id="error"></div>
@@ -97,6 +99,7 @@
     <script>
         const DATA_DIR = 'data/';
         const INDEX_FILE = 'all-earnings-index.json';
+        let currentEarningsData = null;
 
         async function init() {
             try {
@@ -154,12 +157,14 @@
             tableBody.innerHTML = '';
             showError(''); // clear errors
             loading.textContent = 'Loading data...';
+            currentEarningsData = null;
 
             try {
                 const response = await fetch(DATA_DIR + filename + '?t=' + new Date().getTime());
                 if (!response.ok) throw new Error(`Failed to load data file: ${filename}`);
 
                 const jsonData = await response.json();
+                currentEarningsData = jsonData;
 
                 // Update title
                 title.textContent = `Earnings Dates - Week starting ${jsonData.week_start}`;
@@ -204,6 +209,30 @@
                 showError("Error loading data: " + e.message);
             } finally {
                 loading.textContent = '';
+            }
+        }
+
+        function downloadCSV() {
+            if (!currentEarningsData || !currentEarningsData.data) {
+                alert("No data loaded to download.");
+                return;
+            }
+
+            try {
+                const rows = currentEarningsData.data.map(item => `SYM, ${item.ticker}, SMART/AMEX`);
+                const csvContent = rows.join("\n");
+                const blob = new Blob([csvContent], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `earnings-for-week-starting-${currentEarningsData.week_start}.csv`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            } catch (e) {
+                showError("Error generating CSV: " + e.message);
             }
         }
 
