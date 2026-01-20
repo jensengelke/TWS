@@ -175,7 +175,7 @@ def main(count: int):
                                     dt -= datetime.timedelta(days=1)
                                 except Exception:
                                     pass
-                            earningsdate_real_obj = dt.replace(year=datetime.datetime.now().year).date()
+                            earningsdate_real_obj = dt.date()
                             earningsdate_real_str = f"{earningsdate_real_obj} ({earningsdate_real_obj.strftime('%A')})"
                     
                     collected_earnings.append({
