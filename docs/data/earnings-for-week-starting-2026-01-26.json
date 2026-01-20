@@ -1,0 +1,30 @@
+{
+  "week_start": "2026-01-26",
+  "data": [
+    {
+      "ticker": "BA",
+      "scheduled_date": "Jan 27/b",
+      "open_trade_date": "2026-01-26 (Monday)"
+    },
+    {
+      "ticker": "GM",
+      "scheduled_date": "Jan 27/b",
+      "open_trade_date": "2026-01-26 (Monday)"
+    },
+    {
+      "ticker": "KMB",
+      "scheduled_date": "Jan 27/b",
+      "open_trade_date": "2026-01-26 (Monday)"
+    },
+    {
+      "ticker": "NEE",
+      "scheduled_date": "Jan 27/b",
+      "open_trade_date": "2026-01-26 (Monday)"
+    },
+    {
+      "ticker": "RTX",
+      "scheduled_date": "Jan 27/b",
+      "open_trade_date": "2026-01-26 (Monday)"
+    }
+  ]
+}

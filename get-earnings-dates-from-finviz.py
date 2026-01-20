@@ -206,6 +206,43 @@ def main(count: int):
         print(f"Saved {len(collected_earnings)} items to {filename}")
         
         update_index_json(date_str, filename)
+
+        # Save CSV
+        csv_filename = f"earnings-for-week-starting-{date_str}.csv"
+        csv_path = os.path.join("docs", "data", csv_filename)
+        with open(csv_path, "w", encoding="utf-8") as fh:
+            for item in collected_earnings:
+                fh.write(f"SYM, {item['ticker']}, SMART/AMEX\n")
+        print(f"Saved CSV to {csv_filename}")
+
+        # Save HTML
+        html_filename = f"earnings-for-week-starting-{date_str}.html"
+        html_path = os.path.join("docs", "data", html_filename)
+        template_path = os.path.join("docs", "data", "earnings-template.html")
+        
+        if os.path.exists(template_path):
+            with open(template_path, "r", encoding="utf-8") as fh:
+                template = fh.read()
+            
+            html_content = template.replace("REPLACE", date_str)
+            
+            # Add CSV link after h1
+            link_html = f'</h1>\n    <p><a href="{csv_filename}">Download CSV</a></p>'
+            html_content = html_content.replace("</h1>", link_html)
+            
+            # Generate rows
+            rows = []
+            for item in collected_earnings:
+                row = f'<tr><td><a href="https://finviz.com/quote.ashx?t={item["ticker"]}" target="_blank">{item["ticker"]}</a></td><td>{item["scheduled_date"]}</td><td>{item["open_trade_date"]}</td></tr>'
+                rows.append(row)
+            
+            html_content = html_content.replace("<!-- Earnings data rows will be inserted here -->", "\n".join(rows))
+            
+            with open(html_path, "w", encoding="utf-8") as fh:
+                fh.write(html_content)
+            print(f"Saved HTML to {html_filename}")
+        else:
+            print(f"Template not found at {template_path}, skipping HTML generation.", file=sys.stderr)
         
     except Exception as e:
         print(f"Error saving data: {e}", file=sys.stderr)
