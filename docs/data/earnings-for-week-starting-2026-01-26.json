@@ -112,6 +112,11 @@
       "open_trade_date": "2026-01-28 (Wednesday)"
     },
     {
+      "ticker": "LVS",
+      "scheduled_date": "Jan 28/a",
+      "open_trade_date": "2026-01-28 (Wednesday)"
+    },
+    {
       "ticker": "META",
       "scheduled_date": "Jan 28/a",
       "open_trade_date": "2026-01-28 (Wednesday)"
@@ -203,6 +208,11 @@
     },
     {
       "ticker": "AAPL",
+      "scheduled_date": "Jan 29/a",
+      "open_trade_date": "2026-01-29 (Thursday)"
+    },
+    {
+      "ticker": "DECK",
       "scheduled_date": "Jan 29/a",
       "open_trade_date": "2026-01-29 (Thursday)"
     },
