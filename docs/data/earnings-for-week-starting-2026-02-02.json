@@ -1,0 +1,290 @@
+{
+  "week_start": "2026-02-02",
+  "data": [
+    {
+      "ticker": "DIS",
+      "scheduled_date": "Feb 02/b",
+      "open_trade_date": "2026-02-01 (Sunday)"
+    },
+    {
+      "ticker": "NXPI",
+      "scheduled_date": "Feb 02/a",
+      "open_trade_date": "2026-02-02 (Monday)"
+    },
+    {
+      "ticker": "PLTR",
+      "scheduled_date": "Feb 02/a",
+      "open_trade_date": "2026-02-02 (Monday)"
+    },
+    {
+      "ticker": "TER",
+      "scheduled_date": "Feb 02/a",
+      "open_trade_date": "2026-02-02 (Monday)"
+    },
+    {
+      "ticker": "ETN",
+      "scheduled_date": "Feb 03/b",
+      "open_trade_date": "2026-02-02 (Monday)"
+    },
+    {
+      "ticker": "MRK",
+      "scheduled_date": "Feb 03/b",
+      "open_trade_date": "2026-02-02 (Monday)"
+    },
+    {
+      "ticker": "PEP",
+      "scheduled_date": "Feb 03/b",
+      "open_trade_date": "2026-02-02 (Monday)"
+    },
+    {
+      "ticker": "PYPL",
+      "scheduled_date": "Feb 03/b",
+      "open_trade_date": "2026-02-02 (Monday)"
+    },
+    {
+      "ticker": "AMD",
+      "scheduled_date": "Feb 03/a",
+      "open_trade_date": "2026-02-03 (Tuesday)"
+    },
+    {
+      "ticker": "AMGN",
+      "scheduled_date": "Feb 03/a",
+      "open_trade_date": "2026-02-03 (Tuesday)"
+    },
+    {
+      "ticker": "EA",
+      "scheduled_date": "Feb 03/a",
+      "open_trade_date": "2026-02-03 (Tuesday)"
+    },
+    {
+      "ticker": "EMR",
+      "scheduled_date": "Feb 03/a",
+      "open_trade_date": "2026-02-03 (Tuesday)"
+    },
+    {
+      "ticker": "LITE",
+      "scheduled_date": "Feb 03/a",
+      "open_trade_date": "2026-02-03 (Tuesday)"
+    },
+    {
+      "ticker": "MDLZ",
+      "scheduled_date": "Feb 03/a",
+      "open_trade_date": "2026-02-03 (Tuesday)"
+    },
+    {
+      "ticker": "SU",
+      "scheduled_date": "Feb 03/a",
+      "open_trade_date": "2026-02-03 (Tuesday)"
+    },
+    {
+      "ticker": "TTWO",
+      "scheduled_date": "Feb 03/a",
+      "open_trade_date": "2026-02-03 (Tuesday)"
+    },
+    {
+      "ticker": "ABBV",
+      "scheduled_date": "Feb 04/b",
+      "open_trade_date": "2026-02-03 (Tuesday)"
+    },
+    {
+      "ticker": "BSX",
+      "scheduled_date": "Feb 04/b",
+      "open_trade_date": "2026-02-03 (Tuesday)"
+    },
+    {
+      "ticker": "CME",
+      "scheduled_date": "Feb 04/b",
+      "open_trade_date": "2026-02-03 (Tuesday)"
+    },
+    {
+      "ticker": "GEHC",
+      "scheduled_date": "Feb 04/b",
+      "open_trade_date": "2026-02-03 (Tuesday)"
+    },
+    {
+      "ticker": "LLY",
+      "scheduled_date": "Feb 04/b",
+      "open_trade_date": "2026-02-03 (Tuesday)"
+    },
+    {
+      "ticker": "NVO",
+      "scheduled_date": "Feb 04/b",
+      "open_trade_date": "2026-02-03 (Tuesday)"
+    },
+    {
+      "ticker": "PSX",
+      "scheduled_date": "Feb 04/b",
+      "open_trade_date": "2026-02-03 (Tuesday)"
+    },
+    {
+      "ticker": "UBER",
+      "scheduled_date": "Feb 04/b",
+      "open_trade_date": "2026-02-03 (Tuesday)"
+    },
+    {
+      "ticker": "AFL",
+      "scheduled_date": "Feb 04/a",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "ALGN",
+      "scheduled_date": "Feb 04/a",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "ARM",
+      "scheduled_date": "Feb 04/a",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "COHR",
+      "scheduled_date": "Feb 04/a",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "GOOG",
+      "scheduled_date": "Feb 04/a",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "GOOGL",
+      "scheduled_date": "Feb 04/a",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "MCK",
+      "scheduled_date": "Feb 04/a",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "QCOM",
+      "scheduled_date": "Feb 04/a",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "SYM",
+      "scheduled_date": "Feb 04/a",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "BMY",
+      "scheduled_date": "Feb 05/b",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "CAH",
+      "scheduled_date": "Feb 05/b",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "CI",
+      "scheduled_date": "Feb 05/b",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "COP",
+      "scheduled_date": "Feb 05/b",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "EL",
+      "scheduled_date": "Feb 05/b",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "HSY",
+      "scheduled_date": "Feb 05/b",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "KKR",
+      "scheduled_date": "Feb 05/b",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "MT",
+      "scheduled_date": "Feb 05/b",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "SHEL",
+      "scheduled_date": "Feb 05/b",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "TPR",
+      "scheduled_date": "Feb 05/b",
+      "open_trade_date": "2026-02-04 (Wednesday)"
+    },
+    {
+      "ticker": "AFRM",
+      "scheduled_date": "Feb 05/a",
+      "open_trade_date": "2026-02-05 (Thursday)"
+    },
+    {
+      "ticker": "AMZN",
+      "scheduled_date": "Feb 05/a",
+      "open_trade_date": "2026-02-05 (Thursday)"
+    },
+    {
+      "ticker": "BE",
+      "scheduled_date": "Feb 05/a",
+      "open_trade_date": "2026-02-05 (Thursday)"
+    },
+    {
+      "ticker": "DLR",
+      "scheduled_date": "Feb 05/a",
+      "open_trade_date": "2026-02-05 (Thursday)"
+    },
+    {
+      "ticker": "FTNT",
+      "scheduled_date": "Feb 05/a",
+      "open_trade_date": "2026-02-05 (Thursday)"
+    },
+    {
+      "ticker": "IREN",
+      "scheduled_date": "Feb 05/a",
+      "open_trade_date": "2026-02-05 (Thursday)"
+    },
+    {
+      "ticker": "MCHP",
+      "scheduled_date": "Feb 05/a",
+      "open_trade_date": "2026-02-05 (Thursday)"
+    },
+    {
+      "ticker": "MSTR",
+      "scheduled_date": "Feb 05/a",
+      "open_trade_date": "2026-02-05 (Thursday)"
+    },
+    {
+      "ticker": "RBLX",
+      "scheduled_date": "Feb 05/a",
+      "open_trade_date": "2026-02-05 (Thursday)"
+    },
+    {
+      "ticker": "RDDT",
+      "scheduled_date": "Feb 05/a",
+      "open_trade_date": "2026-02-05 (Thursday)"
+    },
+    {
+      "ticker": "TEAM",
+      "scheduled_date": "Feb 05/a",
+      "open_trade_date": "2026-02-05 (Thursday)"
+    },
+    {
+      "ticker": "BIIB",
+      "scheduled_date": "Feb 06/b",
+      "open_trade_date": "2026-02-05 (Thursday)"
+    },
+    {
+      "ticker": "CBOE",
+      "scheduled_date": "Feb 06/b",
+      "open_trade_date": "2026-02-05 (Thursday)"
+    },
+    {
+      "ticker": "PM",
+      "scheduled_date": "Feb 06/b",
+      "open_trade_date": "2026-02-05 (Thursday)"
+    }
+  ]
+}
