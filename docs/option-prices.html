@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Option Prices Viewer</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #eee;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #symbol-display {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        select {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        #error {
+            color: red;
+            background: #ffe6e6;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        .recommendation-panel {
+            background-color: #e6f7ff;
+            padding: 15px;
+            border-left: 5px solid #1890ff;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="symbol-display">Option Prices</div>
+
+    <div id="error"></div>
+
+    <div class="controls">
+        <button id="prev-btn" onclick="changeTimestamp(-1)">&lt;</button>
+        <select id="timestamp-select" onchange="loadTimestampData()">
+            <option value="" disabled selected>Loading...</option>
+        </select>
+        <button id="next-btn" onclick="changeTimestamp(1)">&gt;</button>
+    </div>
+
+    <div id="content-area" style="display:none;">
+        <div class="recommendation-panel">
+            <h3>Evaluation Results</h3>
+            <p><strong>Expected Move:</strong> <span id="rec-expected-move"></span></p>
+            <p><strong>Average Percent Move (3Y):</strong> <span id="rec-avg-move"></span>%</p>
+            <p><strong>Strangle Boundaries:</strong> <span id="rec-lower"></span> to <span id="rec-upper"></span></p>
+        </div>
+
+        <h2>Underlying Asset Data</h2>
+        <table id="underlying-table">
+            <thead>
+                <tr>
+                    <th>Bid</th>
+                    <th>Ask</th>
+                    <th>Mark Price (Instrument Value)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <h2>Historic Moves (Top 14 in last 3 years)</h2>
+        <table id="historic-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Open</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Close</th>
+                    <th>Candle Length</th>
+                    <th>Percent Move</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div id="historic-analysis"
+            style="margin-bottom: 30px; font-weight: bold; padding: 10px; background-color: #f9f9f9; border: 1px solid #ddd;">
+        </div>
+
+        <h2>Option Prices</h2>
+        <table id="options-table">
+            <thead>
+                <tr>
+                    <th colspan="8" style="text-align: center;">Calls</th>
+                    <th></th>
+                    <th colspan="8" style="text-align: center;">Puts</th>
+                </tr>
+                <tr>
+                    <!-- Calls -->
+                    <th>Theta</th>
+                    <th>Vega</th>
+                    <th>Gamma</th>
+                    <th>Delta</th>
+                    <th>IV</th>
+                    <th>Price</th>
+                    <th>Ask</th>
+                    <th>Bid</th>
+
+                    <!-- Middle -->
+                    <th>Strike</th>
+
+                    <!-- Puts -->
+                    <th>Bid</th>
+                    <th>Ask</th>
+                    <th>Price</th>
+                    <th>IV</th>
+                    <th>Delta</th>
+                    <th>Gamma</th>
+                    <th>Vega</th>
+                    <th>Theta</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+
+    </div>
+
+    <script>
+        let allData = [];
+        let currentIndex = -1;
+        let historicAvgPercent = 0;
+
+        async function init() {
+            const hash = window.location.hash;
+            if (!hash || !hash.includes('symbol=')) {
+                showError("No symbol provided in URL. Use #symbol=TICKER");
+                return;
+            }
+
+            const symbol = hash.split('symbol=')[1];
+            document.title = `Option Prices - ${symbol}`;
+            document.getElementById('symbol-display').textContent = `Option Prices: ${symbol}`;
+
+            try {
+                const response = await fetch(`data/${symbol}.json?t=${new Date().getTime()}`);
+                if (!response.ok) throw new Error(`Failed to load data for ${symbol}`);
+
+                const json = await response.json();
+                if (!json.prices || json.prices.length === 0) {
+                    throw new Error("No price data found in file.");
+                }
+
+                // Sort timestamps desc (newest first)
+                allData = json.prices.sort((a, b) => {
+                    return new Date(b.timestamp) - new Date(a.timestamp);
+                });
+
+                populateDropdown();
+
+                // Select most recent (first)
+                currentIndex = 0;
+                updateControls();
+                renderData(allData[currentIndex]);
+
+                document.getElementById('content-area').style.display = 'block';
+
+                // Render Historic Moves (Static for the file)
+                if (json.historic_move) {
+                    renderHistoricMoves(json.historic_move);
+                }
+
+            } catch (e) {
+                showError(e.message);
+            }
+        }
+
+        function populateDropdown() {
+            const select = document.getElementById('timestamp-select');
+            select.innerHTML = '';
+
+            allData.forEach((entry, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = entry.timestamp;
+                select.appendChild(option);
+            });
+        }
+
+        function updateControls() {
+            const select = document.getElementById('timestamp-select');
+            select.selectedIndex = currentIndex;
+
+            const prevBtn = document.getElementById('prev-btn'); // Newest is 0. Older is +1
+            const nextBtn = document.getElementById('next-btn');
+
+            // 'Previous' in time means going to a larger index (older date)
+            // 'Next' in time means going to a smaller index (newer date)
+            // Wait, the requirement says: 
+            // "< button ... to allow navigating to the prior timestamp's data" (Earlier time)
+            // "> button ... to allow navigating to the next later timestamp" (Later time)
+
+            // If sorted Newest (0) -> Oldest (N).
+            // Later timestamp = Index - 1
+            // Prior timestamp = Index + 1
+
+            // Let's align buttons to Time, not List Index.
+            // < (Prior/Earlier) -> Go to Older -> Index + 1
+            // > (Next/Later) -> Go to Newer -> Index - 1
+
+            const hasEarlier = currentIndex < allData.length - 1;
+            const hasLater = currentIndex > 0;
+
+            prevBtn.disabled = !hasEarlier;
+            nextBtn.disabled = !hasLater;
+        }
+
+        function changeTimestamp(direction) {
+            // direction -1 for Earlier (<), 1 for Later (>)
+            // But usually < is Left and > is Right.
+            // Requirement: "< button ... navigate to prior timestamp" (Older)
+            // "> button ... navigate to next later timestamp" (Newer)
+
+            // Current List: [Newest, ..., Oldest]
+            // If I want Prior (Older), I need to increase index.
+            // If I want Later (Newer), I need to decrease index.
+
+            let newIndex = currentIndex;
+
+            if (direction === -1) {
+                // User clicked < (Prior)
+                newIndex++;
+            } else {
+                // User clicked > (Next)
+                newIndex--;
+            }
+
+            if (newIndex >= 0 && newIndex < allData.length) {
+                currentIndex = newIndex;
+                updateControls();
+                renderData(allData[currentIndex]);
+            }
+        }
+
+        function loadTimestampData() {
+            const select = document.getElementById('timestamp-select');
+            currentIndex = parseInt(select.value);
+            updateControls();
+            renderData(allData[currentIndex]);
+        }
+
+        function renderData(entry) {
+            // Recommendation
+            if (entry.recommendation) {
+                document.getElementById('rec-expected-move').textContent = formatFloat(entry.recommendation.expected_move);
+                document.getElementById('rec-avg-move').textContent = formatFloat(entry.recommendation.average_percent_move);
+                document.getElementById('rec-lower').textContent = formatFloat(entry.recommendation.lower_boundary);
+                document.getElementById('rec-upper').textContent = formatFloat(entry.recommendation.upper_boundary);
+            }
+
+            // Underlying Table
+            const undBody = document.querySelector('#underlying-table tbody');
+            undBody.innerHTML = '';
+            const uPrices = entry.underlying_prices;
+            if (uPrices) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${formatFloat(uPrices.Bid)}</td>
+                    <td>${formatFloat(uPrices.Ask)}</td>
+                    <td><b>${formatFloat(uPrices.get_instrument_value)}</b></td>
+                `;
+                undBody.appendChild(row);
+            }
+
+            // Update Historic Analysis Text
+            const analysisDiv = document.getElementById('historic-analysis');
+            if (uPrices && uPrices.get_instrument_value && historicAvgPercent > 0) {
+                const currentPrice = uPrices.get_instrument_value;
+                const avg = historicAvgPercent;
+                // Range: current +/- (avg/100 * current) ? 
+                // User said: "from {current_price - avg} to {current_price + avg}"
+                // NOTE: User's prompt: "from {current_price - avg} to {current_price + avg}" where "avg" is "average of percent move".
+                // BUT: Percent move is a percentage (e.g. 11.25). 
+                // If current price is 100, 100 - 11.25 = 88.75.
+                // This interprets the percentage as a raw dollar amount? 
+                // Usually "14 largest percent moves... Average percent move... Applied at current price" implies "Current +/- Average%".
+                // However, the user LITERALLY wrote "{current_price - avg}".
+                // Let's look at the example prompt provided:
+                // "from {current_price - avg} to {current_price + avg}."
+                // "Average percent move of the 14 largest movers: {avg}."
+                // If avg is 10 (percent), and price is 100. Range 90 to 110.
+                // If I strictly follow {current_price - avg}, it implies removing the scalar value of the percentage from the price. 
+                // BUT "Applied at current price the expected range" strongly implies Percentage application. 
+                // Also "Average percent move... Applied...".
+                // If I have a 10% move on a $10 stock, {current - avg} = 10 - 10 = 0. That makes no sense.
+                // It must be (avg / 100) * current_price.
+                // Wait, let's re-read carefully: "Average percent move... {avg}. Applied at current price... {current_price - avg}..."
+                // Maybe the user assumes 'avg' is the calculated dollar move? 
+                // No, "Calculate the average of the percent move column".
+                // It's ambiguous. "Average percent move: 11.25". "Range: 244 - 11.25"? No, that's subtracting % from $.
+                // I will assume the user meant "current_price +/- (avg% of current_price)". 
+                // OR, they meant "current_price * (1 +/- avg/100)". which is the same.
+                // BUT, let's check the Python script logic. It calculates `usual_up_spike = price + (avg/100)*price`.
+                // So I will calculate the range value = (avg / 100) * currentPrice.
+                // Then display from (current - rangeVal) to (current + rangeVal).
+
+                const rangeVal = (avg / 100) * currentPrice;
+                const lower = currentPrice - rangeVal;
+                const upper = currentPrice + rangeVal;
+
+                analysisDiv.textContent = `Average percent move of the 14 largest movers: ${avg.toFixed(2)}%. Applied at current price the expected range reaches from ${lower.toFixed(2)} to ${upper.toFixed(2)}.`;
+            } else {
+                if (!historicAvgPercent) {
+                    analysisDiv.textContent = 'Historic move data not available for analysis.';
+                } else if (!uPrices || !uPrices.get_instrument_value) {
+                    analysisDiv.textContent = 'Current price not available for analysis.';
+                }
+            }
+
+            // Options Table
+
+            // Options Table
+            const optBody = document.querySelector('#options-table tbody');
+            optBody.innerHTML = '';
+            const opts = entry.option_prices;
+
+            // Group by strike
+            const optionsByStrike = {};
+            opts.forEach(opt => {
+                const strike = parseFloat(opt.contract_strike);
+                if (!optionsByStrike[strike]) {
+                    optionsByStrike[strike] = { call: null, put: null };
+                }
+                if (opt.contract_right === 'C') {
+                    optionsByStrike[strike].call = opt;
+                } else if (opt.contract_right === 'P') {
+                    optionsByStrike[strike].put = opt;
+                }
+            });
+
+            // Sort strikes
+            const strikes = Object.keys(optionsByStrike).map(parseFloat).sort((a, b) => a - b);
+
+            strikes.forEach(strike => {
+                const data = optionsByStrike[strike];
+                const call = data.call;
+                const put = data.put;
+
+                const row = document.createElement('tr');
+
+                // Helper to generate cells
+                const cell = (val, style = '') => `<td style="${style}">${formatFloat(val)}</td>`;
+                const emptyCells = (count) => '<td>-</td>'.repeat(count);
+
+                function getSpreadStyle(bid, ask) {
+                    if (bid === null || bid === undefined || ask === null || ask === undefined) return '';
+                    const b = parseFloat(bid);
+                    const a = parseFloat(ask);
+                    const diff = a - b;
+                    if (diff < 0) return ''; // Should not happen usually
+
+                    // Percent difference relative to Ask (convention) or Bid? 
+                    // Request says "more than 30%". Usually (Ask-Bid)/Ask. 
+                    // But if Ask is 0 (unlikely), handle it.
+                    let pct = 0;
+                    if (a > 0) pct = (diff / a);
+
+                    if (diff > 2.0 || pct > 0.5) {
+                        return 'background-color: #ffcccc; color: #cc0000;'; // Red
+                    }
+                    if (diff > 1.0 || pct > 0.3) {
+                        return 'background-color: #ffe0b2; color: #e65100;'; // Amber
+                    }
+                    return '';
+                }
+
+                let html = '';
+
+                // Calls
+                if (call) {
+                    const style = getSpreadStyle(call.Bid, call.Ask);
+                    html += cell(call.theta);
+                    html += cell(call.vega);
+                    html += cell(call.gamma);
+                    html += cell(call.delta);
+                    html += cell(call.IV);
+                    html += cell(call.price);
+                    html += cell(call.Ask, style);
+                    html += cell(call.Bid, style);
+                } else {
+                    html += emptyCells(8);
+                }
+
+                // Strike
+                html += `<td style="font-weight: bold; background-color: #f0f0f0; text-align: center;">${strike}</td>`;
+
+                // Puts
+                if (put) {
+                    const style = getSpreadStyle(put.Bid, put.Ask);
+                    html += cell(put.Bid, style);
+                    html += cell(put.Ask, style);
+                    html += cell(put.price);
+                    html += cell(put.IV);
+                    html += cell(put.delta);
+                    html += cell(put.gamma);
+                    html += cell(put.vega);
+                    html += cell(put.theta);
+                } else {
+                    html += emptyCells(8);
+                }
+
+                row.innerHTML = html;
+                optBody.appendChild(row);
+            });
+        }
+
+        function renderHistoricMoves(moves) {
+            const histBody = document.querySelector('#historic-table tbody');
+            histBody.innerHTML = '';
+
+            if (!moves || moves.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td colspan="7" style="text-align:center;">No historic move data available.</td>`;
+                histBody.appendChild(row);
+                historicAvgPercent = 0;
+                return;
+            }
+
+            // Calculate Average Percent Move
+            let sum = 0;
+            let count = 0;
+            moves.forEach(move => {
+                if (move.percent_move !== undefined && move.percent_move !== null) {
+                    sum += parseFloat(move.percent_move);
+                    count++;
+                }
+            });
+            historicAvgPercent = count > 0 ? (sum / count) : 0;
+
+            // Update the text right now if we have current data rendered? 
+            // Better to re-render data or just let the next renderData call handle it.
+            // renderData is called in init() BEFORE renderHistoricMoves. 
+            // So we should call renderData again or update the text manually.
+            // Since init calls renderData then renderHistoricMoves, the first renderData won't see the updated historicAvgPercent.
+            // Let's just call renderData again for the current index?
+            if (currentIndex >= 0 && allData[currentIndex]) {
+                // Determine logic to update text without full re-render or just simple re-render
+                // We can just trigger the text update logic.
+                const entry = allData[currentIndex];
+                const uPrices = entry.underlying_prices;
+                const analysisDiv = document.getElementById('historic-analysis');
+                if (uPrices && uPrices.get_instrument_value && historicAvgPercent > 0) {
+                    const currentPrice = uPrices.get_instrument_value;
+                    const avg = historicAvgPercent;
+                    const rangeVal = (avg / 100) * currentPrice;
+                    const lower = currentPrice - rangeVal;
+                    const upper = currentPrice + rangeVal;
+                    analysisDiv.textContent = `Average percent move of the 14 largest movers: ${avg.toFixed(2)}%. Applied at current price the expected range reaches from ${lower.toFixed(2)} to ${upper.toFixed(2)}.`;
+                }
+            }
+
+            // Sort by percent_move descending just in case, though the backend sends them sorted usually
+            // but let's just render as is
+
+            moves.forEach(move => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${move.date}</td>
+                    <td>${formatFloat(move.open)}</td>
+                    <td>${formatFloat(move.high)}</td>
+                    <td>${formatFloat(move.low)}</td>
+                    <td>${formatFloat(move.close)}</td>
+                    <td>${formatFloat(move.candle_length)}</td>
+                    <td>${formatFloat(move.percent_move)}%</td>
+                `;
+                histBody.appendChild(row);
+            });
+        }
+
+        function formatFloat(val) {
+            if (val === null || val === undefined) return '-';
+            return parseFloat(val).toFixed(2);
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('error');
+            el.textContent = msg;
+            el.style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+
+</html>

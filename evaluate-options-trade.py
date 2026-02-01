@@ -12,11 +12,12 @@ import time
 import datetime
 import sys
 import pandas as pd
+import json
+import os
 
 class PriceData:
-    stock_fields = ["LAST", "ASK", "BID", "MARK_PRICE"] # valid for all sec types
-    option_fields = ["DELTA", "GAMMA", "VEGA", "OPTION_CALL_OPEN_INTEREST", "OPTION_PUT_OPEN_INTEREST", "IV"]
-    no_trading_hours_fields = ["MARK_PRICE"]
+    stock_fields = ["LAST", "ASK", "BID"] # valid for all sec types
+    option_fields = ["LAST", "ASK", "BID", "DELTA", "GAMMA", "VEGA", "IV"] #  "OPTION_CALL_OPEN_INTEREST", "OPTION_PUT_OPEN_INTEREST"
 
     def __init__(self, security_type :str = "OPT"):
         self.security_type = security_type
@@ -28,20 +29,15 @@ class PriceData:
     def update(self, value, field_name: str):
         self.data[field_name] = value
 
-    def is_complete(self, no_trading_hours: bool):
+    def is_complete(self):
         complete : bool = True
-        if no_trading_hours==False and self.security_type == "OPT":
+        if self.security_type == "OPT":
             for f in self.option_fields:
                 if f not in self.data or self.data[f] is None:
                     complete = False
                     break
-        if no_trading_hours==False and complete:
+        if self.security_type == "STK":
             for f in self.stock_fields:
-                if f not in self.data or self.data[f] is None:
-                    complete = False
-                    break
-        if no_trading_hours:
-            for f in self.no_trading_hours_fields:
                 if f not in self.data or self.data[f] is None:
                     complete = False
                     break
@@ -50,13 +46,22 @@ class PriceData:
     def get(self, field_name: str):
         return self.data.get(field_name, None)
 
+    def get_instrument_value(self):
+        val = self.data.get("MARK_PRICE")
+        if val is not None:
+            return val
+        bid = self.data.get("BID")
+        ask = self.data.get("ASK")
+        if bid is not None and ask is not None:
+            return (bid + ask) / 2
+        return None
+
 class IncompleteDataError(Exception):
     """Raised when the expected move cannot be determined due to missing option data."""
     pass
 
 class EarningsApp(EWrapper, EClient):
     requestId = 0
-    no_trading_hours = False
     def __init__(self):
         EClient.__init__(self, self)
 
@@ -112,11 +117,12 @@ class EarningsApp(EWrapper, EClient):
                 
             tick_price_data.update(price, TickTypeEnum.toStr(tickType))
             price_data[key] = tick_price_data
-            if tick_price_data.is_complete(self.no_trading_hours):
+            if tick_price_data.is_complete():
                 ibrequests_marketData.pop(reqId)
                 self.cancelMktData(reqId)
     
     def tickSize(self, reqId: TickerId, tickType: TickType, size: Decimal):
+        #print(f"tickSize: {TickTypeEnum.toStr(tickType)} ({tickType})={size}")
         if not reqId in ibrequests_marketData:
             return
         else:
@@ -130,10 +136,19 @@ class EarningsApp(EWrapper, EClient):
                 
             tick_price_data.update(size, TickTypeEnum.toStr(tickType))
             price_data[key] = tick_price_data
-            if tick_price_data.is_complete(self.no_trading_hours):
+            if tick_price_data.is_complete():
                 ibrequests_marketData.pop(reqId)
                 self.cancelMktData(reqId)
 
+    def tickGeneric(
+        self,
+        reqId: TickerId,
+        tickType: TickType,
+        value: float,
+    ):
+        pass
+        #print(f"tickGeneric: {TickTypeEnum.toStr(tickType)} ({tickType})={value}")
+    
     def tickOptionComputation(
         self,
         reqId: TickerId,
@@ -148,6 +163,7 @@ class EarningsApp(EWrapper, EClient):
         theta: float,
         undPrice: float,
     ):
+        #print(f"tickOptionComputation: {TickTypeEnum.toStr(tickType)} ({tickType}), Implied Volatility: {impliedVol}, Delta: {delta}, Price: {optPrice}, pvDividend={pvDividend}")
         if not reqId in ibrequests_marketData:
             return
         else:
@@ -165,7 +181,7 @@ class EarningsApp(EWrapper, EClient):
             tick_price_data.update(vega, "VEGA")
             tick_price_data.update(theta, "THETA")
             price_data[key] = tick_price_data
-            if tick_price_data.is_complete(self.no_trading_hours):
+            if tick_price_data.is_complete():
                 ibrequests_marketData.pop(reqId)
                 self.cancelMktData(reqId)
 
@@ -217,14 +233,12 @@ def init():
     logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s', filename='evaluate-options-trade.log', filemode='w')
     parser = argparse.ArgumentParser(description="Get option chain for a symbol and evaluate trade options.")
     parser.add_argument("--symbol", type=str, help="The stock symbol to evaluate options for.")
-    parser.add_argument("--no-trading-hours", action="store_true", help="Only request MARK price outside trading hours.")
-    parser.add_argument("--watchlist-file", type=str, help="Path to the watchlist file.", default="c:/jts/earnings.csv")
+    parser.add_argument("--earnings-week", type=str, help="Path to the earnings week JSON file.", default=None)
     parser.add_argument("--paper", action="store_true", help="Connect to default port for paper trading")
     
     args = parser.parse_args()
 
     app = EarningsApp()
-    app.no_trading_hours = args.no_trading_hours
     logging.info("Starting IB API Test Application...")
     random_client_id = int(time.time()) % 1000  # Generate a random client ID
     #port : int = 4001
@@ -282,11 +296,13 @@ def get_stock_contract(app: EarningsApp, symbol: str):
 def request_market_data(app: EarningsApp, contract: Contract):
     reqId = app.nextId()
     logging.debug(f"Requesting market data for {contract} with reqId {reqId}")
-    app.reqMarketDataType(3)
+    app.reqMarketDataType(2)
     tick_types = "232"
     if contract.secType == "OPT":
         tick_types="100,101,232"
+        #tick_types=""
     app.reqMktData(reqId, contract, tick_types, False, False, [])
+    
     ibrequests_marketData[reqId] = contract
     return reqId
 
@@ -327,19 +343,20 @@ def is_good_stock(symbol: str):
     if price_data[symbol].get("LAST") != None and price_data[symbol].get("LAST") > -1 and price_data[symbol].get("LAST")  < 40 or \
        price_data[symbol].get("ASK") != None and price_data[symbol].get("ASK") > -1 and price_data[symbol].get("ASK")  < 40 or \
        price_data[symbol].get("BID") != None and price_data[symbol].get("BID") > -1 and price_data[symbol].get("BID")  < 40 or \
-       price_data[symbol].get("MARK_PRICE") < 40 :
+       price_data[symbol].get_instrument_value() < 40 :
           print(f"too cheap!")
           return False
     return True
 
-def print_option_price(description: str, price_data: PriceData, no_trading_hours: bool):
-    if no_trading_hours:
-        print(f"{description}: price: {price_data.get('MARK_PRICE')}")
-    else:
-        print(f"{description}: strike={price_data.get('strike')}, IV={price_data.get('IV')}, call OI={price_data.get('OPTION_CALL_OPEN_INTEREST')}, put OI={price_data.get('OPTION_PUT_OPEN_INTEREST')}, theta={price_data.get('THETA')}, delta={price_data.get('DELTA')}, gamma={price_data.get('GAMMA')}, vega={price_data.get('VEGA')}, price={price_data.get('MARK_PRICE')}")
+def print_option_price(description: str, price_data: PriceData):
+    print(f"{description}: strike={price_data.get('strike')}, IV={price_data.get('IV')}, call OI={price_data.get('OPTION_CALL_OPEN_INTEREST')}, put OI={price_data.get('OPTION_PUT_OPEN_INTEREST')}, theta={price_data.get('THETA')}, delta={price_data.get('DELTA')}, gamma={price_data.get('GAMMA')}, vega={price_data.get('VEGA')}, price={price_data.get_instrument_value()}")
 
 def determine_expected_move(contract: Contract, app: EarningsApp):
-    current_price = price_data[contract.symbol].get("MARK_PRICE")
+    current_price = price_data[contract.symbol].get_instrument_value()
+    
+    if not options_chain.get(contract.symbol):
+        raise IncompleteDataError(f"No options found for {contract.symbol}")
+
     # Convert options_chain to a DataFrame
     data = {}
 
@@ -380,30 +397,30 @@ def determine_expected_move(contract: Contract, app: EarningsApp):
     wait(lambda: all(req_id not in ibrequests_marketData for req_id in req_ids), wait_time=30, wait_step=0.1)
 
     option_data_complete : bool = True
-    if price_data[atm_call_key] is None or price_data[atm_call_key].is_complete(app.no_trading_hours) == False:
+    if price_data[atm_call_key] is None or price_data[atm_call_key].is_complete() == False:
         print(f"Could not retrieve market data for ATM call {atm_call_key}.")
         option_data_complete = False
     else:
-        print_option_price(description=f"ATM call {atm_call_key}", price_data=price_data[atm_call_key], no_trading_hours=app.no_trading_hours)
-    if price_data[atm_put_key] is None or price_data[atm_put_key].is_complete(app.no_trading_hours) == False:
+        print_option_price(description=f"ATM call {atm_call_key}", price_data=price_data[atm_call_key])
+    if price_data[atm_put_key] is None or price_data[atm_put_key].is_complete() == False:
         print(f"Could not retrieve market data for ATM put {atm_put_key}.")
         option_data_complete = False
     else:
-        print_option_price(description=f"ATM put {atm_put_key}", price_data=price_data[atm_put_key], no_trading_hours=app.no_trading_hours)
-    if price_data[strangle_call_key] is None or price_data[strangle_call_key].is_complete(app.no_trading_hours) == False:
+        print_option_price(description=f"ATM put {atm_put_key}", price_data=price_data[atm_put_key])
+    if price_data[strangle_call_key] is None or price_data[strangle_call_key].is_complete() == False:
         print(f"Could not retrieve market data for Strangle call {strangle_call_key}.")
         option_data_complete = False
     else:
-        print_option_price(description=f"Strangle call {strangle_call_key}", price_data=price_data[strangle_call_key], no_trading_hours=app.no_trading_hours)
-    if price_data[strangle_put_key] is None or price_data[strangle_put_key].is_complete(app.no_trading_hours) == False:
+        print_option_price(description=f"Strangle call {strangle_call_key}", price_data=price_data[strangle_call_key])
+    if price_data[strangle_put_key] is None or price_data[strangle_put_key].is_complete() == False:
         print(f"Could not retrieve market data for Strangle put {strangle_put_key}.")
         option_data_complete = False
     else:
-        print_option_price(description=f"Strangle put {strangle_put_key}", price_data=price_data[strangle_put_key], no_trading_hours=app.no_trading_hours)
+        print_option_price(description=f"Strangle put {strangle_put_key}", price_data=price_data[strangle_put_key])
     
     if option_data_complete:
-        expected_move = (price_data[atm_call_key].get('MARK_PRICE') + price_data[atm_put_key].get('MARK_PRICE') \
-                     + price_data[strangle_call_key].get('MARK_PRICE') + price_data[strangle_put_key].get('MARK_PRICE')) / 2
+        expected_move = (price_data[atm_call_key].get_instrument_value() + price_data[atm_put_key].get_instrument_value() \
+                     + price_data[strangle_call_key].get_instrument_value() + price_data[strangle_put_key].get_instrument_value()) / 2
     else:
         raise IncompleteDataError(f"Could not retrieve market data for all options. Expected move cannot be determined.") 
         
@@ -427,43 +444,182 @@ def evalulate_stock_history(app: EarningsApp, contract: Contract):
     stock_historic_data['percent_move'] = (stock_historic_data['candle_length'] / stock_historic_data['close']) * 100
     # print the 14 largetst percent moves
     print("\n14 largest percent moves in the last 3 years:")
-    print(stock_historic_data.nlargest(14, 'percent_move')[['date',  'open', 'high', 'low', 'close', 'candle_length', 'percent_move']])
+    top_moves = stock_historic_data.nlargest(14, 'percent_move')[['date',  'open', 'high', 'low', 'close', 'candle_length', 'percent_move']]
+    print(top_moves)
     # calculate the average percent move of the top 14 percent moves
     average_percent_move = stock_historic_data.nlargest(14, 'percent_move')['percent_move'].mean()
-    return average_percent_move
     
-def get_contracts_from_watchlist(app: EarningsApp, filename: str):
+    # Convert DataFrame to list of dictionaries for JSON serialization
+    top_moves_list = top_moves.to_dict(orient='records')
+    
+    return average_percent_move, top_moves_list
+    
+def get_contracts_from_earnings_file(app: EarningsApp, filename: str):
     symbols = []
     if filename == "" or filename is None:
         return symbols
-    with open(filename, "r") as f:
-        for line in f:
-            line = line.strip()
-            if line:
-                symbol = line.split(",")[1].strip()
-                try:
-                    symbols.append(get_stock_contract(app, symbol))
-                except IncompleteDataError as e:
-                    print(f"Skipping {symbol}: {e}")
-                    continue
+    
+    # Try to construct full path if only date or filename given, or check absolute
+    if not os.path.exists(filename):
+        # Allow passing just the date part or similar, try to find in docs/data
+        potential_path = os.path.join("docs", "data", filename)
+        if os.path.exists(potential_path):
+             filename = potential_path
+        else:
+             print(f"File {filename} not found.")
+             return symbols
+             
+    try:
+        with open(filename, "r") as f:
+            data = json.load(f)
+            if "data" in data and isinstance(data["data"], list):
+                today = datetime.date.today()
+                yesterday = today - datetime.timedelta(days=1)
+                tomorrow = today + datetime.timedelta(days=1)
+                
+                accepted_dates = {today.strftime("%Y-%m-%d"), yesterday.strftime("%Y-%m-%d"), tomorrow.strftime("%Y-%m-%d")}
+                
+                for item in data["data"]:
+                    open_trade_date_str = item.get("open_trade_date", "")
+                    # Extract YYYY-MM-DD
+                    if len(open_trade_date_str) >= 10:
+                        trade_date_part = open_trade_date_str[:10]
+                        if trade_date_part not in accepted_dates:
+                            # print(f"Skipping {item.get('ticker')} with date {trade_date_part} (not relevant today)")
+                            continue
+                            
+                    symbol = item.get("ticker")
+                    if symbol:
+                        try:
+                            symbols.append(get_stock_contract(app, symbol))
+                        except IncompleteDataError as e:
+                            print(f"Skipping {symbol}: {e}")
+                            continue
+            else:
+                 print(f"Invalid format in {filename}: 'data' array missing.")
+    except Exception as e:
+        print(f"Error reading {filename}: {e}")        
+        
     return symbols
+
+def save_results_to_json(symbol: str, underlying_price_data: PriceData, expected_move: float, average_percent_move: float, lower_boundary: float, upper_boundary: float, historic_moves: list = None):
+    directory = "docs/data"
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    
+    filepath = os.path.join(directory, f"{symbol}.json")
+    
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    # Underlying Prices
+    underlying_prices = {
+        "Bid": underlying_price_data.get("BID"),
+        "Ask": underlying_price_data.get("ASK"),
+        "get_instrument_value": underlying_price_data.get_instrument_value()
+    }
+    
+    # Option Prices
+    option_prices_list = []
+    if symbol in options_chain:
+        for local_symbol, details in options_chain[symbol].items():
+            if local_symbol in price_data:
+                p_data = price_data[local_symbol]
+                
+                # Check if strike is within boundaries
+                strike = details.contract.strike
+                # Calculate double expected move boundaries again for filtering (or pass them as args if preferred)
+                # For simplicity, we just check if we have data. If we have data, it means it was requested.
+                # The request logic in main() already filtered by boundaries.
+                
+                opt_entry = {
+                    "contract_localSymbol": local_symbol,
+                    "contract_strike": details.contract.strike,
+                    "contract_right": details.contract.right,
+                    "Bid": p_data.get("BID"),
+                    "Ask": p_data.get("ASK"),
+                    "IV": p_data.get("IV"),
+                    "call_open_interest": p_data.get("OPTION_CALL_OPEN_INTEREST"),
+                    "put_open_interest": p_data.get("OPTION_PUT_OPEN_INTEREST"),
+                    "theta": p_data.get("THETA"),
+                    "delta": p_data.get("DELTA"),
+                    "gamma": p_data.get("GAMMA"),
+                    "vega": p_data.get("VEGA"),
+                    "price": p_data.get_instrument_value()
+                }
+                option_prices_list.append(opt_entry)
+    
+    recommendation = {
+        "expected_move": expected_move,
+        "average_percent_move": average_percent_move,
+        "lower_boundary": lower_boundary,
+        "upper_boundary": upper_boundary
+    }
+    
+    new_entry = {
+        "timestamp": timestamp,
+        "underlying_prices": underlying_prices,
+        "option_prices": option_prices_list,
+        "recommendation": recommendation
+    }
+    
+    data = {"prices": []}
+    if os.path.exists(filepath):
+        try:
+            with open(filepath, "r") as f:
+                content = f.read()
+                if content:
+                    data = json.loads(content)
+        except json.JSONDecodeError:
+            print(f"Error reading {filepath}, starting fresh.")
+            
+    if isinstance(data, list):
+        # Handle legacy format where root might have been a list
+        data = {"prices": data}
+        
+    if "prices" not in data:
+        data["prices"] = []
+
+    # Ensure historic_move is created or updated if provided
+    if historic_moves is not None:
+        data["historic_move"] = historic_moves
+    elif "historic_move" not in data:
+        # Optional: initialize if missing and not provided? 
+        # No, better to leave it absent if we don't have data, 
+        # but the request says "created if it is not present". 
+        # But we can't create it without data. 
+        # Assuming the caller always provides it when available.
+        pass
+
+    data["prices"].append(new_entry)
+    
+    with open(filepath, "w") as f:
+        json.dump(data, f, indent=4)
+    print(f"Saved results to {filepath}")
 
 def main():
     app,args = init()
     contracts : list[Contract] = []
-    if args.symbol == None or args.symbol == "":
-        print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - No symbol provided using --symbol. Proceeding with watchlist file {args.watchlist_file}")
-        contracts = get_contracts_from_watchlist(app, args.watchlist_file)
-    else: 
+    if args.symbol:
         stock_contract : Contract = None
         try:
             stock_contract = get_stock_contract(app, args.symbol)
         except IncompleteDataError as e:
             print(f"Failed to get contract information for {args.symbol}. Aborting")
-
         if stock_contract != None:
             contracts.append(stock_contract)
+    elif args.earnings_week:
+        if args.earnings_week == "current":
+             today = datetime.date.today()
+             # Monday is 0
+             start_of_week = today - datetime.timedelta(days=today.weekday())
+             args.earnings_week = start_of_week.strftime("%Y-%m-%d")
 
+        earnings_file=f"docs/data/earnings-for-week-starting-{args.earnings_week}.json"
+        print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - Processing earnings week file: {earnings_file}")
+        contracts = get_contracts_from_earnings_file(app, earnings_file)
+    else:
+         print("No symbol or earnings week file provided.")
+    
     if len(contracts)>0:
         for contract in contracts:
             print(f"----------------------------------------------------------------------")
@@ -477,24 +633,91 @@ def main():
                 continue
 
             get_option_chain(app=app, symbol=contract.symbol)
+            
+
+            
             try:
-                expected_move = determine_expected_move(contract=contract, app=app)
-            except IncompleteDataError as e:
-                print(f"Skipping {contract.symbol}: {e}")
+                try:
+                    expected_move = determine_expected_move(contract=contract, app=app)
+                except IncompleteDataError as e:
+                    print(f"Skipping {contract.symbol}: {e}")
+                    continue
+                
+                double_expected_move_up = price_data[contract.symbol].get_instrument_value() + (2*expected_move)
+                double_expected_move_down = price_data[contract.symbol].get_instrument_value() - (2*expected_move)
+                
+                # Expand boundaries by 2 strikes
+                sorted_strikes = sorted(list(set(d.contract.strike for d in options_chain[contract.symbol].values())))
+                
+                # Find index just inside or at lower boundary
+                idx_min = 0
+                for i, s in enumerate(sorted_strikes):
+                    if s >= double_expected_move_down:
+                        idx_min = i
+                        break
+                
+                # Find index just inside or at upper boundary
+                idx_max = len(sorted_strikes) - 1
+                for i in range(len(sorted_strikes) - 1, -1, -1):
+                    if sorted_strikes[i] <= double_expected_move_up:
+                        idx_max = i
+                        break
+                
+                # Expand by 2 strikes
+                idx_min_expanded = max(0, idx_min - 2)
+                idx_max_expanded = min(len(sorted_strikes) - 1, idx_max + 2)
+                
+                filter_min_strike = sorted_strikes[idx_min_expanded]
+                filter_max_strike = sorted_strikes[idx_max_expanded]
+
+                # Request market data only for options within boundaries
+                print(f"Retrieving data for options between {filter_min_strike} and {filter_max_strike} (expanded from {double_expected_move_down:.2f} - {double_expected_move_up:.2f})...")
+                option_req_ids = []
+                options_to_fetch = 0
+                for key, details in options_chain[contract.symbol].items():
+                    strike = details.contract.strike
+                    if filter_min_strike <= strike <= filter_max_strike:
+                        reqId = request_market_data(app, details.contract)
+                        option_req_ids.append(reqId)
+                        options_to_fetch += 1
+                
+                print(f"Requested data for {options_to_fetch} options out of {len(options_chain[contract.symbol])} total.")
+                
+                # Wait for data to populate (max 10 seconds)
+                def check_remaining():
+                    remaining = len([rid for rid in option_req_ids if rid in ibrequests_marketData])
+                    sys.stdout.write(f"\rWaiting for {remaining} options to populate...   ")
+                    sys.stdout.flush()
+                    return remaining == 0
+                
+                wait(check_remaining, wait_time=10, wait_step=0.5)
+                print()
+                print(f"Data retrieval finished or timed out. Pending requests: {len([rid for rid in option_req_ids if rid in ibrequests_marketData])}")
+
+                average_percent_move, top_moves = evalulate_stock_history(app=app, contract=contract)
+
+                usual_up_spike = price_data[contract.symbol].get_instrument_value() + (average_percent_move / 100) * price_data[contract.symbol].get_instrument_value()
+                usual_down_spike = price_data[contract.symbol].get_instrument_value() - (average_percent_move / 100) * price_data[contract.symbol].get_instrument_value()
+
+                upper_boundary = max(double_expected_move_up, usual_up_spike)
+                lower_boundary = min(double_expected_move_down, usual_down_spike)
+
+                print(f"\nExpected move for {contract.symbol} is: {expected_move:.2f}. That is, we are looking at {double_expected_move_down:.2f} ... {price_data[contract.symbol].get_instrument_value():.2f} ... {double_expected_move_up:.2f} as the range for the next week.")
+                print(f"Average percent move of the 14 largest daily spikes over the past 3 years: {average_percent_move:.2f}%. Applied to current price, we are looking at {usual_down_spike:.2f} ... {price_data[contract.symbol].get_instrument_value():.2f} ... {usual_up_spike:.2f}")
+                print(f"Being careful, interesting strangle boundaries for {contract.symbol} are: {lower_boundary:.2f} to {upper_boundary:.2f}\n")
+                
+                save_results_to_json(
+                    symbol=contract.symbol,
+                    underlying_price_data=price_data[contract.symbol],
+                    expected_move=expected_move,
+                    average_percent_move=average_percent_move,
+                    lower_boundary=lower_boundary,
+                    upper_boundary=upper_boundary,
+                    historic_moves=top_moves
+                )
+            except Exception as e:
+                print(f"Error processing {contract.symbol}: {e}")
                 continue
-            average_percent_move = evalulate_stock_history(app=app, contract=contract)
-            double_expected_move_up = price_data[contract.symbol].get("MARK_PRICE") + (2*expected_move)
-            double_expected_move_down = price_data[contract.symbol].get("MARK_PRICE") - (2*expected_move)
-
-            usual_up_spike = price_data[contract.symbol].get("MARK_PRICE") + (average_percent_move / 100) * price_data[contract.symbol].get("MARK_PRICE")
-            usual_down_spike = price_data[contract.symbol].get("MARK_PRICE") - (average_percent_move / 100) * price_data[contract.symbol].get("MARK_PRICE")
-
-            upper_boundary = max(double_expected_move_up, usual_up_spike)
-            lower_boundary = min(double_expected_move_down, usual_down_spike)
-
-            print(f"\nExpected move for {contract.symbol} is: {expected_move:.2f}. That is, we are looking at {double_expected_move_down:.2f} ... {price_data[contract.symbol].get('MARK_PRICE'):.2f} ... {double_expected_move_up:.2f} as the range for the next week.")
-            print(f"Average percent move of the 14 largest daily spikes over the past 3 years: {average_percent_move:.2f}%. Applied to current price, we are looking at {usual_down_spike:.2f} ... {price_data[contract.symbol].get('MARK_PRICE'):.2f} ... {usual_up_spike:.2f}")
-            print(f"Being careful, interesting strangle boundaries for {contract.symbol} are: {lower_boundary:.2f} to {upper_boundary:.2f}\n")
         
     terminate(app=app, message=f"Done.")
 
