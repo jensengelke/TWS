@@ -125,9 +125,25 @@
         <table id="options-table">
             <thead>
                 <tr>
-                    <th>Contract</th>
+                    <th colspan="8" style="text-align: center;">Calls</th>
+                    <th></th>
+                    <th colspan="8" style="text-align: center;">Puts</th>
+                </tr>
+                <tr>
+                    <!-- Calls -->
+                    <th>Theta</th>
+                    <th>Vega</th>
+                    <th>Gamma</th>
+                    <th>Delta</th>
+                    <th>IV</th>
+                    <th>Price</th>
+                    <th>Ask</th>
+                    <th>Bid</th>
+
+                    <!-- Middle -->
                     <th>Strike</th>
-                    <th>Right</th>
+
+                    <!-- Puts -->
                     <th>Bid</th>
                     <th>Ask</th>
                     <th>Price</th>
@@ -167,7 +183,6 @@
                 }
 
                 // Sort timestamps desc (newest first)
-                // Assuming timestamp string format sorts correctly lexicographically or parse date
                 allData = json.prices.sort((a, b) => {
                     return new Date(b.timestamp) - new Date(a.timestamp);
                 });
@@ -288,24 +303,68 @@
             optBody.innerHTML = '';
             const opts = entry.option_prices;
 
-            // Sort options by strike
-            opts.sort((a, b) => a.contract_strike - b.contract_strike);
-
+            // Group by strike
+            const optionsByStrike = {};
             opts.forEach(opt => {
+                const strike = parseFloat(opt.contract_strike);
+                if (!optionsByStrike[strike]) {
+                    optionsByStrike[strike] = { call: null, put: null };
+                }
+                if (opt.contract_right === 'C') {
+                    optionsByStrike[strike].call = opt;
+                } else if (opt.contract_right === 'P') {
+                    optionsByStrike[strike].put = opt;
+                }
+            });
+
+            // Sort strikes
+            const strikes = Object.keys(optionsByStrike).map(parseFloat).sort((a, b) => a - b);
+
+            strikes.forEach(strike => {
+                const data = optionsByStrike[strike];
+                const call = data.call;
+                const put = data.put;
+
                 const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${opt.contract_localSymbol}</td>
-                    <td>${opt.contract_strike}</td>
-                    <td>${opt.contract_right}</td>
-                    <td>${formatFloat(opt.Bid)}</td>
-                    <td>${formatFloat(opt.Ask)}</td>
-                    <td>${formatFloat(opt.price)}</td>
-                    <td>${formatFloat(opt.IV)}</td>
-                    <td>${formatFloat(opt.delta)}</td>
-                    <td>${formatFloat(opt.gamma)}</td>
-                    <td>${formatFloat(opt.vega)}</td>
-                    <td>${formatFloat(opt.theta)}</td>
-                `;
+
+                // Helper to generate cells
+                const cell = (val) => `<td>${formatFloat(val)}</td>`;
+                const emptyCells = (count) => '<td>-</td>'.repeat(count);
+
+                let html = '';
+
+                // Calls
+                if (call) {
+                    html += cell(call.theta);
+                    html += cell(call.vega);
+                    html += cell(call.gamma);
+                    html += cell(call.delta);
+                    html += cell(call.IV);
+                    html += cell(call.price);
+                    html += cell(call.Ask);
+                    html += cell(call.Bid);
+                } else {
+                    html += emptyCells(8);
+                }
+
+                // Strike
+                html += `<td style="font-weight: bold; background-color: #f0f0f0; text-align: center;">${strike}</td>`;
+
+                // Puts
+                if (put) {
+                    html += cell(put.Bid);
+                    html += cell(put.Ask);
+                    html += cell(put.price);
+                    html += cell(put.IV);
+                    html += cell(put.delta);
+                    html += cell(put.gamma);
+                    html += cell(put.vega);
+                    html += cell(put.theta);
+                } else {
+                    html += emptyCells(8);
+                }
+
+                row.innerHTML = html;
                 optBody.appendChild(row);
             });
         }
