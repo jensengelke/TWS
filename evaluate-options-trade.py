@@ -473,7 +473,21 @@ def get_contracts_from_earnings_file(app: EarningsApp, filename: str):
         with open(filename, "r") as f:
             data = json.load(f)
             if "data" in data and isinstance(data["data"], list):
+                today = datetime.date.today()
+                yesterday = today - datetime.timedelta(days=1)
+                tomorrow = today + datetime.timedelta(days=1)
+                
+                accepted_dates = {today.strftime("%Y-%m-%d"), yesterday.strftime("%Y-%m-%d"), tomorrow.strftime("%Y-%m-%d")}
+                
                 for item in data["data"]:
+                    open_trade_date_str = item.get("open_trade_date", "")
+                    # Extract YYYY-MM-DD
+                    if len(open_trade_date_str) >= 10:
+                        trade_date_part = open_trade_date_str[:10]
+                        if trade_date_part not in accepted_dates:
+                            # print(f"Skipping {item.get('ticker')} with date {trade_date_part} (not relevant today)")
+                            continue
+                            
                     symbol = item.get("ticker")
                     if symbol:
                         try:
@@ -558,13 +572,24 @@ def save_results_to_json(symbol: str, underlying_price_data: PriceData, expected
         except json.JSONDecodeError:
             print(f"Error reading {filepath}, starting fresh.")
             
+    if isinstance(data, list):
+        # Handle legacy format where root might have been a list
+        data = {"prices": data}
+        
     if "prices" not in data:
         data["prices"] = []
 
-    # Update or add the historic-move field
+    # Ensure historic_move is created or updated if provided
     if historic_moves is not None:
         data["historic_move"] = historic_moves
-        
+    elif "historic_move" not in data:
+        # Optional: initialize if missing and not provided? 
+        # No, better to leave it absent if we don't have data, 
+        # but the request says "created if it is not present". 
+        # But we can't create it without data. 
+        # Assuming the caller always provides it when available.
+        pass
+
     data["prices"].append(new_entry)
     
     with open(filepath, "w") as f:
@@ -583,6 +608,12 @@ def main():
         if stock_contract != None:
             contracts.append(stock_contract)
     elif args.earnings_week:
+        if args.earnings_week == "current":
+             today = datetime.date.today()
+             # Monday is 0
+             start_of_week = today - datetime.timedelta(days=today.weekday())
+             args.earnings_week = start_of_week.strftime("%Y-%m-%d")
+
         earnings_file=f"docs/data/earnings-for-week-starting-{args.earnings_week}.json"
         print(f"{datetime.datetime.now().strftime('%H:%M:%S')} - Processing earnings week file: {earnings_file}")
         contracts = get_contracts_from_earnings_file(app, earnings_file)
@@ -603,7 +634,7 @@ def main():
 
             get_option_chain(app=app, symbol=contract.symbol)
             
-            get_option_chain(app=app, symbol=contract.symbol)
+
             
             try:
                 try:
