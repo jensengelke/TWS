@@ -156,6 +156,22 @@
             </thead>
             <tbody></tbody>
         </table>
+
+        <h2>Historic Moves (Top 14 in last 3 years)</h2>
+        <table id="historic-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Open</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Close</th>
+                    <th>Candle Length</th>
+                    <th>Percent Move</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
     </div>
 
     <script>
@@ -195,6 +211,11 @@
                 renderData(allData[currentIndex]);
 
                 document.getElementById('content-area').style.display = 'block';
+
+                // Render Historic Moves (Static for the file)
+                if (json.historic_move) {
+                    renderHistoricMoves(json.historic_move);
+                }
 
             } catch (e) {
                 showError(e.message);
@@ -366,6 +387,35 @@
 
                 row.innerHTML = html;
                 optBody.appendChild(row);
+            });
+        }
+
+        function renderHistoricMoves(moves) {
+            const histBody = document.querySelector('#historic-table tbody');
+            histBody.innerHTML = '';
+
+            if (!moves || moves.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td colspan="7" style="text-align:center;">No historic move data available.</td>`;
+                histBody.appendChild(row);
+                return;
+            }
+
+            // Sort by percent_move descending just in case, though the backend sends them sorted usually
+            // but let's just render as is
+
+            moves.forEach(move => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${move.date}</td>
+                    <td>${formatFloat(move.open)}</td>
+                    <td>${formatFloat(move.high)}</td>
+                    <td>${formatFloat(move.low)}</td>
+                    <td>${formatFloat(move.close)}</td>
+                    <td>${formatFloat(move.candle_length)}</td>
+                    <td>${formatFloat(move.percent_move)}%</td>
+                `;
+                histBody.appendChild(row);
             });
         }
 
