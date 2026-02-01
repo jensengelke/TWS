@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Option Prices Viewer</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #eee;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #symbol-display {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        select {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        #error {
+            color: red;
+            background: #ffe6e6;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        .recommendation-panel {
+            background-color: #e6f7ff;
+            padding: 15px;
+            border-left: 5px solid #1890ff;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="symbol-display">Option Prices</div>
+
+    <div id="error"></div>
+
+    <div class="controls">
+        <button id="prev-btn" onclick="changeTimestamp(-1)">&lt;</button>
+        <select id="timestamp-select" onchange="loadTimestampData()">
+            <option value="" disabled selected>Loading...</option>
+        </select>
+        <button id="next-btn" onclick="changeTimestamp(1)">&gt;</button>
+    </div>
+
+    <div id="content-area" style="display:none;">
+        <div class="recommendation-panel">
+            <h3>Evaluation Results</h3>
+            <p><strong>Expected Move:</strong> <span id="rec-expected-move"></span></p>
+            <p><strong>Average Percent Move (3Y):</strong> <span id="rec-avg-move"></span>%</p>
+            <p><strong>Strangle Boundaries:</strong> <span id="rec-lower"></span> to <span id="rec-upper"></span></p>
+        </div>
+
+        <h2>Underlying Asset Data</h2>
+        <table id="underlying-table">
+            <thead>
+                <tr>
+                    <th>Bid</th>
+                    <th>Ask</th>
+                    <th>Mark Price (Instrument Value)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <h2>Option Prices</h2>
+        <table id="options-table">
+            <thead>
+                <tr>
+                    <th>Contract</th>
+                    <th>Strike</th>
+                    <th>Right</th>
+                    <th>Bid</th>
+                    <th>Ask</th>
+                    <th>Price</th>
+                    <th>IV</th>
+                    <th>Delta</th>
+                    <th>Gamma</th>
+                    <th>Vega</th>
+                    <th>Theta</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script>
+        let allData = [];
+        let currentIndex = -1;
+
+        async function init() {
+            const hash = window.location.hash;
+            if (!hash || !hash.includes('symbol=')) {
+                showError("No symbol provided in URL. Use #symbol=TICKER");
+                return;
+            }
+
+            const symbol = hash.split('symbol=')[1];
+            document.title = `Option Prices - ${symbol}`;
+            document.getElementById('symbol-display').textContent = `Option Prices: ${symbol}`;
+
+            try {
+                const response = await fetch(`data/${symbol}.json?t=${new Date().getTime()}`);
+                if (!response.ok) throw new Error(`Failed to load data for ${symbol}`);
+
+                const json = await response.json();
+                if (!json.prices || json.prices.length === 0) {
+                    throw new Error("No price data found in file.");
+                }
+
+                // Sort timestamps desc (newest first)
+                // Assuming timestamp string format sorts correctly lexicographically or parse date
+                allData = json.prices.sort((a, b) => {
+                    return new Date(b.timestamp) - new Date(a.timestamp);
+                });
+
+                populateDropdown();
+
+                // Select most recent (first)
+                currentIndex = 0;
+                updateControls();
+                renderData(allData[currentIndex]);
+
+                document.getElementById('content-area').style.display = 'block';
+
+            } catch (e) {
+                showError(e.message);
+            }
+        }
+
+        function populateDropdown() {
+            const select = document.getElementById('timestamp-select');
+            select.innerHTML = '';
+
+            allData.forEach((entry, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = entry.timestamp;
+                select.appendChild(option);
+            });
+        }
+
+        function updateControls() {
+            const select = document.getElementById('timestamp-select');
+            select.selectedIndex = currentIndex;
+
+            const prevBtn = document.getElementById('prev-btn'); // Newest is 0. Older is +1
+            const nextBtn = document.getElementById('next-btn');
+
+            // 'Previous' in time means going to a larger index (older date)
+            // 'Next' in time means going to a smaller index (newer date)
+            // Wait, the requirement says: 
+            // "< button ... to allow navigating to the prior timestamp's data" (Earlier time)
+            // "> button ... to allow navigating to the next later timestamp" (Later time)
+
+            // If sorted Newest (0) -> Oldest (N).
+            // Later timestamp = Index - 1
+            // Prior timestamp = Index + 1
+
+            // Let's align buttons to Time, not List Index.
+            // < (Prior/Earlier) -> Go to Older -> Index + 1
+            // > (Next/Later) -> Go to Newer -> Index - 1
+
+            const hasEarlier = currentIndex < allData.length - 1;
+            const hasLater = currentIndex > 0;
+
+            prevBtn.disabled = !hasEarlier;
+            nextBtn.disabled = !hasLater;
+        }
+
+        function changeTimestamp(direction) {
+            // direction -1 for Earlier (<), 1 for Later (>)
+            // But usually < is Left and > is Right.
+            // Requirement: "< button ... navigate to prior timestamp" (Older)
+            // "> button ... navigate to next later timestamp" (Newer)
+
+            // Current List: [Newest, ..., Oldest]
+            // If I want Prior (Older), I need to increase index.
+            // If I want Later (Newer), I need to decrease index.
+
+            let newIndex = currentIndex;
+
+            if (direction === -1) {
+                // User clicked < (Prior)
+                newIndex++;
+            } else {
+                // User clicked > (Next)
+                newIndex--;
+            }
+
+            if (newIndex >= 0 && newIndex < allData.length) {
+                currentIndex = newIndex;
+                updateControls();
+                renderData(allData[currentIndex]);
+            }
+        }
+
+        function loadTimestampData() {
+            const select = document.getElementById('timestamp-select');
+            currentIndex = parseInt(select.value);
+            updateControls();
+            renderData(allData[currentIndex]);
+        }
+
+        function renderData(entry) {
+            // Recommendation
+            if (entry.recommendation) {
+                document.getElementById('rec-expected-move').textContent = formatFloat(entry.recommendation.expected_move);
+                document.getElementById('rec-avg-move').textContent = formatFloat(entry.recommendation.average_percent_move);
+                document.getElementById('rec-lower').textContent = formatFloat(entry.recommendation.lower_boundary);
+                document.getElementById('rec-upper').textContent = formatFloat(entry.recommendation.upper_boundary);
+            }
+
+            // Underlying Table
+            const undBody = document.querySelector('#underlying-table tbody');
+            undBody.innerHTML = '';
+            const uPrices = entry.underlying_prices;
+            if (uPrices) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${formatFloat(uPrices.Bid)}</td>
+                    <td>${formatFloat(uPrices.Ask)}</td>
+                    <td><b>${formatFloat(uPrices.get_instrument_value)}</b></td>
+                `;
+                undBody.appendChild(row);
+            }
+
+            // Options Table
+            const optBody = document.querySelector('#options-table tbody');
+            optBody.innerHTML = '';
+            const opts = entry.option_prices;
+
+            // Sort options by strike
+            opts.sort((a, b) => a.contract_strike - b.contract_strike);
+
+            opts.forEach(opt => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${opt.contract_localSymbol}</td>
+                    <td>${opt.contract_strike}</td>
+                    <td>${opt.contract_right}</td>
+                    <td>${formatFloat(opt.Bid)}</td>
+                    <td>${formatFloat(opt.Ask)}</td>
+                    <td>${formatFloat(opt.price)}</td>
+                    <td>${formatFloat(opt.IV)}</td>
+                    <td>${formatFloat(opt.delta)}</td>
+                    <td>${formatFloat(opt.gamma)}</td>
+                    <td>${formatFloat(opt.vega)}</td>
+                    <td>${formatFloat(opt.theta)}</td>
+                `;
+                optBody.appendChild(row);
+            });
+        }
+
+        function formatFloat(val) {
+            if (val === null || val === undefined) return '-';
+            return parseFloat(val).toFixed(2);
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('error');
+            el.textContent = msg;
+            el.style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+
+</html>

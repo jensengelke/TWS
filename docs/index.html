@@ -89,6 +89,7 @@
                 <th>Ticker</th>
                 <th>Scheduled Earnings Date</th>
                 <th>Date to open Vola Crush options trade</th>
+                <th>Option Prices</th>
             </tr>
         </thead>
         <tbody>
@@ -193,12 +194,21 @@
                         tdOpen.textContent = row.open_trade_date;
                         tr.appendChild(tdOpen);
 
+                        // Option Prices Cell
+                        const tdOptions = document.createElement('td');
+                        const optionsLink = document.createElement('a');
+                        optionsLink.href = `option-prices.html#symbol=${row.ticker}`;
+                        optionsLink.target = "_blank";
+                        optionsLink.textContent = "View Options";
+                        tdOptions.appendChild(optionsLink);
+                        tr.appendChild(tdOptions);
+
                         tableBody.appendChild(tr);
                     });
                 } else {
                     const tr = document.createElement('tr');
                     const td = document.createElement('td');
-                    td.colSpan = 3;
+                    td.colSpan = 4;
                     td.textContent = "No earnings data found for this week.";
                     td.style.textAlign = "center";
                     tr.appendChild(td);
