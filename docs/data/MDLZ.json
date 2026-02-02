@@ -1,0 +1,18 @@
+{
+    "prices": [
+        {
+            "timestamp": "2026-02-02 10:50:21",
+            "underlying_prices": {
+                "Bid": 58.46,
+                "Ask": 58.47,
+                "get_instrument_value": 58.465
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "MDLZ  260206C00053000",
+                    "contract_strike": 53.0,
+                    "contract_right": "C",
+                    "Bid": 5.2,
+                    "Ask": 6.7,
+                    "IV": null,
+                    "call_open_interest": 

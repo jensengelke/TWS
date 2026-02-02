@@ -1,0 +1,18 @@
+{
+    "prices": [
+        {
+            "timestamp": "2026-02-02 10:52:42",
+            "underlying_prices": {
+                "Bid": 79.16,
+                "Ask": 79.23,
+                "get_instrument_value": 79.195
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "GEHC  260206C00072000",
+                    "contract_strike": 72.0,
+                    "contract_right": "C",
+                    "Bid": 6.1,
+                    "Ask": 8.5,
+                    "IV": 1.1905328197812848,
+                    "call_open_interest": 

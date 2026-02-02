@@ -1,0 +1,18 @@
+{
+    "prices": [
+        {
+            "timestamp": "2026-02-02 10:50:01",
+            "underlying_prices": {
+                "Bid": 441.67,
+                "Ask": 442.02,
+                "get_instrument_value": 441.845
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "LITE  260206C00315000",
+                    "contract_strike": 315.0,
+                    "contract_right": "C",
+                    "Bid": 127.5,
+                    "Ask": 131.6,
+                    "IV": null,
+                    "call_open_interest": 
