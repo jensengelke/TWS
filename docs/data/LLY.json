@@ -1,18 +1,18 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 11:51:01",
+            "timestamp": "2026-02-02 12:52:21",
             "underlying_prices": {
-                "Bid": 1049.76,
-                "Ask": 1050.5,
-                "get_instrument_value": 1050.13
+                "Bid": 1054.03,
+                "Ask": 1054.5,
+                "get_instrument_value": 1054.27001953
             },
             "option_prices": [
                 {
                     "contract_localSymbol": "LLY   260206C01005000",
                     "contract_strike": 1005.0,
                     "contract_right": "C",
-                    "Bid": 57.85,
-                    "Ask": 64.0,
+                    "Bid": 61.35,
+                    "Ask": 65.75,
                     "IV": null,
                     "call_open_interest": 

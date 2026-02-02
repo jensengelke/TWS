@@ -1,18 +1,18 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 11:44:51",
+            "timestamp": "2026-02-02 12:45:55",
             "underlying_prices": {
-                "Bid": 251.76,
-                "Ask": 252.12,
-                "get_instrument_value": 251.91499329
+                "Bid": 249.44,
+                "Ask": 249.79,
+                "get_instrument_value": 249.615
             },
             "option_prices": [
                 {
-                    "contract_localSymbol": "TER   260206P00252500",
-                    "contract_strike": 252.5,
-                    "contract_right": "P",
-                    "Bid": 16.4,
-                    "Ask": 18.3,
-                    "IV": 1.5424846918945985,
+                    "contract_localSymbol": "TER   260206C00182500",
+                    "contract_strike": 182.5,
+                    "contract_right": "C",
+                    "Bid": 67.0,
+                    "Ask": 69.9,
+                    "IV": null,
                     "call_open_interest": 

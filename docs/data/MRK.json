@@ -1,18 +1,18 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 11:45:50",
+            "timestamp": "2026-02-02 12:46:43",
             "underlying_prices": {
-                "Bid": 112.31,
-                "Ask": 112.32,
-                "get_instrument_value": 112.315
+                "Bid": 112.46,
+                "Ask": 112.49,
+                "get_instrument_value": 112.475
             },
             "option_prices": [
                 {
-                    "contract_localSymbol": "MRK   260206P00112000",
-                    "contract_strike": 112.0,
-                    "contract_right": "P",
-                    "Bid": 2.4,
-                    "Ask": 2.83,
-                    "IV": 0.5732910531005322,
+                    "contract_localSymbol": "MRK   260206C00104000",
+                    "contract_strike": 104.0,
+                    "contract_right": "C",
+                    "Bid": 8.1,
+                    "Ask": 9.4,
+                    "IV": null,
                     "call_open_interest": 

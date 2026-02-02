@@ -1,18 +1,18 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 11:51:59",
+            "timestamp": "2026-02-02 12:53:26",
             "underlying_prices": {
-                "Bid": 81.03,
-                "Ask": 81.07,
-                "get_instrument_value": 81.05
+                "Bid": 81.58,
+                "Ask": 81.6,
+                "get_instrument_value": 81.59
             },
             "option_prices": [
                 {
-                    "contract_localSymbol": "UBER  260206C00069000",
-                    "contract_strike": 69.0,
+                    "contract_localSymbol": "UBER  260206C00070000",
+                    "contract_strike": 70.0,
                     "contract_right": "C",
-                    "Bid": 11.05,
-                    "Ask": 12.85,
+                    "Bid": 10.4,
+                    "Ask": 11.9,
                     "IV": null,
                     "call_open_interest": 

@@ -1,18 +1,18 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 11:44:35",
+            "timestamp": "2026-02-02 12:45:40",
             "underlying_prices": {
-                "Bid": 149.31,
-                "Ask": 149.33,
-                "get_instrument_value": 149.32
+                "Bid": 149.65,
+                "Ask": 149.66,
+                "get_instrument_value": 149.655
             },
             "option_prices": [
                 {
                     "contract_localSymbol": "PLTR  260206P00177500",
                     "contract_strike": 177.5,
                     "contract_right": "P",
-                    "Bid": 28.2,
-                    "Ask": 29.85,
+                    "Bid": 28.15,
+                    "Ask": 28.95,
                     "IV": null,
                     "call_open_interest": 
