@@ -1,0 +1,18 @@
+{
+    "prices": [
+        {
+            "timestamp": "2026-02-02 11:51:18",
+            "underlying_prices": {
+                "Bid": 58.89,
+                "Ask": 58.9,
+                "get_instrument_value": 58.894999999999996
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "NVO   260206C00050000",
+                    "contract_strike": 50.0,
+                    "contract_right": "C",
+                    "Bid": 8.7,
+                    "Ask": 9.5,
+                    "IV": null,
+                    "call_open_interest": 

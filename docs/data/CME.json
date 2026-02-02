@@ -1,18 +1,18 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 10:52:24",
+            "timestamp": "2026-02-02 11:50:23",
             "underlying_prices": {
-                "Bid": 288.7,
-                "Ask": 288.93,
-                "get_instrument_value": 288.81500244
+                "Bid": 289.64,
+                "Ask": 289.87,
+                "get_instrument_value": 289.75500488
             },
             "option_prices": [
                 {
                     "contract_localSymbol": "CME   260206C00270000",
                     "contract_strike": 270.0,
                     "contract_right": "C",
-                    "Bid": 18.6,
-                    "Ask": 21.4,
-                    "IV": null,
+                    "Bid": 19.2,
+                    "Ask": 21.6,
+                    "IV": 0.6696859609114111,
                     "call_open_interest": 

@@ -1,0 +1,18 @@
+{
+    "prices": [
+        {
+            "timestamp": "2026-02-02 11:50:04",
+            "underlying_prices": {
+                "Bid": 92.92,
+                "Ask": 92.95,
+                "get_instrument_value": 92.935
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "BSX   260206C00100000",
+                    "contract_strike": 100.0,
+                    "contract_right": "C",
+                    "Bid": 0.45,
+                    "Ask": 0.65,
+                    "IV": 0.6486120454940953,
+                    "call_open_interest": 

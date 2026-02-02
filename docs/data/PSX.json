@@ -1,0 +1,18 @@
+{
+    "prices": [
+        {
+            "timestamp": "2026-02-02 11:51:37",
+            "underlying_prices": {
+                "Bid": 141.86,
+                "Ask": 142.02,
+                "get_instrument_value": 141.88000488
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "PSX   260206C00130000",
+                    "contract_strike": 130.0,
+                    "contract_right": "C",
+                    "Bid": 10.8,
+                    "Ask": 13.8,
+                    "IV": null,
+                    "call_open_interest": 

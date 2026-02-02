@@ -1,11 +1,11 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 10:51:15",
+            "timestamp": "2026-02-02 11:49:31",
             "underlying_prices": {
-                "Bid": 228.26,
-                "Ask": 228.49,
-                "get_instrument_value": 228.375
+                "Bid": 227.09,
+                "Ask": 227.29,
+                "get_instrument_value": 227.28500366
             },
             "option_prices": [
                 {
@@ -13,6 +13,6 @@
                     "contract_strike": 190.0,
                     "contract_right": "C",
                     "Bid": 36.9,
-                    "Ask": 39.8,
-                    "IV": 1.3867415875678812,
+                    "Ask": 39.3,
+                    "IV": 0.9418486157151784,
                     "call_open_interest": 
