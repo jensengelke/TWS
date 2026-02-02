@@ -1,18 +1,48 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 10:50:21",
+            "timestamp": "2026-02-02 15:49:18",
             "underlying_prices": {
-                "Bid": 58.46,
-                "Ask": 58.47,
-                "get_instrument_value": 58.465
+                "Bid": 58.81,
+                "Ask": 58.82,
+                "get_instrument_value": 58.815
             },
             "option_prices": [
                 {
-                    "contract_localSymbol": "MDLZ  260206C00053000",
-                    "contract_strike": 53.0,
+                    "contract_localSymbol": "MDLZ  260206C00054000",
+                    "contract_strike": 54.0,
                     "contract_right": "C",
-                    "Bid": 5.2,
-                    "Ask": 6.7,
+                    "Bid": 4.3,
+                    "Ask": 5.6,
                     "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 4.949999999999999
+                },
+                {
+                    "contract_localSymbol": "MDLZ  260206C00055000",
+                    "contract_strike": 55.0,
+                    "contract_right": "C",
+                    "Bid": 3.4,
+                    "Ask": 4.2,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 3.8
+                },
+                {
+                    "contract_localSymbol": "MDLZ  260206C00056000",
+                    "contract_strike": 56.0,
+                    "contract_right": "C",
+                    "Bid": 2.55,
+                    "Ask": 3.2,
+                    "IV": 0.4779112070172535,
                     "call_open_interest": 

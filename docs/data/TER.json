@@ -1,18 +1,33 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 12:45:55",
+            "timestamp": "2026-02-02 15:46:02",
             "underlying_prices": {
-                "Bid": 249.44,
-                "Ask": 249.79,
-                "get_instrument_value": 249.615
+                "Bid": 248.72,
+                "Ask": 249.14,
+                "get_instrument_value": 248.93
             },
             "option_prices": [
                 {
-                    "contract_localSymbol": "TER   260206C00182500",
-                    "contract_strike": 182.5,
-                    "contract_right": "C",
-                    "Bid": 67.0,
-                    "Ask": 69.9,
-                    "IV": null,
+                    "contract_localSymbol": "TER   260206P00210000",
+                    "contract_strike": 210.0,
+                    "contract_right": "P",
+                    "Bid": 3.1,
+                    "Ask": 3.8,
+                    "IV": 1.620126754210044,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -1.1341373948417166,
+                    "delta": -0.14395037865112698,
+                    "gamma": 0.00553889701047626,
+                    "vega": 0.06346045808513434,
+                    "price": 3.45
+                },
+                {
+                    "contract_localSymbol": "TER   260206P00220000",
+                    "contract_strike": 220.0,
+                    "contract_right": "P",
+                    "Bid": 5.5,
+                    "Ask": 6.0,
+                    "IV": 1.589557526935055,
                     "call_open_interest": 

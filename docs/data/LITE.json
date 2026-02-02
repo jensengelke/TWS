@@ -1,48 +1,18 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 12:49:08",
+            "timestamp": "2026-02-02 15:49:01",
             "underlying_prices": {
-                "Bid": 435.07,
-                "Ask": 436.5,
-                "get_instrument_value": 435.78499999999997
+                "Bid": 418.22,
+                "Ask": 419.0,
+                "get_instrument_value": 418.61
             },
             "option_prices": [
                 {
                     "contract_localSymbol": "LITE  260206C00315000",
                     "contract_strike": 315.0,
                     "contract_right": "C",
-                    "Bid": 121.2,
-                    "Ask": 125.5,
+                    "Bid": 105.1,
+                    "Ask": 108.8,
                     "IV": null,
-                    "call_open_interest": null,
-                    "put_open_interest": null,
-                    "theta": null,
-                    "delta": null,
-                    "gamma": null,
-                    "vega": null,
-                    "price": 123.35
-                },
-                {
-                    "contract_localSymbol": "LITE  260206C00320000",
-                    "contract_strike": 320.0,
-                    "contract_right": "C",
-                    "Bid": 116.6,
-                    "Ask": 120.9,
-                    "IV": null,
-                    "call_open_interest": null,
-                    "put_open_interest": null,
-                    "theta": null,
-                    "delta": null,
-                    "gamma": null,
-                    "vega": null,
-                    "price": 118.40470123
-                },
-                {
-                    "contract_localSymbol": "LITE  260206C00325000",
-                    "contract_strike": 325.0,
-                    "contract_right": "C",
-                    "Bid": 112.1,
-                    "Ask": 116.2,
-                    "IV": 1.9442811767825199,
                     "call_open_interest": 

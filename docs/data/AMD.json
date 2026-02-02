@@ -1,18 +1,18 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 12:47:32",
+            "timestamp": "2026-02-02 15:47:22",
             "underlying_prices": {
-                "Bid": 248.45,
-                "Ask": 248.52,
-                "get_instrument_value": 248.485
+                "Bid": 245.43,
+                "Ask": 245.48,
+                "get_instrument_value": 246.8999939
             },
             "option_prices": [
                 {
-                    "contract_localSymbol": "AMD   260206C00210000",
-                    "contract_strike": 210.0,
+                    "contract_localSymbol": "AMD   260206C00205000",
+                    "contract_strike": 205.0,
                     "contract_right": "C",
-                    "Bid": 39.1,
-                    "Ask": 39.5,
-                    "IV": 1.0331069366095027,
+                    "Bid": 40.65,
+                    "Ask": 41.55,
+                    "IV": 0.8848940771039351,
                     "call_open_interest": 

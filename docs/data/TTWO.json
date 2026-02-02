@@ -1,18 +1,18 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 12:50:28",
+            "timestamp": "2026-02-02 15:49:52",
             "underlying_prices": {
-                "Bid": 224.44,
-                "Ask": 224.75,
-                "get_instrument_value": 224.50999451
+                "Bid": 220.62,
+                "Ask": 220.73,
+                "get_instrument_value": 220.675
             },
             "option_prices": [
                 {
-                    "contract_localSymbol": "TTWO  260206C00190000",
-                    "contract_strike": 190.0,
+                    "contract_localSymbol": "TTWO  260206C00185000",
+                    "contract_strike": 185.0,
                     "contract_right": "C",
-                    "Bid": 34.4,
-                    "Ask": 37.3,
-                    "IV": 0.9108899714414557,
+                    "Bid": 35.2,
+                    "Ask": 38.2,
+                    "IV": null,
                     "call_open_interest": 

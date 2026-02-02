@@ -1,18 +1,48 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 12:45:40",
+            "timestamp": "2026-02-02 15:45:46",
             "underlying_prices": {
-                "Bid": 149.65,
-                "Ask": 149.66,
-                "get_instrument_value": 149.655
+                "Bid": 147.82,
+                "Ask": 147.83,
+                "get_instrument_value": 147.825
             },
             "option_prices": [
                 {
-                    "contract_localSymbol": "PLTR  260206P00177500",
-                    "contract_strike": 177.5,
+                    "contract_localSymbol": "PLTR  260206C00180000",
+                    "contract_strike": 180.0,
+                    "contract_right": "C",
+                    "Bid": 0.68,
+                    "Ask": 0.69,
+                    "IV": 1.271124953759973,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -0.36436974802688665,
+                    "delta": 0.0793325165882873,
+                    "gamma": 0.007506328146082821,
+                    "vega": 0.022164078035452506,
+                    "price": 0.685
+                },
+                {
+                    "contract_localSymbol": "PLTR  260206P00125000",
+                    "contract_strike": 125.0,
                     "contract_right": "P",
-                    "Bid": 28.15,
-                    "Ask": 28.95,
-                    "IV": null,
+                    "Bid": 0.9,
+                    "Ask": 0.92,
+                    "IV": 1.2679606144913929,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -0.4010925855240135,
+                    "delta": -0.09120527538267059,
+                    "gamma": 0.008366431935963153,
+                    "vega": 0.02426051772322424,
+                    "price": 0.91
+                },
+                {
+                    "contract_localSymbol": "PLTR  260206C00125000",
+                    "contract_strike": 125.0,
+                    "contract_right": "C",
+                    "Bid": 23.7,
+                    "Ask": 23.95,
+                    "IV": 1.2751146081431166,
                     "call_open_interest": 

@@ -1,18 +1,18 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 12:47:15",
+            "timestamp": "2026-02-02 15:47:04",
             "underlying_prices": {
-                "Bid": 52.76,
-                "Ask": 52.77,
-                "get_instrument_value": 52.765
+                "Bid": 52.54,
+                "Ask": 52.55,
+                "get_instrument_value": 52.545
             },
             "option_prices": [
                 {
-                    "contract_localSymbol": "PYPL  260206C00049000",
-                    "contract_strike": 49.0,
+                    "contract_localSymbol": "PYPL  260206C00047000",
+                    "contract_strike": 47.0,
                     "contract_right": "C",
-                    "Bid": 4.6,
-                    "Ask": 4.95,
-                    "IV": 1.2508159298145536,
+                    "Bid": 5.95,
+                    "Ask": 6.45,
+                    "IV": null,
                     "call_open_interest": 

@@ -1,18 +1,48 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 12:46:59",
+            "timestamp": "2026-02-02 15:46:49",
             "underlying_prices": {
-                "Bid": 155.67,
-                "Ask": 155.69,
-                "get_instrument_value": 155.68
+                "Bid": 156.28,
+                "Ask": 156.3,
+                "get_instrument_value": 156.29000000000002
             },
             "option_prices": [
+                {
+                    "contract_localSymbol": "PEP   260206C00165000",
+                    "contract_strike": 165.0,
+                    "contract_right": "C",
+                    "Bid": 0.45,
+                    "Ask": 0.52,
+                    "IV": 0.4386888510236311,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -0.18761069835742733,
+                    "delta": 0.12519964026651034,
+                    "gamma": 0.02879470004823345,
+                    "vega": 0.03711314305805158,
+                    "price": 0.485
+                },
+                {
+                    "contract_localSymbol": "PEP   260206P00145000",
+                    "contract_strike": 145.0,
+                    "contract_right": "P",
+                    "Bid": 0.28,
+                    "Ask": 0.32,
+                    "IV": 0.5130498942443547,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -0.1482384698092273,
+                    "delta": -0.07524786188644565,
+                    "gamma": 0.016982873606572364,
+                    "vega": 0.0267172772604653,
+                    "price": 0.30000000000000004
+                },
                 {
                     "contract_localSymbol": "PEP   260206C00145000",
                     "contract_strike": 145.0,
                     "contract_right": "C",
-                    "Bid": 10.95,
-                    "Ask": 11.8,
-                    "IV": 0.500389557286554,
+                    "Bid": 11.05,
+                    "Ask": 12.1,
+                    "IV": 0.5291177267291134,
                     "call_open_interest": 

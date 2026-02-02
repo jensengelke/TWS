@@ -1,18 +1,18 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 12:47:48",
+            "timestamp": "2026-02-02 15:47:39",
             "underlying_prices": {
-                "Bid": 345.32,
-                "Ask": 345.58,
-                "get_instrument_value": 345.45
+                "Bid": 344.51,
+                "Ask": 344.6,
+                "get_instrument_value": 344.555
             },
             "option_prices": [
                 {
-                    "contract_localSymbol": "AMGN  260206C00320000",
-                    "contract_strike": 320.0,
+                    "contract_localSymbol": "AMGN  260206C00315000",
+                    "contract_strike": 315.0,
                     "contract_right": "C",
-                    "Bid": 24.4,
-                    "Ask": 28.2,
+                    "Bid": 28.45,
+                    "Ask": 32.1,
                     "IV": null,
                     "call_open_interest": 
