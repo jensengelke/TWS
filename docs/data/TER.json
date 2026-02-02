@@ -3151,134 +3151,20 @@
                 "lower_boundary": 182.05000610000002,
                 "upper_boundary": 300.1500061
             }
-        }
-    ],
-    "historic_move": [
-        {
-            "date": "20250409",
-            "open": 69.4,
-            "high": 80.4,
-            "low": 68.13,
-            "close": 79.44,
-            "candle_length": 12.27000000000001,
-            "percent_move": 15.445619335347446
         },
         {
-            "date": "20250130",
-            "open": 102.15,
-            "high": 117.46,
-            "low": 100.77,
-            "close": 115.08,
-            "candle_length": 16.689999999999998,
-            "percent_move": 14.502954466458116
-        },
-        {
-            "date": "20250408",
-            "open": 75.58,
-            "high": 76.16,
-            "low": 66.39,
-            "close": 67.96,
-            "candle_length": 9.769999999999996,
-            "percent_move": 14.376103590347258
-        },
-        {
-            "date": "20250407",
-            "open": 67.46,
-            "high": 76.15,
-            "low": 65.77,
-            "close": 72.87,
-            "candle_length": 10.38000000000001,
-            "percent_move": 14.244545080279963
-        },
-        {
-            "date": "20250311",
-            "open": 91.89,
-            "high": 94.37,
-            "low": 82.98,
-            "close": 87.07,
-            "candle_length": 11.39,
-            "percent_move": 13.081428735500175
-        },
-        {
-            "date": "20251010",
-            "open": 145.8,
-            "high": 148.0,
-            "low": 131.75,
-            "close": 132.08,
-            "candle_length": 16.25,
-            "percent_move": 12.303149606299211
-        },
-        {
-            "date": "20251120",
-            "open": 172.2,
-            "high": 173.83,
-            "low": 154.71,
-            "close": 155.9,
-            "candle_length": 19.120000000000005,
-            "percent_move": 12.264271969211036
-        },
-        {
-            "date": "20240801",
-            "open": 128.77,
-            "high": 131.62,
-            "low": 119.65,
-            "close": 121.74,
-            "candle_length": 11.969999999999999,
-            "percent_move": 9.832429768358796
-        },
-        {
-            "date": "20240805",
-            "open": 110.17,
-            "high": 119.62,
-            "low": 109.15,
-            "close": 116.39,
-            "candle_length": 10.469999999999999,
-            "percent_move": 8.995618180256034
-        },
-        {
-            "date": "20251029",
-            "open": 170.01,
-            "high": 177.24,
-            "low": 162.16,
-            "close": 173.94,
-            "candle_length": 15.080000000000013,
-            "percent_move": 8.669656203288497
-        },
-        {
-            "date": "20250410",
-            "open": 75.33,
-            "high": 76.42,
-            "low": 70.28,
-            "close": 72.29,
-            "candle_length": 6.140000000000001,
-            "percent_move": 8.493567575044958
-        },
-        {
-            "date": "20240807",
-            "open": 121.99,
-            "high": 123.18,
-            "low": 113.5,
-            "close": 114.25,
-            "candle_length": 9.680000000000007,
-            "percent_move": 8.47264770240701
-        },
-        {
-            "date": "20240903",
-            "open": 133.49,
-            "high": 134.32,
-            "low": 123.79,
-            "close": 124.54,
-            "candle_length": 10.529999999999987,
-            "percent_move": 8.455114822546962
-        },
-        {
-            "date": "20241218",
-            "open": 129.94,
-            "high": 133.34,
-            "low": 122.94,
-            "close": 123.77,
-            "candle_length": 10.400000000000006,
-            "percent_move": 8.402682394764488
-        }
-    ]
-}
+            "timestamp": "2026-02-02 10:01:54",
+            "underlying_prices": {
+                "Bid": 247.09,
+                "Ask": 247.85,
+                "get_instrument_value": 247.47000122
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "TER   260206C00182500",
+                    "contract_strike": 182.5,
+                    "contract_right": "C",
+                    "Bid": 63.7,
+                    "Ask": 66.9,
+                    "IV": null,
+                    "call_open_interest": 

@@ -975,6 +975,20 @@
                 "lower_boundary": 197.23499451,
                 "upper_boundary": 276.28499451000005
             }
-        }
-    ]
-}
+        },
+        {
+            "timestamp": "2026-02-02 10:03:45",
+            "underlying_prices": {
+                "Bid": 245.52,
+                "Ask": 245.65,
+                "get_instrument_value": 245.585
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "AMD   260206C00205000",
+                    "contract_strike": 205.0,
+                    "contract_right": "C",
+                    "Bid": 41.1,
+                    "Ask": 41.75,
+                    "IV": 1.0489664566816854,
+                    "call_open_interest": 
