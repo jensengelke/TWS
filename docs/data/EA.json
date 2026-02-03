@@ -1,0 +1,328 @@
+{
+    "prices": [
+        {
+            "timestamp": "2026-02-03 04:28:00",
+            "underlying_prices": {
+                "Bid": 203.6,
+                "Ask": 206.0,
+                "get_instrument_value": 203.6000061
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "EA    260206C00200000",
+                    "contract_strike": 200.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 3.74554992
+                },
+                {
+                    "contract_localSymbol": "EA    260206C00205000",
+                    "contract_strike": 205.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 75.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 0.247214
+                },
+                {
+                    "contract_localSymbol": "EA    260206C00210000",
+                    "contract_strike": 210.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 6.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 0.0363748
+                },
+                {
+                    "contract_localSymbol": "EA    260206P00200000",
+                    "contract_strike": 200.0,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 102.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 0.0515514
+                },
+                {
+                    "contract_localSymbol": "EA    260206P00205000",
+                    "contract_strike": 205.0,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.60167003
+                },
+                {
+                    "contract_localSymbol": "EA    260206P00210000",
+                    "contract_strike": 210.0,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 6.42798996
+                },
+                {
+                    "contract_localSymbol": "EA    260206C00197500",
+                    "contract_strike": 197.5,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 6.26433992
+                },
+                {
+                    "contract_localSymbol": "EA    260206C00202500",
+                    "contract_strike": 202.5,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.33825004
+                },
+                {
+                    "contract_localSymbol": "EA    260206C00207500",
+                    "contract_strike": 207.5,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "EA    260206P00197500",
+                    "contract_strike": 197.5,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 0.0718288
+                },
+                {
+                    "contract_localSymbol": "EA    260206P00202500",
+                    "contract_strike": 202.5,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 1.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 0.155976
+                },
+                {
+                    "contract_localSymbol": "EA    260206P00207500",
+                    "contract_strike": 207.5,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                }
+            ],
+            "recommendation": {
+                "expected_move": 0.89649572,
+                "average_percent_move": 6.022377397920276,
+                "lower_boundary": 191.3384453504693,
+                "upper_boundary": 215.8615668495307
+            }
+        }
+    ],
+    "historic_move": [
+        {
+            "date": "20250926",
+            "open": 172.62,
+            "high": 197.33,
+            "low": 170.08,
+            "close": 193.35,
+            "candle_length": 27.25,
+            "percent_move": 14.093612619601759
+        },
+        {
+            "date": "20250404",
+            "open": 143.1,
+            "high": 144.69,
+            "low": 135.03,
+            "close": 135.34,
+            "candle_length": 9.659999999999997,
+            "percent_move": 7.137579429584746
+        },
+        {
+            "date": "20230711",
+            "open": 130.54,
+            "high": 139.38,
+            "low": 130.5,
+            "close": 137.33,
+            "candle_length": 8.879999999999995,
+            "percent_move": 6.466176363503965
+        },
+        {
+            "date": "20250409",
+            "open": 131.84,
+            "high": 140.59,
+            "low": 131.81,
+            "close": 136.58,
+            "candle_length": 8.780000000000001,
+            "percent_move": 6.428466832625568
+        },
+        {
+            "date": "20250123",
+            "open": 117.52,
+            "high": 122.8,
+            "low": 115.45,
+            "close": 118.58,
+            "candle_length": 7.349999999999994,
+            "percent_move": 6.198347107438011
+        },
+        {
+            "date": "20250730",
+            "open": 151.9,
+            "high": 159.37,
+            "low": 150.87,
+            "close": 156.26,
+            "candle_length": 8.5,
+            "percent_move": 5.439651862280814
+        },
+        {
+            "date": "20250924",
+            "open": 174.12,
+            "high": 174.97,
+            "low": 166.1,
+            "close": 167.35,
+            "candle_length": 8.870000000000005,
+            "percent_move": 5.30026889752017
+        },
+        {
+            "date": "20230510",
+            "open": 129.32,
+            "high": 129.5,
+            "low": 122.93,
+            "close": 124.74,
+            "candle_length": 6.569999999999993,
+            "percent_move": 5.266955266955262
+        },
+        {
+            "date": "20240508",
+            "open": 127.09,
+            "high": 131.52,
+            "low": 125.07,
+            "close": 125.24,
+            "candle_length": 6.450000000000017,
+            "percent_move": 5.1501117853721
+        },
+        {
+            "date": "20250502",
+            "open": 149.0,
+            "high": 154.92,
+            "low": 147.85,
+            "close": 151.1,
+            "candle_length": 7.069999999999993,
+            "percent_move": 4.679020516214423
+        },
+        {
+            "date": "20240131",
+            "open": 134.61,
+            "high": 139.78,
+            "low": 133.51,
+            "close": 137.58,
+            "candle_length": 6.27000000000001,
+            "percent_move": 4.5573484518098635
+        },
+        {
+            "date": "20240522",
+            "open": 129.25,
+            "high": 135.33,
+            "low": 129.19,
+            "close": 135.14,
+            "candle_length": 6.140000000000015,
+            "percent_move": 4.543436436288305
+        },
+        {
+            "date": "20250507",
+            "open": 158.0,
+            "high": 160.71,
+            "low": 153.67,
+            "close": 155.5,
+            "candle_length": 7.0400000000000205,
+            "percent_move": 4.527331189710624
+        },
+        {
+            "date": "20240731",
+            "open": 151.0,
+            "high": 153.51,
+            "low": 146.68,
+            "close": 150.94,
+            "candle_length": 6.829999999999984,
+            "percent_move": 4.5249768119782585
+        }
+    ]
+}

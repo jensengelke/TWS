@@ -1,18 +1,208 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 15:49:52",
+            "timestamp": "2026-02-03 04:29:06",
             "underlying_prices": {
-                "Bid": 220.62,
-                "Ask": 220.73,
-                "get_instrument_value": 220.675
+                "Bid": 221.94,
+                "Ask": 229.99,
+                "get_instrument_value": 223.0
             },
             "option_prices": [
                 {
-                    "contract_localSymbol": "TTWO  260206C00185000",
-                    "contract_strike": 185.0,
+                    "contract_localSymbol": "TTWO  260206C00225000",
+                    "contract_strike": 225.0,
                     "contract_right": "C",
-                    "Bid": 35.2,
-                    "Ask": 38.2,
+                    "Bid": -1.0,
+                    "Ask": -1.0,
                     "IV": null,
-                    "call_open_interest": 
+                    "call_open_interest": 323.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 5.9299798
+                },
+                {
+                    "contract_localSymbol": "TTWO  260206P00220000",
+                    "contract_strike": 220.0,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 1530.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 6.73055983
+                },
+                {
+                    "contract_localSymbol": "TTWO  260206C00222500",
+                    "contract_strike": 222.5,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 27.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 7.02060986
+                },
+                {
+                    "contract_localSymbol": "TTWO  260206P00222500",
+                    "contract_strike": 222.5,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 9.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 8.03851986
+                }
+            ],
+            "recommendation": {
+                "expected_move": 13.859834675,
+                "average_percent_move": 7.325874342242055,
+                "lower_boundary": 195.28033065,
+                "upper_boundary": 250.71966935
+            }
+        }
+    ],
+    "historic_move": [
+        {
+            "date": "20260130",
+            "open": 237.67,
+            "high": 238.15,
+            "low": 211.13,
+            "close": 220.3,
+            "candle_length": 27.02000000000001,
+            "percent_move": 12.265093054925106
+        },
+        {
+            "date": "20250808",
+            "open": 237.52,
+            "high": 239.14,
+            "low": 216.34,
+            "close": 217.37,
+            "candle_length": 22.799999999999983,
+            "percent_move": 10.489027924736616
+        },
+        {
+            "date": "20250207",
+            "open": 198.0,
+            "high": 212.88,
+            "low": 195.97,
+            "close": 208.77,
+            "candle_length": 16.909999999999997,
+            "percent_move": 8.099822771470995
+        },
+        {
+            "date": "20230207",
+            "open": 106.9,
+            "high": 115.21,
+            "low": 106.31,
+            "close": 113.85,
+            "candle_length": 8.899999999999991,
+            "percent_move": 7.817303469477375
+        },
+        {
+            "date": "20250409",
+            "open": 194.34,
+            "high": 209.39,
+            "low": 194.12,
+            "close": 208.13,
+            "candle_length": 15.269999999999982,
+            "percent_move": 7.336760678422132
+        },
+        {
+            "date": "20250404",
+            "open": 205.1,
+            "high": 208.33,
+            "low": 194.18,
+            "close": 194.58,
+            "candle_length": 14.150000000000006,
+            "percent_move": 7.272073183266525
+        },
+        {
+            "date": "20251107",
+            "open": 232.03,
+            "high": 243.56,
+            "low": 227.25,
+            "close": 232.0,
+            "candle_length": 16.310000000000002,
+            "percent_move": 7.030172413793104
+        },
+        {
+            "date": "20250516",
+            "open": 236.58,
+            "high": 240.78,
+            "low": 226.11,
+            "close": 226.74,
+            "candle_length": 14.669999999999987,
+            "percent_move": 6.469965599364906
+        },
+        {
+            "date": "20250407",
+            "open": 190.92,
+            "high": 201.13,
+            "low": 188.56,
+            "close": 197.53,
+            "candle_length": 12.569999999999993,
+            "percent_move": 6.363590340707736
+        },
+        {
+            "date": "20250502",
+            "open": 214.45,
+            "high": 224.72,
+            "low": 211.0,
+            "close": 219.5,
+            "candle_length": 13.719999999999999,
+            "percent_move": 6.2505694760820045
+        },
+        {
+            "date": "20250408",
+            "open": 201.61,
+            "high": 205.21,
+            "low": 193.11,
+            "close": 196.25,
+            "candle_length": 12.099999999999994,
+            "percent_move": 6.165605095541398
+        },
+        {
+            "date": "20240325",
+            "open": 150.33,
+            "high": 150.42,
+            "low": 141.83,
+            "close": 146.14,
+            "candle_length": 8.589999999999975,
+            "percent_move": 5.877925277131501
+        },
+        {
+            "date": "20250924",
+            "open": 253.06,
+            "high": 253.06,
+            "low": 239.46,
+            "close": 244.12,
+            "candle_length": 13.599999999999994,
+            "percent_move": 5.571030640668521
+        },
+        {
+            "date": "20240517",
+            "open": 151.64,
+            "high": 154.41,
+            "low": 146.2,
+            "close": 147.84,
+            "candle_length": 8.210000000000008,
+            "percent_move": 5.553300865800871
+        }
+    ]
+}

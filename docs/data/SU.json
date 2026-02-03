@@ -1,18 +1,208 @@
 {
     "prices": [
         {
-            "timestamp": "2026-02-02 15:49:34",
+            "timestamp": "2026-02-03 04:28:46",
             "underlying_prices": {
-                "Bid": 52.8,
-                "Ask": 52.81,
-                "get_instrument_value": 52.79999924
+                "Bid": 51.2,
+                "Ask": 55.91,
+                "get_instrument_value": 52.65999985
             },
             "option_prices": [
                 {
-                    "contract_localSymbol": "SU    260206C00049000",
-                    "contract_strike": 49.0,
+                    "contract_localSymbol": "SU    260206C00053000",
+                    "contract_strike": 53.0,
                     "contract_right": "C",
-                    "Bid": 3.2,
-                    "Ask": 4.2,
+                    "Bid": -1.0,
+                    "Ask": -1.0,
                     "IV": null,
-                    "call_open_interest": 
+                    "call_open_interest": 129.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 0.7958931690467165
+                },
+                {
+                    "contract_localSymbol": "SU    260206P00052000",
+                    "contract_strike": 52.0,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 82.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 0.6747375830804857
+                },
+                {
+                    "contract_localSymbol": "SU    260206P00053000",
+                    "contract_strike": 53.0,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 49.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.1136598234999104
+                },
+                {
+                    "contract_localSymbol": "SU    260206C00054000",
+                    "contract_strike": 54.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 15.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 0.4183018208788681
+                }
+            ],
+            "recommendation": {
+                "expected_move": 1.49583103,
+                "average_percent_move": 6.808513259014227,
+                "lower_boundary": 49.07463677801588,
+                "upper_boundary": 56.24536292198412
+            }
+        }
+    ],
+    "historic_move": [
+        {
+            "date": "20250409",
+            "open": 31.01,
+            "high": 34.75,
+            "low": 30.79,
+            "close": 34.21,
+            "candle_length": 3.960000000000001,
+            "percent_move": 11.575562700964632
+        },
+        {
+            "date": "20250407",
+            "open": 31.9,
+            "high": 34.02,
+            "low": 31.04,
+            "close": 33.11,
+            "candle_length": 2.980000000000004,
+            "percent_move": 9.000302023557849
+        },
+        {
+            "date": "20250408",
+            "open": 33.85,
+            "high": 33.92,
+            "low": 31.29,
+            "close": 31.54,
+            "candle_length": 2.6300000000000026,
+            "percent_move": 8.338617628408379
+        },
+        {
+            "date": "20250404",
+            "open": 35.21,
+            "high": 35.4,
+            "low": 32.78,
+            "close": 33.2,
+            "candle_length": 2.6199999999999974,
+            "percent_move": 7.891566265060232
+        },
+        {
+            "date": "20250303",
+            "open": 38.35,
+            "high": 38.5,
+            "low": 35.86,
+            "close": 36.19,
+            "candle_length": 2.6400000000000006,
+            "percent_move": 7.294832826747723
+        },
+        {
+            "date": "20230315",
+            "open": 30.12,
+            "high": 30.21,
+            "low": 28.11,
+            "close": 29.27,
+            "candle_length": 2.1000000000000014,
+            "percent_move": 7.174581482746845
+        },
+        {
+            "date": "20250410",
+            "open": 33.38,
+            "high": 33.55,
+            "low": 31.63,
+            "close": 32.21,
+            "candle_length": 1.9199999999999982,
+            "percent_move": 5.960881713753487
+        },
+        {
+            "date": "20240801",
+            "open": 39.76,
+            "high": 40.29,
+            "low": 38.1,
+            "close": 38.54,
+            "candle_length": 2.1899999999999977,
+            "percent_move": 5.68240788790866
+        },
+        {
+            "date": "20231206",
+            "open": 31.76,
+            "high": 31.94,
+            "low": 30.24,
+            "close": 30.27,
+            "candle_length": 1.7000000000000028,
+            "percent_move": 5.61612157251405
+        },
+        {
+            "date": "20250507",
+            "open": 35.16,
+            "high": 35.4,
+            "low": 33.5,
+            "close": 33.96,
+            "candle_length": 1.8999999999999986,
+            "percent_move": 5.594817432273258
+        },
+        {
+            "date": "20250203",
+            "open": 36.18,
+            "high": 38.06,
+            "low": 36.01,
+            "close": 37.56,
+            "candle_length": 2.0500000000000043,
+            "percent_move": 5.45793397231098
+        },
+        {
+            "date": "20260105",
+            "open": 44.65,
+            "high": 45.09,
+            "low": 42.69,
+            "close": 44.77,
+            "candle_length": 2.4000000000000057,
+            "percent_move": 5.360732633459919
+        },
+        {
+            "date": "20240603",
+            "open": 40.74,
+            "high": 40.82,
+            "low": 38.79,
+            "close": 38.84,
+            "candle_length": 2.030000000000001,
+            "percent_move": 5.226570545829045
+        },
+        {
+            "date": "20240802",
+            "open": 37.97,
+            "high": 38.03,
+            "low": 36.14,
+            "close": 36.74,
+            "candle_length": 1.8900000000000006,
+            "percent_move": 5.144256940664127
+        }
+    ]
+}
