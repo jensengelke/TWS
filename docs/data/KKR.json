@@ -4069,6 +4069,232 @@
                 "lower_boundary": 90.81777305,
                 "upper_boundary": 115.66222267
             }
+        },
+        {
+            "timestamp": "2026-02-04 10:52:14",
+            "underlying_prices": {
+                "Bid": 103.56,
+                "Ask": 103.75,
+                "get_instrument_value": 103.61000061
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "KKR   260206C00117000",
+                    "contract_strike": 117.0,
+                    "contract_right": "C",
+                    "Bid": 0.05,
+                    "Ask": 1.65,
+                    "IV": null,
+                    "call_open_interest": 31.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.649999976158142
+                },
+                {
+                    "contract_localSymbol": "KKR   260206C00118000",
+                    "contract_strike": 118.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": 1.35,
+                    "IV": null,
+                    "call_open_interest": 18.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.350000023841858
+                },
+                {
+                    "contract_localSymbol": "KKR   260206C00119000",
+                    "contract_strike": 119.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": 0.9,
+                    "IV": 1.0815992359437554,
+                    "call_open_interest": 38.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.15000000596046448,
+                    "delta": 0.05432741350173625,
+                    "gamma": 0.012648601447733679,
+                    "vega": 0.008127447307850838,
+                    "price": 0.15000000596046448
+                },
+                {
+                    "contract_localSymbol": "KKR   260206C00120000",
+                    "contract_strike": 120.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": 0.1,
+                    "IV": 1.1483475827837546,
+                    "call_open_interest": 70.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.15000000596046448,
+                    "delta": 0.054796048911553735,
+                    "gamma": 0.011995881249583455,
+                    "vega": 0.00815827965747809,
+                    "price": 0.15000000596046448
+                },
+                {
+                    "contract_localSymbol": "KKR   260206C00121000",
+                    "contract_strike": 121.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": 1.3,
+                    "IV": null,
+                    "call_open_interest": 85.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.2999999523162842
+                },
+                {
+                    "contract_localSymbol": "KKR   260206C00122000",
+                    "contract_strike": 122.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": 0.95,
+                    "IV": null,
+                    "call_open_interest": 31.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 0.949999988079071
+                },
+                {
+                    "contract_localSymbol": "KKR   260206C00123000",
+                    "contract_strike": 123.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": 0.9,
+                    "IV": null,
+                    "call_open_interest": 10.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 0.8999999761581421
+                },
+                {
+                    "contract_localSymbol": "KKR   260206C00124000",
+                    "contract_strike": 124.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": 1.2,
+                    "IV": null,
+                    "call_open_interest": 8.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.2000000476837158
+                },
+                {
+                    "contract_localSymbol": "KKR   260206P00117000",
+                    "contract_strike": 117.0,
+                    "contract_right": "P",
+                    "Bid": 12.8,
+                    "Ask": 15.5,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 229.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 15.5
+                },
+                {
+                    "contract_localSymbol": "KKR   260206P00118000",
+                    "contract_strike": 118.0,
+                    "contract_right": "P",
+                    "Bid": 13.8,
+                    "Ask": 16.3,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 45.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 16.299999237060547
+                },
+                {
+                    "contract_localSymbol": "KKR   260206C00103000",
+                    "contract_strike": 103.0,
+                    "contract_right": "C",
+                    "Bid": 2.0,
+                    "Ask": 4.5,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 4.5
+                },
+                {
+                    "contract_localSymbol": "KKR   260206C00104000",
+                    "contract_strike": 104.0,
+                    "contract_right": "C",
+                    "Bid": 1.45,
+                    "Ask": 3.9,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 3.9000000953674316
+                },
+                {
+                    "contract_localSymbol": "KKR   260206P00102000",
+                    "contract_strike": 102.0,
+                    "contract_right": "P",
+                    "Bid": 2.3,
+                    "Ask": 4.9,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 13.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 4.900000095367432
+                },
+                {
+                    "contract_localSymbol": "KKR   260206P00103000",
+                    "contract_strike": 103.0,
+                    "contract_right": "P",
+                    "Bid": 2.75,
+                    "Ask": 5.4,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 5.400000095367432
+                }
+            ],
+            "recommendation": {
+                "expected_move": 9.350000143051147,
+                "average_percent_move": 10.531682401852137,
+                "lower_boundary": 84.9100003238977,
+                "upper_boundary": 122.3100008961023
+            }
         }
     ],
     "historic_move": [
@@ -4098,6 +4324,15 @@
             "close": 94.51,
             "candle_length": 12.510000000000005,
             "percent_move": 13.236694529679404
+        },
+        {
+            "date": "20260203",
+            "open": 113.2,
+            "high": 113.71,
+            "low": 102.05,
+            "close": 103.28,
+            "candle_length": 11.659999999999997,
+            "percent_move": 11.289697908597983
         },
         {
             "date": "20230310",
@@ -4188,15 +4423,6 @@
             "close": 108.62,
             "candle_length": 8.419999999999987,
             "percent_move": 7.751795249493636
-        },
-        {
-            "date": "20250304",
-            "open": 127.55,
-            "high": 127.97,
-            "low": 119.47,
-            "close": 120.78,
-            "candle_length": 8.5,
-            "percent_move": 7.037589004802119
         }
     ]
 }

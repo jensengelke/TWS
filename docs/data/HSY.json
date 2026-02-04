@@ -2825,6 +2825,157 @@
                 "lower_boundary": 186.505290460053,
                 "upper_boundary": 216.27470831994702
             }
+        },
+        {
+            "timestamp": "2026-02-04 10:51:54",
+            "underlying_prices": {
+                "Bid": 202.84,
+                "Ask": 203.16,
+                "get_instrument_value": 203.0
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "HSY   260206C00185000",
+                    "contract_strike": 185.0,
+                    "contract_right": "C",
+                    "Bid": 16.8,
+                    "Ask": 19.0,
+                    "IV": null,
+                    "call_open_interest": 5.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 18.26948166
+                },
+                {
+                    "contract_localSymbol": "HSY   260206C00190000",
+                    "contract_strike": 190.0,
+                    "contract_right": "C",
+                    "Bid": 12.6,
+                    "Ask": 15.2,
+                    "IV": null,
+                    "call_open_interest": 16.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 13.58245373
+                },
+                {
+                    "contract_localSymbol": "HSY   260206C00195000",
+                    "contract_strike": 195.0,
+                    "contract_right": "C",
+                    "Bid": 8.6,
+                    "Ask": 10.7,
+                    "IV": null,
+                    "call_open_interest": 73.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 9.28058147
+                },
+                {
+                    "contract_localSymbol": "HSY   260206C00200000",
+                    "contract_strike": 200.0,
+                    "contract_right": "C",
+                    "Bid": 4.7,
+                    "Ask": 7.4,
+                    "IV": null,
+                    "call_open_interest": 55.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 5.65387011
+                },
+                {
+                    "contract_localSymbol": "HSY   260206C00205000",
+                    "contract_strike": 205.0,
+                    "contract_right": "C",
+                    "Bid": 1.95,
+                    "Ask": 4.4,
+                    "IV": 0.6133399492222976,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -0.9766938364828184,
+                    "delta": 0.42921639286797947,
+                    "gamma": 0.04077153545594623,
+                    "vega": 0.06078435862325504,
+                    "price": 2.976537662128249
+                },
+                {
+                    "contract_localSymbol": "HSY   260206C00210000",
+                    "contract_strike": 210.0,
+                    "contract_right": "C",
+                    "Bid": 0.6,
+                    "Ask": 1.7,
+                    "IV": 0.60502865981417,
+                    "call_open_interest": 89.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.7252318548333424,
+                    "delta": 0.24466402054946046,
+                    "gamma": 0.03291103746734206,
+                    "vega": 0.0504942209543493,
+                    "price": 1.3603188593113726
+                },
+                {
+                    "contract_localSymbol": "HSY   260206P00200000",
+                    "contract_strike": 200.0,
+                    "contract_right": "P",
+                    "Bid": 2.25,
+                    "Ask": 4.2,
+                    "IV": 0.6309613035839615,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -0.9691884133987212,
+                    "delta": -0.3705838003247242,
+                    "gamma": 0.03798866050410854,
+                    "vega": 0.05988848452161655,
+                    "price": 2.626460213216901
+                },
+                {
+                    "contract_localSymbol": "HSY   260206C00202500",
+                    "contract_strike": 202.5,
+                    "contract_right": "C",
+                    "Bid": 3.6,
+                    "Ask": 5.8,
+                    "IV": 0.6209555246572185,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -1.0236274255121405,
+                    "delta": 0.5313875467238759,
+                    "gamma": 0.040665588039429316,
+                    "vega": 0.06279577439009643,
+                    "price": 4.189582776030681
+                },
+                {
+                    "contract_localSymbol": "HSY   260206P00202500",
+                    "contract_strike": 202.5,
+                    "contract_right": "P",
+                    "Bid": 3.2,
+                    "Ask": 4.6,
+                    "IV": 0.6209555246572185,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -1.002004972169202,
+                    "delta": -0.46896535893351216,
+                    "gamma": 0.04071287045550587,
+                    "vega": 0.06279514239831929,
+                    "price": 3.6556574932508057
+                }
+            ],
+            "recommendation": {
+                "expected_move": 7.6,
+                "average_percent_move": 6.989769019883339,
+                "lower_boundary": 187.8,
+                "upper_boundary": 218.2
+            }
         }
     ],
     "historic_move": [
