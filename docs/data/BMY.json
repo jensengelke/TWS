@@ -1969,6 +1969,82 @@
                 "lower_boundary": 51.59490752138977,
                 "upper_boundary": 60.34509491861023
             }
+        },
+        {
+            "timestamp": "2026-02-04 09:52:02",
+            "underlying_prices": {
+                "Bid": 56.77,
+                "Ask": 56.78,
+                "get_instrument_value": 56.77999878
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "BMY   260206C00057000",
+                    "contract_strike": 57.0,
+                    "contract_right": "C",
+                    "Bid": 1.05,
+                    "Ask": 1.12,
+                    "IV": 0.6444742885294297,
+                    "call_open_interest": 2887.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.2577228867092796,
+                    "delta": 0.4810348351594557,
+                    "gamma": 0.13890362106337983,
+                    "vega": 0.017796581872203232,
+                    "price": 1.0499999523162842
+                },
+                {
+                    "contract_localSymbol": "BMY   260206C00058000",
+                    "contract_strike": 58.0,
+                    "contract_right": "C",
+                    "Bid": 0.58,
+                    "Ask": 0.7,
+                    "IV": 0.5984569206082995,
+                    "call_open_interest": 1409.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.21864588454775136,
+                    "delta": 0.33547196204313556,
+                    "gamma": 0.13693455383245404,
+                    "vega": 0.015954314550760906,
+                    "price": 0.5799999833106995
+                },
+                {
+                    "contract_localSymbol": "BMY   260206P00056000",
+                    "contract_strike": 56.0,
+                    "contract_right": "P",
+                    "Bid": 0.79,
+                    "Ask": 1.21,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 1218.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.2100000381469727
+                },
+                {
+                    "contract_localSymbol": "BMY   260206P00057000",
+                    "contract_strike": 57.0,
+                    "contract_right": "P",
+                    "Bid": 0.9,
+                    "Ask": 1.68,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 263.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.6799999475479126
+                }
+            ],
+            "recommendation": {
+                "expected_move": 2.01776582,
+                "average_percent_move": 6.281054276570257,
+                "lower_boundary": 52.74446714,
+                "upper_boundary": 60.81553042
+            }
         }
     ],
     "historic_move": [

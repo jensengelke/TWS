@@ -5285,6 +5285,82 @@
                 "lower_boundary": 244.22500609999997,
                 "upper_boundary": 306.2250061
             }
+        },
+        {
+            "timestamp": "2026-02-04 09:52:22",
+            "underlying_prices": {
+                "Bid": 272.85,
+                "Ask": 273.56,
+                "get_instrument_value": 273.21499634
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "CI    260206C00275000",
+                    "contract_strike": 275.0,
+                    "contract_right": "C",
+                    "Bid": 5.3,
+                    "Ask": 8.1,
+                    "IV": 0.8742275929945578,
+                    "call_open_interest": 69.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.914863580184206,
+                    "delta": 0.46877500227284247,
+                    "gamma": 0.021266145529903732,
+                    "vega": 0.08566696596158518,
+                    "price": 6.511651536942304
+                },
+                {
+                    "contract_localSymbol": "CI    260206P00270000",
+                    "contract_strike": 270.0,
+                    "contract_right": "P",
+                    "Bid": 5.6,
+                    "Ask": 8.5,
+                    "IV": 1.1657325469042157,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 161.0,
+                    "theta": -2.1728515361458163,
+                    "delta": -0.42957202778906783,
+                    "gamma": 0.015738244958180235,
+                    "vega": 0.0848308972116687,
+                    "price": 8.5
+                },
+                {
+                    "contract_localSymbol": "CI    260206C00272500",
+                    "contract_strike": 272.5,
+                    "contract_right": "C",
+                    "Bid": 6.6,
+                    "Ask": 9.5,
+                    "IV": 1.0789951862979947,
+                    "call_open_interest": 9.0,
+                    "put_open_interest": 0.0,
+                    "theta": -2.068952773923421,
+                    "delta": 0.5303801841426637,
+                    "gamma": 0.017249872258588095,
+                    "vega": 0.08525727168584041,
+                    "price": 9.5
+                },
+                {
+                    "contract_localSymbol": "CI    260206P00272500",
+                    "contract_strike": 272.5,
+                    "contract_right": "P",
+                    "Bid": 6.6,
+                    "Ask": 9.2,
+                    "IV": 1.1078479464642719,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 74.0,
+                    "theta": -2.094487877241081,
+                    "delta": -0.4697163306245629,
+                    "gamma": 0.01681205414789325,
+                    "vega": 0.08525388071655726,
+                    "price": 9.199999809265137
+                }
+            ],
+            "recommendation": {
+                "expected_move": 13.875526194999999,
+                "average_percent_move": 7.432798220979995,
+                "lower_boundary": 245.46394395000004,
+                "upper_boundary": 300.96604873
+            }
         }
     ],
     "historic_move": [

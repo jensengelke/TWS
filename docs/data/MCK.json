@@ -3784,6 +3784,82 @@
                 "lower_boundary": 767.63914871,
                 "upper_boundary": 936.0108757099999
             }
+        },
+        {
+            "timestamp": "2026-02-04 09:51:00",
+            "underlying_prices": {
+                "Bid": 825.33,
+                "Ask": 828.79,
+                "get_instrument_value": 827.06500244
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "MCK   260206P00820000",
+                    "contract_strike": 820.0,
+                    "contract_right": "P",
+                    "Bid": 16.3,
+                    "Ask": 23.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 29.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 23.0
+                },
+                {
+                    "contract_localSymbol": "MCK   260206C00822500",
+                    "contract_strike": 822.5,
+                    "contract_right": "C",
+                    "Bid": 20.7,
+                    "Ask": 27.0,
+                    "IV": 0.8669437713980416,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -5.0099146742073275,
+                    "delta": 0.5473095847597481,
+                    "gamma": 0.00704489907758817,
+                    "vega": 0.25781798587201976,
+                    "price": 23.5
+                },
+                {
+                    "contract_localSymbol": "MCK   260206C00825000",
+                    "contract_strike": 825.0,
+                    "contract_right": "C",
+                    "Bid": 18.5,
+                    "Ask": 26.7,
+                    "IV": 0.8237614936285985,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -4.7898419679239845,
+                    "delta": 0.5297877450908429,
+                    "gamma": 0.0074589211343887825,
+                    "vega": 0.2582633713034532,
+                    "price": 23.0
+                },
+                {
+                    "contract_localSymbol": "MCK   260206P00822500",
+                    "contract_strike": 822.5,
+                    "contract_right": "P",
+                    "Bid": 18.5,
+                    "Ask": 24.0,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 24.0
+                }
+            ],
+            "recommendation": {
+                "expected_move": 41.858969685,
+                "average_percent_move": 6.409758908076469,
+                "lower_boundary": 743.34706307,
+                "upper_boundary": 910.7829418099999
+            }
         }
     ],
     "historic_move": [

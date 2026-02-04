@@ -3725,6 +3725,82 @@
                 "lower_boundary": 198.24500122,
                 "upper_boundary": 238.44500122
             }
+        },
+        {
+            "timestamp": "2026-02-04 09:52:02",
+            "underlying_prices": {
+                "Bid": 207.08,
+                "Ask": 207.62,
+                "get_instrument_value": 207.61000061
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "CAH   260206C00210000",
+                    "contract_strike": 210.0,
+                    "contract_right": "C",
+                    "Bid": 3.8,
+                    "Ask": 5.2,
+                    "IV": null,
+                    "call_open_interest": 581.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 5.199999809265137
+                },
+                {
+                    "contract_localSymbol": "CAH   260206P00205000",
+                    "contract_strike": 205.0,
+                    "contract_right": "P",
+                    "Bid": 4.1,
+                    "Ask": 5.3,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 61.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 5.300000190734863
+                },
+                {
+                    "contract_localSymbol": "CAH   260206C00207500",
+                    "contract_strike": 207.5,
+                    "contract_right": "C",
+                    "Bid": 4.8,
+                    "Ask": 6.4,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 6.400000095367432
+                },
+                {
+                    "contract_localSymbol": "CAH   260206P00207500",
+                    "contract_strike": 207.5,
+                    "contract_right": "P",
+                    "Bid": 5.1,
+                    "Ask": 6.5,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 11.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 6.5
+                }
+            ],
+            "recommendation": {
+                "expected_move": 9.816420789999999,
+                "average_percent_move": 6.314727068224117,
+                "lower_boundary": 187.97715903,
+                "upper_boundary": 227.24284218999998
+            }
         }
     ],
     "historic_move": [

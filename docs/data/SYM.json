@@ -3994,6 +3994,82 @@
                 "lower_boundary": 39.07341623000001,
                 "upper_boundary": 73.29658651
             }
+        },
+        {
+            "timestamp": "2026-02-04 09:51:41",
+            "underlying_prices": {
+                "Bid": 55.11,
+                "Ask": 55.51,
+                "get_instrument_value": 55.11000061
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "SYM   260206C00056000",
+                    "contract_strike": 56.0,
+                    "contract_right": "C",
+                    "Bid": 4.1,
+                    "Ask": 5.0,
+                    "IV": null,
+                    "call_open_interest": 92.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 5.0
+                },
+                {
+                    "contract_localSymbol": "SYM   260206C00057000",
+                    "contract_strike": 57.0,
+                    "contract_right": "C",
+                    "Bid": 3.6,
+                    "Ask": 4.3,
+                    "IV": 2.632667167914246,
+                    "call_open_interest": 153.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.0138294386857813,
+                    "delta": 0.4766896041068982,
+                    "gamma": 0.03506182767407582,
+                    "vega": 0.017441800534469643,
+                    "price": 3.940000057220459
+                },
+                {
+                    "contract_localSymbol": "SYM   260206P00055000",
+                    "contract_strike": 55.0,
+                    "contract_right": "P",
+                    "Bid": 4.2,
+                    "Ask": 4.8,
+                    "IV": 2.9400746489337326,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 456.0,
+                    "theta": -1.1220129994074721,
+                    "delta": -0.45029645286833675,
+                    "gamma": 0.03128311731862562,
+                    "vega": 0.017107399178224902,
+                    "price": 4.190000057220459
+                },
+                {
+                    "contract_localSymbol": "SYM   260206P00056000",
+                    "contract_strike": 56.0,
+                    "contract_right": "P",
+                    "Bid": 4.8,
+                    "Ask": 5.5,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 105.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 5.5
+                }
+            ],
+            "recommendation": {
+                "expected_move": 8.8095758,
+                "average_percent_move": 20.753026806586114,
+                "lower_boundary": 37.490849010000005,
+                "upper_boundary": 72.72915221
+            }
         }
     ],
     "historic_move": [

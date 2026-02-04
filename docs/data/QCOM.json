@@ -3859,6 +3859,82 @@
                 "lower_boundary": 129.64070463000002,
                 "upper_boundary": 164.75928927
             }
+        },
+        {
+            "timestamp": "2026-02-04 09:51:21",
+            "underlying_prices": {
+                "Bid": 151.01,
+                "Ask": 151.22,
+                "get_instrument_value": 151.19000244
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "QCOM  260206C00150000",
+                    "contract_strike": 150.0,
+                    "contract_right": "C",
+                    "Bid": 5.55,
+                    "Ask": 6.1,
+                    "IV": 1.0688391082127318,
+                    "call_open_interest": 1285.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.1242871096439517,
+                    "delta": 0.5543678900380159,
+                    "gamma": 0.031193196412165843,
+                    "vega": 0.047049227824638606,
+                    "price": 5.710000038146973
+                },
+                {
+                    "contract_localSymbol": "QCOM  260206P00150000",
+                    "contract_strike": 150.0,
+                    "contract_right": "P",
+                    "Bid": 4.4,
+                    "Ask": 4.7,
+                    "IV": 1.0760403892810675,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 1250.0,
+                    "theta": -1.1155999394289158,
+                    "delta": -0.4459580548524,
+                    "gamma": 0.031005268237332077,
+                    "vega": 0.04704939693281318,
+                    "price": 4.5
+                },
+                {
+                    "contract_localSymbol": "QCOM  260206C00152500",
+                    "contract_strike": 152.5,
+                    "contract_right": "C",
+                    "Bid": 4.25,
+                    "Ask": 5.0,
+                    "IV": 1.1420668845679844,
+                    "call_open_interest": 372.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.2091352527634902,
+                    "delta": 0.4799092858586683,
+                    "gamma": 0.029428136642159257,
+                    "vega": 0.04745989286118313,
+                    "price": 4.599999904632568
+                },
+                {
+                    "contract_localSymbol": "QCOM  260206P00149000",
+                    "contract_strike": 149.0,
+                    "contract_right": "P",
+                    "Bid": 3.5,
+                    "Ask": 4.2,
+                    "IV": 1.0009245857559992,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 672.0,
+                    "theta": -1.024507354531142,
+                    "delta": -0.41078956218541646,
+                    "gamma": 0.03290683311918843,
+                    "vega": 0.04688364292307634,
+                    "price": 4.199999809265137
+                }
+            ],
+            "recommendation": {
+                "expected_move": 9.299954415,
+                "average_percent_move": 9.449121218897341,
+                "lower_boundary": 132.59009361,
+                "upper_boundary": 169.78991127
+            }
         }
     ],
     "historic_move": [
