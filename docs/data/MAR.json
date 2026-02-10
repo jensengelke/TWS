@@ -2388,6 +2388,82 @@
                 "lower_boundary": 338.6636277066245,
                 "upper_boundary": 381.7163771733755
             }
+        },
+        {
+            "timestamp": "2026-02-10 10:46:19",
+            "underlying_prices": {
+                "Bid": 360.36,
+                "Ask": 360.75,
+                "get_instrument_value": 360.42999268
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "MAR   260213C00360000",
+                    "contract_strike": 360.0,
+                    "contract_right": "C",
+                    "Bid": 4.2,
+                    "Ask": 6.0,
+                    "IV": null,
+                    "call_open_interest": 80.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 5.54088354
+                },
+                {
+                    "contract_localSymbol": "MAR   260213C00365000",
+                    "contract_strike": 365.0,
+                    "contract_right": "C",
+                    "Bid": 2.35,
+                    "Ask": 3.9,
+                    "IV": 0.4546757800221577,
+                    "call_open_interest": 184.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.9387075572719105,
+                    "delta": 0.39550347647375395,
+                    "gamma": 0.02509036909226478,
+                    "vega": 0.13048643397775184,
+                    "price": 3.2100000381469727
+                },
+                {
+                    "contract_localSymbol": "MAR   260213P00355000",
+                    "contract_strike": 355.0,
+                    "contract_right": "P",
+                    "Bid": 2.55,
+                    "Ask": 3.5,
+                    "IV": 0.3462123108048587,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.6330629034243477,
+                    "delta": -0.3110577690272318,
+                    "gamma": 0.030285313102399656,
+                    "vega": 0.1179495201486902,
+                    "price": 2.569999933242798
+                },
+                {
+                    "contract_localSymbol": "MAR   260213P00360000",
+                    "contract_strike": 360.0,
+                    "contract_right": "P",
+                    "Bid": 4.4,
+                    "Ask": 6.5,
+                    "IV": 0.3801502864538349,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.7818721257967811,
+                    "delta": -0.47633624227867105,
+                    "gamma": 0.031178199674192497,
+                    "vega": 0.1345018953549575,
+                    "price": 5.449999809265137
+                }
+            ],
+            "recommendation": {
+                "expected_move": 8.580441593570251,
+                "average_percent_move": 5.976394288445403,
+                "lower_boundary": 338.8892751836283,
+                "upper_boundary": 381.9707101763717
+            }
         }
     ],
     "historic_move": [

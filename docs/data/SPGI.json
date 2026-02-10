@@ -1892,6 +1892,82 @@
                 "lower_boundary": 390.74431228,
                 "upper_boundary": 490.97565842
             }
+        },
+        {
+            "timestamp": "2026-02-10 10:46:19",
+            "underlying_prices": {
+                "Bid": 412.25,
+                "Ask": 413.23,
+                "get_instrument_value": 412.82000732
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "SPGI  260213C00415000",
+                    "contract_strike": 415.0,
+                    "contract_right": "C",
+                    "Bid": 6.1,
+                    "Ask": 9.5,
+                    "IV": 0.5132336131299889,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.253546222683443,
+                    "delta": 0.4690826992374062,
+                    "gamma": 0.020041626821962717,
+                    "vega": 0.15471958206416403,
+                    "price": 7.670000076293945
+                },
+                {
+                    "contract_localSymbol": "SPGI  260213C00420000",
+                    "contract_strike": 420.0,
+                    "contract_right": "C",
+                    "Bid": 4.2,
+                    "Ask": 8.7,
+                    "IV": 0.5185335304423192,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.2039017550764868,
+                    "delta": 0.37346204486650325,
+                    "gamma": 0.0189107432426299,
+                    "vega": 0.14981169848777842,
+                    "price": 5.5
+                },
+                {
+                    "contract_localSymbol": "SPGI  260213P00410000",
+                    "contract_strike": 410.0,
+                    "contract_right": "P",
+                    "Bid": 5.1,
+                    "Ask": 8.2,
+                    "IV": 0.4807413940450471,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 67.0,
+                    "theta": -1.121610599171544,
+                    "delta": -0.4280679303185817,
+                    "gamma": 0.02117107121302298,
+                    "vega": 0.15348328368778663,
+                    "price": 5.0
+                },
+                {
+                    "contract_localSymbol": "SPGI  260213P00415000",
+                    "contract_strike": 415.0,
+                    "contract_right": "P",
+                    "Bid": 6.6,
+                    "Ask": 10.8,
+                    "IV": 0.6494211773747821,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 235.0,
+                    "theta": -1.5392558811912078,
+                    "delta": -0.5203537020348167,
+                    "gamma": 0.015892736725949687,
+                    "vega": 0.1546280549006127,
+                    "price": 10.899999618530273
+                }
+            ],
+            "recommendation": {
+                "expected_move": 14.267454145,
+                "average_percent_move": 6.677229873752969,
+                "lower_boundary": 384.28509903,
+                "upper_boundary": 441.35491561
+            }
         }
     ],
     "historic_move": [
