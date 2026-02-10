@@ -1711,6 +1711,82 @@
                 "lower_boundary": 151.6999939,
                 "upper_boundary": 218.5999939
             }
+        },
+        {
+            "timestamp": "2026-02-10 09:48:30",
+            "underlying_prices": {
+                "Bid": 183.26,
+                "Ask": 184.34,
+                "get_instrument_value": 183.66000366
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "GNRC  260213C00185000",
+                    "contract_strike": 185.0,
+                    "contract_right": "C",
+                    "Bid": 6.7,
+                    "Ask": 9.0,
+                    "IV": null,
+                    "call_open_interest": 140.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 9.0
+                },
+                {
+                    "contract_localSymbol": "GNRC  260213P00180000",
+                    "contract_strike": 180.0,
+                    "contract_right": "P",
+                    "Bid": 5.9,
+                    "Ask": 7.5,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 107.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 7.5
+                },
+                {
+                    "contract_localSymbol": "GNRC  260213C00182500",
+                    "contract_strike": 182.5,
+                    "contract_right": "C",
+                    "Bid": 7.9,
+                    "Ask": 11.0,
+                    "IV": null,
+                    "call_open_interest": 71.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 11.0
+                },
+                {
+                    "contract_localSymbol": "GNRC  260213P00182500",
+                    "contract_strike": 182.5,
+                    "contract_right": "P",
+                    "Bid": 7.1,
+                    "Ask": 8.8,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 14.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 8.800000190734863
+                }
+            ],
+            "recommendation": {
+                "expected_move": 18.250000476837158,
+                "average_percent_move": 12.76116639582188,
+                "lower_boundary": 147.16000270632568,
+                "upper_boundary": 220.16000461367432
+            }
         }
     ],
     "historic_move": [
