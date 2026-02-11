@@ -3891,6 +3891,82 @@
                 "lower_boundary": 68.68843711,
                 "upper_boundary": 82.67156351
             }
+        },
+        {
+            "timestamp": "2026-02-11 09:48:49",
+            "underlying_prices": {
+                "Bid": 76.26,
+                "Ask": 76.28,
+                "get_instrument_value": 76.27999878
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "BUD   260213C00076000",
+                    "contract_strike": 76.0,
+                    "contract_right": "C",
+                    "Bid": 1.95,
+                    "Ask": 2.5,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 2.5
+                },
+                {
+                    "contract_localSymbol": "BUD   260213C00077000",
+                    "contract_strike": 77.0,
+                    "contract_right": "C",
+                    "Bid": 1.5,
+                    "Ask": 2.05,
+                    "IV": null,
+                    "call_open_interest": 56.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.7300000190734863
+                },
+                {
+                    "contract_localSymbol": "BUD   260213P00075000",
+                    "contract_strike": 75.0,
+                    "contract_right": "P",
+                    "Bid": 0.95,
+                    "Ask": 1.65,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 3.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.649999976158142
+                },
+                {
+                    "contract_localSymbol": "BUD   260213P00076000",
+                    "contract_strike": 76.0,
+                    "contract_right": "P",
+                    "Bid": 1.35,
+                    "Ask": 2.1,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 501.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.75764143
+                }
+            ],
+            "recommendation": {
+                "expected_move": 3.490762365,
+                "average_percent_move": 3.653753473996773,
+                "lower_boundary": 69.29847405,
+                "upper_boundary": 83.26152351
+            }
         }
     ],
     "historic_move": [

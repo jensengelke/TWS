@@ -3935,6 +3935,82 @@
                 "lower_boundary": 76.48457097,
                 "upper_boundary": 95.97543575
             }
+        },
+        {
+            "timestamp": "2026-02-11 09:48:28",
+            "underlying_prices": {
+                "Bid": 86.78,
+                "Ask": 86.8,
+                "get_instrument_value": 86.80000305
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "CSCO  260213C00087000",
+                    "contract_strike": 87.0,
+                    "contract_right": "C",
+                    "Bid": 2.39,
+                    "Ask": 2.59,
+                    "IV": 0.9301292703480247,
+                    "call_open_interest": 2755.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.5683233145440146,
+                    "delta": 0.5034610186869726,
+                    "gamma": 0.06312471590311436,
+                    "vega": 0.027182160004651124,
+                    "price": 2.450000047683716
+                },
+                {
+                    "contract_localSymbol": "CSCO  260213C00088000",
+                    "contract_strike": 88.0,
+                    "contract_right": "C",
+                    "Bid": 1.93,
+                    "Ask": 2.09,
+                    "IV": 0.9339769813778737,
+                    "call_open_interest": 1387.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.5647642208474476,
+                    "delta": 0.4414192771176032,
+                    "gamma": 0.06227250494455362,
+                    "vega": 0.027352435806449638,
+                    "price": 2.0299999713897705
+                },
+                {
+                    "contract_localSymbol": "CSCO  260213P00086000",
+                    "contract_strike": 86.0,
+                    "contract_right": "P",
+                    "Bid": 2.1,
+                    "Ask": 2.23,
+                    "IV": 0.9496070892869553,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 1225.0,
+                    "theta": -0.5623946258621297,
+                    "delta": -0.43476158543335275,
+                    "gamma": 0.060910910580097885,
+                    "vega": 0.027010734367847622,
+                    "price": 2.0999999046325684
+                },
+                {
+                    "contract_localSymbol": "CSCO  260213P00087000",
+                    "contract_strike": 87.0,
+                    "contract_right": "P",
+                    "Bid": 2.5,
+                    "Ask": 2.75,
+                    "IV": 0.9218247643941787,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 2295.0,
+                    "theta": -0.5538949752447081,
+                    "delta": -0.49703709293512605,
+                    "gamma": 0.06374379377525675,
+                    "vega": 0.027181842535798584,
+                    "price": 2.559999942779541
+                }
+            ],
+            "recommendation": {
+                "expected_move": 4.6278311,
+                "average_percent_move": 5.6022219066978804,
+                "lower_boundary": 77.54434085,
+                "upper_boundary": 96.05566525
+            }
         }
     ],
     "historic_move": [
