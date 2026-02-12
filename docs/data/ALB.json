@@ -6157,6 +6157,82 @@
                 "lower_boundary": 150.4668252202384,
                 "upper_boundary": 193.82318331976157
             }
+        },
+        {
+            "timestamp": "2026-02-12 09:46:04",
+            "underlying_prices": {
+                "Bid": 172.77,
+                "Ask": 173.48,
+                "get_instrument_value": 172.77009583
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "ALB   260213C00175000",
+                    "contract_strike": 175.0,
+                    "contract_right": "C",
+                    "Bid": 2.45,
+                    "Ask": 3.85,
+                    "IV": 1.0498784589972354,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -1.6803876855675859,
+                    "delta": 0.43036821979880985,
+                    "gamma": 0.03710434964233922,
+                    "vega": 0.03906561601177483,
+                    "price": 3.38955498
+                },
+                {
+                    "contract_localSymbol": "ALB   260213P00170000",
+                    "contract_strike": 170.0,
+                    "contract_right": "P",
+                    "Bid": 2.09,
+                    "Ask": 3.0,
+                    "IV": 0.9010556782352284,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -1.3655406653544822,
+                    "delta": -0.3692199259217961,
+                    "gamma": 0.041357468355440075,
+                    "vega": 0.03845986312621408,
+                    "price": 2.2899999618530273
+                },
+                {
+                    "contract_localSymbol": "ALB   260213C00172500",
+                    "contract_strike": 172.5,
+                    "contract_right": "C",
+                    "Bid": 3.55,
+                    "Ask": 5.9,
+                    "IV": 1.053420530980182,
+                    "call_open_interest": 98.0,
+                    "put_open_interest": 0.0,
+                    "theta": -2.331236796063905,
+                    "delta": 0.5342374138447935,
+                    "gamma": 0.0372398770836088,
+                    "vega": 0.04037312375074187,
+                    "price": 4.572264109471395
+                },
+                {
+                    "contract_localSymbol": "ALB   260213P00172500",
+                    "contract_strike": 172.5,
+                    "contract_right": "P",
+                    "Bid": 2.07,
+                    "Ask": 4.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 196.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 3.0299999713897705
+                }
+            ],
+            "recommendation": {
+                "expected_move": 6.316132026125468,
+                "average_percent_move": 12.5929759865471,
+                "lower_boundary": 151.01319915019369,
+                "upper_boundary": 194.52699250980632
+            }
         }
     ],
     "historic_move": [
