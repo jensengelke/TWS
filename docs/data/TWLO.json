@@ -5163,6 +5163,82 @@
                 "lower_boundary": 80.99029750026747,
                 "upper_boundary": 135.34969883973253
             }
+        },
+        {
+            "timestamp": "2026-02-12 13:48:45",
+            "underlying_prices": {
+                "Bid": 108.18,
+                "Ask": 108.49,
+                "get_instrument_value": 108.26000214
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "TWLO  260213C00110000",
+                    "contract_strike": 110.0,
+                    "contract_right": "C",
+                    "Bid": 6.05,
+                    "Ask": 7.0,
+                    "IV": 2.822203603526759,
+                    "call_open_interest": 86.0,
+                    "put_open_interest": 0.0,
+                    "theta": -3.0650396206692423,
+                    "delta": 0.4900004082236836,
+                    "gamma": 0.02392378121588556,
+                    "vega": 0.023679256458213338,
+                    "price": 7.5
+                },
+                {
+                    "contract_localSymbol": "TWLO  260213C00109000",
+                    "contract_strike": 109.0,
+                    "contract_right": "C",
+                    "Bid": 6.45,
+                    "Ask": 7.45,
+                    "IV": 3.180738277686529,
+                    "call_open_interest": 3.0,
+                    "put_open_interest": 0.0,
+                    "theta": -3.457591627108276,
+                    "delta": 0.5194079656956396,
+                    "gamma": 0.021248617435514577,
+                    "vega": 0.023551242124412397,
+                    "price": 7.449999809265137
+                },
+                {
+                    "contract_localSymbol": "TWLO  260213P00108000",
+                    "contract_strike": 108.0,
+                    "contract_right": "P",
+                    "Bid": 6.4,
+                    "Ask": 7.25,
+                    "IV": 2.9913362623967514,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 42.0,
+                    "theta": -3.2348856811516935,
+                    "delta": -0.46136262919933385,
+                    "gamma": 0.022558471878380934,
+                    "vega": 0.023452808300602257,
+                    "price": 6.599999904632568
+                },
+                {
+                    "contract_localSymbol": "TWLO  260213P00109000",
+                    "contract_strike": 109.0,
+                    "contract_right": "P",
+                    "Bid": 6.65,
+                    "Ask": 7.9,
+                    "IV": 3.2952396025240818,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 40.0,
+                    "theta": -3.5695263582729506,
+                    "delta": -0.47886205120442227,
+                    "gamma": 0.020510015444696477,
+                    "vega": 0.023544728758297495,
+                    "price": 7.900000095367432
+                }
+            ],
+            "recommendation": {
+                "expected_move": 13.787500000000001,
+                "average_percent_move": 10.599455106807477,
+                "lower_boundary": 80.68500214,
+                "upper_boundary": 135.83500214
+            }
         }
     ],
     "historic_move": [

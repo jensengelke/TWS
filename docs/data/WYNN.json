@@ -3633,6 +3633,82 @@
                 "lower_boundary": 97.54000153,
                 "upper_boundary": 122.26000153
             }
+        },
+        {
+            "timestamp": "2026-02-12 13:49:26",
+            "underlying_prices": {
+                "Bid": 108.96,
+                "Ask": 109.18,
+                "get_instrument_value": 109.05000305
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "WYNN  260213C00109000",
+                    "contract_strike": 109.0,
+                    "contract_right": "C",
+                    "Bid": 3.05,
+                    "Ask": 4.0,
+                    "IV": 1.7485272011958868,
+                    "call_open_interest": 53.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.9226827556683874,
+                    "delta": 0.5214425025532085,
+                    "gamma": 0.038482518557989724,
+                    "vega": 0.023691818893146532,
+                    "price": 4.0
+                },
+                {
+                    "contract_localSymbol": "WYNN  260213C00110000",
+                    "contract_strike": 110.0,
+                    "contract_right": "C",
+                    "Bid": 2.69,
+                    "Ask": 3.3,
+                    "IV": 1.4283801753967913,
+                    "call_open_interest": 23.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.5625613279330601,
+                    "delta": 0.47197402530671545,
+                    "gamma": 0.046846662310166216,
+                    "vega": 0.023813454696380187,
+                    "price": 2.9800000190734863
+                },
+                {
+                    "contract_localSymbol": "WYNN  260213P00108000",
+                    "contract_strike": 108.0,
+                    "contract_right": "P",
+                    "Bid": 1.9,
+                    "Ask": 3.45,
+                    "IV": 1.4609922851883272,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 57.0,
+                    "theta": -1.5705893366620922,
+                    "delta": -0.4354709548781703,
+                    "gamma": 0.045331141398136814,
+                    "vega": 0.02358680313068895,
+                    "price": 2.799999952316284
+                },
+                {
+                    "contract_localSymbol": "WYNN  260213P00109000",
+                    "contract_strike": 109.0,
+                    "contract_right": "P",
+                    "Bid": 3.1,
+                    "Ask": 3.9,
+                    "IV": 1.4031837130698968,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 104.0,
+                    "theta": -1.5327878349087503,
+                    "delta": -0.4818199790105213,
+                    "gamma": 0.04798383417675148,
+                    "vega": 0.02370131869905201,
+                    "price": 3.299999952316284
+                }
+            ],
+            "recommendation": {
+                "expected_move": 6.258639575,
+                "average_percent_move": 7.994802336710316,
+                "lower_boundary": 96.53272390000001,
+                "upper_boundary": 121.5672822
+            }
         }
     ],
     "historic_move": [

@@ -3693,6 +3693,82 @@
                 "lower_boundary": 105.23880884333494,
                 "upper_boundary": 129.37119177666506
             }
+        },
+        {
+            "timestamp": "2026-02-12 13:49:46",
+            "underlying_prices": {
+                "Bid": 117.47,
+                "Ask": 117.64,
+                "get_instrument_value": 117.61000061
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "CCJ   260213C00117000",
+                    "contract_strike": 117.0,
+                    "contract_right": "C",
+                    "Bid": 3.0,
+                    "Ask": 4.15,
+                    "IV": 1.2775873979548167,
+                    "call_open_interest": 30.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.5037637866280311,
+                    "delta": 0.5442250438045886,
+                    "gamma": 0.04839974957909583,
+                    "vega": 0.025501344187808694,
+                    "price": 3.0999999046325684
+                },
+                {
+                    "contract_localSymbol": "CCJ   260213P00116000",
+                    "contract_strike": 116.0,
+                    "contract_right": "P",
+                    "Bid": 2.23,
+                    "Ask": 3.4,
+                    "IV": 1.259406456002493,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 110.0,
+                    "theta": -1.4451259808819348,
+                    "delta": -0.40636588241088006,
+                    "gamma": 0.04827256165805567,
+                    "vega": 0.025299328432463408,
+                    "price": 2.549999952316284
+                },
+                {
+                    "contract_localSymbol": "CCJ   260213P00117000",
+                    "contract_strike": 117.0,
+                    "contract_right": "P",
+                    "Bid": 2.75,
+                    "Ask": 3.65,
+                    "IV": 1.234894696400484,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 129.0,
+                    "theta": -1.4406996928914024,
+                    "delta": -0.45530072553912015,
+                    "gamma": 0.05007893251386571,
+                    "vega": 0.025502276119660827,
+                    "price": 3.049999952316284
+                },
+                {
+                    "contract_localSymbol": "CCJ   260213C00118000",
+                    "contract_strike": 118.0,
+                    "contract_right": "C",
+                    "Bid": 2.5,
+                    "Ask": 3.4,
+                    "IV": 1.2646816210903264,
+                    "call_open_interest": 235.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.4986951406667715,
+                    "delta": 0.4954551291239465,
+                    "gamma": 0.049244818093667445,
+                    "vega": 0.02561595424659302,
+                    "price": 2.619999885559082
+                }
+            ],
+            "recommendation": {
+                "expected_move": 5.7855196,
+                "average_percent_move": 10.28616975813301,
+                "lower_boundary": 105.51243629471413,
+                "upper_boundary": 129.70756492528588
+            }
         }
     ],
     "historic_move": [

@@ -4503,6 +4503,82 @@
                 "lower_boundary": 405.81274586,
                 "upper_boundary": 524.40722484
             }
+        },
+        {
+            "timestamp": "2026-02-12 13:49:05",
+            "underlying_prices": {
+                "Bid": 463.15,
+                "Ask": 463.82,
+                "get_instrument_value": 463.48498535
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "VRTX  260213C00465000",
+                    "contract_strike": 465.0,
+                    "contract_right": "C",
+                    "Bid": 10.4,
+                    "Ask": 15.4,
+                    "IV": 1.3602892025140387,
+                    "call_open_interest": 153.0,
+                    "put_open_interest": 0.0,
+                    "theta": -6.352540412743518,
+                    "delta": 0.4980391525421429,
+                    "gamma": 0.011620792302492172,
+                    "vega": 0.10093582498507025,
+                    "price": 12.5
+                },
+                {
+                    "contract_localSymbol": "VRTX  260213P00460000",
+                    "contract_strike": 460.0,
+                    "contract_right": "P",
+                    "Bid": 9.5,
+                    "Ask": 14.4,
+                    "IV": 1.4595010833012092,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 241.0,
+                    "theta": -6.693341842819533,
+                    "delta": -0.4459912492323841,
+                    "gamma": 0.01071713690281872,
+                    "vega": 0.1003596367173909,
+                    "price": 13.199999809265137
+                },
+                {
+                    "contract_localSymbol": "VRTX  260213C00462500",
+                    "contract_strike": 462.5,
+                    "contract_right": "C",
+                    "Bid": 11.3,
+                    "Ask": 17.7,
+                    "IV": 1.482336217214192,
+                    "call_open_interest": 3.0,
+                    "put_open_interest": 0.0,
+                    "theta": -6.913522803325794,
+                    "delta": 0.5271930945585815,
+                    "gamma": 0.010651534469056038,
+                    "vega": 0.10063988667821455,
+                    "price": 15.0
+                },
+                {
+                    "contract_localSymbol": "VRTX  260213P00462500",
+                    "contract_strike": 462.5,
+                    "contract_right": "P",
+                    "Bid": 10.9,
+                    "Ask": 16.7,
+                    "IV": 1.557914373229049,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 38.0,
+                    "theta": -7.214753544611529,
+                    "delta": -0.47261150711557987,
+                    "gamma": 0.010138158166733672,
+                    "vega": 0.10063186226422793,
+                    "price": 15.0
+                }
+            ],
+            "recommendation": {
+                "expected_move": 28.67637539,
+                "average_percent_move": 6.763664478783118,
+                "lower_boundary": 406.13223457,
+                "upper_boundary": 520.8377361299999
+            }
         }
     ],
     "historic_move": [

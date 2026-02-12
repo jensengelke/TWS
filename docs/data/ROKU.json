@@ -4833,6 +4833,82 @@
                 "lower_boundary": 58.92859268,
                 "upper_boundary": 99.07140731999999
             }
+        },
+        {
+            "timestamp": "2026-02-12 13:48:25",
+            "underlying_prices": {
+                "Bid": 80.99,
+                "Ask": 81.08,
+                "get_instrument_value": 81.04000092
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "ROKU  260213P00080000",
+                    "contract_strike": 80.0,
+                    "contract_right": "P",
+                    "Bid": 5.0,
+                    "Ask": 5.75,
+                    "IV": 3.3545381063300037,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 241.0,
+                    "theta": -2.6844531741614195,
+                    "delta": -0.43534783170745844,
+                    "gamma": 0.02655659629477665,
+                    "vega": 0.01744780957321268,
+                    "price": 5.329999923706055
+                },
+                {
+                    "contract_localSymbol": "ROKU  260213C00081000",
+                    "contract_strike": 81.0,
+                    "contract_right": "C",
+                    "Bid": 5.05,
+                    "Ask": 6.3,
+                    "IV": 3.19412687388531,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 0.0,
+                    "theta": -2.5991094397187653,
+                    "delta": 0.5361243733506288,
+                    "gamma": 0.028265209335936754,
+                    "vega": 0.017564728743443503,
+                    "price": 5.400000095367432
+                },
+                {
+                    "contract_localSymbol": "ROKU  260213C00082000",
+                    "contract_strike": 82.0,
+                    "contract_right": "C",
+                    "Bid": 5.0,
+                    "Ask": 5.7,
+                    "IV": 3.270385847882925,
+                    "call_open_interest": 11.0,
+                    "put_open_interest": 0.0,
+                    "theta": -2.659905918685208,
+                    "delta": 0.5097975429425813,
+                    "gamma": 0.02759604696903471,
+                    "vega": 0.017669806354071227,
+                    "price": 5.349999904632568
+                },
+                {
+                    "contract_localSymbol": "ROKU  260213P00081000",
+                    "contract_strike": 81.0,
+                    "contract_right": "P",
+                    "Bid": 5.15,
+                    "Ask": 6.35,
+                    "IV": 3.071201629309371,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 41.0,
+                    "theta": -2.4911628534786194,
+                    "delta": -0.46519930527416015,
+                    "gamma": 0.02940942214474486,
+                    "vega": 0.01756987872101412,
+                    "price": 5.75
+                }
+            ],
+            "recommendation": {
+                "expected_move": 10.976671265,
+                "average_percent_move": 14.04423010919829,
+                "lower_boundary": 59.08665839,
+                "upper_boundary": 102.99334345
+            }
         }
     ],
     "historic_move": [
