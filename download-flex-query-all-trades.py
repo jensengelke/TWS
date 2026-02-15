@@ -32,6 +32,7 @@ def parse_args():
         p.add_argument("--outdir", default="data", help="Output directory (default: data)")
         p.add_argument("--config", default=None, help="Path to JSON config with token (overrides default locations)")
         p.add_argument("--base-url", default=DEFAULT_BASE_URL, help="Flex service base URL (change if needed)")
+        p.add_argument("--query-id", default="1135867", help="Flex query ID (default: 1135867)")
         return p.parse_args()
 
 def validate_date(s):
@@ -55,7 +56,7 @@ def load_token(config_path=None):
                                 raise RuntimeError(f"Invalid JSON in {p}: {e}")
         raise RuntimeError(f"Could not find config file with token. Checked: {', '.join(str(p) for p in paths)}")
 
-def request_flex_csv(base_url, token, start, end, timeout=60):
+def request_flex_csv(base_url, token, start, end, query_id, timeout=60):
         # Many IBKR flex endpoints accept token as a cookie/form field or Authorization header.
         # This code sends both Authorization: Bearer <token> and token in form data to maximize compatibility.
         # headers = {
@@ -71,13 +72,19 @@ def request_flex_csv(base_url, token, start, end, timeout=60):
 
         payload = {
             "t": token,
-            "q": "1135867",
+            "q": query_id,
             "v": 3,
             "fd": datetime.strptime(start, "%Y-%m-%d").strftime("%Y%m%d"),
             "td": datetime.strptime(end, "%Y-%m-%d").strftime("%Y%m%d")
         }
+
+        headers = {
+            "Accept-Language": "de-DE"    
+        }
+
         try:
-                flexReq = requests.get(url=DEFAULT_BASE_URL + send_path, params=payload)                
+                print(f"Sending request to {DEFAULT_BASE_URL + send_path} with params: {payload}")
+                flexReq = requests.get(url=DEFAULT_BASE_URL + send_path, headers=headers, params=payload)                
         except requests.RequestException as ex:
                 raise RuntimeError(f"HTTP request failed: {ex}")
         if flexReq.status_code != 200:
@@ -93,6 +100,7 @@ def request_flex_csv(base_url, token, start, end, timeout=60):
                 if child.tag == "Status":
                     if child.text != "Success":
                         print(f"Failed to generate Flex statement. Stopping...")
+                        print(f"Full response: {flexReq.text}")
                         raise RuntimeError(f"No Success status received: {tree}")
                 elif child.tag == "ReferenceCode":
                     refCode = child.text
@@ -105,7 +113,7 @@ def request_flex_csv(base_url, token, start, end, timeout=60):
                 "v":3
             }
             receiveUrl = requests.get(url=DEFAULT_BASE_URL + receive_path, params=receive_params, allow_redirects=True)
-            csvdata = receiveUrl.content.replace(b',',b';').replace(b'.',b',')
+            csvdata = receiveUrl.content
 
 
         return csvdata
@@ -132,7 +140,7 @@ def main():
                 sys.exit(3)
 
         try:
-                csv_bytes = request_flex_csv(args.base_url, token, args.start, args.end)
+                csv_bytes = request_flex_csv(args.base_url, token, args.start, args.end, args.query_id)
         except RuntimeError as e:
                 print(f"Error requesting flex query: {e}", file=sys.stderr)
                 sys.exit(4)
