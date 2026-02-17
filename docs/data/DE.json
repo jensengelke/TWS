@@ -6995,6 +6995,82 @@
                 "lower_boundary": 533.00045775,
                 "upper_boundary": 674.79959107
             }
+        },
+        {
+            "timestamp": "2026-02-17 16:46:14",
+            "underlying_prices": {
+                "Bid": 599.6,
+                "Ask": 602.4,
+                "get_instrument_value": 600.84002686
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "DE    260220C00600000",
+                    "contract_strike": 600.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "DE    260220P00600000",
+                    "contract_strike": 600.0,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "DE    260220P00597500",
+                    "contract_strike": 597.5,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "DE    260220C00602500",
+                    "contract_strike": 602.5,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                }
+            ],
+            "recommendation": {
+                "expected_move": -2.0,
+                "average_percent_move": 6.556782600146484,
+                "lower_boundary": 561.444252524128,
+                "upper_boundary": 640.2358011958719
+            }
         }
     ],
     "historic_move": [

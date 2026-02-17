@@ -3815,6 +3815,82 @@
                 "lower_boundary": 48.74189866,
                 "upper_boundary": 62.9881047
             }
+        },
+        {
+            "timestamp": "2026-02-17 16:46:14",
+            "underlying_prices": {
+                "Bid": 56.04,
+                "Ask": 56.5,
+                "get_instrument_value": 56.5
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "PAAS  260220P00055000",
+                    "contract_strike": 55.0,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "PAAS  260220C00056000",
+                    "contract_strike": 56.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "PAAS  260220C00057000",
+                    "contract_strike": 57.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "PAAS  260220P00056000",
+                    "contract_strike": 56.0,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                }
+            ],
+            "recommendation": {
+                "expected_move": -2.0,
+                "average_percent_move": 10.140784364970722,
+                "lower_boundary": 50.77045683379154,
+                "upper_boundary": 62.22954316620846
+            }
         }
     ],
     "historic_move": [
