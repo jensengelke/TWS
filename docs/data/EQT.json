@@ -1,0 +1,328 @@
+{
+    "prices": [
+        {
+            "timestamp": "2026-02-17 09:46:45",
+            "underlying_prices": {
+                "Bid": 57.64,
+                "Ask": 57.68,
+                "get_instrument_value": 57.65999985
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "EQT   260220C00052500",
+                    "contract_strike": 52.5,
+                    "contract_right": "C",
+                    "Bid": 5.1,
+                    "Ask": 6.7,
+                    "IV": null,
+                    "call_open_interest": 67.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 6.699999809265137
+                },
+                {
+                    "contract_localSymbol": "EQT   260220C00055000",
+                    "contract_strike": 55.0,
+                    "contract_right": "C",
+                    "Bid": 3.0,
+                    "Ask": 3.85,
+                    "IV": 0.6509796690269328,
+                    "call_open_interest": 1066.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.16200540813472264,
+                    "delta": 0.7907372112349866,
+                    "gamma": 0.08142135344144805,
+                    "vega": 0.01657042617090765,
+                    "price": 3.950000047683716
+                },
+                {
+                    "contract_localSymbol": "EQT   260220C00057500",
+                    "contract_strike": 57.5,
+                    "contract_right": "C",
+                    "Bid": 1.18,
+                    "Ask": 1.77,
+                    "IV": 0.5859126047778461,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -0.19869538612973497,
+                    "delta": 0.5348812173492754,
+                    "gamma": 0.12490833663748686,
+                    "vega": 0.021635201984785413,
+                    "price": 1.5800000429153442
+                },
+                {
+                    "contract_localSymbol": "EQT   260220C00060000",
+                    "contract_strike": 60.0,
+                    "contract_right": "C",
+                    "Bid": 0.4,
+                    "Ask": 0.57,
+                    "IV": 0.5966090094415245,
+                    "call_open_interest": 5563.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.16115412293850337,
+                    "delta": 0.2522357183524857,
+                    "gamma": 0.09839414885469708,
+                    "vega": 0.017466070836333336,
+                    "price": 0.4699999988079071
+                },
+                {
+                    "contract_localSymbol": "EQT   260220C00062500",
+                    "contract_strike": 62.5,
+                    "contract_right": "C",
+                    "Bid": 0.12,
+                    "Ask": 0.34,
+                    "IV": 0.6615323385339629,
+                    "call_open_interest": 325.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.10177119709215314,
+                    "delta": 0.10560340429962212,
+                    "gamma": 0.05070773908344127,
+                    "vega": 0.00979000840853611,
+                    "price": 0.23000000417232513
+                },
+                {
+                    "contract_localSymbol": "EQT   260220P00052500",
+                    "contract_strike": 52.5,
+                    "contract_right": "P",
+                    "Bid": 0.01,
+                    "Ask": 0.35,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 514.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 0.3499999940395355
+                },
+                {
+                    "contract_localSymbol": "EQT   260220P00055000",
+                    "contract_strike": 55.0,
+                    "contract_right": "P",
+                    "Bid": 0.19,
+                    "Ask": 0.49,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 1836.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 0.33000001311302185
+                },
+                {
+                    "contract_localSymbol": "EQT   260220P00057500",
+                    "contract_strike": 57.5,
+                    "contract_right": "P",
+                    "Bid": 0.79,
+                    "Ask": 1.25,
+                    "IV": 0.5869613058474945,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 231.0,
+                    "theta": -0.1928549807716753,
+                    "delta": -0.465616279237334,
+                    "gamma": 0.12488421321984146,
+                    "vega": 0.02163509973464195,
+                    "price": 1.100000023841858
+                },
+                {
+                    "contract_localSymbol": "EQT   260220P00060000",
+                    "contract_strike": 60.0,
+                    "contract_right": "P",
+                    "Bid": 1.7,
+                    "Ask": 3.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 16.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 3.0
+                },
+                {
+                    "contract_localSymbol": "EQT   260220P00062500",
+                    "contract_strike": 62.5,
+                    "contract_right": "P",
+                    "Bid": 3.5,
+                    "Ask": 5.3,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 20.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 5.300000190734863
+                },
+                {
+                    "contract_localSymbol": "EQT   260220C00058000",
+                    "contract_strike": 58.0,
+                    "contract_right": "C",
+                    "Bid": 0.99,
+                    "Ask": 1.34,
+                    "IV": 0.4537006939041718,
+                    "call_open_interest": 748.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.1538586996267953,
+                    "delta": 0.45893129712975395,
+                    "gamma": 0.16097057026928765,
+                    "vega": 0.021764073184602384,
+                    "price": 1.1399999856948853
+                },
+                {
+                    "contract_localSymbol": "EQT   260220P00057000",
+                    "contract_strike": 57.0,
+                    "contract_right": "P",
+                    "Bid": 0.43,
+                    "Ask": 1.05,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 63.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.0499999523162842
+                }
+            ],
+            "recommendation": {
+                "expected_move": 2.435000002384186,
+                "average_percent_move": 8.79405382791831,
+                "lower_boundary": 52.58934842601338,
+                "upper_boundary": 62.730651273986616
+            }
+        }
+    ],
+    "historic_move": [
+        {
+            "date": "20250404",
+            "open": 49.18,
+            "high": 49.7,
+            "low": 43.57,
+            "close": 46.11,
+            "candle_length": 6.130000000000003,
+            "percent_move": 13.29429624810237
+        },
+        {
+            "date": "20250409",
+            "open": 46.4,
+            "high": 50.86,
+            "low": 44.85,
+            "close": 50.17,
+            "candle_length": 6.009999999999998,
+            "percent_move": 11.979270480366749
+        },
+        {
+            "date": "20250407",
+            "open": 44.63,
+            "high": 49.94,
+            "low": 44.55,
+            "close": 47.31,
+            "candle_length": 5.390000000000001,
+            "percent_move": 11.392940181779752
+        },
+        {
+            "date": "20230726",
+            "open": 39.08,
+            "high": 42.39,
+            "low": 38.68,
+            "close": 41.52,
+            "candle_length": 3.710000000000001,
+            "percent_move": 8.935452793834298
+        },
+        {
+            "date": "20250721",
+            "open": 57.8,
+            "high": 57.99,
+            "low": 53.46,
+            "close": 53.54,
+            "candle_length": 4.530000000000001,
+            "percent_move": 8.460963765409042
+        },
+        {
+            "date": "20231026",
+            "open": 40.5,
+            "high": 43.14,
+            "low": 39.58,
+            "close": 42.81,
+            "candle_length": 3.5600000000000023,
+            "percent_move": 8.31581406213502
+        },
+        {
+            "date": "20240221",
+            "open": 35.32,
+            "high": 38.24,
+            "low": 35.3,
+            "close": 37.3,
+            "candle_length": 2.940000000000005,
+            "percent_move": 7.882037533512078
+        },
+        {
+            "date": "20230224",
+            "open": 32.53,
+            "high": 34.77,
+            "low": 32.09,
+            "close": 34.73,
+            "candle_length": 2.6799999999999997,
+            "percent_move": 7.716671465591707
+        },
+        {
+            "date": "20250127",
+            "open": 51.26,
+            "high": 51.3,
+            "low": 47.59,
+            "close": 48.46,
+            "candle_length": 3.7099999999999937,
+            "percent_move": 7.655798596780837
+        },
+        {
+            "date": "20250408",
+            "open": 49.82,
+            "high": 50.44,
+            "low": 46.84,
+            "close": 47.49,
+            "candle_length": 3.5999999999999943,
+            "percent_move": 7.580543272267834
+        },
+        {
+            "date": "20251120",
+            "open": 59.29,
+            "high": 60.51,
+            "low": 56.28,
+            "close": 56.35,
+            "candle_length": 4.229999999999997,
+            "percent_move": 7.506654835847376
+        },
+        {
+            "date": "20250306",
+            "open": 49.1,
+            "high": 49.43,
+            "low": 45.97,
+            "close": 46.16,
+            "candle_length": 3.460000000000001,
+            "percent_move": 7.49566724436742
+        },
+        {
+            "date": "20250304",
+            "open": 48.65,
+            "high": 51.21,
+            "low": 47.48,
+            "close": 50.0,
+            "candle_length": 3.730000000000004,
+            "percent_move": 7.460000000000008
+        },
+        {
+            "date": "20251022",
+            "open": 55.3,
+            "high": 56.98,
+            "low": 53.0,
+            "close": 53.49,
+            "candle_length": 3.979999999999997,
+            "percent_move": 7.440643110861838
+        }
+    ]
+}
