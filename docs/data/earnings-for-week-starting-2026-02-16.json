@@ -1,0 +1,105 @@
+{
+  "week_start": "2026-02-16",
+  "data": [
+    {
+      "ticker": "MDT",
+      "scheduled_date": "Feb 17/b",
+      "open_trade_date": "2026-02-16 (Monday)"
+    },
+    {
+      "ticker": "CDNS",
+      "scheduled_date": "Feb 17/a",
+      "open_trade_date": "2026-02-17 (Tuesday)"
+    },
+    {
+      "ticker": "EQT",
+      "scheduled_date": "Feb 17/a",
+      "open_trade_date": "2026-02-17 (Tuesday)"
+    },
+    {
+      "ticker": "PANW",
+      "scheduled_date": "Feb 17/a",
+      "open_trade_date": "2026-02-17 (Tuesday)"
+    },
+    {
+      "ticker": "ADI",
+      "scheduled_date": "Feb 18/b",
+      "open_trade_date": "2026-02-17 (Tuesday)"
+    },
+    {
+      "ticker": "BKNG",
+      "scheduled_date": "Feb 18/a",
+      "open_trade_date": "2026-02-18 (Wednesday)"
+    },
+    {
+      "ticker": "CF",
+      "scheduled_date": "Feb 18/a",
+      "open_trade_date": "2026-02-18 (Wednesday)"
+    },
+    {
+      "ticker": "CRH",
+      "scheduled_date": "Feb 18/a",
+      "open_trade_date": "2026-02-18 (Wednesday)"
+    },
+    {
+      "ticker": "CVNA",
+      "scheduled_date": "Feb 18/a",
+      "open_trade_date": "2026-02-18 (Wednesday)"
+    },
+    {
+      "ticker": "DASH",
+      "scheduled_date": "Feb 18/a",
+      "open_trade_date": "2026-02-18 (Wednesday)"
+    },
+    {
+      "ticker": "EBAY",
+      "scheduled_date": "Feb 18/a",
+      "open_trade_date": "2026-02-18 (Wednesday)"
+    },
+    {
+      "ticker": "NTR",
+      "scheduled_date": "Feb 18/a",
+      "open_trade_date": "2026-02-18 (Wednesday)"
+    },
+    {
+      "ticker": "PAAS",
+      "scheduled_date": "Feb 18/a",
+      "open_trade_date": "2026-02-18 (Wednesday)"
+    },
+    {
+      "ticker": "DE",
+      "scheduled_date": "Feb 19/b",
+      "open_trade_date": "2026-02-18 (Wednesday)"
+    },
+    {
+      "ticker": "SO",
+      "scheduled_date": "Feb 19/b",
+      "open_trade_date": "2026-02-18 (Wednesday)"
+    },
+    {
+      "ticker": "TECK",
+      "scheduled_date": "Feb 19/b",
+      "open_trade_date": "2026-02-18 (Wednesday)"
+    },
+    {
+      "ticker": "W",
+      "scheduled_date": "Feb 19/b",
+      "open_trade_date": "2026-02-18 (Wednesday)"
+    },
+    {
+      "ticker": "WMT",
+      "scheduled_date": "Feb 19/b",
+      "open_trade_date": "2026-02-18 (Wednesday)"
+    },
+    {
+      "ticker": "NEM",
+      "scheduled_date": "Feb 19/a",
+      "open_trade_date": "2026-02-19 (Thursday)"
+    },
+    {
+      "ticker": "TXRH",
+      "scheduled_date": "Feb 19/a",
+      "open_trade_date": "2026-02-19 (Thursday)"
+    }
+  ]
+}
