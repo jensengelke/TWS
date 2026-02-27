@@ -1,0 +1,85 @@
+{
+  "week_start": "2026-03-02",
+  "data": [
+    {
+      "ticker": "SATS",
+      "scheduled_date": "Mar 02/b",
+      "open_trade_date": "2026-03-01 (Sunday)"
+    },
+    {
+      "ticker": "ASTS",
+      "scheduled_date": "Mar 02/a",
+      "open_trade_date": "2026-03-02 (Monday)"
+    },
+    {
+      "ticker": "CRDO",
+      "scheduled_date": "Mar 02/a",
+      "open_trade_date": "2026-03-02 (Monday)"
+    },
+    {
+      "ticker": "MDB",
+      "scheduled_date": "Mar 02/a",
+      "open_trade_date": "2026-03-02 (Monday)"
+    },
+    {
+      "ticker": "BBY",
+      "scheduled_date": "Mar 03/b",
+      "open_trade_date": "2026-03-02 (Monday)"
+    },
+    {
+      "ticker": "SE",
+      "scheduled_date": "Mar 03/b",
+      "open_trade_date": "2026-03-02 (Monday)"
+    },
+    {
+      "ticker": "TGT",
+      "scheduled_date": "Mar 03/b",
+      "open_trade_date": "2026-03-02 (Monday)"
+    },
+    {
+      "ticker": "CRWD",
+      "scheduled_date": "Mar 03/a",
+      "open_trade_date": "2026-03-03 (Tuesday)"
+    },
+    {
+      "ticker": "ROST",
+      "scheduled_date": "Mar 03/a",
+      "open_trade_date": "2026-03-03 (Tuesday)"
+    },
+    {
+      "ticker": "AVGO",
+      "scheduled_date": "Mar 04/a",
+      "open_trade_date": "2026-03-04 (Wednesday)"
+    },
+    {
+      "ticker": "OKTA",
+      "scheduled_date": "Mar 04/a",
+      "open_trade_date": "2026-03-04 (Wednesday)"
+    },
+    {
+      "ticker": "BURL",
+      "scheduled_date": "Mar 05/b",
+      "open_trade_date": "2026-03-04 (Wednesday)"
+    },
+    {
+      "ticker": "CIEN",
+      "scheduled_date": "Mar 05/b",
+      "open_trade_date": "2026-03-04 (Wednesday)"
+    },
+    {
+      "ticker": "KR",
+      "scheduled_date": "Mar 05/b",
+      "open_trade_date": "2026-03-04 (Wednesday)"
+    },
+    {
+      "ticker": "COST",
+      "scheduled_date": "Mar 05/a",
+      "open_trade_date": "2026-03-05 (Thursday)"
+    },
+    {
+      "ticker": "MRVL",
+      "scheduled_date": "Mar 05/a",
+      "open_trade_date": "2026-03-05 (Thursday)"
+    }
+  ]
+}
