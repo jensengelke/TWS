@@ -1050,6 +1050,82 @@
                 "lower_boundary": 94.51478878831102,
                 "upper_boundary": 141.17521365168898
             }
+        },
+        {
+            "timestamp": "2026-03-02 10:45:36",
+            "underlying_prices": {
+                "Bid": 115.5,
+                "Ask": 116.01,
+                "get_instrument_value": 115.50009918
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "SATS  260306C00116000",
+                    "contract_strike": 116.0,
+                    "contract_right": "C",
+                    "Bid": 3.7,
+                    "Ask": 6.2,
+                    "IV": null,
+                    "call_open_interest": 76.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 4.43207836
+                },
+                {
+                    "contract_localSymbol": "SATS  260306C00117000",
+                    "contract_strike": 117.0,
+                    "contract_right": "C",
+                    "Bid": 3.3,
+                    "Ask": 5.8,
+                    "IV": null,
+                    "call_open_interest": 134.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 3.99713516
+                },
+                {
+                    "contract_localSymbol": "SATS  260306P00115000",
+                    "contract_strike": 115.0,
+                    "contract_right": "P",
+                    "Bid": 3.8,
+                    "Ask": 5.4,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 53.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 4.28640223
+                },
+                {
+                    "contract_localSymbol": "SATS  260306P00116000",
+                    "contract_strike": 116.0,
+                    "contract_right": "P",
+                    "Bid": 3.8,
+                    "Ask": 6.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 30.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 4.80211306
+                }
+            ],
+            "recommendation": {
+                "expected_move": 8.758864405,
+                "average_percent_move": 19.797371284450797,
+                "lower_boundary": 92.63411571142649,
+                "upper_boundary": 138.36608264857352
+            }
         }
     ],
     "historic_move": [
