@@ -6682,6 +6682,97 @@
                 "lower_boundary": 67.12954298157888,
                 "upper_boundary": 118.15045579842112
             }
+        },
+        {
+            "timestamp": "2026-03-03 12:45:37",
+            "underlying_prices": {
+                "Bid": 96.23,
+                "Ask": 96.38,
+                "get_instrument_value": 96.30879974
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "ASTS  260306C00105000",
+                    "contract_strike": 105.0,
+                    "contract_right": "C",
+                    "Bid": 1.84,
+                    "Ask": 1.95,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.85452986
+                },
+                {
+                    "contract_localSymbol": "ASTS  260306C00096000",
+                    "contract_strike": 96.0,
+                    "contract_right": "C",
+                    "Bid": 4.9,
+                    "Ask": 5.25,
+                    "IV": 1.392342110935747,
+                    "call_open_interest": 412.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.7966567315357821,
+                    "delta": 0.535226492726707,
+                    "gamma": 0.03216447508479693,
+                    "vega": 0.03537662619164461,
+                    "price": 5.25
+                },
+                {
+                    "contract_localSymbol": "ASTS  260306C00097000",
+                    "contract_strike": 97.0,
+                    "contract_right": "C",
+                    "Bid": 4.45,
+                    "Ask": 4.7,
+                    "IV": 1.381248892217602,
+                    "call_open_interest": 247.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.7913206669056582,
+                    "delta": 0.5029746197949571,
+                    "gamma": 0.0324745918730009,
+                    "vega": 0.035568792477059574,
+                    "price": 4.599999904632568
+                },
+                {
+                    "contract_localSymbol": "ASTS  260306P00095000",
+                    "contract_strike": 95.0,
+                    "contract_right": "P",
+                    "Bid": 3.95,
+                    "Ask": 4.55,
+                    "IV": 1.3873238463763236,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 284.0,
+                    "theta": -0.7735460005778281,
+                    "delta": -0.43272061272327766,
+                    "gamma": 0.03186077280283129,
+                    "vega": 0.035185149575749364,
+                    "price": 4.400000095367432
+                },
+                {
+                    "contract_localSymbol": "ASTS  260306P00096000",
+                    "contract_strike": 96.0,
+                    "contract_right": "P",
+                    "Bid": 4.6,
+                    "Ask": 4.8,
+                    "IV": 1.472715589006108,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 55.0,
+                    "theta": -0.8323282314494928,
+                    "delta": -0.46398667175906744,
+                    "gamma": 0.030422472170651388,
+                    "vega": 0.035368458680877346,
+                    "price": 4.690000057220459
+                }
+            ],
+            "recommendation": {
+                "expected_move": 9.427154542683716,
+                "average_percent_move": 27.537194059151563,
+                "lower_boundary": 69.78805865955654,
+                "upper_boundary": 122.82954082044346
+            }
         }
     ],
     "historic_move": [
