@@ -1,0 +1,50 @@
+{
+  "week_start": "2026-03-09",
+  "data": [
+    {
+      "ticker": "AVAV",
+      "scheduled_date": "Mar 10/a",
+      "open_trade_date": "2026-03-10 (Tuesday)"
+    },
+    {
+      "ticker": "ORCL",
+      "scheduled_date": "Mar 10/a",
+      "open_trade_date": "2026-03-10 (Tuesday)"
+    },
+    {
+      "ticker": "DG",
+      "scheduled_date": "Mar 12/b",
+      "open_trade_date": "2026-03-11 (Wednesday)"
+    },
+    {
+      "ticker": "FUTU",
+      "scheduled_date": "Mar 12/b",
+      "open_trade_date": "2026-03-11 (Wednesday)"
+    },
+    {
+      "ticker": "ADBE",
+      "scheduled_date": "Mar 12/a",
+      "open_trade_date": "2026-03-12 (Thursday)"
+    },
+    {
+      "ticker": "LEN",
+      "scheduled_date": "Mar 12/a",
+      "open_trade_date": "2026-03-12 (Thursday)"
+    },
+    {
+      "ticker": "RBRK",
+      "scheduled_date": "Mar 12/a",
+      "open_trade_date": "2026-03-12 (Thursday)"
+    },
+    {
+      "ticker": "ULTA",
+      "scheduled_date": "Mar 12/a",
+      "open_trade_date": "2026-03-12 (Thursday)"
+    },
+    {
+      "ticker": "WPM",
+      "scheduled_date": "Mar 12/a",
+      "open_trade_date": "2026-03-12 (Thursday)"
+    }
+  ]
+}
