@@ -17547,6 +17547,82 @@
                 "lower_boundary": 122.612553808673,
                 "upper_boundary": 179.60744741132697
             }
+        },
+        {
+            "timestamp": "2026-03-11 09:46:12",
+            "underlying_prices": {
+                "Bid": 170.63,
+                "Ask": 170.74,
+                "get_instrument_value": 170.71000671
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "ORCL  260313C00170000",
+                    "contract_strike": 170.0,
+                    "contract_right": "C",
+                    "Bid": 4.8,
+                    "Ask": 4.9,
+                    "IV": 0.8400842849170914,
+                    "call_open_interest": 14804.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.0037449094151136,
+                    "delta": 0.5386585085928656,
+                    "gamma": 0.03530441298293117,
+                    "vega": 0.05329738036988285,
+                    "price": 4.860000133514404
+                },
+                {
+                    "contract_localSymbol": "ORCL  260313P00170000",
+                    "contract_strike": 170.0,
+                    "contract_right": "P",
+                    "Bid": 4.0,
+                    "Ask": 4.15,
+                    "IV": 0.8319791554844717,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 270.0,
+                    "theta": -0.976504839732847,
+                    "delta": -0.4614648164648817,
+                    "gamma": 0.03567514362026824,
+                    "vega": 0.05329798328454238,
+                    "price": 4.099999904632568
+                },
+                {
+                    "contract_localSymbol": "ORCL  260313C00172500",
+                    "contract_strike": 172.5,
+                    "contract_right": "C",
+                    "Bid": 3.6,
+                    "Ask": 3.7,
+                    "IV": 0.8442581277588784,
+                    "call_open_interest": 2496.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.0052591399152577,
+                    "delta": 0.4510457853462965,
+                    "gamma": 0.03506191968165599,
+                    "vega": 0.05373065493830964,
+                    "price": 3.64337444
+                },
+                {
+                    "contract_localSymbol": "ORCL  260313P00167500",
+                    "contract_strike": 167.5,
+                    "contract_right": "P",
+                    "Bid": 2.95,
+                    "Ask": 3.05,
+                    "IV": 0.8411426798070749,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 88.0,
+                    "theta": -0.9428511826013911,
+                    "delta": -0.3743891122304727,
+                    "gamma": 0.033649155240758774,
+                    "vega": 0.05079056803253268,
+                    "price": 2.9700000286102295
+                }
+            ],
+            "recommendation": {
+                "expected_move": 7.81230974,
+                "average_percent_move": 9.340441936230178,
+                "lower_boundary": 154.7649376539178,
+                "upper_boundary": 186.65507576608218
+            }
         }
     ],
     "historic_move": [
