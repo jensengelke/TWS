@@ -1,0 +1,40 @@
+{
+  "week_start": "2026-03-16",
+  "data": [
+    {
+      "ticker": "DLTR",
+      "scheduled_date": "Mar 16/b",
+      "open_trade_date": "2026-03-15 (Sunday)"
+    },
+    {
+      "ticker": "LULU",
+      "scheduled_date": "Mar 17/a",
+      "open_trade_date": "2026-03-17 (Tuesday)"
+    },
+    {
+      "ticker": "JBL",
+      "scheduled_date": "Mar 18/b",
+      "open_trade_date": "2026-03-17 (Tuesday)"
+    },
+    {
+      "ticker": "MU",
+      "scheduled_date": "Mar 18/a",
+      "open_trade_date": "2026-03-18 (Wednesday)"
+    },
+    {
+      "ticker": "ACN",
+      "scheduled_date": "Mar 19/b",
+      "open_trade_date": "2026-03-18 (Wednesday)"
+    },
+    {
+      "ticker": "BABA",
+      "scheduled_date": "Mar 19/b",
+      "open_trade_date": "2026-03-18 (Wednesday)"
+    },
+    {
+      "ticker": "FDX",
+      "scheduled_date": "Mar 19/a",
+      "open_trade_date": "2026-03-19 (Thursday)"
+    }
+  ]
+}
