@@ -1,0 +1,15 @@
+{
+  "week_start": "2026-04-06",
+  "data": [
+    {
+      "ticker": "DAL",
+      "scheduled_date": "Apr 08/b",
+      "open_trade_date": "2026-04-07 (Tuesday)"
+    },
+    {
+      "ticker": "STZ",
+      "scheduled_date": "Apr 08/a",
+      "open_trade_date": "2026-04-08 (Wednesday)"
+    }
+  ]
+}
