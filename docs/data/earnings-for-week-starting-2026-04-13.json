@@ -1,0 +1,95 @@
+{
+  "week_start": "2026-04-13",
+  "data": [
+    {
+      "ticker": "GS",
+      "scheduled_date": "Apr 13/b",
+      "open_trade_date": "2026-04-12 (Sunday)"
+    },
+    {
+      "ticker": "BLK",
+      "scheduled_date": "Apr 14/b",
+      "open_trade_date": "2026-04-13 (Monday)"
+    },
+    {
+      "ticker": "C",
+      "scheduled_date": "Apr 14/b",
+      "open_trade_date": "2026-04-13 (Monday)"
+    },
+    {
+      "ticker": "JNJ",
+      "scheduled_date": "Apr 14/b",
+      "open_trade_date": "2026-04-13 (Monday)"
+    },
+    {
+      "ticker": "JPM",
+      "scheduled_date": "Apr 14/b",
+      "open_trade_date": "2026-04-13 (Monday)"
+    },
+    {
+      "ticker": "WFC",
+      "scheduled_date": "Apr 14/b",
+      "open_trade_date": "2026-04-13 (Monday)"
+    },
+    {
+      "ticker": "ASML",
+      "scheduled_date": "Apr 15/b",
+      "open_trade_date": "2026-04-14 (Tuesday)"
+    },
+    {
+      "ticker": "BAC",
+      "scheduled_date": "Apr 15/b",
+      "open_trade_date": "2026-04-14 (Tuesday)"
+    },
+    {
+      "ticker": "MS",
+      "scheduled_date": "Apr 15/b",
+      "open_trade_date": "2026-04-14 (Tuesday)"
+    },
+    {
+      "ticker": "PGR",
+      "scheduled_date": "Apr 15/b",
+      "open_trade_date": "2026-04-14 (Tuesday)"
+    },
+    {
+      "ticker": "PNC",
+      "scheduled_date": "Apr 15/b",
+      "open_trade_date": "2026-04-14 (Tuesday)"
+    },
+    {
+      "ticker": "ABT",
+      "scheduled_date": "Apr 16/b",
+      "open_trade_date": "2026-04-15 (Wednesday)"
+    },
+    {
+      "ticker": "PEP",
+      "scheduled_date": "Apr 16/b",
+      "open_trade_date": "2026-04-15 (Wednesday)"
+    },
+    {
+      "ticker": "SCHW",
+      "scheduled_date": "Apr 16/b",
+      "open_trade_date": "2026-04-15 (Wednesday)"
+    },
+    {
+      "ticker": "TSM",
+      "scheduled_date": "Apr 16/b",
+      "open_trade_date": "2026-04-15 (Wednesday)"
+    },
+    {
+      "ticker": "USB",
+      "scheduled_date": "Apr 16/b",
+      "open_trade_date": "2026-04-15 (Wednesday)"
+    },
+    {
+      "ticker": "AA",
+      "scheduled_date": "Apr 16/a",
+      "open_trade_date": "2026-04-16 (Thursday)"
+    },
+    {
+      "ticker": "NFLX",
+      "scheduled_date": "Apr 16/a",
+      "open_trade_date": "2026-04-16 (Thursday)"
+    }
+  ]
+}
