@@ -1,0 +1,215 @@
+{
+  "week_start": "2026-04-20",
+  "data": [
+    {
+      "ticker": "DHI",
+      "scheduled_date": "Apr 21/b",
+      "open_trade_date": "2026-04-20 (Monday)"
+    },
+    {
+      "ticker": "DHR",
+      "scheduled_date": "Apr 21/b",
+      "open_trade_date": "2026-04-20 (Monday)"
+    },
+    {
+      "ticker": "GE",
+      "scheduled_date": "Apr 21/b",
+      "open_trade_date": "2026-04-20 (Monday)"
+    },
+    {
+      "ticker": "MMM",
+      "scheduled_date": "Apr 21/b",
+      "open_trade_date": "2026-04-20 (Monday)"
+    },
+    {
+      "ticker": "RTX",
+      "scheduled_date": "Apr 21/b",
+      "open_trade_date": "2026-04-20 (Monday)"
+    },
+    {
+      "ticker": "UNH",
+      "scheduled_date": "Apr 21/b",
+      "open_trade_date": "2026-04-20 (Monday)"
+    },
+    {
+      "ticker": "COF",
+      "scheduled_date": "Apr 21/a",
+      "open_trade_date": "2026-04-21 (Tuesday)"
+    },
+    {
+      "ticker": "EQT",
+      "scheduled_date": "Apr 21/a",
+      "open_trade_date": "2026-04-21 (Tuesday)"
+    },
+    {
+      "ticker": "IBKR",
+      "scheduled_date": "Apr 21/a",
+      "open_trade_date": "2026-04-21 (Tuesday)"
+    },
+    {
+      "ticker": "ISRG",
+      "scheduled_date": "Apr 21/a",
+      "open_trade_date": "2026-04-21 (Tuesday)"
+    },
+    {
+      "ticker": "UAL",
+      "scheduled_date": "Apr 21/a",
+      "open_trade_date": "2026-04-21 (Tuesday)"
+    },
+    {
+      "ticker": "BA",
+      "scheduled_date": "Apr 22/b",
+      "open_trade_date": "2026-04-21 (Tuesday)"
+    },
+    {
+      "ticker": "BSX",
+      "scheduled_date": "Apr 22/b",
+      "open_trade_date": "2026-04-21 (Tuesday)"
+    },
+    {
+      "ticker": "CME",
+      "scheduled_date": "Apr 22/b",
+      "open_trade_date": "2026-04-21 (Tuesday)"
+    },
+    {
+      "ticker": "GEV",
+      "scheduled_date": "Apr 22/b",
+      "open_trade_date": "2026-04-21 (Tuesday)"
+    },
+    {
+      "ticker": "PM",
+      "scheduled_date": "Apr 22/b",
+      "open_trade_date": "2026-04-21 (Tuesday)"
+    },
+    {
+      "ticker": "VRT",
+      "scheduled_date": "Apr 22/b",
+      "open_trade_date": "2026-04-21 (Tuesday)"
+    },
+    {
+      "ticker": "IBM",
+      "scheduled_date": "Apr 22/a",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "LRCX",
+      "scheduled_date": "Apr 22/a",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "LVS",
+      "scheduled_date": "Apr 22/a",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "NOW",
+      "scheduled_date": "Apr 22/a",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "TSLA",
+      "scheduled_date": "Apr 22/a",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "TXN",
+      "scheduled_date": "Apr 22/a",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "URI",
+      "scheduled_date": "Apr 22/a",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "AXP",
+      "scheduled_date": "Apr 23/b",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "BX",
+      "scheduled_date": "Apr 23/b",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "FCX",
+      "scheduled_date": "Apr 23/b",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "HON",
+      "scheduled_date": "Apr 23/b",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "LMT",
+      "scheduled_date": "Apr 23/b",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "NDAQ",
+      "scheduled_date": "Apr 23/b",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "NEE",
+      "scheduled_date": "Apr 23/b",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "PHM",
+      "scheduled_date": "Apr 23/b",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "TECK",
+      "scheduled_date": "Apr 23/b",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "TMO",
+      "scheduled_date": "Apr 23/b",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "UNP",
+      "scheduled_date": "Apr 23/b",
+      "open_trade_date": "2026-04-22 (Wednesday)"
+    },
+    {
+      "ticker": "DLR",
+      "scheduled_date": "Apr 23/a",
+      "open_trade_date": "2026-04-23 (Thursday)"
+    },
+    {
+      "ticker": "INTC",
+      "scheduled_date": "Apr 23/a",
+      "open_trade_date": "2026-04-23 (Thursday)"
+    },
+    {
+      "ticker": "NEM",
+      "scheduled_date": "Apr 23/a",
+      "open_trade_date": "2026-04-23 (Thursday)"
+    },
+    {
+      "ticker": "SAP",
+      "scheduled_date": "Apr 23/a",
+      "open_trade_date": "2026-04-23 (Thursday)"
+    },
+    {
+      "ticker": "CHTR",
+      "scheduled_date": "Apr 24/b",
+      "open_trade_date": "2026-04-23 (Thursday)"
+    },
+    {
+      "ticker": "PG",
+      "scheduled_date": "Apr 24/b",
+      "open_trade_date": "2026-04-23 (Thursday)"
+    },
+    {
+      "ticker": "SLB",
+      "scheduled_date": "Apr 24/b",
+      "open_trade_date": "2026-04-23 (Thursday)"
+    }
+  ]
+}
