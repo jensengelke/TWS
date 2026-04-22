@@ -61,7 +61,19 @@ class IBApp(EWrapper, EClient):
         if self.verbose:
             print(f"responses: {ibresponses_contractDetails}")
         
-        
+    def securityDefinitionOptionParameter(self, reqId, exchange, underlyingConId, tradingClass, multiplier, expirations, strikes):
+        """
+        Callback for reqSecDefOptParams.
+        """
+        print(f"Security definition option parameter for reqId {reqId}: {exchange}, {underlyingConId}, {tradingClass}, {multiplier}, {expirations}, {strikes}")
+
+    def securityDefinitionOptionParameterEnd(self, reqId):
+        """
+        Callback signifying end of security definition option parameters.
+        """
+        print(f"Security definition option parameter end for reqId {reqId}")
+
+
     def contractDetailsEnd(self, reqId: int):
         print(f"Contract details for reqId {reqId} received.")
 
@@ -164,8 +176,20 @@ print("serverVersion:%s connectionTime:%s" % (app.serverVersion(), app.twsConnec
 threading.Thread(target=app.run, daemon=True).start()
 
 app.orderId=0
-app.reqContractDetails(app.nextId(), mycontract)
-time.sleep(1)  # Allow time for the request to be processed
+reqId = app.nextId()
+app.reqContractDetails(reqId, mycontract)
+time.sleep(2)  # Allow time for the request to be processed
+
+spxcontract = ibresponses_contractDetails["SPX-"+str(reqId)].contract
+print(f"Contract details received: {spxcontract}")
+
+# reqId = app.nextId()
+# print(f"requesting SecDefOptParams for {spxcontract.symbol} with conid: {spxcontract.conId}")
+# app.reqSecDefOptParams(reqId=reqId, 
+#     underlyingSymbol=spxcontract.symbol, 
+#     futFopExchange="", 
+#     underlyingSecType=spxcontract.secType, 
+#     underlyingConId=spxcontract.conId)
 
 today = pd.Timestamp.now().normalize()
 days_ahead = (4 - today.weekday()) % 7  # 4 is Friday (Monday=0)
@@ -193,6 +217,7 @@ print()  # Move to next line after countdown
 
 opt_contract=ibresponses_contractDetails[identifier].contract
 print(f"Contract details received: {opt_contract.localSymbol}")
+
 
 reqId = app.nextId()
 identifier = f"{opt_contract.localSymbol}-{reqId}"
