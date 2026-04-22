@@ -855,6 +855,127 @@
                 "lower_boundary": 223.39514017,
                 "upper_boundary": 284.52487325
             }
+        },
+        {
+            "timestamp": "2026-04-22 12:47:29",
+            "underlying_prices": {
+                "Bid": null,
+                "Ask": null,
+                "get_instrument_value": 252.27999878
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "IBM   260424C00220000",
+                    "contract_strike": 220.0,
+                    "contract_right": "C",
+                    "Bid": 31.05,
+                    "Ask": 34.6,
+                    "IV": null,
+                    "call_open_interest": 200.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 34.599998474121094
+                },
+                {
+                    "contract_localSymbol": "IBM   260424C00225000",
+                    "contract_strike": 225.0,
+                    "contract_right": "C",
+                    "Bid": 26.4,
+                    "Ask": 29.8,
+                    "IV": null,
+                    "call_open_interest": 30.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 27.88126564
+                },
+                {
+                    "contract_localSymbol": "IBM   260424C00230000",
+                    "contract_strike": 230.0,
+                    "contract_right": "C",
+                    "Bid": 22.15,
+                    "Ask": 25.3,
+                    "IV": null,
+                    "call_open_interest": 139.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 23.36834145
+                },
+                {
+                    "contract_localSymbol": "IBM   260424C00255000",
+                    "contract_strike": 255.0,
+                    "contract_right": "C",
+                    "Bid": 6.7,
+                    "Ask": 7.45,
+                    "IV": 1.0740723278989583,
+                    "call_open_interest": 918.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.9465825428152326,
+                    "delta": 0.4650575317006509,
+                    "gamma": 0.019239037715403286,
+                    "vega": 0.07712513866267035,
+                    "price": 7.050000190734863
+                },
+                {
+                    "contract_localSymbol": "IBM   260424P00250000",
+                    "contract_strike": 250.0,
+                    "contract_right": "P",
+                    "Bid": 6.55,
+                    "Ask": 7.35,
+                    "IV": 1.0405499057082523,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 827.0,
+                    "theta": -1.8467913075685232,
+                    "delta": -0.43827380349187733,
+                    "gamma": 0.019698694601373683,
+                    "vega": 0.07631803606629806,
+                    "price": 6.989999771118164
+                },
+                {
+                    "contract_localSymbol": "IBM   260424C00252500",
+                    "contract_strike": 252.5,
+                    "contract_right": "C",
+                    "Bid": 7.9,
+                    "Ask": 8.3,
+                    "IV": 1.071909857273045,
+                    "call_open_interest": 356.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.95709500475801,
+                    "delta": 0.5128097808606261,
+                    "gamma": 0.019410039449098224,
+                    "vega": 0.0767215867148785,
+                    "price": 8.050000190734863
+                },
+                {
+                    "contract_localSymbol": "IBM   260424P00252500",
+                    "contract_strike": 252.5,
+                    "contract_right": "P",
+                    "Bid": 7.85,
+                    "Ask": 8.75,
+                    "IV": 0.9992610336972848,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 138.0,
+                    "theta": -1.7996616375110623,
+                    "delta": -0.4887703447009792,
+                    "gamma": 0.020835524011804486,
+                    "vega": 0.0767294745631304,
+                    "price": 8.449999809265137
+                }
+            ],
+            "recommendation": {
+                "expected_move": 15.131580115,
+                "average_percent_move": 7.840720463178803,
+                "lower_boundary": 222.01683855,
+                "upper_boundary": 282.54315901
+            }
         }
     ],
     "historic_move": [

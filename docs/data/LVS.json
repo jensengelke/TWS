@@ -525,6 +525,82 @@
                 "lower_boundary": 50.43909157,
                 "upper_boundary": 63.34090721
             }
+        },
+        {
+            "timestamp": "2026-04-22 12:48:10",
+            "underlying_prices": {
+                "Bid": 56.74,
+                "Ask": 56.76,
+                "get_instrument_value": 56.75
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "LVS   260424C00057000",
+                    "contract_strike": 57.0,
+                    "contract_right": "C",
+                    "Bid": 1.61,
+                    "Ask": 1.96,
+                    "IV": 1.0499323497764423,
+                    "call_open_interest": 705.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.4950706803078033,
+                    "delta": 0.49655969065464417,
+                    "gamma": 0.08786614811833558,
+                    "vega": 0.01729362687860614,
+                    "price": 1.7139522160108231
+                },
+                {
+                    "contract_localSymbol": "LVS   260424C00058000",
+                    "contract_strike": 58.0,
+                    "contract_right": "C",
+                    "Bid": 1.07,
+                    "Ask": 1.52,
+                    "IV": 1.0425241754485097,
+                    "call_open_interest": 534.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.4762256102039101,
+                    "delta": 0.4100860273994117,
+                    "gamma": 0.08616335841360302,
+                    "vega": 0.01677229167314409,
+                    "price": 1.280940802228949
+                },
+                {
+                    "contract_localSymbol": "LVS   260424P00056000",
+                    "contract_strike": 56.0,
+                    "contract_right": "P",
+                    "Bid": 1.37,
+                    "Ask": 1.63,
+                    "IV": 1.0596350245995354,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 2229.0,
+                    "theta": -0.4822238157418788,
+                    "delta": -0.41665441072114917,
+                    "gamma": 0.08528478137109223,
+                    "vega": 0.017130887168612663,
+                    "price": 1.4605938507685514
+                },
+                {
+                    "contract_localSymbol": "LVS   260424P00057000",
+                    "contract_strike": 57.0,
+                    "contract_right": "P",
+                    "Bid": 1.83,
+                    "Ask": 2.17,
+                    "IV": 1.0499323497764423,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 209.0,
+                    "theta": -0.48932174272513107,
+                    "delta": -0.5036489527454735,
+                    "gamma": 0.08791529228872816,
+                    "vega": 0.017294584837567406,
+                    "price": 1.9380489594842139
+                }
+            ],
+            "recommendation": {
+                "expected_move": 3.29,
+                "average_percent_move": 7.317271407483571,
+                "lower_boundary": 50.17,
+                "upper_boundary": 63.33
+            }
         }
     ],
     "historic_move": [

@@ -975,6 +975,82 @@
                 "lower_boundary": 227.10019254,
                 "upper_boundary": 296.24978304
             }
+        },
+        {
+            "timestamp": "2026-04-22 12:47:50",
+            "underlying_prices": {
+                "Bid": 262.52,
+                "Ask": 262.76,
+                "get_instrument_value": 262.67001343
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "LRCX  260424C00265000",
+                    "contract_strike": 265.0,
+                    "contract_right": "C",
+                    "Bid": 8.2,
+                    "Ask": 8.5,
+                    "IV": 1.1795059450896552,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -2.2296868478746283,
+                    "delta": 0.48001214578808044,
+                    "gamma": 0.01686063307872625,
+                    "vega": 0.08020525940966472,
+                    "price": 8.350000381469727
+                },
+                {
+                    "contract_localSymbol": "LRCX  260424P00260000",
+                    "contract_strike": 260.0,
+                    "contract_right": "P",
+                    "Bid": 7.95,
+                    "Ask": 8.45,
+                    "IV": 1.1596248205961925,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -2.1422788082318753,
+                    "delta": -0.4357347428970868,
+                    "gamma": 0.016957488742796088,
+                    "vega": 0.07940597778399994,
+                    "price": 8.0
+                },
+                {
+                    "contract_localSymbol": "LRCX  260424C00262500",
+                    "contract_strike": 262.5,
+                    "contract_right": "C",
+                    "Bid": 9.05,
+                    "Ask": 9.9,
+                    "IV": 1.1856471417903274,
+                    "call_open_interest": 275.0,
+                    "put_open_interest": 0.0,
+                    "theta": -2.251485882195091,
+                    "delta": 0.5218800244105419,
+                    "gamma": 0.016842588549524033,
+                    "vega": 0.07980491560578074,
+                    "price": 9.399999618530273
+                },
+                {
+                    "contract_localSymbol": "LRCX  260424P00262500",
+                    "contract_strike": 262.5,
+                    "contract_right": "P",
+                    "Bid": 8.95,
+                    "Ask": 9.6,
+                    "IV": 1.1963336205095794,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 436.0,
+                    "theta": -2.2448860782496927,
+                    "delta": -0.47816462172398094,
+                    "gamma": 0.016701200889228832,
+                    "vega": 0.07980335331636468,
+                    "price": 9.649999618530273
+                }
+            ],
+            "recommendation": {
+                "expected_move": 17.591478155,
+                "average_percent_move": 10.856674084075431,
+                "lower_boundary": 227.48705711999997,
+                "upper_boundary": 297.85296974
+            }
         }
     ],
     "historic_move": [
