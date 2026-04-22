@@ -104,6 +104,14 @@ class EarningsApp(EWrapper, EClient):
         self.contract_queue = deque()
         self.MAX_CONCURRENT_CONTRACTS = 5
 
+    def run_wrapper(self):
+        try:
+            self.run()
+        except Exception as e:
+            logging.critical(f"Exception in EClient run loop: {e}")
+            logging.critical(traceback.format_exc())
+            print(f"CRITICAL: Exception in EClient run loop: {e}")
+
     def reqMktData(self, reqId: TickerId, contract: Contract, genericTickList: str, snapshot: bool, regulatorySnapshot: bool, mktDataOptions: List[Any], on_sent: Callable = None):
         with self.lock:
             if len(self.active_mkt_requests) < self.MAX_CONCURRENT_MKT_DATA:
@@ -189,6 +197,10 @@ class EarningsApp(EWrapper, EClient):
                 handler = self.request_handlers.get(reqId)
             if handler:
                 handler.on_error(reqId, errorCode, errorString)
+
+    def connectionClosed(self):
+        logging.error("!!! Connection closed by server !!!")
+        print("!!! Connection closed by server !!!")
 
     def contractDetails(self, reqId: int, contractDetails):
         with self.lock:
@@ -1010,7 +1022,7 @@ def main():
     logging.info("Connecting to TWS...")
     time.sleep(1)
     
-    threading.Thread(target=app.run, daemon=True).start()
+    threading.Thread(target=app.run_wrapper, daemon=True).start()
     
     symbols = []
     if args.symbol:
@@ -1043,22 +1055,26 @@ def main():
     try:
         while True:
             active_count = 0
+            statuses = []
             for p in processors:
                 p.tick()
+                statuses.append(f"{p.symbol}:{p.status}")
                 if not p.is_done:
                     active_count += 1
             
+            logging.info(f"Active processors: {active_count}/{len(processors)}. Statuses: {', '.join(statuses)}")
+
             # Clear screen
             os.system('cls' if os.name == 'nt' else 'clear')
             
             # Print table
-            print(f"{'Symbol':<8} {'Status':<25} {'Stock':<10} {'History':<10} {'Option Chain':<15}")
-            print("-" * 75)
+            print(f"{'Symbol':<8} {'Status':<25} {'Stock':<10} {'History':<10} {'Option Chain':<15} {'Message':<50}")
+            print("-" * 125)
             for p in processors:
                 stock_status = "Complete" if p.stock_contract_received else "Pending"
                 hist_status = "Complete" if p.history_received else "Pending"
                 opt_status = p.get_option_chain_status()
-                print(f"{p.symbol:<8} {p.status:<25} {stock_status:<10} {hist_status:<10} {opt_status:<15}")
+                print(f"{p.symbol:<8} {p.status:<25} {stock_status:<10} {hist_status:<10} {opt_status:<15} {(p.last_message or '')[:48]:<50}")
             
             if active_count == 0:
                 print("\nAll tasks completed or failed.")
@@ -1070,6 +1086,10 @@ def main():
         print("\nInterrupted by user.")
         for p in processors:
             p.stop()
+    except Exception as e:
+        logging.critical(f"An unhandled exception occurred in the main loop: {e}")
+        logging.critical(traceback.format_exc())
+        print(f"CRITICAL: An unhandled exception occurred in the main loop: {e}")
             
     print("\nDone.")
     app.disconnect()
