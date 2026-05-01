@@ -1,0 +1,350 @@
+{
+  "week_start": "2026-05-04",
+  "data": [
+    {
+      "ticker": "ON",
+      "scheduled_date": "May 04/a",
+      "open_trade_date": "2026-05-04 (Monday)"
+    },
+    {
+      "ticker": "PLTR",
+      "scheduled_date": "May 04/a",
+      "open_trade_date": "2026-05-04 (Monday)"
+    },
+    {
+      "ticker": "VRTX",
+      "scheduled_date": "May 04/a",
+      "open_trade_date": "2026-05-04 (Monday)"
+    },
+    {
+      "ticker": "WMB",
+      "scheduled_date": "May 04/a",
+      "open_trade_date": "2026-05-04 (Monday)"
+    },
+    {
+      "ticker": "BUD",
+      "scheduled_date": "May 05/b",
+      "open_trade_date": "2026-05-04 (Monday)"
+    },
+    {
+      "ticker": "CCJ",
+      "scheduled_date": "May 05/b",
+      "open_trade_date": "2026-05-04 (Monday)"
+    },
+    {
+      "ticker": "DOCN",
+      "scheduled_date": "May 05/b",
+      "open_trade_date": "2026-05-04 (Monday)"
+    },
+    {
+      "ticker": "ETN",
+      "scheduled_date": "May 05/b",
+      "open_trade_date": "2026-05-04 (Monday)"
+    },
+    {
+      "ticker": "FISV",
+      "scheduled_date": "May 05/b",
+      "open_trade_date": "2026-05-04 (Monday)"
+    },
+    {
+      "ticker": "HSBC",
+      "scheduled_date": "May 05/b",
+      "open_trade_date": "2026-05-04 (Monday)"
+    },
+    {
+      "ticker": "KKR",
+      "scheduled_date": "May 05/b",
+      "open_trade_date": "2026-05-04 (Monday)"
+    },
+    {
+      "ticker": "PYPL",
+      "scheduled_date": "May 05/b",
+      "open_trade_date": "2026-05-04 (Monday)"
+    },
+    {
+      "ticker": "RACE",
+      "scheduled_date": "May 05/b",
+      "open_trade_date": "2026-05-04 (Monday)"
+    },
+    {
+      "ticker": "SHOP",
+      "scheduled_date": "May 05/b",
+      "open_trade_date": "2026-05-04 (Monday)"
+    },
+    {
+      "ticker": "ALAB",
+      "scheduled_date": "May 05/a",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "AMD",
+      "scheduled_date": "May 05/a",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "ANET",
+      "scheduled_date": "May 05/a",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "DVN",
+      "scheduled_date": "May 05/a",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "EA",
+      "scheduled_date": "May 05/a",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "EMR",
+      "scheduled_date": "May 05/a",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "LITE",
+      "scheduled_date": "May 05/a",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "LYV",
+      "scheduled_date": "May 05/a",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "MSTR",
+      "scheduled_date": "May 05/a",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "OXY",
+      "scheduled_date": "May 05/a",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "PAAS",
+      "scheduled_date": "May 05/a",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "SU",
+      "scheduled_date": "May 05/a",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "TLN",
+      "scheduled_date": "May 05/a",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "APO",
+      "scheduled_date": "May 06/b",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "CVS",
+      "scheduled_date": "May 06/b",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "DIS",
+      "scheduled_date": "May 06/b",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "EOG",
+      "scheduled_date": "May 06/b",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "MAR",
+      "scheduled_date": "May 06/b",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "NRG",
+      "scheduled_date": "May 06/b",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "UBER",
+      "scheduled_date": "May 06/b",
+      "open_trade_date": "2026-05-05 (Tuesday)"
+    },
+    {
+      "ticker": "ALB",
+      "scheduled_date": "May 06/a",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "APP",
+      "scheduled_date": "May 06/a",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "ARM",
+      "scheduled_date": "May 06/a",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "AXON",
+      "scheduled_date": "May 06/a",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "CF",
+      "scheduled_date": "May 06/a",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "COHR",
+      "scheduled_date": "May 06/a",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "DASH",
+      "scheduled_date": "May 06/a",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "FTNT",
+      "scheduled_date": "May 06/a",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "KTOS",
+      "scheduled_date": "May 06/a",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "NTR",
+      "scheduled_date": "May 06/a",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "SYM",
+      "scheduled_date": "May 06/a",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "DDOG",
+      "scheduled_date": "May 07/b",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "HWM",
+      "scheduled_date": "May 07/b",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "LNG",
+      "scheduled_date": "May 07/b",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "MCD",
+      "scheduled_date": "May 07/b",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "SHEL",
+      "scheduled_date": "May 07/b",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "TPR",
+      "scheduled_date": "May 07/b",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "VST",
+      "scheduled_date": "May 07/b",
+      "open_trade_date": "2026-05-06 (Wednesday)"
+    },
+    {
+      "ticker": "AAOI",
+      "scheduled_date": "May 07/a",
+      "open_trade_date": "2026-05-07 (Thursday)"
+    },
+    {
+      "ticker": "ABNB",
+      "scheduled_date": "May 07/a",
+      "open_trade_date": "2026-05-07 (Thursday)"
+    },
+    {
+      "ticker": "AFRM",
+      "scheduled_date": "May 07/a",
+      "open_trade_date": "2026-05-07 (Thursday)"
+    },
+    {
+      "ticker": "AKAM",
+      "scheduled_date": "May 07/a",
+      "open_trade_date": "2026-05-07 (Thursday)"
+    },
+    {
+      "ticker": "COIN",
+      "scheduled_date": "May 07/a",
+      "open_trade_date": "2026-05-07 (Thursday)"
+    },
+    {
+      "ticker": "CRWV",
+      "scheduled_date": "May 07/a",
+      "open_trade_date": "2026-05-07 (Thursday)"
+    },
+    {
+      "ticker": "EXPE",
+      "scheduled_date": "May 07/a",
+      "open_trade_date": "2026-05-07 (Thursday)"
+    },
+    {
+      "ticker": "GILD",
+      "scheduled_date": "May 07/a",
+      "open_trade_date": "2026-05-07 (Thursday)"
+    },
+    {
+      "ticker": "MCHP",
+      "scheduled_date": "May 07/a",
+      "open_trade_date": "2026-05-07 (Thursday)"
+    },
+    {
+      "ticker": "MELI",
+      "scheduled_date": "May 07/a",
+      "open_trade_date": "2026-05-07 (Thursday)"
+    },
+    {
+      "ticker": "MP",
+      "scheduled_date": "May 07/a",
+      "open_trade_date": "2026-05-07 (Thursday)"
+    },
+    {
+      "ticker": "NET",
+      "scheduled_date": "May 07/a",
+      "open_trade_date": "2026-05-07 (Thursday)"
+    },
+    {
+      "ticker": "RKLB",
+      "scheduled_date": "May 07/a",
+      "open_trade_date": "2026-05-07 (Thursday)"
+    },
+    {
+      "ticker": "TXRH",
+      "scheduled_date": "May 07/a",
+      "open_trade_date": "2026-05-07 (Thursday)"
+    },
+    {
+      "ticker": "WPM",
+      "scheduled_date": "May 07/a",
+      "open_trade_date": "2026-05-07 (Thursday)"
+    },
+    {
+      "ticker": "WYNN",
+      "scheduled_date": "May 07/a",
+      "open_trade_date": "2026-05-07 (Thursday)"
+    },
+    {
+      "ticker": "XYZ",
+      "scheduled_date": "May 07/a",
+      "open_trade_date": "2026-05-07 (Thursday)"
+    }
+  ]
+}
