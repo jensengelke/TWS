@@ -169,6 +169,7 @@ gateway_ip : str = "127.0.0.1"
 # 4002 ... gateway paper
 # 7496 ... TWS live
 gateway_port : int = 7496
+
 print("Connecting to TWS...")
 app.connect(gateway_ip, gateway_port, clientId=random_client_id)
 time.sleep(1)
@@ -212,7 +213,7 @@ app.reqContractDetails(reqId, contract)
 for i in range(args.waittime):
     if identifier not in ibresponses_contractDetails.keys():
         remaining = args.waittime - i
-        print(f"\033[KWaiting for contract details... {remaining} seconds remaining", end='\r', flush=True)
+        print(f"Waiting for contract details... {remaining} seconds remaining", end='\r', flush=True)
         time.sleep(1)
 print()  # Move to next line after countdown
 
