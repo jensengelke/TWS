@@ -167,10 +167,7 @@ gateway_ip : str = "127.0.0.1"
 
 # 4001 ... gateway live
 # 4002 ... gateway paper
-# 7496 ... TWS live
-# 7497 ... TWS paper
-gateway_port : int = 7496
-
+gateway_port : int = 4001
 print("Connecting to TWS...")
 app.connect(gateway_ip, gateway_port, clientId=random_client_id)
 time.sleep(1)
