@@ -2,7 +2,6 @@ import threading
 import time
 import pandas as pd
 import argparse
-import logging
 from ibapi.client import EClient
 from ibapi.wrapper import EWrapper
 from ibapi.ticktype import TickType, TickTypeEnum
@@ -48,9 +47,9 @@ class IBApp(EWrapper, EClient):
     def error(self, reqId: TickerId, errorTime: int, errorCode: int, errorString: str, advancedOrderRejectJson=""):
         error_message = f"Error. Id: {reqId}, Code: {errorCode}, Msg: {errorString}"
         if reqId == -1:
-            logging.debug(f"Error: {error_message}")
+            print(f"Error: {error_message}")
         elif errorCode == 366:
-            logging.debug(f"Error: {error_message} - No market data available outside trading hours.")
+            print(f"Error: {error_message} - No market data available outside trading hours.")
         else:
             print(error_message)
 
@@ -165,9 +164,11 @@ random_client_id = int(time.time()) % 1000  # Generate a random client ID
 # gateway_ip : str = "38.242.134.92"
 gateway_ip : str = "127.0.0.1"
 
+
 # 4001 ... gateway live
 # 4002 ... gateway paper
-gateway_port : int = 4001
+# 7496 ... tws live
+gateway_port : int = 7496
 print("Connecting to TWS...")
 app.connect(gateway_ip, gateway_port, clientId=random_client_id)
 time.sleep(1)
@@ -204,7 +205,7 @@ contract.currency = "USD"
 contract.lastTradeDateOrContractMonth = next_friday
 contract.strike = args.strike
 reqId = app.nextId()
-logging.debug(f"Requesting contract details for {contract} with reqId {reqId}")
+print(f"Requesting contract details for {contract} with reqId {reqId}")
 identifier = f"{contract.symbol}-{reqId}"
 app.reqContractDetails(reqId, contract)
 
