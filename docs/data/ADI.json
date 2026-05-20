@@ -10408,6 +10408,82 @@
                 "lower_boundary": 351.2835016889871,
                 "upper_boundary": 421.23651785101293
             }
+        },
+        {
+            "timestamp": "2026-05-20 12:45:40",
+            "underlying_prices": {
+                "Bid": 387.2,
+                "Ask": 387.59,
+                "get_instrument_value": 387.39498901
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "ADI   260522C00390000",
+                    "contract_strike": 390.0,
+                    "contract_right": "C",
+                    "Bid": 5.1,
+                    "Ask": 6.3,
+                    "IV": 0.5989894299026782,
+                    "call_open_interest": 45.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.6699400060185299,
+                    "delta": 0.45280829336778405,
+                    "gamma": 0.0223961754011285,
+                    "vega": 0.11836130356697261,
+                    "price": 5.559999942779541
+                },
+                {
+                    "contract_localSymbol": "ADI   260522P00385000",
+                    "contract_strike": 385.0,
+                    "contract_right": "P",
+                    "Bid": 5.3,
+                    "Ask": 6.3,
+                    "IV": 0.6723240062340442,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 342.0,
+                    "theta": -1.8275458714659323,
+                    "delta": -0.4403746243919957,
+                    "gamma": 0.019868489712040766,
+                    "vega": 0.11744819663375061,
+                    "price": 6.880000114440918
+                },
+                {
+                    "contract_localSymbol": "ADI   260522C00387500",
+                    "contract_strike": 387.5,
+                    "contract_right": "C",
+                    "Bid": 5.6,
+                    "Ask": 7.5,
+                    "IV": null,
+                    "call_open_interest": 1.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 7.130000114440918
+                },
+                {
+                    "contract_localSymbol": "ADI   260522P00387500",
+                    "contract_strike": 387.5,
+                    "contract_right": "P",
+                    "Bid": 6.5,
+                    "Ask": 7.8,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 93.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 7.02093124
+                }
+            ],
+            "recommendation": {
+                "expected_move": 12.288856979169312,
+                "average_percent_move": 9.055171955761045,
+                "lower_boundary": 352.31570660714294,
+                "upper_boundary": 422.4742714128571
+            }
         }
     ],
     "historic_move": [
