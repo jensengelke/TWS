@@ -1,0 +1,70 @@
+{
+  "week_start": "2026-05-25",
+  "data": [
+    {
+      "ticker": "ZS",
+      "scheduled_date": "May 26/a",
+      "open_trade_date": "2026-05-26 (Tuesday)"
+    },
+    {
+      "ticker": "PDD",
+      "scheduled_date": "May 27/b",
+      "open_trade_date": "2026-05-26 (Tuesday)"
+    },
+    {
+      "ticker": "CRM",
+      "scheduled_date": "May 27/a",
+      "open_trade_date": "2026-05-27 (Wednesday)"
+    },
+    {
+      "ticker": "MRVL",
+      "scheduled_date": "May 27/a",
+      "open_trade_date": "2026-05-27 (Wednesday)"
+    },
+    {
+      "ticker": "SNOW",
+      "scheduled_date": "May 27/a",
+      "open_trade_date": "2026-05-27 (Wednesday)"
+    },
+    {
+      "ticker": "SNPS",
+      "scheduled_date": "May 27/a",
+      "open_trade_date": "2026-05-27 (Wednesday)"
+    },
+    {
+      "ticker": "BBY",
+      "scheduled_date": "May 28/b",
+      "open_trade_date": "2026-05-27 (Wednesday)"
+    },
+    {
+      "ticker": "BURL",
+      "scheduled_date": "May 28/b",
+      "open_trade_date": "2026-05-27 (Wednesday)"
+    },
+    {
+      "ticker": "ADSK",
+      "scheduled_date": "May 28/a",
+      "open_trade_date": "2026-05-28 (Thursday)"
+    },
+    {
+      "ticker": "COST",
+      "scheduled_date": "May 28/a",
+      "open_trade_date": "2026-05-28 (Thursday)"
+    },
+    {
+      "ticker": "DELL",
+      "scheduled_date": "May 28/a",
+      "open_trade_date": "2026-05-28 (Thursday)"
+    },
+    {
+      "ticker": "MDB",
+      "scheduled_date": "May 28/a",
+      "open_trade_date": "2026-05-28 (Thursday)"
+    },
+    {
+      "ticker": "OKTA",
+      "scheduled_date": "May 28/a",
+      "open_trade_date": "2026-05-28 (Thursday)"
+    }
+  ]
+}
