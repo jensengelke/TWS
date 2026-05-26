@@ -8473,6 +8473,112 @@
                 "lower_boundary": 54.12455511,
                 "upper_boundary": 71.01544427
             }
+        },
+        {
+            "timestamp": "2026-05-26 16:46:26",
+            "underlying_prices": {
+                "Bid": 62.0,
+                "Ask": 63.32,
+                "get_instrument_value": 62.0
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "BBY   260529C00061000",
+                    "contract_strike": 61.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 137.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 3.52746487
+                },
+                {
+                    "contract_localSymbol": "BBY   260529C00062000",
+                    "contract_strike": 62.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 221.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 2.91222668
+                },
+                {
+                    "contract_localSymbol": "BBY   260529C00063000",
+                    "contract_strike": 63.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 219.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 2.36776352
+                },
+                {
+                    "contract_localSymbol": "BBY   260529P00061000",
+                    "contract_strike": 61.0,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 14.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.27696764
+                },
+                {
+                    "contract_localSymbol": "BBY   260529P00062000",
+                    "contract_strike": 62.0,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 71.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.6616025
+                },
+                {
+                    "contract_localSymbol": "BBY   260529P00063000",
+                    "contract_strike": 63.0,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 33.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 2.11706328
+                }
+            ],
+            "recommendation": {
+                "expected_move": -0.04388666000000008,
+                "average_percent_move": 9.656861893095899,
+                "lower_boundary": 56.01274562628054,
+                "upper_boundary": 67.98725437371945
+            }
         }
     ],
     "historic_move": [

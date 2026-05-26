@@ -16635,6 +16635,82 @@
                 "lower_boundary": 274.74935053999997,
                 "upper_boundary": 375.33066654
             }
+        },
+        {
+            "timestamp": "2026-05-26 16:46:25",
+            "underlying_prices": {
+                "Bid": 319.17,
+                "Ask": 326.5,
+                "get_instrument_value": 326.5
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "BURL  260529C00327500",
+                    "contract_strike": 327.5,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "BURL  260529P00327500",
+                    "contract_strike": 327.5,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "BURL  260529C00330000",
+                    "contract_strike": 330.0,
+                    "contract_right": "C",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "BURL  260529P00325000",
+                    "contract_strike": 325.0,
+                    "contract_right": "P",
+                    "Bid": -1.0,
+                    "Ask": -1.0,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                }
+            ],
+            "recommendation": {
+                "expected_move": -2.0,
+                "average_percent_move": 9.770654998700897,
+                "lower_boundary": 294.59881142924155,
+                "upper_boundary": 358.40118857075845
+            }
         }
     ],
     "historic_move": [
