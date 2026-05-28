@@ -17574,6 +17574,82 @@
                 "lower_boundary": 166.5670021095215,
                 "upper_boundary": 192.7329856904785
             }
+        },
+        {
+            "timestamp": "2026-05-28 12:45:44",
+            "underlying_prices": {
+                "Bid": 178.67,
+                "Ask": 178.75,
+                "get_instrument_value": 178.74000549
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "CRM   260529P00175000",
+                    "contract_strike": 175.0,
+                    "contract_right": "P",
+                    "Bid": 0.86,
+                    "Ask": 0.93,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 2434.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 0.87456489
+                },
+                {
+                    "contract_localSymbol": "CRM   260529C00180000",
+                    "contract_strike": 180.0,
+                    "contract_right": "C",
+                    "Bid": 1.74,
+                    "Ask": 1.85,
+                    "IV": null,
+                    "call_open_interest": 3720.0,
+                    "put_open_interest": 0.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.74000001
+                },
+                {
+                    "contract_localSymbol": "CRM   260529C00177500",
+                    "contract_strike": 177.5,
+                    "contract_right": "C",
+                    "Bid": 2.81,
+                    "Ask": 3.3,
+                    "IV": 0.7883817173622493,
+                    "call_open_interest": 989.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.3717966295625033,
+                    "delta": 0.5725148098654781,
+                    "gamma": 0.050118142174991887,
+                    "vega": 0.03951528771104984,
+                    "price": 3.2799999713897705
+                },
+                {
+                    "contract_localSymbol": "CRM   260529P00177500",
+                    "contract_strike": 177.5,
+                    "contract_right": "P",
+                    "Bid": 1.7,
+                    "Ask": 1.8,
+                    "IV": null,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 1041.0,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": 1.73132336
+                }
+            ],
+            "recommendation": {
+                "expected_move": 3.63494128,
+                "average_percent_move": 7.282489415368978,
+                "lower_boundary": 165.7232835091608,
+                "upper_boundary": 191.75672747083917
+            }
         }
     ],
     "historic_move": [
