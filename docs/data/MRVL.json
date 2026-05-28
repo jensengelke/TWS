@@ -16498,6 +16498,82 @@
                 "lower_boundary": 149.67999954223632,
                 "upper_boundary": 258.72000045776366
             }
+        },
+        {
+            "timestamp": "2026-05-28 09:46:16",
+            "underlying_prices": {
+                "Bid": 204.19,
+                "Ask": 204.39,
+                "get_instrument_value": 204.39500427
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "MRVL  260529C00205000",
+                    "contract_strike": 205.0,
+                    "contract_right": "C",
+                    "Bid": 5.7,
+                    "Ask": 6.05,
+                    "IV": 1.3637458580401762,
+                    "call_open_interest": 6986.0,
+                    "put_open_interest": 0.0,
+                    "theta": -2.612566672319369,
+                    "delta": 0.5018486171085265,
+                    "gamma": 0.024467230876436975,
+                    "vega": 0.047824882551437575,
+                    "price": 6.0
+                },
+                {
+                    "contract_localSymbol": "MRVL  260529P00205000",
+                    "contract_strike": 205.0,
+                    "contract_right": "P",
+                    "Bid": 6.3,
+                    "Ask": 6.9,
+                    "IV": 1.2915719977880356,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 1385.0,
+                    "theta": -2.4574884690393555,
+                    "delta": -0.4998856187310761,
+                    "gamma": 0.025838868837278397,
+                    "vega": 0.04782889908664156,
+                    "price": 6.400000095367432
+                },
+                {
+                    "contract_localSymbol": "MRVL  260529P00202500",
+                    "contract_strike": 202.5,
+                    "contract_right": "P",
+                    "Bid": 4.95,
+                    "Ask": 5.55,
+                    "IV": 1.2899455046917478,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 510.0,
+                    "theta": -2.4192787970592082,
+                    "delta": -0.43561581132827415,
+                    "gamma": 0.025489828246489554,
+                    "vega": 0.04752592194606997,
+                    "price": 5.25
+                },
+                {
+                    "contract_localSymbol": "MRVL  260529C00207500",
+                    "contract_strike": 207.5,
+                    "contract_right": "C",
+                    "Bid": 4.6,
+                    "Ask": 5.1,
+                    "IV": 1.3258382160368742,
+                    "call_open_interest": 937.0,
+                    "put_open_interest": 0.0,
+                    "theta": -2.5151906015696746,
+                    "delta": 0.4388070201553344,
+                    "gamma": 0.024928402594305055,
+                    "vega": 0.0481284143590619,
+                    "price": 4.900000095367432
+                }
+            ],
+            "recommendation": {
+                "expected_move": 11.476490020734863,
+                "average_percent_move": 12.773136886169013,
+                "lower_boundary": 178.2873505861019,
+                "upper_boundary": 230.50265795389808
+            }
         }
     ],
     "historic_move": [
@@ -16592,6 +16668,15 @@
             "percent_move": 11.164452383610584
         },
         {
+            "date": "20260527",
+            "open": 218.16,
+            "high": 218.26,
+            "low": 196.25,
+            "close": 198.7,
+            "candle_length": 22.00999999999999,
+            "percent_move": 11.07700050327126
+        },
+        {
             "date": "20251120",
             "open": 83.4,
             "high": 84.44,
@@ -16617,15 +16702,6 @@
             "close": 176.27,
             "candle_length": 18.789999999999992,
             "percent_move": 10.659783287002888
-        },
-        {
-            "date": "20230530",
-            "open": 67.49,
-            "high": 67.99,
-            "low": 61.31,
-            "close": 63.4,
-            "candle_length": 6.679999999999993,
-            "percent_move": 10.536277602523649
         }
     ]
 }
