@@ -1,0 +1,65 @@
+{
+  "week_start": "2026-06-01",
+  "data": [
+    {
+      "ticker": "CRDO",
+      "scheduled_date": "Jun 01/a",
+      "open_trade_date": "2026-06-01 (Monday)"
+    },
+    {
+      "ticker": "DG",
+      "scheduled_date": "Jun 02/b",
+      "open_trade_date": "2026-06-01 (Monday)"
+    },
+    {
+      "ticker": "PANW",
+      "scheduled_date": "Jun 02/a",
+      "open_trade_date": "2026-06-02 (Tuesday)"
+    },
+    {
+      "ticker": "ULTA",
+      "scheduled_date": "Jun 02/a",
+      "open_trade_date": "2026-06-02 (Tuesday)"
+    },
+    {
+      "ticker": "MDT",
+      "scheduled_date": "Jun 03/b",
+      "open_trade_date": "2026-06-02 (Tuesday)"
+    },
+    {
+      "ticker": "AVGO",
+      "scheduled_date": "Jun 03/a",
+      "open_trade_date": "2026-06-03 (Wednesday)"
+    },
+    {
+      "ticker": "CRWD",
+      "scheduled_date": "Jun 03/a",
+      "open_trade_date": "2026-06-03 (Wednesday)"
+    },
+    {
+      "ticker": "CIEN",
+      "scheduled_date": "Jun 04/b",
+      "open_trade_date": "2026-06-03 (Wednesday)"
+    },
+    {
+      "ticker": "DOCU",
+      "scheduled_date": "Jun 04/a",
+      "open_trade_date": "2026-06-04 (Thursday)"
+    },
+    {
+      "ticker": "LULU",
+      "scheduled_date": "Jun 04/a",
+      "open_trade_date": "2026-06-04 (Thursday)"
+    },
+    {
+      "ticker": "PL",
+      "scheduled_date": "Jun 04/a",
+      "open_trade_date": "2026-06-04 (Thursday)"
+    },
+    {
+      "ticker": "RBRK",
+      "scheduled_date": "Jun 04/a",
+      "open_trade_date": "2026-06-04 (Thursday)"
+    }
+  ]
+}
