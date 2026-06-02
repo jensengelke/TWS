@@ -20763,6 +20763,82 @@
                 "lower_boundary": 124.69474803460629,
                 "upper_boundary": 151.51524342539372
             }
+        },
+        {
+            "timestamp": "2026-06-02 09:46:25",
+            "underlying_prices": {
+                "Bid": 107.1,
+                "Ask": 107.5,
+                "get_instrument_value": 107.5
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "DG    260605C00107000",
+                    "contract_strike": 107.0,
+                    "contract_right": "C",
+                    "Bid": 2.7,
+                    "Ask": 3.95,
+                    "IV": 0.4820409845715775,
+                    "call_open_interest": 97.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.3027374234736684,
+                    "delta": 0.5521942180366425,
+                    "gamma": 0.08096222587501017,
+                    "vega": 0.04029445456227876,
+                    "price": 2.440000057220459
+                },
+                {
+                    "contract_localSymbol": "DG    260605C00108000",
+                    "contract_strike": 108.0,
+                    "contract_right": "C",
+                    "Bid": 2.5,
+                    "Ask": 3.2,
+                    "IV": 0.7328027572048164,
+                    "call_open_interest": 113.0,
+                    "put_open_interest": 0.0,
+                    "theta": -0.4610242928077409,
+                    "delta": 0.48876623914944367,
+                    "gamma": 0.05372606938942059,
+                    "vega": 0.040504603451906984,
+                    "price": 2.75
+                },
+                {
+                    "contract_localSymbol": "DG    260605P00106000",
+                    "contract_strike": 106.0,
+                    "contract_right": "P",
+                    "Bid": 1.54,
+                    "Ask": 3.05,
+                    "IV": 0.704216902352612,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 704.0,
+                    "theta": -0.42359406499481606,
+                    "delta": -0.40184876427741084,
+                    "gamma": 0.054452280170215084,
+                    "vega": 0.03852384174627543,
+                    "price": 2.190000057220459
+                },
+                {
+                    "contract_localSymbol": "DG    260605P00107000",
+                    "contract_strike": 107.0,
+                    "contract_right": "P",
+                    "Bid": 2.0,
+                    "Ask": 3.05,
+                    "IV": 0.7587166378817382,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 90.0,
+                    "theta": -0.4664358684106372,
+                    "delta": -0.45856102660430653,
+                    "gamma": 0.05167548538001427,
+                    "vega": 0.04029430415912705,
+                    "price": 2.25
+                }
+            ],
+            "recommendation": {
+                "expected_move": 5.4975000000000005,
+                "average_percent_move": 9.479926130148133,
+                "lower_boundary": 96.505,
+                "upper_boundary": 118.495
+            }
         }
     ],
     "historic_move": [
@@ -20792,15 +20868,6 @@
             "close": 150.06,
             "candle_length": 20.23999999999998,
             "percent_move": 13.487938158070092
-        },
-        {
-            "date": "20230601",
-            "open": 179.02,
-            "high": 179.2,
-            "low": 159.12,
-            "close": 161.86,
-            "candle_length": 20.079999999999984,
-            "percent_move": 12.40578277523785
         },
         {
             "date": "20250307",
@@ -20837,6 +20904,24 @@
             "close": 111.71,
             "candle_length": 9.319999999999993,
             "percent_move": 8.343031062572727
+        },
+        {
+            "date": "20260511",
+            "open": 111.83,
+            "high": 112.31,
+            "low": 103.64,
+            "close": 104.63,
+            "candle_length": 8.670000000000002,
+            "percent_move": 8.286342349230624
+        },
+        {
+            "date": "20260312",
+            "open": 131.55,
+            "high": 140.01,
+            "low": 128.84,
+            "close": 135.95,
+            "candle_length": 11.169999999999987,
+            "percent_move": 8.216255976461927
         },
         {
             "date": "20251205",
@@ -20882,15 +20967,6 @@
             "close": 127.22,
             "candle_length": 9.349999999999994,
             "percent_move": 7.34947335324634
-        },
-        {
-            "date": "20250408",
-            "open": 92.95,
-            "high": 93.2,
-            "low": 86.78,
-            "close": 87.7,
-            "candle_length": 6.420000000000002,
-            "percent_move": 7.32041049030787
         }
     ]
 }
