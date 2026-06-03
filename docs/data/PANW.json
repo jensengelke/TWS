@@ -19642,6 +19642,82 @@
                 "lower_boundary": 254.86797198999997,
                 "upper_boundary": 310.95203532999994
             }
+        },
+        {
+            "timestamp": "2026-06-03 12:45:42",
+            "underlying_prices": {
+                "Bid": 281.55,
+                "Ask": 281.84,
+                "get_instrument_value": 281.6000061
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "PANW  260605P00282500",
+                    "contract_strike": 282.5,
+                    "contract_right": "P",
+                    "Bid": 7.0,
+                    "Ask": 8.25,
+                    "IV": 0.7623449056385637,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 175.0,
+                    "theta": -1.527304138614261,
+                    "delta": -0.5087036512996352,
+                    "gamma": 0.024393851583105232,
+                    "vega": 0.08581822561681296,
+                    "price": 7.789999961853027
+                },
+                {
+                    "contract_localSymbol": "PANW  260605C00285000",
+                    "contract_strike": 285.0,
+                    "contract_right": "C",
+                    "Bid": 4.9,
+                    "Ask": 6.1,
+                    "IV": 0.8486627709537273,
+                    "call_open_interest": 221.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.7090656797555666,
+                    "delta": 0.4406688718926394,
+                    "gamma": 0.0217112706824394,
+                    "vega": 0.0862211093382852,
+                    "price": 5.5
+                },
+                {
+                    "contract_localSymbol": "PANW  260605P00280000",
+                    "contract_strike": 280.0,
+                    "contract_right": "P",
+                    "Bid": 5.8,
+                    "Ask": 6.8,
+                    "IV": 0.8220138375968538,
+                    "call_open_interest": 0.0,
+                    "put_open_interest": 974.0,
+                    "theta": -1.634637637581929,
+                    "delta": -0.4500727621091901,
+                    "gamma": 0.022422731023710972,
+                    "vega": 0.08539797519712611,
+                    "price": 6.349999904632568
+                },
+                {
+                    "contract_localSymbol": "PANW  260605C00282500",
+                    "contract_strike": 282.5,
+                    "contract_right": "C",
+                    "Bid": 5.45,
+                    "Ask": 7.35,
+                    "IV": 0.8362615708952045,
+                    "call_open_interest": 1033.0,
+                    "put_open_interest": 0.0,
+                    "theta": -1.7004003651124528,
+                    "delta": 0.49443997135251627,
+                    "gamma": 0.02222993003626398,
+                    "vega": 0.08581097654976322,
+                    "price": 6.5
+                }
+            ],
+            "recommendation": {
+                "expected_move": 13.17861438,
+                "average_percent_move": 9.002028453296955,
+                "lower_boundary": 255.24277733999998,
+                "upper_boundary": 307.95723485999997
+            }
         }
     ],
     "historic_move": [
