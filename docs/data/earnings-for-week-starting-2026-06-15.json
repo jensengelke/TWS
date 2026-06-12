@@ -1,0 +1,25 @@
+{
+  "week_start": "2026-06-15",
+  "data": [
+    {
+      "ticker": "JBL",
+      "scheduled_date": "Jun 17/b",
+      "open_trade_date": "2026-06-16 (Tuesday)"
+    },
+    {
+      "ticker": "PGR",
+      "scheduled_date": "Jun 17/b",
+      "open_trade_date": "2026-06-16 (Tuesday)"
+    },
+    {
+      "ticker": "ACN",
+      "scheduled_date": "Jun 18/b",
+      "open_trade_date": "2026-06-17 (Wednesday)"
+    },
+    {
+      "ticker": "KR",
+      "scheduled_date": "Jun 18/b",
+      "open_trade_date": "2026-06-17 (Wednesday)"
+    }
+  ]
+}
