@@ -31,7 +31,7 @@ if ($env:VIRTUAL_ENV) {
 
 # (Optional) show python version to confirm
 python --version 2>$null
-python .\evaluate-options-trade.py --earnings-week current
+python .\evaluate-options-trade-async.py --earnings-week current
 git add docs
 git commit -m "new earnings option prices"
 git push
