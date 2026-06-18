@@ -1,18 +1,18 @@
 {
     "prices": [
         {
-            "timestamp": "2026-06-18 13:45:07",
+            "timestamp": "2026-06-18 14:54:56",
             "underlying_prices": {
                 "Bid": null,
                 "Ask": null,
-                "get_instrument_value": 367.68
+                "get_instrument_value": 369.61
             },
             "option_prices": [],
             "recommendation": {
                 "expected_move": 0.0,
                 "average_percent_move": 11.278185612450224,
-                "lower_boundary": 326.21236714014304,
-                "upper_boundary": 409.14763285985697
+                "lower_boundary": 327.9246981578227,
+                "upper_boundary": 411.2953018421773
             }
         }
     ],
