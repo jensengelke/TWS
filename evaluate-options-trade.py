@@ -990,8 +990,8 @@ def get_symbols_from_earnings_file(filename: str):
                     open_trade_date_str = item.get("open_trade_date", "")
                     if len(open_trade_date_str) >= 10:
                         trade_date_part = open_trade_date_str[:10]
-                        if trade_date_part not in accepted_dates:
-                            continue
+                        #if trade_date_part not in accepted_dates:
+                        #    continue
                             
                     symbol = item.get("ticker")
                     if symbol:
