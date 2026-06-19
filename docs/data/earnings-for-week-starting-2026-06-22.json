@@ -1,0 +1,20 @@
+{
+  "week_start": "2026-06-22",
+  "data": [
+    {
+      "ticker": "CBRS",
+      "scheduled_date": "Jun 23/a",
+      "open_trade_date": "2026-06-23 (Tuesday)"
+    },
+    {
+      "ticker": "FDX",
+      "scheduled_date": "Jun 23/a",
+      "open_trade_date": "2026-06-23 (Tuesday)"
+    },
+    {
+      "ticker": "MU",
+      "scheduled_date": "Jun 24/a",
+      "open_trade_date": "2026-06-24 (Wednesday)"
+    }
+  ]
+}
