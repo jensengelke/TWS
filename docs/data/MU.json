@@ -16227,6 +16227,21 @@
                 "lower_boundary": 398.019119736249,
                 "upper_boundary": 508.380904683751
             }
+        },
+        {
+            "timestamp": "2026-06-26 09:46:03",
+            "underlying_prices": {
+                "Bid": null,
+                "Ask": null,
+                "get_instrument_value": 1142.17
+            },
+            "option_prices": [],
+            "recommendation": {
+                "expected_move": 0.0,
+                "average_percent_move": 13.420145666506842,
+                "lower_boundary": 988.8891222408589,
+                "upper_boundary": 1295.4508777591413
+            }
         }
     ],
     "historic_move": [
@@ -16267,6 +16282,33 @@
             "percent_move": 14.418675617943233
         },
         {
+            "date": "20260609",
+            "open": 988.35,
+            "high": 989.15,
+            "low": 854.35,
+            "close": 935.89,
+            "candle_length": 134.79999999999995,
+            "percent_move": 14.403402109222233
+        },
+        {
+            "date": "20260330",
+            "open": 362.54,
+            "high": 362.81,
+            "low": 318.4,
+            "close": 321.8,
+            "candle_length": 44.410000000000025,
+            "percent_move": 13.80049720323183
+        },
+        {
+            "date": "20260518",
+            "open": 750.77,
+            "high": 756.64,
+            "low": 663.25,
+            "close": 681.54,
+            "candle_length": 93.38999999999999,
+            "percent_move": 13.702790738621356
+        },
+        {
             "date": "20260204",
             "open": 410.59,
             "high": 413.0,
@@ -16303,58 +16345,31 @@
             "percent_move": 11.557478368356001
         },
         {
-            "date": "20240620",
-            "open": 157.04,
-            "high": 157.41,
-            "low": 142.91,
-            "close": 144.19,
-            "candle_length": 14.5,
-            "percent_move": 10.056175879048478
+            "date": "20260605",
+            "open": 944.4,
+            "high": 961.89,
+            "low": 864.01,
+            "close": 864.01,
+            "candle_length": 97.88,
+            "percent_move": 11.32857258596544
         },
         {
-            "date": "20251114",
-            "open": 231.44,
-            "high": 255.17,
-            "low": 231.23,
-            "close": 246.83,
-            "candle_length": 23.939999999999998,
-            "percent_move": 9.698983105781306
+            "date": "20260526",
+            "open": 820.65,
+            "high": 916.8,
+            "low": 820.29,
+            "close": 895.88,
+            "candle_length": 96.50999999999999,
+            "percent_move": 10.772648122516408
         },
         {
-            "date": "20240325",
-            "open": 110.31,
-            "high": 121.41,
-            "low": 110.16,
-            "close": 117.13,
-            "candle_length": 11.25,
-            "percent_move": 9.60471271237087
-        },
-        {
-            "date": "20251121",
-            "open": 204.53,
-            "high": 212.0,
-            "low": 192.59,
-            "close": 207.37,
-            "candle_length": 19.409999999999997,
-            "percent_move": 9.360081014611563
-        },
-        {
-            "date": "20251001",
-            "open": 165.62,
-            "high": 182.39,
-            "low": 165.5,
-            "close": 182.15,
-            "candle_length": 16.889999999999986,
-            "percent_move": 9.272577545978582
-        },
-        {
-            "date": "20250227",
-            "open": 97.78,
-            "high": 99.89,
-            "low": 91.49,
-            "close": 91.82,
-            "candle_length": 8.400000000000006,
-            "percent_move": 9.148333696362455
+            "date": "20260519",
+            "open": 665.06,
+            "high": 725.95,
+            "low": 652.21,
+            "close": 698.74,
+            "candle_length": 73.74000000000001,
+            "percent_move": 10.553281621203881
         }
     ]
 }
