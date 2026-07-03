@@ -1,0 +1,15 @@
+{
+  "week_start": "2026-07-06",
+  "data": [
+    {
+      "ticker": "PEP",
+      "scheduled_date": "Jul 09/b",
+      "open_trade_date": "2026-07-08 (Wednesday)"
+    },
+    {
+      "ticker": "DAL",
+      "scheduled_date": "Jul 10/b",
+      "open_trade_date": "2026-07-09 (Thursday)"
+    }
+  ]
+}
