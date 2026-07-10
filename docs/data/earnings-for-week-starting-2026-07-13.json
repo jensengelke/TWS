@@ -1,0 +1,105 @@
+{
+  "week_start": "2026-07-13",
+  "data": [
+    {
+      "ticker": "BAC",
+      "scheduled_date": "Jul 14/b",
+      "open_trade_date": "2026-07-13 (Monday)"
+    },
+    {
+      "ticker": "C",
+      "scheduled_date": "Jul 14/b",
+      "open_trade_date": "2026-07-13 (Monday)"
+    },
+    {
+      "ticker": "GS",
+      "scheduled_date": "Jul 14/b",
+      "open_trade_date": "2026-07-13 (Monday)"
+    },
+    {
+      "ticker": "JPM",
+      "scheduled_date": "Jul 14/b",
+      "open_trade_date": "2026-07-13 (Monday)"
+    },
+    {
+      "ticker": "WFC",
+      "scheduled_date": "Jul 14/b",
+      "open_trade_date": "2026-07-13 (Monday)"
+    },
+    {
+      "ticker": "ASML",
+      "scheduled_date": "Jul 15/b",
+      "open_trade_date": "2026-07-14 (Tuesday)"
+    },
+    {
+      "ticker": "BLK",
+      "scheduled_date": "Jul 15/b",
+      "open_trade_date": "2026-07-14 (Tuesday)"
+    },
+    {
+      "ticker": "CTAS",
+      "scheduled_date": "Jul 15/b",
+      "open_trade_date": "2026-07-14 (Tuesday)"
+    },
+    {
+      "ticker": "JNJ",
+      "scheduled_date": "Jul 15/b",
+      "open_trade_date": "2026-07-14 (Tuesday)"
+    },
+    {
+      "ticker": "MS",
+      "scheduled_date": "Jul 15/b",
+      "open_trade_date": "2026-07-14 (Tuesday)"
+    },
+    {
+      "ticker": "PGR",
+      "scheduled_date": "Jul 15/b",
+      "open_trade_date": "2026-07-14 (Tuesday)"
+    },
+    {
+      "ticker": "PNC",
+      "scheduled_date": "Jul 15/b",
+      "open_trade_date": "2026-07-14 (Tuesday)"
+    },
+    {
+      "ticker": "UAL",
+      "scheduled_date": "Jul 15/a",
+      "open_trade_date": "2026-07-15 (Wednesday)"
+    },
+    {
+      "ticker": "ABT",
+      "scheduled_date": "Jul 16/b",
+      "open_trade_date": "2026-07-15 (Wednesday)"
+    },
+    {
+      "ticker": "GE",
+      "scheduled_date": "Jul 16/b",
+      "open_trade_date": "2026-07-15 (Wednesday)"
+    },
+    {
+      "ticker": "TSM",
+      "scheduled_date": "Jul 16/b",
+      "open_trade_date": "2026-07-15 (Wednesday)"
+    },
+    {
+      "ticker": "UNH",
+      "scheduled_date": "Jul 16/b",
+      "open_trade_date": "2026-07-15 (Wednesday)"
+    },
+    {
+      "ticker": "USB",
+      "scheduled_date": "Jul 16/b",
+      "open_trade_date": "2026-07-15 (Wednesday)"
+    },
+    {
+      "ticker": "ISRG",
+      "scheduled_date": "Jul 16/a",
+      "open_trade_date": "2026-07-16 (Thursday)"
+    },
+    {
+      "ticker": "NFLX",
+      "scheduled_date": "Jul 16/a",
+      "open_trade_date": "2026-07-16 (Thursday)"
+    }
+  ]
+}
