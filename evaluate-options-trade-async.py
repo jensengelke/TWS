@@ -263,23 +263,25 @@ class SymbolProcessorAsync:
             # Create option contracts for all strikes
             option_contracts = []
             for strike in sorted(target_chain.strikes):
-                # Create call
-                call = Option(self.symbol, next_friday, strike, 'C', 'SMART')
+                # Create call with explicit tradingClass to avoid ambiguity
+                call = Option(self.symbol, next_friday, strike, 'C', 'SMART', tradingClass=self.symbol)
                 option_contracts.append(call)
-                # Create put
-                put = Option(self.symbol, next_friday, strike, 'P', 'SMART')
+                # Create put with explicit tradingClass to avoid ambiguity
+                put = Option(self.symbol, next_friday, strike, 'P', 'SMART', tradingClass=self.symbol)
                 option_contracts.append(put)
             
             # Qualify all option contracts concurrently
             qualified = await self.ib.qualifyContractsAsync(*option_contracts)
             
-            for contract in qualified:
-                self.options_chain[contract.localSymbol] = contract
+            for c in qualified:
+                if c is not None:
+                    self.options_chain[c.localSymbol] = c
             
             self.log(f"Option chain received: {len(self.options_chain)} options")
             
         except Exception as e:
-            self.log(f"Error getting option chain: {e}")
+            import traceback
+            self.log(f"Error getting option chain: {e}\n{traceback.format_exc()}")
             raise
 
     def process_historical_data(self):
