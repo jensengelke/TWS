@@ -1,0 +1,190 @@
+{
+  "week_start": "2026-07-20",
+  "data": [
+    {
+      "ticker": "DHI",
+      "scheduled_date": "Jul 21/b",
+      "open_trade_date": "2026-07-20 (Monday)"
+    },
+    {
+      "ticker": "DHR",
+      "scheduled_date": "Jul 21/b",
+      "open_trade_date": "2026-07-20 (Monday)"
+    },
+    {
+      "ticker": "GM",
+      "scheduled_date": "Jul 21/b",
+      "open_trade_date": "2026-07-20 (Monday)"
+    },
+    {
+      "ticker": "MMM",
+      "scheduled_date": "Jul 21/b",
+      "open_trade_date": "2026-07-20 (Monday)"
+    },
+    {
+      "ticker": "SCHW",
+      "scheduled_date": "Jul 21/b",
+      "open_trade_date": "2026-07-20 (Monday)"
+    },
+    {
+      "ticker": "COF",
+      "scheduled_date": "Jul 21/a",
+      "open_trade_date": "2026-07-21 (Tuesday)"
+    },
+    {
+      "ticker": "IBKR",
+      "scheduled_date": "Jul 21/a",
+      "open_trade_date": "2026-07-21 (Tuesday)"
+    },
+    {
+      "ticker": "CME",
+      "scheduled_date": "Jul 22/b",
+      "open_trade_date": "2026-07-21 (Tuesday)"
+    },
+    {
+      "ticker": "GEV",
+      "scheduled_date": "Jul 22/b",
+      "open_trade_date": "2026-07-21 (Tuesday)"
+    },
+    {
+      "ticker": "PHM",
+      "scheduled_date": "Jul 22/b",
+      "open_trade_date": "2026-07-21 (Tuesday)"
+    },
+    {
+      "ticker": "PM",
+      "scheduled_date": "Jul 22/b",
+      "open_trade_date": "2026-07-21 (Tuesday)"
+    },
+    {
+      "ticker": "CSX",
+      "scheduled_date": "Jul 22/a",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "GOOG",
+      "scheduled_date": "Jul 22/a",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "GOOGL",
+      "scheduled_date": "Jul 22/a",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "NOW",
+      "scheduled_date": "Jul 22/a",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "TSLA",
+      "scheduled_date": "Jul 22/a",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "TXN",
+      "scheduled_date": "Jul 22/a",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "URI",
+      "scheduled_date": "Jul 22/a",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "BX",
+      "scheduled_date": "Jul 23/b",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "FCX",
+      "scheduled_date": "Jul 23/b",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "HON",
+      "scheduled_date": "Jul 23/b",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "LMT",
+      "scheduled_date": "Jul 23/b",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "NDAQ",
+      "scheduled_date": "Jul 23/b",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "RTX",
+      "scheduled_date": "Jul 23/b",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "STM",
+      "scheduled_date": "Jul 23/b",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "TECK",
+      "scheduled_date": "Jul 23/b",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "TMO",
+      "scheduled_date": "Jul 23/b",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "TMUS",
+      "scheduled_date": "Jul 23/b",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "UNP",
+      "scheduled_date": "Jul 23/b",
+      "open_trade_date": "2026-07-22 (Wednesday)"
+    },
+    {
+      "ticker": "DECK",
+      "scheduled_date": "Jul 23/a",
+      "open_trade_date": "2026-07-23 (Thursday)"
+    },
+    {
+      "ticker": "DLR",
+      "scheduled_date": "Jul 23/a",
+      "open_trade_date": "2026-07-23 (Thursday)"
+    },
+    {
+      "ticker": "INTC",
+      "scheduled_date": "Jul 23/a",
+      "open_trade_date": "2026-07-23 (Thursday)"
+    },
+    {
+      "ticker": "NEM",
+      "scheduled_date": "Jul 23/a",
+      "open_trade_date": "2026-07-23 (Thursday)"
+    },
+    {
+      "ticker": "SAP",
+      "scheduled_date": "Jul 23/a",
+      "open_trade_date": "2026-07-23 (Thursday)"
+    },
+    {
+      "ticker": "AXP",
+      "scheduled_date": "Jul 24/b",
+      "open_trade_date": "2026-07-23 (Thursday)"
+    },
+    {
+      "ticker": "CHTR",
+      "scheduled_date": "Jul 24/b",
+      "open_trade_date": "2026-07-23 (Thursday)"
+    },
+    {
+      "ticker": "NEE",
+      "scheduled_date": "Jul 24/b",
+      "open_trade_date": "2026-07-23 (Thursday)"
+    }
+  ]
+}
