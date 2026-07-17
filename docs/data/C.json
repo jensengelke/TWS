@@ -1,33 +1,18 @@
 {
     "prices": [
         {
-            "timestamp": "2026-07-17 11:45:16",
+            "timestamp": "2026-07-17 13:45:17",
             "underlying_prices": {
                 "Bid": null,
                 "Ask": null,
-                "get_instrument_value": 130.42
+                "get_instrument_value": 129.96499999999997
             },
             "option_prices": [],
             "recommendation": {
                 "expected_move": 0.0,
                 "average_percent_move": 7.8587890486675205,
-                "lower_boundary": 120.1705673227278,
-                "upper_boundary": 140.66943267727217
-            }
-        },
-        {
-            "timestamp": "2026-07-17 12:45:17",
-            "underlying_prices": {
-                "Bid": null,
-                "Ask": null,
-                "get_instrument_value": 130.195
-            },
-            "option_prices": [],
-            "recommendation": {
-                "expected_move": 0.0,
-                "average_percent_move": 7.8587890486675205,
-                "lower_boundary": 119.96324959808732,
-                "upper_boundary": 140.42675040191267
+                "lower_boundary": 119.75132481289924,
+                "upper_boundary": 140.1786751871007
             }
         }
     ],
