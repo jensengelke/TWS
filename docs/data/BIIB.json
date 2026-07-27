@@ -5455,6 +5455,21 @@
                 "lower_boundary": 184.52045089301023,
                 "upper_boundary": 215.0095478869898
             }
+        },
+        {
+            "timestamp": "2026-07-27 09:46:58",
+            "underlying_prices": {
+                "Bid": null,
+                "Ask": null,
+                "get_instrument_value": 203.14
+            },
+            "option_prices": [],
+            "recommendation": {
+                "expected_move": 0.0,
+                "average_percent_move": 8.124049678202699,
+                "lower_boundary": 186.63680548369902,
+                "upper_boundary": 219.64319451630095
+            }
         }
     ],
     "historic_move": [
@@ -5484,6 +5499,33 @@
             "close": 154.22,
             "candle_length": 13.740000000000009,
             "percent_move": 8.909350278822467
+        },
+        {
+            "date": "20260206",
+            "open": 187.01,
+            "high": 202.41,
+            "low": 184.6,
+            "close": 201.18,
+            "candle_length": 17.810000000000002,
+            "percent_move": 8.852768664877225
+        },
+        {
+            "date": "20260514",
+            "open": 200.67,
+            "high": 205.0,
+            "low": 189.49,
+            "close": 191.37,
+            "candle_length": 15.509999999999991,
+            "percent_move": 8.104718607932272
+        },
+        {
+            "date": "20260429",
+            "open": 183.16,
+            "high": 195.89,
+            "low": 180.18,
+            "close": 194.38,
+            "candle_length": 15.70999999999998,
+            "percent_move": 8.082107212676192
         },
         {
             "date": "20250701",
@@ -5531,58 +5573,31 @@
             "percent_move": 7.514351072553842
         },
         {
-            "date": "20250212",
-            "open": 137.01,
-            "high": 137.8,
-            "low": 128.51,
-            "close": 133.43,
-            "candle_length": 9.29000000000002,
-            "percent_move": 6.962452222138964
+            "date": "20260626",
+            "open": 202.42,
+            "high": 218.06,
+            "low": 202.29,
+            "close": 216.03,
+            "candle_length": 15.77000000000001,
+            "percent_move": 7.299912049252423
         },
         {
-            "date": "20250408",
-            "open": 119.77,
-            "high": 120.79,
-            "low": 112.88,
-            "close": 114.05,
-            "candle_length": 7.910000000000011,
-            "percent_move": 6.93555458132399
+            "date": "20260331",
+            "open": 179.46,
+            "high": 184.68,
+            "low": 171.36,
+            "close": 183.33,
+            "candle_length": 13.319999999999993,
+            "percent_move": 7.265586647029942
         },
         {
-            "date": "20250311",
-            "open": 151.13,
-            "high": 151.9,
-            "low": 142.02,
-            "close": 143.66,
-            "candle_length": 9.879999999999995,
-            "percent_move": 6.877349296951131
-        },
-        {
-            "date": "20250731",
-            "open": 133.0,
-            "high": 135.43,
-            "low": 127.24,
-            "close": 128.0,
-            "candle_length": 8.190000000000012,
-            "percent_move": 6.398437500000009
-        },
-        {
-            "date": "20240801",
-            "open": 215.8,
-            "high": 219.44,
-            "low": 206.02,
-            "close": 210.7,
-            "candle_length": 13.419999999999987,
-            "percent_move": 6.369245372567627
-        },
-        {
-            "date": "20250801",
-            "open": 128.96,
-            "high": 132.9,
-            "low": 124.55,
-            "close": 131.95,
-            "candle_length": 8.350000000000009,
-            "percent_move": 6.32815460401668
+            "date": "20260716",
+            "open": 198.26,
+            "high": 209.64,
+            "low": 194.67,
+            "close": 208.92,
+            "candle_length": 14.969999999999999,
+            "percent_move": 7.165422171165997
         }
     ]
 }
