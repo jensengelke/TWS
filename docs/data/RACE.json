@@ -1456,6 +1456,21 @@
                 "lower_boundary": 375.51360288910087,
                 "upper_boundary": 418.84639711089915
             }
+        },
+        {
+            "timestamp": "2026-07-31 01:44:55",
+            "underlying_prices": {
+                "Bid": null,
+                "Ask": null,
+                "get_instrument_value": 402.525
+            },
+            "option_prices": [],
+            "recommendation": {
+                "expected_move": 0.0,
+                "average_percent_move": 5.537416735297344,
+                "lower_boundary": 380.2355132862443,
+                "upper_boundary": 424.8144867137556
+            }
         }
     ],
     "historic_move": [
@@ -1503,6 +1518,15 @@
             "close": 426.82,
             "candle_length": 24.090000000000032,
             "percent_move": 5.6440654139918545
+        },
+        {
+            "date": "20260730",
+            "open": 390.0,
+            "high": 403.0,
+            "low": 381.43,
+            "close": 397.73,
+            "candle_length": 21.569999999999993,
+            "percent_move": 5.423277097528472
         },
         {
             "date": "20250408",
@@ -1575,15 +1599,6 @@
             "close": 414.85,
             "candle_length": 17.79000000000002,
             "percent_move": 4.2882969748101765
-        },
-        {
-            "date": "20260528",
-            "open": 335.0,
-            "high": 349.79,
-            "low": 335.0,
-            "close": 346.35,
-            "candle_length": 14.79000000000002,
-            "percent_move": 4.270246860112609
         }
     ]
 }
