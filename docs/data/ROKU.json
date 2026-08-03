@@ -9039,9 +9039,33 @@
                 "lower_boundary": 77.21796591596764,
                 "upper_boundary": 102.78203408403236
             }
+        },
+        {
+            "timestamp": "2026-08-03 09:50:48",
+            "underlying_prices": {
+                "Bid": null,
+                "Ask": null,
+                "get_instrument_value": 146.4
+            },
+            "option_prices": [],
+            "recommendation": {
+                "expected_move": 0.0,
+                "average_percent_move": 14.140779545442198,
+                "lower_boundary": 125.69789874547263,
+                "upper_boundary": 167.10210125452738
+            }
         }
     ],
     "historic_move": [
+        {
+            "date": "20260612",
+            "open": 124.81,
+            "high": 148.88,
+            "low": 119.66,
+            "close": 143.66,
+            "candle_length": 29.22,
+            "percent_move": 20.339690936934428
+        },
         {
             "date": "20250409",
             "open": 54.69,
@@ -9068,15 +9092,6 @@
             "close": 57.13,
             "candle_length": 10.060000000000002,
             "percent_move": 17.608962016453706
-        },
-        {
-            "date": "20230728",
-            "open": 74.86,
-            "high": 89.71,
-            "low": 74.86,
-            "close": 89.61,
-            "candle_length": 14.849999999999994,
-            "percent_move": 16.57181118178774
         },
         {
             "date": "20250408",
@@ -9124,49 +9139,49 @@
             "percent_move": 12.735426008968606
         },
         {
-            "date": "20230216",
-            "open": 69.29,
-            "high": 76.62,
-            "low": 68.11,
-            "close": 70.57,
-            "candle_length": 8.510000000000005,
-            "percent_move": 12.058948561711784
+            "date": "20260213",
+            "open": 96.0,
+            "high": 96.55,
+            "low": 86.58,
+            "close": 90.06,
+            "candle_length": 9.969999999999999,
+            "percent_move": 11.070397512769263
         },
         {
-            "date": "20230711",
-            "open": 69.26,
-            "high": 77.36,
-            "low": 68.3,
-            "close": 75.43,
-            "candle_length": 9.060000000000002,
-            "percent_move": 12.011136152724381
+            "date": "20240216",
+            "open": 76.97,
+            "high": 78.61,
+            "low": 71.0,
+            "close": 72.0,
+            "candle_length": 7.609999999999999,
+            "percent_move": 10.569444444444445
         },
         {
-            "date": "20230607",
-            "open": 65.1,
-            "high": 72.53,
-            "low": 64.75,
-            "close": 68.03,
-            "candle_length": 7.780000000000001,
-            "percent_move": 11.436131118624138
+            "date": "20231025",
+            "open": 62.75,
+            "high": 64.24,
+            "low": 58.15,
+            "close": 58.5,
+            "candle_length": 6.089999999999996,
+            "percent_move": 10.410256410256403
         },
         {
-            "date": "20230313",
-            "open": 57.56,
-            "high": 61.05,
-            "low": 54.5,
-            "close": 59.54,
-            "candle_length": 6.549999999999997,
-            "percent_move": 11.001007725898551
+            "date": "20241202",
+            "open": 69.65,
+            "high": 77.3,
+            "low": 69.28,
+            "close": 77.05,
+            "candle_length": 8.019999999999996,
+            "percent_move": 10.40882543802725
         },
         {
-            "date": "20230330",
-            "open": 65.85,
-            "high": 66.97,
-            "low": 60.26,
-            "close": 61.62,
-            "candle_length": 6.710000000000001,
-            "percent_move": 10.889321648815322
+            "date": "20250107",
+            "open": 84.2,
+            "high": 84.84,
+            "low": 76.8,
+            "close": 77.99,
+            "candle_length": 8.040000000000006,
+            "percent_move": 10.309013976150798
         }
     ]
 }
