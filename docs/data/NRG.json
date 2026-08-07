@@ -16,18 +16,32 @@
             }
         },
         {
+<<<<<<< Updated upstream
             "timestamp": "2026-08-07 14:46:24",
             "underlying_prices": {
                 "Bid": null,
                 "Ask": null,
                 "get_instrument_value": 119.83
+=======
+            "timestamp": "2026-08-04 14:46:24",
+            "underlying_prices": {
+                "Bid": null,
+                "Ask": null,
+                "get_instrument_value": 113.0
+>>>>>>> Stashed changes
             },
             "option_prices": [],
             "recommendation": {
                 "expected_move": 0.0,
+<<<<<<< Updated upstream
                 "average_percent_move": 12.581954310565369,
                 "lower_boundary": 104.75304414964951,
                 "upper_boundary": 134.90695585035047
+=======
+                "average_percent_move": 11.542931460893227,
+                "lower_boundary": 99.95648744919066,
+                "upper_boundary": 126.04351255080934
+>>>>>>> Stashed changes
             }
         }
     ],
