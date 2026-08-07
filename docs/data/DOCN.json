@@ -1,48 +1,18 @@
 {
     "prices": [
         {
-            "timestamp": "2026-08-06 12:46:02",
+            "timestamp": "2026-08-07 09:46:23",
             "underlying_prices": {
                 "Bid": null,
                 "Ask": null,
-                "get_instrument_value": 123.80000000000001
+                "get_instrument_value": 127.8
             },
             "option_prices": [],
             "recommendation": {
                 "expected_move": 0.0,
                 "average_percent_move": 15.58830218610572,
-                "lower_boundary": 104.50168189360113,
-                "upper_boundary": 143.0983181063989
-            }
-        },
-        {
-            "timestamp": "2026-08-06 13:46:03",
-            "underlying_prices": {
-                "Bid": null,
-                "Ask": null,
-                "get_instrument_value": 124.06
-            },
-            "option_prices": [],
-            "recommendation": {
-                "expected_move": 0.0,
-                "average_percent_move": 15.58830218610572,
-                "lower_boundary": 104.72115230791724,
-                "upper_boundary": 143.39884769208277
-            }
-        },
-        {
-            "timestamp": "2026-08-07 01:38:00",
-            "underlying_prices": {
-                "Bid": null,
-                "Ask": null,
-                "get_instrument_value": 122.53999999999999
-            },
-            "option_prices": [],
-            "recommendation": {
-                "expected_move": 0.0,
-                "average_percent_move": 15.58830218610572,
-                "lower_boundary": 103.43809450114604,
-                "upper_boundary": 141.64190549885393
+                "lower_boundary": 107.87814980615688,
+                "upper_boundary": 147.7218501938431
             }
         }
     ],
