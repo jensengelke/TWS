@@ -105,7 +105,7 @@ def main(count: int):
     collected_earnings = []
     
     # Calculate target week start date (Monday)
-    today = datetime.datetime.now().date() - datetime.timedelta(days=2)
+    today = datetime.datetime.now().date()
     days_ahead = (0 - today.weekday()) % 7
     if days_ahead == 0:
          days_ahead += 7
