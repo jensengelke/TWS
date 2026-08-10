@@ -100,12 +100,12 @@ def main(count: int):
     weeklies = read_weekly_options_from_csv()
 
     i = 1
-    marker = '<tr class="styled-row is-bordered is-rounded is-hoverable is-striped has-color-text" valign="top">'
+    marker = '<tr class="styled-row is-bordered is-rounded group is-hoverable is-striped has-color-text" valign="top">'
     
     collected_earnings = []
     
     # Calculate target week start date (Monday)
-    today = datetime.datetime.now().date()
+    today = datetime.datetime.now().date() - 2
     days_ahead = (0 - today.weekday()) % 7
     if days_ahead == 0:
          days_ahead += 7
