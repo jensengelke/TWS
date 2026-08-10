@@ -1,4 +1,65 @@
 {
   "week_start": "2026-08-10",
-  "data": []
+  "data": [
+    {
+      "ticker": "BIDU",
+      "scheduled_date": "Aug 18/b",
+      "open_trade_date": "2026-08-17 (Monday)"
+    },
+    {
+      "ticker": "HD",
+      "scheduled_date": "Aug 18/b",
+      "open_trade_date": "2026-08-17 (Monday)"
+    },
+    {
+      "ticker": "ADI",
+      "scheduled_date": "Aug 19/b",
+      "open_trade_date": "2026-08-18 (Tuesday)"
+    },
+    {
+      "ticker": "EL",
+      "scheduled_date": "Aug 19/b",
+      "open_trade_date": "2026-08-18 (Tuesday)"
+    },
+    {
+      "ticker": "LOW",
+      "scheduled_date": "Aug 19/b",
+      "open_trade_date": "2026-08-18 (Tuesday)"
+    },
+    {
+      "ticker": "TGT",
+      "scheduled_date": "Aug 19/b",
+      "open_trade_date": "2026-08-18 (Tuesday)"
+    },
+    {
+      "ticker": "TJX",
+      "scheduled_date": "Aug 19/b",
+      "open_trade_date": "2026-08-18 (Tuesday)"
+    },
+    {
+      "ticker": "BABA",
+      "scheduled_date": "Aug 20/b",
+      "open_trade_date": "2026-08-19 (Wednesday)"
+    },
+    {
+      "ticker": "DE",
+      "scheduled_date": "Aug 20/b",
+      "open_trade_date": "2026-08-19 (Wednesday)"
+    },
+    {
+      "ticker": "FUTU",
+      "scheduled_date": "Aug 20/b",
+      "open_trade_date": "2026-08-19 (Wednesday)"
+    },
+    {
+      "ticker": "WMT",
+      "scheduled_date": "Aug 20/b",
+      "open_trade_date": "2026-08-19 (Wednesday)"
+    },
+    {
+      "ticker": "ROST",
+      "scheduled_date": "Aug 20/a",
+      "open_trade_date": "2026-08-20 (Thursday)"
+    }
+  ]
 }
