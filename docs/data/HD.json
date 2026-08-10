@@ -6323,6 +6323,21 @@
                 "lower_boundary": 365.847943873332,
                 "upper_boundary": 405.47206344666796
             }
+        },
+        {
+            "timestamp": "2026-08-10 01:12:39",
+            "underlying_prices": {
+                "Bid": null,
+                "Ask": null,
+                "get_instrument_value": 354.48
+            },
+            "option_prices": [],
+            "recommendation": {
+                "expected_move": 0.0,
+                "average_percent_move": 5.235061713712452,
+                "lower_boundary": 335.92275323723214,
+                "upper_boundary": 373.0372467627679
+            }
         }
     ],
     "historic_move": [
@@ -6381,6 +6396,24 @@
             "percent_move": 4.820734341252702
         },
         {
+            "date": "20260717",
+            "open": 348.93,
+            "high": 353.98,
+            "low": 338.08,
+            "close": 338.87,
+            "candle_length": 15.900000000000034,
+            "percent_move": 4.6920648036120145
+        },
+        {
+            "date": "20260519",
+            "open": 291.87,
+            "high": 303.19,
+            "low": 289.1,
+            "close": 302.44,
+            "candle_length": 14.089999999999975,
+            "percent_move": 4.658775294273236
+        },
+        {
             "date": "20250404",
             "open": 350.71,
             "high": 365.44,
@@ -6388,6 +6421,24 @@
             "close": 353.9,
             "candle_length": 16.399999999999977,
             "percent_move": 4.634077423000842
+        },
+        {
+            "date": "20260520",
+            "open": 301.06,
+            "high": 311.01,
+            "low": 296.67,
+            "close": 310.58,
+            "candle_length": 14.339999999999975,
+            "percent_move": 4.617167879451341
+        },
+        {
+            "date": "20260617",
+            "open": 336.01,
+            "high": 341.15,
+            "low": 326.17,
+            "close": 327.48,
+            "candle_length": 14.979999999999961,
+            "percent_move": 4.5743251496274455
         },
         {
             "date": "20250701",
@@ -6399,6 +6450,15 @@
             "percent_move": 4.486011362418267
         },
         {
+            "date": "20260624",
+            "open": 329.12,
+            "high": 342.96,
+            "low": 327.7,
+            "close": 342.86,
+            "candle_length": 15.259999999999991,
+            "percent_move": 4.450796243364636
+        },
+        {
             "date": "20250410",
             "open": 352.85,
             "high": 355.29,
@@ -6406,51 +6466,6 @@
             "close": 353.62,
             "candle_length": 15.629999999999995,
             "percent_move": 4.419998868842258
-        },
-        {
-            "date": "20241218",
-            "open": 407.0,
-            "high": 410.71,
-            "low": 393.38,
-            "close": 393.82,
-            "candle_length": 17.329999999999984,
-            "percent_move": 4.400487532375193
-        },
-        {
-            "date": "20230517",
-            "open": 282.15,
-            "high": 294.05,
-            "low": 281.21,
-            "close": 292.39,
-            "candle_length": 12.840000000000032,
-            "percent_move": 4.391395054550441
-        },
-        {
-            "date": "20250331",
-            "open": 353.5,
-            "high": 368.74,
-            "low": 352.65,
-            "close": 366.49,
-            "candle_length": 16.090000000000032,
-            "percent_move": 4.39029714316899
-        },
-        {
-            "date": "20250225",
-            "open": 385.0,
-            "high": 401.01,
-            "low": 384.19,
-            "close": 393.29,
-            "candle_length": 16.819999999999993,
-            "percent_move": 4.2767423529710875
-        },
-        {
-            "date": "20250520",
-            "open": 386.37,
-            "high": 389.75,
-            "low": 374.05,
-            "close": 377.05,
-            "candle_length": 15.699999999999989,
-            "percent_move": 4.163903991513059
         }
     ]
 }
