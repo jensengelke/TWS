@@ -1,0 +1,95 @@
+{
+  "week_start": "2026-08-24",
+  "data": [
+    {
+      "ticker": "PDD",
+      "scheduled_date": "Aug 24/b",
+      "open_trade_date": "2026-08-23 (Sunday)"
+    },
+    {
+      "ticker": "INTU",
+      "scheduled_date": "Aug 25/a",
+      "open_trade_date": "2026-08-25 (Tuesday)"
+    },
+    {
+      "ticker": "ZM",
+      "scheduled_date": "Aug 25/a",
+      "open_trade_date": "2026-08-25 (Tuesday)"
+    },
+    {
+      "ticker": "CRM",
+      "scheduled_date": "Aug 26/a",
+      "open_trade_date": "2026-08-26 (Wednesday)"
+    },
+    {
+      "ticker": "CRWD",
+      "scheduled_date": "Aug 26/a",
+      "open_trade_date": "2026-08-26 (Wednesday)"
+    },
+    {
+      "ticker": "NVDA",
+      "scheduled_date": "Aug 26/a",
+      "open_trade_date": "2026-08-26 (Wednesday)"
+    },
+    {
+      "ticker": "OKTA",
+      "scheduled_date": "Aug 26/a",
+      "open_trade_date": "2026-08-26 (Wednesday)"
+    },
+    {
+      "ticker": "SNPS",
+      "scheduled_date": "Aug 26/a",
+      "open_trade_date": "2026-08-26 (Wednesday)"
+    },
+    {
+      "ticker": "BBY",
+      "scheduled_date": "Aug 27/b",
+      "open_trade_date": "2026-08-26 (Wednesday)"
+    },
+    {
+      "ticker": "BURL",
+      "scheduled_date": "Aug 27/b",
+      "open_trade_date": "2026-08-26 (Wednesday)"
+    },
+    {
+      "ticker": "DG",
+      "scheduled_date": "Aug 27/b",
+      "open_trade_date": "2026-08-26 (Wednesday)"
+    },
+    {
+      "ticker": "DLTR",
+      "scheduled_date": "Aug 27/b",
+      "open_trade_date": "2026-08-26 (Wednesday)"
+    },
+    {
+      "ticker": "ADSK",
+      "scheduled_date": "Aug 27/a",
+      "open_trade_date": "2026-08-27 (Thursday)"
+    },
+    {
+      "ticker": "AFRM",
+      "scheduled_date": "Aug 27/a",
+      "open_trade_date": "2026-08-27 (Thursday)"
+    },
+    {
+      "ticker": "MRVL",
+      "scheduled_date": "Aug 27/a",
+      "open_trade_date": "2026-08-27 (Thursday)"
+    },
+    {
+      "ticker": "RBRK",
+      "scheduled_date": "Aug 27/a",
+      "open_trade_date": "2026-08-27 (Thursday)"
+    },
+    {
+      "ticker": "ULTA",
+      "scheduled_date": "Aug 27/a",
+      "open_trade_date": "2026-08-27 (Thursday)"
+    },
+    {
+      "ticker": "WDAY",
+      "scheduled_date": "Aug 27/a",
+      "open_trade_date": "2026-08-27 (Thursday)"
+    }
+  ]
+}
