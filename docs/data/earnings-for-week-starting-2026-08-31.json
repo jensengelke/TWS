@@ -1,0 +1,65 @@
+{
+  "week_start": "2026-08-31",
+  "data": [
+    {
+      "ticker": "MDT",
+      "scheduled_date": "Sep 01/b",
+      "open_trade_date": "2026-08-31 (Monday)"
+    },
+    {
+      "ticker": "CRDO",
+      "scheduled_date": "Sep 01/a",
+      "open_trade_date": "2026-09-01 (Tuesday)"
+    },
+    {
+      "ticker": "DELL",
+      "scheduled_date": "Sep 01/a",
+      "open_trade_date": "2026-09-01 (Tuesday)"
+    },
+    {
+      "ticker": "MDB",
+      "scheduled_date": "Sep 01/a",
+      "open_trade_date": "2026-09-01 (Tuesday)"
+    },
+    {
+      "ticker": "PANW",
+      "scheduled_date": "Sep 01/a",
+      "open_trade_date": "2026-09-01 (Tuesday)"
+    },
+    {
+      "ticker": "AVGO",
+      "scheduled_date": "Sep 02/a",
+      "open_trade_date": "2026-09-02 (Wednesday)"
+    },
+    {
+      "ticker": "HPE",
+      "scheduled_date": "Sep 02/a",
+      "open_trade_date": "2026-09-02 (Wednesday)"
+    },
+    {
+      "ticker": "SNOW",
+      "scheduled_date": "Sep 02/a",
+      "open_trade_date": "2026-09-02 (Wednesday)"
+    },
+    {
+      "ticker": "CIEN",
+      "scheduled_date": "Sep 03/b",
+      "open_trade_date": "2026-09-02 (Wednesday)"
+    },
+    {
+      "ticker": "DOCU",
+      "scheduled_date": "Sep 03/a",
+      "open_trade_date": "2026-09-03 (Thursday)"
+    },
+    {
+      "ticker": "LULU",
+      "scheduled_date": "Sep 03/a",
+      "open_trade_date": "2026-09-03 (Thursday)"
+    },
+    {
+      "ticker": "ZS",
+      "scheduled_date": "Sep 03/a",
+      "open_trade_date": "2026-09-03 (Thursday)"
+    }
+  ]
+}
