@@ -1,0 +1,20 @@
+{
+  "week_start": "2026-09-07",
+  "data": [
+    {
+      "ticker": "ADBE",
+      "scheduled_date": "Sep 10/a",
+      "open_trade_date": "2026-09-10 (Thursday)"
+    },
+    {
+      "ticker": "ORCL",
+      "scheduled_date": "Sep 10/a",
+      "open_trade_date": "2026-09-10 (Thursday)"
+    },
+    {
+      "ticker": "KR",
+      "scheduled_date": "Sep 11/b",
+      "open_trade_date": "2026-09-10 (Thursday)"
+    }
+  ]
+}
