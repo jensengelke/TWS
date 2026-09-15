@@ -22036,6 +22036,82 @@
                 "lower_boundary": 70.78,
                 "upper_boundary": 89.72999999999999
             }
+        },
+        {
+            "timestamp": "2026-09-15 16:45:11",
+            "underlying_prices": {
+                "Bid": null,
+                "Ask": null,
+                "get_instrument_value": 80.245
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "LEN   260918P00079000",
+                    "contract_strike": 79.0,
+                    "contract_right": "P",
+                    "Bid": -1,
+                    "Ask": -1,
+                    "IV": 0.9119998211802336,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -0.32904481487919446,
+                    "delta": -0.41884628884490904,
+                    "gamma": 0.06241843489884841,
+                    "vega": 0.03305367404058002,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "LEN   260918C00080000",
+                    "contract_strike": 80.0,
+                    "contract_right": "C",
+                    "Bid": -1,
+                    "Ask": -1,
+                    "IV": 0.9068812799081386,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -0.3388230622954418,
+                    "delta": 0.5181100372842216,
+                    "gamma": 0.06399186230864,
+                    "vega": 0.03329306939112309,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "LEN   260918P00080000",
+                    "contract_strike": 80.0,
+                    "contract_right": "P",
+                    "Bid": -1,
+                    "Ask": -1,
+                    "IV": 0.9068812799081386,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -0.3299524919110417,
+                    "delta": -0.48237108839639314,
+                    "gamma": 0.06408835265045351,
+                    "vega": 0.03329166192358857,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "LEN   260918C00081000",
+                    "contract_strike": 81.0,
+                    "contract_right": "C",
+                    "Bid": -1,
+                    "Ask": -1,
+                    "IV": 0.9021939085585239,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": -0.33986191688918455,
+                    "delta": 0.4547856917684545,
+                    "gamma": 0.0635795638414522,
+                    "vega": 0.033532054981097126,
+                    "price": -1.0
+                }
+            ],
+            "recommendation": {
+                "expected_move": -2.0,
+                "average_percent_move": 7.916121801620777,
+                "lower_boundary": 73.89270806028941,
+                "upper_boundary": 86.5972919397106
+            }
         }
     ],
     "historic_move": [
