@@ -1,0 +1,15 @@
+{
+  "week_start": "2026-09-21",
+  "data": [
+    {
+      "ticker": "CTAS",
+      "scheduled_date": "Sep 23/b",
+      "open_trade_date": "2026-09-22 (Tuesday)"
+    },
+    {
+      "ticker": "COST",
+      "scheduled_date": "Sep 24/a",
+      "open_trade_date": "2026-09-24 (Thursday)"
+    }
+  ]
+}
