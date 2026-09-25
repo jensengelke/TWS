@@ -1,0 +1,20 @@
+{
+  "week_start": "2026-09-28",
+  "data": [
+    {
+      "ticker": "JBL",
+      "scheduled_date": "Sep 30/b",
+      "open_trade_date": "2026-09-29 (Tuesday)"
+    },
+    {
+      "ticker": "MU",
+      "scheduled_date": "Sep 30/a",
+      "open_trade_date": "2026-09-30 (Wednesday)"
+    },
+    {
+      "ticker": "ACN",
+      "scheduled_date": "Oct 01/b",
+      "open_trade_date": "2026-09-30 (Wednesday)"
+    }
+  ]
+}
