@@ -4490,6 +4490,82 @@
                 "lower_boundary": 148.23,
                 "upper_boundary": 200.23
             }
+        },
+        {
+            "timestamp": "2026-09-28 16:45:37",
+            "underlying_prices": {
+                "Bid": null,
+                "Ask": null,
+                "get_instrument_value": 174.7
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "ACN   261002P00172500",
+                    "contract_strike": 172.5,
+                    "contract_right": "P",
+                    "Bid": -1,
+                    "Ask": -1,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "ACN   261002C00175000",
+                    "contract_strike": 175.0,
+                    "contract_right": "C",
+                    "Bid": -1,
+                    "Ask": -1,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "ACN   261002P00175000",
+                    "contract_strike": 175.0,
+                    "contract_right": "P",
+                    "Bid": -1,
+                    "Ask": -1,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "ACN   261002C00177500",
+                    "contract_strike": 177.5,
+                    "contract_right": "C",
+                    "Bid": -1,
+                    "Ask": -1,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                }
+            ],
+            "recommendation": {
+                "expected_move": -2.0,
+                "average_percent_move": 7.471301420304748,
+                "lower_boundary": 161.6476364187276,
+                "upper_boundary": 187.7523635812724
+            }
         }
     ],
     "historic_move": [
