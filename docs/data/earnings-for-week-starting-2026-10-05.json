@@ -1,0 +1,20 @@
+{
+  "week_start": "2026-10-05",
+  "data": [
+    {
+      "ticker": "STZ",
+      "scheduled_date": "Oct 06/a",
+      "open_trade_date": "2026-10-06 (Tuesday)"
+    },
+    {
+      "ticker": "PEP",
+      "scheduled_date": "Oct 08/b",
+      "open_trade_date": "2026-10-07 (Wednesday)"
+    },
+    {
+      "ticker": "DAL",
+      "scheduled_date": "Oct 09/b",
+      "open_trade_date": "2026-10-08 (Thursday)"
+    }
+  ]
+}
