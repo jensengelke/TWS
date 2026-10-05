@@ -5047,6 +5047,82 @@
                 "lower_boundary": 74.44500000000001,
                 "upper_boundary": 91.515
             }
+        },
+        {
+            "timestamp": "2026-10-05 16:45:22",
+            "underlying_prices": {
+                "Bid": null,
+                "Ask": null,
+                "get_instrument_value": 83.2332
+            },
+            "option_prices": [
+                {
+                    "contract_localSymbol": "DAL   261009P00082000",
+                    "contract_strike": 82.0,
+                    "contract_right": "P",
+                    "Bid": -1,
+                    "Ask": -1,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "DAL   261009C00083000",
+                    "contract_strike": 83.0,
+                    "contract_right": "C",
+                    "Bid": -1,
+                    "Ask": -1,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "DAL   261009P00083000",
+                    "contract_strike": 83.0,
+                    "contract_right": "P",
+                    "Bid": -1,
+                    "Ask": -1,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                },
+                {
+                    "contract_localSymbol": "DAL   261009C00084000",
+                    "contract_strike": 84.0,
+                    "contract_right": "C",
+                    "Bid": -1,
+                    "Ask": -1,
+                    "IV": null,
+                    "call_open_interest": null,
+                    "put_open_interest": null,
+                    "theta": null,
+                    "delta": null,
+                    "gamma": null,
+                    "vega": null,
+                    "price": -1.0
+                }
+            ],
+            "recommendation": {
+                "expected_move": -2.0,
+                "average_percent_move": 9.649858781965191,
+                "lower_boundary": 75.20131374028935,
+                "upper_boundary": 91.26508625971064
+            }
         }
     ],
     "historic_move": [
