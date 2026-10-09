@@ -1,0 +1,85 @@
+{
+  "week_start": "2026-10-12",
+  "data": [
+    {
+      "ticker": "C",
+      "scheduled_date": "Oct 13/b",
+      "open_trade_date": "2026-10-12 (Monday)"
+    },
+    {
+      "ticker": "GS",
+      "scheduled_date": "Oct 13/b",
+      "open_trade_date": "2026-10-12 (Monday)"
+    },
+    {
+      "ticker": "JNJ",
+      "scheduled_date": "Oct 13/b",
+      "open_trade_date": "2026-10-12 (Monday)"
+    },
+    {
+      "ticker": "JPM",
+      "scheduled_date": "Oct 13/b",
+      "open_trade_date": "2026-10-12 (Monday)"
+    },
+    {
+      "ticker": "UNH",
+      "scheduled_date": "Oct 13/b",
+      "open_trade_date": "2026-10-12 (Monday)"
+    },
+    {
+      "ticker": "WFC",
+      "scheduled_date": "Oct 13/b",
+      "open_trade_date": "2026-10-12 (Monday)"
+    },
+    {
+      "ticker": "ASML",
+      "scheduled_date": "Oct 14/b",
+      "open_trade_date": "2026-10-13 (Tuesday)"
+    },
+    {
+      "ticker": "BAC",
+      "scheduled_date": "Oct 14/b",
+      "open_trade_date": "2026-10-13 (Tuesday)"
+    },
+    {
+      "ticker": "BLK",
+      "scheduled_date": "Oct 14/b",
+      "open_trade_date": "2026-10-13 (Tuesday)"
+    },
+    {
+      "ticker": "MS",
+      "scheduled_date": "Oct 14/b",
+      "open_trade_date": "2026-10-13 (Tuesday)"
+    },
+    {
+      "ticker": "PGR",
+      "scheduled_date": "Oct 14/b",
+      "open_trade_date": "2026-10-13 (Tuesday)"
+    },
+    {
+      "ticker": "PNC",
+      "scheduled_date": "Oct 15/b",
+      "open_trade_date": "2026-10-14 (Wednesday)"
+    },
+    {
+      "ticker": "SCHW",
+      "scheduled_date": "Oct 15/b",
+      "open_trade_date": "2026-10-14 (Wednesday)"
+    },
+    {
+      "ticker": "TSM",
+      "scheduled_date": "Oct 15/b",
+      "open_trade_date": "2026-10-14 (Wednesday)"
+    },
+    {
+      "ticker": "USB",
+      "scheduled_date": "Oct 15/b",
+      "open_trade_date": "2026-10-14 (Wednesday)"
+    },
+    {
+      "ticker": "IBKR",
+      "scheduled_date": "Oct 15/a",
+      "open_trade_date": "2026-10-15 (Thursday)"
+    }
+  ]
+}
