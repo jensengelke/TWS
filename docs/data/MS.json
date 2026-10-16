@@ -1861,6 +1861,21 @@
                 "lower_boundary": 169.74683097344098,
                 "upper_boundary": 197.093169026559
             }
+        },
+        {
+            "timestamp": "2026-10-16 11:46:21",
+            "underlying_prices": {
+                "Bid": null,
+                "Ask": null,
+                "get_instrument_value": 183.1595
+            },
+            "option_prices": [],
+            "recommendation": {
+                "expected_move": 0.0,
+                "average_percent_move": 7.454568218601572,
+                "lower_boundary": 169.50575012365047,
+                "upper_boundary": 196.81324987634954
+            }
         }
     ],
     "historic_move": [
