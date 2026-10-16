@@ -1,0 +1,180 @@
+{
+  "week_start": "2026-10-19",
+  "data": [
+    {
+      "ticker": "GE",
+      "scheduled_date": "Oct 20/b",
+      "open_trade_date": "2026-10-19 (Monday)"
+    },
+    {
+      "ticker": "GM",
+      "scheduled_date": "Oct 20/b",
+      "open_trade_date": "2026-10-19 (Monday)"
+    },
+    {
+      "ticker": "MMM",
+      "scheduled_date": "Oct 20/b",
+      "open_trade_date": "2026-10-19 (Monday)"
+    },
+    {
+      "ticker": "RTX",
+      "scheduled_date": "Oct 20/b",
+      "open_trade_date": "2026-10-19 (Monday)"
+    },
+    {
+      "ticker": "COF",
+      "scheduled_date": "Oct 20/a",
+      "open_trade_date": "2026-10-20 (Tuesday)"
+    },
+    {
+      "ticker": "ISRG",
+      "scheduled_date": "Oct 20/a",
+      "open_trade_date": "2026-10-20 (Tuesday)"
+    },
+    {
+      "ticker": "NFLX",
+      "scheduled_date": "Oct 20/a",
+      "open_trade_date": "2026-10-20 (Tuesday)"
+    },
+    {
+      "ticker": "UAL",
+      "scheduled_date": "Oct 20/a",
+      "open_trade_date": "2026-10-20 (Tuesday)"
+    },
+    {
+      "ticker": "ABT",
+      "scheduled_date": "Oct 21/b",
+      "open_trade_date": "2026-10-20 (Tuesday)"
+    },
+    {
+      "ticker": "CME",
+      "scheduled_date": "Oct 21/b",
+      "open_trade_date": "2026-10-20 (Tuesday)"
+    },
+    {
+      "ticker": "DHR",
+      "scheduled_date": "Oct 21/b",
+      "open_trade_date": "2026-10-20 (Tuesday)"
+    },
+    {
+      "ticker": "NEE",
+      "scheduled_date": "Oct 21/b",
+      "open_trade_date": "2026-10-20 (Tuesday)"
+    },
+    {
+      "ticker": "PM",
+      "scheduled_date": "Oct 21/b",
+      "open_trade_date": "2026-10-20 (Tuesday)"
+    },
+    {
+      "ticker": "TMO",
+      "scheduled_date": "Oct 21/b",
+      "open_trade_date": "2026-10-20 (Tuesday)"
+    },
+    {
+      "ticker": "IBM",
+      "scheduled_date": "Oct 21/a",
+      "open_trade_date": "2026-10-21 (Wednesday)"
+    },
+    {
+      "ticker": "LRCX",
+      "scheduled_date": "Oct 21/a",
+      "open_trade_date": "2026-10-21 (Wednesday)"
+    },
+    {
+      "ticker": "META",
+      "scheduled_date": "Oct 21/a",
+      "open_trade_date": "2026-10-21 (Wednesday)"
+    },
+    {
+      "ticker": "SAP",
+      "scheduled_date": "Oct 21/a",
+      "open_trade_date": "2026-10-21 (Wednesday)"
+    },
+    {
+      "ticker": "TSLA",
+      "scheduled_date": "Oct 21/a",
+      "open_trade_date": "2026-10-21 (Wednesday)"
+    },
+    {
+      "ticker": "TXN",
+      "scheduled_date": "Oct 21/a",
+      "open_trade_date": "2026-10-21 (Wednesday)"
+    },
+    {
+      "ticker": "URI",
+      "scheduled_date": "Oct 21/a",
+      "open_trade_date": "2026-10-21 (Wednesday)"
+    },
+    {
+      "ticker": "BX",
+      "scheduled_date": "Oct 22/b",
+      "open_trade_date": "2026-10-21 (Wednesday)"
+    },
+    {
+      "ticker": "HON",
+      "scheduled_date": "Oct 22/b",
+      "open_trade_date": "2026-10-21 (Wednesday)"
+    },
+    {
+      "ticker": "LMT",
+      "scheduled_date": "Oct 22/b",
+      "open_trade_date": "2026-10-21 (Wednesday)"
+    },
+    {
+      "ticker": "NDAQ",
+      "scheduled_date": "Oct 22/b",
+      "open_trade_date": "2026-10-21 (Wednesday)"
+    },
+    {
+      "ticker": "PG",
+      "scheduled_date": "Oct 22/b",
+      "open_trade_date": "2026-10-21 (Wednesday)"
+    },
+    {
+      "ticker": "PHM",
+      "scheduled_date": "Oct 22/b",
+      "open_trade_date": "2026-10-21 (Wednesday)"
+    },
+    {
+      "ticker": "SPOT",
+      "scheduled_date": "Oct 22/b",
+      "open_trade_date": "2026-10-21 (Wednesday)"
+    },
+    {
+      "ticker": "UNP",
+      "scheduled_date": "Oct 22/b",
+      "open_trade_date": "2026-10-21 (Wednesday)"
+    },
+    {
+      "ticker": "VLO",
+      "scheduled_date": "Oct 22/b",
+      "open_trade_date": "2026-10-21 (Wednesday)"
+    },
+    {
+      "ticker": "BE",
+      "scheduled_date": "Oct 22/a",
+      "open_trade_date": "2026-10-22 (Thursday)"
+    },
+    {
+      "ticker": "DECK",
+      "scheduled_date": "Oct 22/a",
+      "open_trade_date": "2026-10-22 (Thursday)"
+    },
+    {
+      "ticker": "NEM",
+      "scheduled_date": "Oct 22/a",
+      "open_trade_date": "2026-10-22 (Thursday)"
+    },
+    {
+      "ticker": "WDC",
+      "scheduled_date": "Oct 22/a",
+      "open_trade_date": "2026-10-22 (Thursday)"
+    },
+    {
+      "ticker": "AXP",
+      "scheduled_date": "Oct 23/b",
+      "open_trade_date": "2026-10-22 (Thursday)"
+    }
+  ]
+}
