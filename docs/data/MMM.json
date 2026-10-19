@@ -750,6 +750,21 @@
                 "lower_boundary": 156.06458089743708,
                 "upper_boundary": 183.93541910256292
             }
+        },
+        {
+            "timestamp": "2026-10-19 09:45:51",
+            "underlying_prices": {
+                "Bid": null,
+                "Ask": null,
+                "get_instrument_value": 163.365
+            },
+            "option_prices": [],
+            "recommendation": {
+                "expected_move": 0.0,
+                "average_percent_move": 8.134773586748542,
+                "lower_boundary": 150.07562713000826,
+                "upper_boundary": 176.65437286999176
+            }
         }
     ],
     "historic_move": [
@@ -836,12 +851,12 @@
         },
         {
             "date": "20240123",
-            "open": 84.33,
-            "high": 84.33,
-            "low": 78.69,
-            "close": 80.35,
-            "candle_length": 5.640000000000001,
-            "percent_move": 7.019290603609211
+            "open": 84.329,
+            "high": 84.329,
+            "low": 78.6854,
+            "close": 80.3492,
+            "candle_length": 5.643599999999992,
+            "percent_move": 7.023840934321676
         },
         {
             "date": "20250404",
@@ -851,15 +866,6 @@
             "close": 126.91,
             "candle_length": 8.889999999999986,
             "percent_move": 7.00496414782128
-        },
-        {
-            "date": "20230913",
-            "open": 89.58,
-            "high": 89.86,
-            "low": 84.04,
-            "close": 84.49,
-            "candle_length": 5.819999999999993,
-            "percent_move": 6.888389158480286
         },
         {
             "date": "20260120",
@@ -878,6 +884,15 @@
             "close": 94.02,
             "candle_length": 6.109999999999999,
             "percent_move": 6.498617315464794
+        },
+        {
+            "date": "20240404",
+            "open": 94.49,
+            "high": 95.67,
+            "low": 90.23,
+            "close": 90.54,
+            "candle_length": 5.439999999999998,
+            "percent_move": 6.008394079964654
         }
     ]
 }

@@ -976,6 +976,21 @@
                 "lower_boundary": 222.01683855,
                 "upper_boundary": 282.54315901
             }
+        },
+        {
+            "timestamp": "2026-10-19 09:46:36",
+            "underlying_prices": {
+                "Bid": null,
+                "Ask": null,
+                "get_instrument_value": 232.19
+            },
+            "option_prices": [],
+            "recommendation": {
+                "expected_move": 0.0,
+                "average_percent_move": 8.669318449048845,
+                "lower_boundary": 212.0607094931535,
+                "upper_boundary": 252.3192905068465
+            }
         }
     ],
     "historic_move": [
@@ -998,6 +1013,15 @@
             "percent_move": 9.897726886616152
         },
         {
+            "date": "20260529",
+            "open": 277.3,
+            "high": 301.0,
+            "low": 273.33,
+            "close": 297.8,
+            "candle_length": 27.670000000000016,
+            "percent_move": 9.291470785762261
+        },
+        {
             "date": "20251024",
             "open": 283.77,
             "high": 310.75,
@@ -1014,6 +1038,15 @@
             "close": 235.31,
             "candle_length": 21.140000000000015,
             "percent_move": 8.983893587182871
+        },
+        {
+            "date": "20260521",
+            "open": 232.58,
+            "high": 253.63,
+            "low": 230.93,
+            "close": 252.97,
+            "candle_length": 22.69999999999999,
+            "percent_move": 8.97339605486816
         },
         {
             "date": "20250407",
@@ -1043,6 +1076,24 @@
             "percent_move": 7.726315789473678
         },
         {
+            "date": "20260714",
+            "open": 226.48,
+            "high": 229.92,
+            "low": 213.22,
+            "close": 217.07,
+            "candle_length": 16.69999999999999,
+            "percent_move": 7.693370802045418
+        },
+        {
+            "date": "20260605",
+            "open": 300.0,
+            "high": 302.3,
+            "low": 281.07,
+            "close": 284.84,
+            "candle_length": 21.230000000000018,
+            "percent_move": 7.453307119786554
+        },
+        {
             "date": "20250408",
             "open": 232.56,
             "high": 233.05,
@@ -1052,58 +1103,22 @@
             "percent_move": 7.134778084422934
         },
         {
-            "date": "20250307",
-            "open": 245.95,
-            "high": 261.96,
-            "low": 245.18,
-            "close": 261.54,
-            "candle_length": 16.779999999999973,
-            "percent_move": 6.415844612678738
+            "date": "20260716",
+            "open": 208.82,
+            "high": 219.95,
+            "low": 204.44,
+            "close": 219.05,
+            "candle_length": 15.509999999999991,
+            "percent_move": 7.080575211139005
         },
         {
-            "date": "20240125",
-            "open": 184.96,
-            "high": 196.9,
-            "low": 184.83,
-            "close": 190.43,
-            "candle_length": 12.069999999999993,
-            "percent_move": 6.338287034605888
-        },
-        {
-            "date": "20250404",
-            "open": 238.0,
-            "high": 240.16,
-            "low": 226.88,
-            "close": 227.48,
-            "candle_length": 13.280000000000001,
-            "percent_move": 5.837875857218218
-        },
-        {
-            "date": "20250130",
-            "open": 250.0,
-            "high": 261.8,
-            "low": 247.01,
-            "close": 258.27,
-            "candle_length": 14.79000000000002,
-            "percent_move": 5.726565222441639
-        },
-        {
-            "date": "20240725",
-            "open": 186.8,
-            "high": 196.26,
-            "low": 185.3,
-            "close": 191.98,
-            "candle_length": 10.95999999999998,
-            "percent_move": 5.708928013334711
-        },
-        {
-            "date": "20260224",
-            "open": 227.8,
-            "high": 236.6,
-            "low": 223.63,
-            "close": 229.32,
-            "candle_length": 12.969999999999999,
-            "percent_move": 5.655852084423513
+            "date": "20260602",
+            "open": 313.75,
+            "high": 332.46,
+            "low": 310.1,
+            "close": 329.23,
+            "candle_length": 22.359999999999957,
+            "percent_move": 6.791604653281887
         }
     ]
 }
