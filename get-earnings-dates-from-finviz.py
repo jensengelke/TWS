@@ -1,18 +1,69 @@
 import time
 import sys
 import requests
-import re
 import os
 import datetime
 import json
+import argparse
+from html.parser import HTMLParser
 
 #!/usr/bin/env python3
-
-BASE = "https://finviz.com/screener.ashx?v=161&f=cap_largeover,earningsdate_nextweek,sh_price_o50&o=earningsdate"
-#BASE = "https://finviz.com/screener.ashx?v=161&f=cap_largeover,earningsdate_thisweek,sh_price_o50&o=earningsdate"
+BASE_NEXTWEEK = "https://finviz.com/screener.ashx?v=161&f=cap_largeover,earningsdate_nextweek,sh_price_o50&o=earningsdate"
+BASE_THISWEEK = "https://finviz.com/screener.ashx?v=161&f=cap_largeover,earningsdate_thisweek,sh_price_o50&o=earningsdate"
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; script/1.0)"}
 DEFAULT_COUNT = 20         # change as needed
 DELAY_SECONDS = 0.1        # polite delay between requests
+
+
+class ScreenerParser(HTMLParser):
+    """Read stock rows from Finviz's server-rendered div grid."""
+
+    def __init__(self):
+        super().__init__()
+        self.rows = []
+        self.div_depth = 0
+        self.row_depth = None
+        self.earnings_depth = None
+        self.ticker = None
+        self.earnings_parts = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag != "div":
+            return
+        self.div_depth += 1
+        attrs = dict(attrs)
+        if attrs.get("role") == "row" and attrs.get("data-row-key"):
+            self.row_depth = self.div_depth
+            self.ticker = attrs["data-row-key"]
+            self.earnings_parts = []
+        elif self.row_depth is not None and attrs.get("data-column-id") == "earningsDate":
+            self.earnings_depth = self.div_depth
+
+    def handle_data(self, data):
+        if self.earnings_depth is not None:
+            self.earnings_parts.append(data)
+
+    def handle_endtag(self, tag):
+        if tag != "div":
+            return
+        if self.div_depth == self.earnings_depth:
+            self.earnings_depth = None
+        if self.div_depth == self.row_depth:
+            earningsdate = " ".join("".join(self.earnings_parts).split())
+            self.rows.append({
+                "ticker": self.ticker,
+                "scheduled_date": earningsdate or "N/A"
+            })
+            self.row_depth = None
+            self.ticker = None
+        self.div_depth -= 1
+
+
+def parse_earnings(content: str):
+    parser = ScreenerParser()
+    parser.feed(content)
+    parser.close()
+    return parser.rows
 
 
 def r_for_iteration(i: int):
@@ -21,16 +72,16 @@ def r_for_iteration(i: int):
     return 20 * i - 19
 
 
-def fetch_and_save(i: int):
+def fetch_and_save(i: int, base_url: str = BASE_NEXTWEEK):
     r = r_for_iteration(i)
-    url = BASE if r is None else f"{BASE}&r={r}"
+    url = base_url if r is None else f"{base_url}&r={r}"
     print(f"[{i}] GET {url}")
     resp = requests.get(url, headers=HEADERS, timeout=15)
     resp.raise_for_status()
     filename = "finviz.html"
     # write as text using detected encoding
     resp.encoding = resp.encoding or "utf-8"
-    with open(filename, "w", encoding=resp.encoding) as fh:
+    with open(filename, "w", encoding="utf-8") as fh:
         fh.write(resp.text)
     print(f"[{i}] saved -> {filename}")
 
@@ -96,25 +147,36 @@ def update_index_json(date_str: str, filename: str):
     except Exception as e:
         print(f"Error writing index json: {e}", file=sys.stderr)
 
-def main(count: int):
+def week_start_date(today: datetime.date, this_week: bool = False):
+    monday = today - datetime.timedelta(days=today.weekday())
+    return monday if this_week else monday + datetime.timedelta(days=7)
+
+
+def parse_args(argv=None):
+    parser = argparse.ArgumentParser(description="Fetch weekly earnings dates from Finviz.")
+    parser.add_argument("count", nargs="?", type=int, default=DEFAULT_COUNT,
+                        help="maximum number of pages to fetch (default: %(default)s)")
+    parser.add_argument("--this-week", action="store_true",
+                        help="fetch this week's earnings instead of next week's")
+    return parser.parse_args(argv)
+
+
+def main(count: int, this_week: bool = False):
+    base_url = BASE_THISWEEK if this_week else BASE_NEXTWEEK
     weeklies = read_weekly_options_from_csv()
 
     i = 1
-    marker = '<tr class="styled-row is-bordered is-rounded group is-hoverable is-striped has-color-text" valign="top">'
     
     collected_earnings = []
     
-    # Calculate target week start date (Monday)
+    # Use the Monday of the same week as the selected Finviz filter.
     today = datetime.datetime.now().date()
-    days_ahead = (0 - today.weekday()) % 7
-    if days_ahead == 0:
-         days_ahead += 7
-    start_monday = today + datetime.timedelta(days=days_ahead)
+    start_monday = week_start_date(today, this_week)
     date_str = start_monday.strftime("%Y-%m-%d")
 
     while i <= count:
         try:
-            fetch_and_save(i)
+            fetch_and_save(i, base_url)
         except Exception as e:
             print(f"[{i}] error: {e}", file=sys.stderr)
             i += 1
@@ -122,7 +184,7 @@ def main(count: int):
             continue
 
         try:
-            with open(f"finviz.html", "r", errors="ignore") as fh:
+            with open("finviz.html", "r", encoding="utf-8", errors="ignore") as fh:
                 content = fh.read()
         except Exception as e:
             print(f"[{i}] read error: {e}", file=sys.stderr)
@@ -130,65 +192,48 @@ def main(count: int):
             time.sleep(DELAY_SECONDS)
             continue
 
-        if marker in content:
-            lines = content.splitlines()
-            try:
-                first_idx = next(j for j, line in enumerate(lines) if marker in line)
-            except StopIteration:
-                print(f"[{i}] marker not found in lines", file=sys.stderr)
-            else:
-                lines = lines[first_idx + 1 :]
-                ticker_pattern = re.compile(r'.*class="tab-link">(.+?)</a>.*')
-                earnings_pattern = re.compile(r'b=1" ">(... [0-9][0-9]/[a,b])')
-                
-                valid_items_on_page = 0
-                for line in lines[:20]:
-                    ticker_m = ticker_pattern.search(line)
-                    earnings_m = earnings_pattern.search(line)
-                    
-                    if not ticker_m:
-                        continue
-                        
-                    ticker = ticker_m.group(1)
-                    if ticker not in weeklies:
-                        continue
-                    
-                    earningsdate = earnings_m.group(1) if earnings_m else "N/A"
-                    
-                    if earningsdate == "N/A":
-                        earningsdate_real_str = "N/A"
-                    else:
-                        date_part = earningsdate.split("/", 1)[0].strip()
-                        date_part = f"{date_part} {datetime.datetime.now().year}"
-                        try:
-                            dt = datetime.datetime.strptime(date_part, "%b %d %Y")
-                        except ValueError:
-                            try:
-                                dt = datetime.datetime.strptime(date_part, "%B %d %Y")
-                            except ValueError:
-                                dt = None
-                        
-                        earningsdate_real_str = "N/A"
-                        if dt is not None:
-                            if earningsdate.endswith("/b"):
-                                try:
-                                    dt -= datetime.timedelta(days=1)
-                                except Exception:
-                                    pass
-                            earningsdate_real_obj = dt.date()
-                            earningsdate_real_str = f"{earningsdate_real_obj} ({earningsdate_real_obj.strftime('%A')})"
-                    
-                    collected_earnings.append({
-                        "ticker": ticker,
-                        "scheduled_date": earningsdate,
-                        "open_trade_date": earningsdate_real_str
-                    })
-                    valid_items_on_page += 1
-                
-                print(f"[{i}] Processed page, found {valid_items_on_page} valid items.")
+        rows = parse_earnings(content)
+        if not rows:
+            print(f"[{i}] no stock rows found, stopping.")
+            break
 
-        if marker not in content:
-            print(f"[{i}] marker not found, stopping.")
+        valid_items_on_page = 0
+        for row in rows:
+            ticker = row["ticker"]
+            if ticker not in weeklies:
+                continue
+
+            earningsdate = row["scheduled_date"]
+            if earningsdate == "N/A":
+                earningsdate_real_str = "N/A"
+            else:
+                date_part = earningsdate.split("/", 1)[0].strip()
+                date_part = f"{date_part} {datetime.datetime.now().year}"
+                try:
+                    dt = datetime.datetime.strptime(date_part, "%b %d %Y")
+                except ValueError:
+                    try:
+                        dt = datetime.datetime.strptime(date_part, "%B %d %Y")
+                    except ValueError:
+                        dt = None
+
+                earningsdate_real_str = "N/A"
+                if dt is not None:
+                    if earningsdate.endswith("/b"):
+                        dt -= datetime.timedelta(days=1)
+                    earningsdate_real_obj = dt.date()
+                    earningsdate_real_str = f"{earningsdate_real_obj} ({earningsdate_real_obj.strftime('%A')})"
+
+            collected_earnings.append({
+                "ticker": ticker,
+                "scheduled_date": earningsdate,
+                "open_trade_date": earningsdate_real_str
+            })
+            valid_items_on_page += 1
+
+        print(f"[{i}] Processed page, found {valid_items_on_page} valid items.")
+
+        if len(rows) < 20:
             break
 
         i += 1
@@ -223,8 +268,5 @@ def main(count: int):
         print(f"Error removing finviz.html: {e}", file=sys.stderr)
 
 if __name__ == "__main__":
-    try:
-        n = int(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_COUNT
-    except ValueError:
-        n = DEFAULT_COUNT
-    main(n)
+    args = parse_args()
+    main(args.count, this_week=args.this_week)
