@@ -2,344 +2,59 @@
   "week_start": "2026-11-09",
   "data": [
     {
-      "ticker": "EL",
-      "scheduled_date": "Nov 02/b",
-      "open_trade_date": "2026-11-01 (Sunday)"
+      "ticker": "CEG",
+      "scheduled_date": "Nov 09/b",
+      "open_trade_date": "2026-11-08 (Sunday)"
     },
     {
-      "ticker": "LITE",
-      "scheduled_date": "Nov 02/b",
-      "open_trade_date": "2026-11-01 (Sunday)"
+      "ticker": "KKR",
+      "scheduled_date": "Nov 09/b",
+      "open_trade_date": "2026-11-08 (Sunday)"
     },
     {
-      "ticker": "MAR",
-      "scheduled_date": "Nov 02/b",
-      "open_trade_date": "2026-11-01 (Sunday)"
+      "ticker": "NRG",
+      "scheduled_date": "Nov 09/b",
+      "open_trade_date": "2026-11-08 (Sunday)"
     },
     {
-      "ticker": "TEM",
-      "scheduled_date": "Nov 02/b",
-      "open_trade_date": "2026-11-01 (Sunday)"
+      "ticker": "OXY",
+      "scheduled_date": "Nov 09/a",
+      "open_trade_date": "2026-11-09 (Monday)"
     },
     {
-      "ticker": "TSEM",
-      "scheduled_date": "Nov 02/b",
-      "open_trade_date": "2026-11-01 (Sunday)"
+      "ticker": "RKLB",
+      "scheduled_date": "Nov 09/a",
+      "open_trade_date": "2026-11-09 (Monday)"
     },
     {
-      "ticker": "AAPL",
-      "scheduled_date": "Nov 02/a",
-      "open_trade_date": "2026-11-02 (Monday)"
+      "ticker": "TTWO",
+      "scheduled_date": "Nov 09/a",
+      "open_trade_date": "2026-11-09 (Monday)"
     },
     {
-      "ticker": "ON",
-      "scheduled_date": "Nov 02/a",
-      "open_trade_date": "2026-11-02 (Monday)"
+      "ticker": "SE",
+      "scheduled_date": "Nov 10/b",
+      "open_trade_date": "2026-11-09 (Monday)"
     },
     {
-      "ticker": "PLTR",
-      "scheduled_date": "Nov 02/a",
-      "open_trade_date": "2026-11-02 (Monday)"
+      "ticker": "NBIS",
+      "scheduled_date": "Nov 12/b",
+      "open_trade_date": "2026-11-11 (Wednesday)"
     },
     {
-      "ticker": "ROKU",
-      "scheduled_date": "Nov 02/a",
-      "open_trade_date": "2026-11-02 (Monday)"
+      "ticker": "AMAT",
+      "scheduled_date": "Nov 12/a",
+      "open_trade_date": "2026-11-12 (Thursday)"
     },
     {
-      "ticker": "VRTX",
-      "scheduled_date": "Nov 02/a",
-      "open_trade_date": "2026-11-02 (Monday)"
+      "ticker": "CBRS",
+      "scheduled_date": "Nov 12/a",
+      "open_trade_date": "2026-11-12 (Thursday)"
     },
     {
-      "ticker": "WMB",
-      "scheduled_date": "Nov 02/a",
-      "open_trade_date": "2026-11-02 (Monday)"
-    },
-    {
-      "ticker": "APO",
-      "scheduled_date": "Nov 03/b",
-      "open_trade_date": "2026-11-02 (Monday)"
-    },
-    {
-      "ticker": "DOCN",
-      "scheduled_date": "Nov 03/b",
-      "open_trade_date": "2026-11-02 (Monday)"
-    },
-    {
-      "ticker": "ETN",
-      "scheduled_date": "Nov 03/b",
-      "open_trade_date": "2026-11-02 (Monday)"
-    },
-    {
-      "ticker": "FISV",
-      "scheduled_date": "Nov 03/b",
-      "open_trade_date": "2026-11-02 (Monday)"
-    },
-    {
-      "ticker": "RACE",
-      "scheduled_date": "Nov 03/b",
-      "open_trade_date": "2026-11-02 (Monday)"
-    },
-    {
-      "ticker": "SHOP",
-      "scheduled_date": "Nov 03/b",
-      "open_trade_date": "2026-11-02 (Monday)"
-    },
-    {
-      "ticker": "TLN",
-      "scheduled_date": "Nov 03/b",
-      "open_trade_date": "2026-11-02 (Monday)"
-    },
-    {
-      "ticker": "AIG",
-      "scheduled_date": "Nov 03/a",
-      "open_trade_date": "2026-11-03 (Tuesday)"
-    },
-    {
-      "ticker": "ALAB",
-      "scheduled_date": "Nov 03/a",
-      "open_trade_date": "2026-11-03 (Tuesday)"
-    },
-    {
-      "ticker": "AMD",
-      "scheduled_date": "Nov 03/a",
-      "open_trade_date": "2026-11-03 (Tuesday)"
-    },
-    {
-      "ticker": "AMGN",
-      "scheduled_date": "Nov 03/a",
-      "open_trade_date": "2026-11-03 (Tuesday)"
-    },
-    {
-      "ticker": "ANET",
-      "scheduled_date": "Nov 03/a",
-      "open_trade_date": "2026-11-03 (Tuesday)"
-    },
-    {
-      "ticker": "BKNG",
-      "scheduled_date": "Nov 03/a",
-      "open_trade_date": "2026-11-03 (Tuesday)"
-    },
-    {
-      "ticker": "SU",
-      "scheduled_date": "Nov 03/a",
-      "open_trade_date": "2026-11-03 (Tuesday)"
-    },
-    {
-      "ticker": "XYZ",
-      "scheduled_date": "Nov 03/a",
-      "open_trade_date": "2026-11-03 (Tuesday)"
-    },
-    {
-      "ticker": "CRCL",
-      "scheduled_date": "Nov 04/b",
-      "open_trade_date": "2026-11-03 (Tuesday)"
-    },
-    {
-      "ticker": "CVS",
-      "scheduled_date": "Nov 04/b",
-      "open_trade_date": "2026-11-03 (Tuesday)"
-    },
-    {
-      "ticker": "DDOG",
-      "scheduled_date": "Nov 04/b",
-      "open_trade_date": "2026-11-03 (Tuesday)"
-    },
-    {
-      "ticker": "EMR",
-      "scheduled_date": "Nov 04/b",
-      "open_trade_date": "2026-11-03 (Tuesday)"
-    },
-    {
-      "ticker": "MCD",
-      "scheduled_date": "Nov 04/b",
-      "open_trade_date": "2026-11-03 (Tuesday)"
-    },
-    {
-      "ticker": "UBER",
-      "scheduled_date": "Nov 04/b",
-      "open_trade_date": "2026-11-03 (Tuesday)"
-    },
-    {
-      "ticker": "W",
-      "scheduled_date": "Nov 04/b",
-      "open_trade_date": "2026-11-03 (Tuesday)"
-    },
-    {
-      "ticker": "AFL",
-      "scheduled_date": "Nov 04/a",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "ALB",
-      "scheduled_date": "Nov 04/a",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "APP",
-      "scheduled_date": "Nov 04/a",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "ARM",
-      "scheduled_date": "Nov 04/a",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "CF",
-      "scheduled_date": "Nov 04/a",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "COHR",
-      "scheduled_date": "Nov 04/a",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "EXPE",
-      "scheduled_date": "Nov 04/a",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "FICO",
-      "scheduled_date": "Nov 04/a",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "MELI",
-      "scheduled_date": "Nov 04/a",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "NTR",
-      "scheduled_date": "Nov 04/a",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "QCOM",
-      "scheduled_date": "Nov 04/a",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "CAH",
-      "scheduled_date": "Nov 05/b",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "CI",
-      "scheduled_date": "Nov 05/b",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "CNQ",
-      "scheduled_date": "Nov 05/b",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "COP",
-      "scheduled_date": "Nov 05/b",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "IRM",
-      "scheduled_date": "Nov 05/b",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "KMB",
-      "scheduled_date": "Nov 05/b",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "MT",
-      "scheduled_date": "Nov 05/b",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "SO",
-      "scheduled_date": "Nov 05/b",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "TPR",
-      "scheduled_date": "Nov 05/b",
-      "open_trade_date": "2026-11-04 (Wednesday)"
-    },
-    {
-      "ticker": "ABNB",
-      "scheduled_date": "Nov 05/a",
-      "open_trade_date": "2026-11-05 (Thursday)"
-    },
-    {
-      "ticker": "AFRM",
-      "scheduled_date": "Nov 05/a",
-      "open_trade_date": "2026-11-05 (Thursday)"
-    },
-    {
-      "ticker": "AKAM",
-      "scheduled_date": "Nov 05/a",
-      "open_trade_date": "2026-11-05 (Thursday)"
-    },
-    {
-      "ticker": "AXON",
-      "scheduled_date": "Nov 05/a",
-      "open_trade_date": "2026-11-05 (Thursday)"
-    },
-    {
-      "ticker": "EOG",
-      "scheduled_date": "Nov 05/a",
-      "open_trade_date": "2026-11-05 (Thursday)"
-    },
-    {
-      "ticker": "LYV",
-      "scheduled_date": "Nov 05/a",
-      "open_trade_date": "2026-11-05 (Thursday)"
-    },
-    {
-      "ticker": "MCHP",
-      "scheduled_date": "Nov 05/a",
-      "open_trade_date": "2026-11-05 (Thursday)"
-    },
-    {
-      "ticker": "NET",
-      "scheduled_date": "Nov 05/a",
-      "open_trade_date": "2026-11-05 (Thursday)"
-    },
-    {
-      "ticker": "TEAM",
-      "scheduled_date": "Nov 05/a",
-      "open_trade_date": "2026-11-05 (Thursday)"
-    },
-    {
-      "ticker": "TXRH",
-      "scheduled_date": "Nov 05/a",
-      "open_trade_date": "2026-11-05 (Thursday)"
-    },
-    {
-      "ticker": "WPM",
-      "scheduled_date": "Nov 05/a",
-      "open_trade_date": "2026-11-05 (Thursday)"
-    },
-    {
-      "ticker": "CHTR",
-      "scheduled_date": "Nov 06/b",
-      "open_trade_date": "2026-11-05 (Thursday)"
-    },
-    {
-      "ticker": "HUM",
-      "scheduled_date": "Nov 06/b",
-      "open_trade_date": "2026-11-05 (Thursday)"
-    },
-    {
-      "ticker": "MRNA",
-      "scheduled_date": "Nov 06/b",
-      "open_trade_date": "2026-11-05 (Thursday)"
-    },
-    {
-      "ticker": "VST",
-      "scheduled_date": "Nov 06/b",
-      "open_trade_date": "2026-11-05 (Thursday)"
+      "ticker": "CSCO",
+      "scheduled_date": "Nov 12/a",
+      "open_trade_date": "2026-11-12 (Thursday)"
     }
   ]
 }
